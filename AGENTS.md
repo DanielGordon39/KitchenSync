@@ -13,6 +13,14 @@ Before modifying this repository, read:
 
 Use the Obsidian notes listed in `.agents/design-sources.md` as design and planning context. Treat repository code and tests as implementation truth.
 
+## Testing
+
+- Use `uv run pytest` as the standard test command.
+- Agents may manage the project environment with `uv` for tooling, test runners, and development dependencies.
+- Agents may run tests and small verification commands without secondary confirmation.
+- Agents may create or update focused test code without secondary confirmation when it verifies existing behavior or a requested change.
+- Ask before adding tests that define new product behavior or lock in an unresolved design decision.
+
 ## Work Boundaries
 
 - Default to collaboration: explain, research, compare options, inspect documentation, and provide examples before attempting implementation.

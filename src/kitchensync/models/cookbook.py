@@ -1,7 +1,8 @@
 from datetime import date
+
 from pydantic import BaseModel, Field
 
-from recipe import Recipe
+from .recipe import Recipe
 
 
 class CookEvent(BaseModel):

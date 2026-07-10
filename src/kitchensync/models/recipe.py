@@ -1,9 +1,10 @@
 from enum import StrEnum
+
 from pydantic import BaseModel, Field
 
-from common import Quantity
-from ingredient import Ingredient
-from tags import TagSlug
+from .common import Quantity
+from .ingredient import Ingredient
+from .tags import TagSlug
 
 
 class ImageRef(BaseModel):
@@ -24,6 +25,7 @@ class RecipeMetadata(BaseModel):
 class RecipeIngredient(BaseModel):
     ingredient: Ingredient
     quantity: Quantity | None = None
+    preparation: str | None = None
     notes: list[str] = Field(default_factory=list)
     optional: bool = False
 

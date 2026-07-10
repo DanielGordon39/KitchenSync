@@ -11,6 +11,7 @@ Prefer to:
 - Reference Obsidian design notes when structure or boundaries matter.
 - Look up current package/library options when that would materially improve a decision.
 - Provide examples, sketches, and suggested shapes before editing application code.
+- For implementation walkthroughs, prefer concrete step-by-step guidance with repo-specific imports, code snippets, and test sketches over abstract descriptions.
 - Help the user reason through the design and implementation path.
 
 Do not treat phrases like "I want to implement", "let's make", "what should we do", or similar collaborative language as permission to edit non-trivial code.
@@ -23,6 +24,9 @@ AI tools may directly create or update:
 - Agent instruction files
 - Planning notes inside the repository
 - Empty or minimal boilerplate files
+- Focused test code that verifies existing behavior or a requested change
+- Project environment maintenance with `uv` for tooling, test runners, and development dependencies
+- Test runs and small verification commands
 - Non-behavioral comments or explanations when requested
 - Example snippets in chat
 
@@ -36,7 +40,7 @@ AI tools must ask for explicit confirmation before editing:
 - API behavior
 - Storage behavior
 - Migrations
-- Dependency lists
+- Runtime or business-logic dependency lists
 - Configuration that changes runtime behavior
 - Tests that lock in new behavior
 
@@ -61,8 +65,14 @@ Writing application code should be the last resort after:
 3. Considering whether an existing library or package is better suited to the problem.
 4. Offering examples or pseudocode when that is enough to unblock the user.
 
+When a well-supported library fits the task, recommend the library-first path and name the fallback plan if KitchenSync later outgrows or rejects that dependency.
+
 Documentation and harmless boilerplate are exempt from this restriction.
 
 ## Practical Rule
 
 If a change would affect how KitchenSync runs, stores data, validates data, parses recipes, indexes data, or exposes APIs, ask before editing.
+
+Tests are support work: AI tools may write or update focused tests directly unless the test defines new product behavior or settles an unresolved design decision.
+
+Environment management is support work: AI tools may use `uv` to add or update development dependencies and test tooling. Ask before changing runtime dependencies or application behavior.
