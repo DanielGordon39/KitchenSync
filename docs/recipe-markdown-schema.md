@@ -258,10 +258,14 @@ An index rebuild should derive database rows from Markdown as follows:
 - `recipes.servings`, `recipes.source_*`, `recipes.imported_from`, and `recipes.tags` from frontmatter.
 - `recipe_ingredients.raw_text` from the raw ingredient bullet list.
 - `recipe_ingredients.*` parsed fields by re-running the ingredient parser over each ingredient bullet.
+- `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database when confidence is high enough.
+- `ingredient_candidates` from unmatched or low-confidence ingredient observations that need review.
 - `recipe_steps.*` from `### Step N` sections.
 - Full-text search text from title, description, ingredient bullets, parser-derived ingredient names, steps, tags, and notes.
 
 The database may store a full parsed JSON snapshot for speed, but that snapshot is rebuildable cache data.
+
+Ingredient candidate review state is durable app state, not recipe Markdown content. Approving a candidate should update canonical ingredient data or aliases rather than rewriting the recipe solely to store parser-derived fields.
 
 ## Validation Rules
 
