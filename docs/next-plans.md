@@ -18,6 +18,7 @@ Working direction after the initial recipe parsing scaffold.
 Before building UI, define what happens when a parsed recipe is accepted and saved.
 
 Decided:
+- Use `data/library/` as the local v1 development library root.
 - Use `recipes/{slug}.md` as the v1 recipe markdown location.
 - Use stable `recipe_id` as identity, with `slug` as filename and source URL as import metadata.
 - Preserve compact raw import fields in recipe frontmatter and large raw artifacts as sidecar files.
