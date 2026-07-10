@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 from kitchensync.models import Recipe, RecipeIngredient
 from kitchensync.parsing import parse_recipe
@@ -53,7 +54,7 @@ def _ingredient_to_markdown(ingredient: RecipeIngredient) -> str:
     pieces = []
     if ingredient.quantity:
         if ingredient.quantity.amount is not None:
-            pieces.append(str(ingredient.quantity.amount))
+            pieces.append(_format_number(ingredient.quantity.amount))
         if ingredient.quantity.unit:
             pieces.append(ingredient.quantity.unit)
 
@@ -65,7 +66,14 @@ def _ingredient_to_markdown(ingredient: RecipeIngredient) -> str:
     return " ".join(pieces)
 
 
+def _format_number(value: float) -> str:
+    return str(int(value)) if float(value).is_integer() else str(value)
+
+
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "url",

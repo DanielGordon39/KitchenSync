@@ -2,13 +2,12 @@ import re
 from urllib.request import Request, urlopen
 
 from kitchensync.models import (
-    Ingredient,
     Recipe,
-    RecipeIngredient,
     RecipeMetadata,
     RecipeStep,
 )
 
+from .ingredients import parse_recipe_ingredient_line
 from .result import ParseResult, ParseStatus
 
 
@@ -49,8 +48,7 @@ def _parse_servings(value: object) -> int | None:
 
 def _recipe_from_scraper(scraper, source_url: str) -> Recipe:
     ingredients = [
-        # TODO: Normalize raw ingredient lines into quantity/unit/name/preparation.
-        RecipeIngredient(ingredient=Ingredient(name=line))
+        parse_recipe_ingredient_line(line)
         for line in scraper.ingredients()
         if line.strip()
     ]
