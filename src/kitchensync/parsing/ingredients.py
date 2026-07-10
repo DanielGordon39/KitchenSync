@@ -5,13 +5,21 @@ from kitchensync.models import Ingredient, Quantity, RecipeIngredient
 from .units import is_container_unit, is_measurable_unit, normalize_unit
 
 
+CUT_PREPARATIONS = {"cubes", "diced", "strips"}
+
+
 def parse_recipe_ingredient_line(text: str) -> RecipeIngredient:
     parsed = parse_ingredient(text)
+    name = _prepared_ingredient_name(parsed) or text
+    preparation = _preparation(parsed)
+
+    if preparation is None:
+        name, preparation = _split_trailing_preparation(name)
 
     return RecipeIngredient(
-        ingredient=Ingredient(name=_prepared_ingredient_name(parsed) or text),
+        ingredient=Ingredient(name=name),
         quantity=_quantity(parsed),
-        preparation=_preparation(parsed),
+        preparation=preparation,
         notes=[f"raw: {text}"],
     )
 
@@ -68,6 +76,18 @@ def _preparation(parsed) -> str | None:
         return None
 
     return getattr(preparation, "text", None) or str(preparation)
+
+
+def _split_trailing_preparation(name: str) -> tuple[str, str | None]:
+    pieces = name.rsplit(maxsplit=1)
+    if len(pieces) != 2:
+        return name, None
+
+    base_name, preparation = pieces
+    if preparation.casefold() not in CUT_PREPARATIONS:
+        return name, None
+
+    return base_name, preparation
 
 
 def _is_container_amount(amount) -> bool:

@@ -25,7 +25,17 @@ def recipe_to_markdown(recipe: Recipe) -> str:
 
     if recipe.ingredients:
         lines.extend(["## Ingredients", ""])
-        lines.extend(f"- {_ingredient_to_markdown(ingredient)}" for ingredient in recipe.ingredients)
+        lines.extend(f"- {_raw_ingredient_text(ingredient)}" for ingredient in recipe.ingredients)
+        lines.extend(
+            [
+                "",
+                "### Parsed Ingredients",
+                "",
+                "| Name | Quantity | Unit | Preparation |",
+                "| --- | ---: | --- | --- |",
+            ]
+        )
+        lines.extend(_ingredient_table_row(ingredient) for ingredient in recipe.ingredients)
         lines.append("")
 
     if recipe.steps:
@@ -64,6 +74,32 @@ def _ingredient_to_markdown(ingredient: RecipeIngredient) -> str:
         pieces.append(f"({ingredient.preparation})")
 
     return " ".join(pieces)
+
+
+def _raw_ingredient_text(ingredient: RecipeIngredient) -> str:
+    raw_prefix = "raw: "
+    for note in ingredient.notes:
+        if note.startswith(raw_prefix):
+            return note.removeprefix(raw_prefix)
+
+    return _ingredient_to_markdown(ingredient)
+
+
+def _ingredient_table_row(ingredient: RecipeIngredient) -> str:
+    quantity = ingredient.quantity
+    amount = _format_number(quantity.amount) if quantity and quantity.amount is not None else ""
+    unit = quantity.unit if quantity and quantity.unit else ""
+
+    return (
+        f"| {_table_cell(ingredient.ingredient.name)} "
+        f"| {_table_cell(amount)} "
+        f"| {_table_cell(unit)} "
+        f"| {_table_cell(ingredient.preparation or '')} |"
+    )
+
+
+def _table_cell(value: object) -> str:
+    return str(value).replace("|", "\\|")
 
 
 def _format_number(value: float) -> str:
