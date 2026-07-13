@@ -29,6 +29,8 @@ Shopping tables answer: what planned purchases exist?
 
 Candidate tables answer: what imported or parsed data needs review before becoming durable recipe or ingredient data?
 
+In v1, normal recipe imports do not use candidates for parsed ingredients. The first implementation auto-creates or reuses canonical ingredient records from parsed ingredient names so the recipe corpus can grow quickly. Candidate-first ingredient import is deferred to v2.
+
 ## Physical File Decision
 
 Use one SQLite file for v1. Separate physical SQLite files would make cross-area queries, foreign keys, backups, schema setup, and deletes more complicated before the app needs separate lifecycles.
@@ -81,7 +83,7 @@ Durable app state:
 
 - pantry inventory
 - shopping lists
-- candidate review state
+- candidate review state, when a workflow explicitly creates candidates
 
 ## V1 Schema Slice
 
@@ -94,6 +96,8 @@ The first implementation slice creates the core table groups and implements:
 - cookbook entry listing
 
 Recipe content writing, Markdown indexing, ingredient matching, pantry, shopping, and candidate resolution come after this slice.
+
+The first recipe import implementation should include optimistic ingredient creation, not candidate-first review. Cleanup helpers such as ingredient merge and rename can come after the first 30-50 saved recipes expose the real duplicate patterns.
 
 ## Cookbook Boundary
 
@@ -134,6 +138,8 @@ The SQLite `cookbook_entries` table indexes cookbook entry files for listing, fi
 
 Candidate rows are durable review workflow state.
 
-Candidates may represent recipe imports or ingredient observations. V1 may keep recipe and ingredient candidate records in one candidate table with a `candidate_type` column until their fields diverge enough to justify separate tables.
+V1 keeps the candidate table available, but normal parsed recipe imports should not create ingredient candidates. They should auto-create or reuse canonical ingredients and preserve raw recipe ingredient text for later cleanup.
+
+V2 should use candidates for imported ingredient observations before they become canonical ingredients. It may keep recipe and ingredient candidate records in one candidate table with a `candidate_type` column until their fields diverge enough to justify separate tables.
 
 Candidate files under `ingredients/_candidates/` or similar paths are deferred until portability of unresolved review state becomes necessary.

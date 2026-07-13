@@ -12,8 +12,9 @@ This document describes how recipe and ingredient data move through KitchenSync.
 - The cookbook database is a rebuildable index/cache derived from cookbook entry Markdown.
 - V1 uses one physical SQLite database with separate logical areas for recipe, ingredient, cookbook, pantry, shopping, and candidate data.
 - Pantry inventory, shopping lists, and candidate review state are durable app state.
-- New or uncertain ingredient observations should enter a review queue before becoming canonical ingredient data.
-- Receipt parsing should use the same ingredient candidate flow as recipe imports.
+- V1 assumes parsed imported recipe ingredients are good enough to auto-create or reuse canonical ingredient records.
+- V2 should route imported ingredient observations through a review queue before they become canonical ingredient data.
+- Receipt parsing should use the v2 ingredient candidate flow unless v1 still needs a quick optimistic import path.
 
 ## Data Flow Diagram
 
@@ -84,18 +85,20 @@ flowchart TD
 
 - Ingredient lines from recipes create ingredient observations.
 - Observations are parsed and matched against canonical ingredients and aliases.
-- High-confidence matches may link recipe ingredient rows to existing ingredient entries.
-- Low-confidence matches and new ingredients must become candidates waiting for review.
-- Canonical ingredient Markdown should not be polluted by parser mistakes or one-off wording from recipe imports.
+- In v1, unmatched parsed ingredient names create minimal canonical ingredient Markdown files and database rows.
+- Recipe ingredient rows keep raw text and parsed fields so bad v1 ingredient splits can be cleaned up later.
+- In v2, low-confidence matches and new ingredients should become candidates waiting for review.
 - Canonical ingredient files can accumulate aliases, packaging, store units, grocery category, storage area, conversions, and notes.
 
 ## Ingredient Candidate Queue
 
 The candidate queue is durable app state until reviewed. It is not recipe source-of-truth data.
 
+V1 does not use the candidate queue for normal imported recipe ingredients. That shortcut keeps early corpus building fast. After roughly 30-50 recipes, ingredient cleanup should identify which duplicates, aliases, and parser mistakes need a v2 candidate-first flow.
+
 Candidate sources:
 
-- Recipe import or recipe Markdown indexing
+- V2 recipe import or recipe Markdown indexing
 - Manual ingredient entry
 - Receipt parsing
 - Future barcode/store integrations
@@ -135,7 +138,7 @@ Durable app knowledge:
 
 - Pantry inventory
 - Shopping lists
-- Ingredient candidate review state
+- Ingredient candidate review state, when enabled by a review workflow
 - User corrections waiting to be applied to ingredient Markdown
 
 Rebuildable from cookbook entry Markdown:

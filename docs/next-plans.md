@@ -28,24 +28,29 @@ Decided:
 - Treat recipe metadata, recipe ingredient rows, recipe steps, and recipe search tables as rebuildable from Markdown.
 - Use ingredient Markdown files as the source of truth for canonical ingredients.
 - Treat ingredient aliases, packaging, conversions, categories, and storage rules as rebuildable from ingredient Markdown.
-- Send new or uncertain ingredient observations to an ingredient candidate queue instead of auto-promoting them into canonical ingredients.
+- For v1, assume parsed imported recipe ingredients are good enough to auto-create or reuse canonical ingredient entries.
+- Keep raw recipe ingredient text and parsed fields in the recipe index so ingredient cleanup is possible after importing a starter corpus.
 - Use one local SQLite file at `data/library/kitchensync.sqlite` for v1.
 - Keep recipe, ingredient, cookbook, pantry, shopping, and candidate data as separate logical database areas inside that SQLite file.
 - Use `data/library/cookbook/{recipe_slug}.md` as the durable source for cookbook entry metadata.
 - Treat cookbook membership and cookbook-specific recipe metadata as rebuildable from cookbook entry Markdown.
 - Treat pantry inventory, shopping lists, and candidate review state as durable app state.
 - Keep recipe existence separate from cookbook membership, even though v1 starts with one app-wide cookbook.
+- Route accepted parsed recipe saves through one public API boundary, `app.recipes.save_imported_recipe(...)`, so Markdown writes and SQLite indexing happen from the same accepted recipe object.
+- Defer ingredient-candidate-first imports to v2, after roughly 30-50 saved recipes reveal practical merge and alias patterns.
 
 Remaining:
-- Define the review workflow for matching, approving, aliasing, rejecting, and ignoring ingredient candidates.
+- Implement `app.recipes.save_imported_recipe(...)` as the only import/save entrypoint that writes recipe Markdown, ensures parsed ingredients exist, indexes recipe metadata, ingredients, steps, and search text, and optionally indexes cookbook membership.
+- Implement simple ingredient cleanup helpers after the starter corpus exists, likely merge and rename first.
+- Define the v2 review workflow for matching, approving, aliasing, rejecting, and ignoring ingredient candidates.
 
 Likely first pass:
 - Save recipe markdown as the durable artifact.
-- Save canonical ingredient markdown as durable app knowledge.
+- Save canonical ingredient markdown as durable app knowledge by auto-creating minimal ingredient records from parsed recipe ingredients.
 - Save cookbook entry markdown as durable cookbook-specific recipe metadata.
 - Use SQLite for searchable recipe metadata, ingredient lookup, matching, cookbook state, pantry state, shopping lists, and app workflow state.
 - Treat recipe, ingredient, and cookbook indexes as rebuildable until a feature truly needs durable database-only state.
-- Keep candidate review state as durable database state until reviewed.
+- Keep candidate review state as durable database state when a workflow explicitly creates candidates.
 
 ## Ingredient Parsing Follow-Ups
 
@@ -55,7 +60,7 @@ TODO:
 - Decide whether ingredient names should preserve source casing or use canonical casing.
 - Keep raw ingredient lines available for manual correction.
 - Decide if durable parsed ingredient overrides are needed after v1.
-- Create ingredient candidates for unmatched or uncertain parsed ingredient lines.
+- After importing roughly 30-50 recipes, review ingredient duplicates and decide which candidate-first rules belong in v2.
 - Revisit package/container handling when shopping-list generation starts.
 
 ## UI Follow-Ups
@@ -68,7 +73,7 @@ TODO:
 - Let the user edit accepted ingredient text before saving.
 - Add a manual recipe editor for parser failures.
 - Add a clear flow from URL input -> parse -> review -> save.
-- Add an ingredient review mode for matching, approving, aliasing, rejecting, and enriching candidate ingredients.
+- Add an ingredient cleanup/review mode for merging, renaming, aliasing, and enriching ingredients after the starter corpus exists.
 
 ## Open Design Questions
 
@@ -76,4 +81,5 @@ TODO:
 - Should the first UI be desktop/local only, web app, or both?
 - Should recipe markdown be edited directly, generated from forms, or both?
 - How should ingredient catalog corrections feed future parsing and matching?
+- Which imported ingredient observations should become v2 candidates instead of auto-created canonical ingredients?
 - When should Obsidian planning notes be updated to match the parsing and persistence direction?

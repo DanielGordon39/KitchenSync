@@ -2,7 +2,7 @@
 
 This document defines the first durable Markdown contract for saved KitchenSync recipes.
 
-The exploratory shape in `scratch/recipe_parse_probe.py` is the starting point: readable recipe Markdown, raw ingredient lines, and ordered steps. This schema keeps the durable recipe file human-readable and treats parsed ingredient fields as rebuildable parser/index output, not as saved Markdown content.
+The exploratory shape in `scratch/recipe_input_probe.py` is the starting point: readable recipe Markdown, raw ingredient lines, and ordered steps. This schema keeps the durable recipe file human-readable and treats parsed ingredient fields as rebuildable parser/index output, not as saved Markdown content.
 
 ## Purpose
 
@@ -239,14 +239,14 @@ An index rebuild should derive database rows from Markdown as follows:
 - `recipes.servings`, `recipes.source_*`, and `recipes.imported_from` from the fact block.
 - `recipe_ingredients.raw_text` from the raw ingredient bullet list.
 - `recipe_ingredients.*` parsed fields by re-running the ingredient parser over each ingredient bullet.
-- `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database when confidence is high enough.
-- `ingredient_candidates` from unmatched or low-confidence ingredient observations that need review.
+- `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database, auto-creating minimal canonical ingredient records in v1 when no match exists.
+- V2 ingredient candidates from unmatched or low-confidence ingredient observations that need review.
 - `recipe_steps.*` from `### Step N` sections.
 - Full-text search text from title, description, ingredient bullets, parser-derived ingredient names, steps, tags, and notes.
 
 The database may store a full parsed JSON snapshot for speed, but that snapshot is rebuildable cache data.
 
-Ingredient candidate review state is durable app state, not recipe Markdown content. Approving a candidate should update canonical ingredient data or aliases rather than rewriting the recipe solely to store parser-derived fields.
+Ingredient candidate review state is durable app state, not recipe Markdown content. V1 normal recipe imports do not create ingredient candidates, but v2 candidate approval should update canonical ingredient data or aliases rather than rewriting the recipe solely to store parser-derived fields.
 
 ## Validation Rules
 
@@ -264,7 +264,7 @@ Warnings are acceptable for:
 
 ## Probe Alignment
 
-`scratch/recipe_parse_probe.py` already demonstrates the v1 body shape:
+`scratch/recipe_input_probe.py` demonstrates the v1 body shape:
 
 - `# {recipe.name}`
 - Optional description

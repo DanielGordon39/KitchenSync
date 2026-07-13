@@ -34,6 +34,9 @@ V1 implements only the first recipe/cookbook slice. Other namespaces exist in th
 Recipes answer what a recipe is.
 
 ```python
+result = parse_recipe("https://example.com/recipe")
+saved = app.recipes.save_imported_recipe(result.recipe)
+
 app.recipes.save_metadata(
     recipe_id="recipe_blackened_chicken_penne_61b0d03a",
     title="Blackened Chicken Penne",
@@ -47,7 +50,17 @@ results = app.recipes.search("chicken")
 recipe = app.recipes.get("recipe_blackened_chicken_penne_61b0d03a")
 ```
 
+`save_imported_recipe(...)` is the public save boundary for accepted parsed recipes. It should:
+- write the recipe Markdown file under `data/library/recipes/{slug}.md`;
+- create or reuse canonical ingredient rows and Markdown files for each parsed ingredient name;
+- index the same accepted recipe into `recipe_recipes`, `recipe_ingredients`, `recipe_steps`, and `recipe_search`;
+- optionally index cookbook membership through the cookbook API when the import flow says the recipe is saved to the cookbook.
+
+All UI, CLI, scratch, and future HTTP API save flows should call this one method or a thin endpoint that delegates to it. They should not call `write_recipe_markdown_files(...)` and `save_metadata(...)` separately, because separate calls can update Markdown without SQLite or SQLite without Markdown.
+
 Search in v1 can use a simple SQLite `LIKE` query over indexed metadata. Full-text search can replace it when search behavior needs ranking or tokenization.
+
+`save_metadata(...)` is the low-level index helper for tests and rebuild tasks. It should not be the recipe-import API.
 
 ## Cookbook
 
@@ -71,14 +84,24 @@ Recipe existence is separate from cookbook entry existence. Cookbook entry Markd
 
 Ingredients answer what an ingredient is.
 
+V1 keeps imported recipe saves simple: parsed ingredient names are assumed good enough to become canonical ingredient records. If a parsed ingredient slug/name already exists, the recipe ingredient links to it. If not, the save flow creates a minimal ingredient Markdown file and indexes it.
+
 Planned API:
 
 ```python
+app.ingredients.ensure_ingredient("Chicken Breast")
 app.ingredients.search("chicken breast")
 app.ingredients.get("chicken_breast")
 ```
 
 Canonical ingredient rows are indexed from ingredient Markdown.
+
+Ingredient cleanup comes after there is enough real recipe data to review. The likely cleanup API is explicit, not automatic:
+
+```python
+app.ingredients.merge(source_id="chicken-breast-strips", target_id="chicken-breast")
+app.ingredients.rename("roma-tomato", name="Roma Tomato")
+```
 
 ## Pantry
 
@@ -117,7 +140,7 @@ app.candidates.list_pending(candidate_type="ingredient")
 app.candidates.resolve(candidate_id, action="approved_alias")
 ```
 
-Candidate review state starts database-only in v1. It can become file-backed later if unresolved review state needs portable diffs.
+Candidate review state starts database-only. V1 keeps ingredient import optimistic and does not route normal parsed recipe ingredients through candidates. V2 should flip imported ingredient observations to candidate-first once the starter corpus has enough recipes to show real merge, alias, and cleanup patterns.
 
 ## V2 Boundary
 
