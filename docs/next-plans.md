@@ -14,6 +14,9 @@ Working direction after the initial recipe parsing scaffold.
 - Model data flow is documented in `docs/model-data-flow.md`.
 - Database v1 is documented in `docs/database-v1.md`.
 - Intended Python API v1 is documented in `docs/intended-api.md`.
+- `app.recipes.save_imported_recipe(...)` now implements the accepted recipe save boundary and keeps Markdown and SQLite indexing together.
+- Browser-first UI architecture is documented in `docs/ui-architecture.md`.
+- The KitchenSync-specific TypeScript learning path is documented in `docs/typescript-ui-tutorial.md`.
 
 ## Persistence Decisions
 
@@ -42,7 +45,7 @@ Decided:
 - Defer ingredient-candidate-first imports to v2, after roughly 30-50 saved recipes reveal practical merge and alias patterns.
 
 Remaining:
-- Implement `app.recipes.save_imported_recipe(...)` as the only import/save entrypoint that writes recipe Markdown, ensures parsed ingredients exist, indexes recipe metadata, ingredients, steps, and search text, and optionally indexes cookbook membership.
+- Expose `app.recipes.save_imported_recipe(...)` through a thin browser-facing HTTP endpoint without duplicating its behavior.
 - Implement simple ingredient cleanup helpers after the starter corpus exists, likely merge and rename first.
 - Define the v2 review workflow for matching, approving, aliasing, rejecting, and ignoring ingredient candidates.
 
@@ -68,9 +71,18 @@ TODO:
 
 ## UI Follow-Ups
 
-Build UI after the save contract is clear.
+The save contract is clear. The next prerequisite for real browser data is a thin HTTP API over `KitchenSyncApp`.
+
+Recommended starting direction:
+- Use a browser-first React and TypeScript UI built with Vite.
+- Keep the UI responsive for desktop and mobile browsers.
+- Keep Python business and persistence behavior behind an HTTP/JSON boundary.
+- Reuse the static web UI later through Tauri for desktop and evaluate Capacitor for Android/iOS.
+- Defer PWA service-worker behavior, Tauri packaging, and Capacitor projects until the browser workflow is stable.
+- No UI scaffold or browser-facing Python HTTP API exists yet.
 
 TODO:
+- Define and implement the thin HTTP API that delegates to `KitchenSyncApp`.
 - Create a parsed recipe review screen.
 - Show raw ingredient text beside parser-derived fields.
 - Let the user edit accepted ingredient text before saving.
@@ -81,8 +93,9 @@ TODO:
 ## Open Design Questions
 
 TODO:
-- Should the first UI be desktop/local only, web app, or both?
 - Should recipe markdown be edited directly, generated from forms, or both?
 - How should ingredient catalog corrections feed future parsing and matching?
 - Which imported ingredient observations should become v2 candidates instead of auto-created canonical ingredients?
+- How should mobile browsers and future mobile apps reach a user's local-first KitchenSync data?
+- When does offline behavior justify adding a PWA service worker rather than only a web app manifest?
 - When should Obsidian planning notes be updated to match the parsing and persistence direction?
