@@ -32,7 +32,7 @@ Saved recipes should live at:
 recipes/{slug}.md
 ```
 
-The `slug` should be human-readable and stable enough for Git diffs. The stable recipe identity is still `recipe_id`, not the filename.
+The `slug` is the filename stem and should be human-readable and stable enough for Git diffs. V1 does not require recipe identity to be stored in Markdown.
 
 Attachments for a recipe should live under:
 
@@ -42,79 +42,44 @@ recipes/{slug}/
 
 ## Identity Rules
 
-- `recipe_id` is the stable application identity.
-- `slug` is the canonical filename stem.
+- The database may generate a stable internal recipe ID when indexing the file.
+- `slug` is derived from the canonical filename stem.
 - `title` is the human-facing recipe name.
 - `source.url` is import metadata, not identity.
-- Renaming a recipe may change `title` and possibly `slug`, but must not change `recipe_id`.
+- Renaming a recipe may change `title` and `slug`. Rename repair can be handled later if it becomes common.
 - Re-importing the same URL should be treated as a duplicate-detection concern, not as the identity model.
 
 ## Required Structure
 
 Every v1 recipe file must have:
 
-1. YAML frontmatter.
-2. A level-one heading matching the recipe title.
-3. An optional description paragraph.
+1. A level-one heading containing the recipe title.
+2. An optional description paragraph.
+3. An optional fact bullet block.
 4. An `## Ingredients` section.
 5. A raw ingredient bullet list.
 6. An `## Steps` section.
 7. Ordered `### Step N` subsections.
 
-## Frontmatter
+## Fact Block
 
-Required fields:
+Recipe metadata may be represented as simple bullets after the description and before `## Ingredients`:
 
-```yaml
----
-schema_version: 1
-recipe_id: recipe_blackened_chicken_penne_61b0d03a
-slug: blackened-chicken-penne
-title: Blackened Chicken Penne
----
+```markdown
+- Servings: 2
+- Source: HelloFresh
+- Author: Michelle Doll Olson
+- URL: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
+- Imported from: recipe-scrapers
 ```
 
-Optional fields:
+Fact block rules:
 
-```yaml
-servings: 2
-tags:
-  - weeknight
-  - pasta
-source:
-  name: HelloFresh
-  url: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
-  author:
-import:
-  source_type: url
-  imported_from: recipe-scrapers
-  raw_fields:
-    yields: 2 servings
-images:
-  - uri: blackened-chicken-penne/hero.jpg
-    alt_text: Finished blackened chicken penne
-    caption:
-```
-
-Field rules:
-
-- `schema_version` must be `1`.
-- `recipe_id` must be unique across saved recipes.
-- `slug` should match the filename stem.
-- `title` must match the level-one heading text.
-- `tags` are lowercase slugs.
-- Empty optional scalar values may be omitted or left blank.
-- `images.uri` may be relative to the recipe file.
-- `import.raw_fields` is for compact parser/debug values, not full raw HTML or OCR dumps.
-
-Large raw import artifacts, if retained, should be sidecar files referenced from frontmatter:
-
-```yaml
-import:
-  raw_artifacts:
-    html: blackened-chicken-penne/import.html
-    scraper_json: blackened-chicken-penne/recipe-scrapers.json
-```
+- Use `Label: value` bullets.
+- The known v1 labels are `Servings`, `Source`, `Author`, `URL`, and `Imported from`.
+- Unknown fact labels may be preserved by readers even if not indexed.
+- Tags and images are deferred until the UI needs them.
+- Large raw import artifacts, if retained later, should be sidecar files under `recipes/{slug}/`.
 
 ## Body
 
@@ -183,6 +148,37 @@ Step rules:
 - Bullets under a step are part of that step's text.
 - Multiple bullets under one step preserve order.
 - Empty steps are invalid.
+- Step metadata is optional. A step with only plain text bullets is valid v1 Markdown.
+
+Advanced users may add an optional YAML metadata block immediately below a step heading:
+
+````markdown
+### Step 2
+
+```yaml
+type: cook
+time_minutes: 8
+ingredients:
+  - chicken-breast
+```
+
+- Pat chicken dry.
+- Season all over with blackening spice.
+````
+
+Step metadata rules:
+
+- Metadata blocks are optional and should not be required by first-pass import or manual entry.
+- `type`, when present, should match one of the recipe step types: `prep`, `cook`, `rest`, `assemble`, `plate`, `serve`, or `other`.
+- `time_minutes`, when present, maps to a simple step-level time estimate.
+- `ingredients`, when present, should contain canonical ingredient IDs or slugs.
+- The step text remains the durable cooking instruction. Metadata enriches it but must not replace it.
+- UI-created recipes may add metadata later; hand-authored recipes may omit it entirely.
+
+Future TODO:
+
+- Consider parser-assisted ingredient-to-step matching so KitchenSync can suggest `ingredients` metadata for each step.
+- Consider richer cook-mode timing metadata only after the UI needs it.
 
 ## Notes Section
 
@@ -200,30 +196,15 @@ These map to recipe-level notes, not ingredient notes or cook-history notes.
 ## Complete Example
 
 ```markdown
----
-schema_version: 1
-recipe_id: recipe_blackened_chicken_penne_61b0d03a
-slug: blackened-chicken-penne
-title: Blackened Chicken Penne
-servings: 2
-tags:
-  - pasta
-  - weeknight
-source:
-  name: HelloFresh
-  url: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
-  author:
-import:
-  source_type: url
-  imported_from: recipe-scrapers
-  raw_fields:
-    yields: 2 servings
-images: []
----
-
 # Blackened Chicken Penne
 
 Creamy penne pasta with blackened chicken, scallions, and tomato.
+
+- Servings: 2
+- Source: HelloFresh
+- Author: Michelle Doll Olson
+- URL: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
+- Imported from: recipe-scrapers
 
 ## Ingredients
 
@@ -251,11 +232,11 @@ Creamy penne pasta with blackened chicken, scallions, and tomato.
 
 An index rebuild should derive database rows from Markdown as follows:
 
-- `recipes.recipe_id` from frontmatter `recipe_id`.
-- `recipes.slug` from frontmatter `slug`.
+- `recipes.recipe_id` from an internal database-generated ID.
+- `recipes.slug` from the filename stem.
 - `recipes.markdown_path` from the file path.
-- `recipes.title` from frontmatter `title` and the level-one heading.
-- `recipes.servings`, `recipes.source_*`, `recipes.imported_from`, and `recipes.tags` from frontmatter.
+- `recipes.title` from the level-one heading.
+- `recipes.servings`, `recipes.source_*`, and `recipes.imported_from` from the fact block.
 - `recipe_ingredients.raw_text` from the raw ingredient bullet list.
 - `recipe_ingredients.*` parsed fields by re-running the ingredient parser over each ingredient bullet.
 - `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database when confidence is high enough.
@@ -271,10 +252,7 @@ Ingredient candidate review state is durable app state, not recipe Markdown cont
 
 A v1 parser should reject or flag files when:
 
-- Frontmatter is missing.
-- `schema_version` is not `1`.
-- `recipe_id`, `slug`, or `title` is missing.
-- The level-one heading does not match `title`.
+- The level-one heading is missing.
 - Step numbers are missing, duplicated, skipped, or out of order.
 
 Warnings are acceptable for:
@@ -295,4 +273,4 @@ Warnings are acceptable for:
 - `## Steps`
 - `### Step N`
 
-The production Markdown writer should keep that durable shape and add v1 frontmatter. Parsed ingredient fields should remain parser/index output, not part of saved recipe files.
+The production Markdown writer should keep that durable shape. Parsed ingredient fields should remain parser/index output, not part of saved recipe files.

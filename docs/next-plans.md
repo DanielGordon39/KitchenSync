@@ -22,8 +22,9 @@ Before building UI, define what happens when a parsed recipe is accepted and sav
 Decided:
 - Use `data/library/` as the local v1 development library root.
 - Use `recipes/{slug}.md` as the v1 recipe markdown location.
-- Use stable `recipe_id` as identity, with `slug` as filename and source URL as import metadata.
-- Preserve compact raw import fields in recipe frontmatter and large raw artifacts as sidecar files.
+- Keep recipe Markdown human-first without required technical frontmatter.
+- Derive database identity during indexing, with `slug` from the filename and source URL as import metadata.
+- Preserve compact import fields as readable recipe fact bullets and large raw artifacts as sidecar files.
 - Treat recipe metadata, recipe ingredient rows, recipe steps, and recipe search tables as rebuildable from Markdown.
 - Use ingredient Markdown files as the source of truth for canonical ingredients.
 - Treat ingredient aliases, packaging, conversions, categories, and storage rules as rebuildable from ingredient Markdown.

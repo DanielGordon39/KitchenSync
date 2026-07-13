@@ -10,7 +10,6 @@ Ingredient Markdown answers: what is this ingredient?
 
 It stores canonical app knowledge such as:
 
-- Stable ingredient identity
 - Parent ingredient relationship
 - Matching aliases
 - Grocery category and storage metadata
@@ -45,21 +44,20 @@ ingredients/_candidates/{candidate_slug}.md
 
 ## Format Strategy
 
-Use Markdown files with three levels of structure:
+Use Markdown files with two levels of structure:
 
-1. YAML frontmatter for identity and small stable fields.
-2. YAML fenced sections for large structured lists.
+1. A heading and optional fact bullets for small stable fields.
+2. YAML fenced sections for structured lists.
 3. Markdown prose sections for notes and matching guidance.
 
-This avoids oversized frontmatter while keeping ingredient data portable and Obsidian-friendly.
+This keeps ingredient files portable, readable, and Obsidian-friendly without requiring technical frontmatter in hand-authored files.
 
 ## Identity Rules
 
-- `ingredient_id` is the stable application identity.
-- `slug` is the canonical filename stem.
-- `name` is the human-facing canonical name.
-- `parent_id` references another canonical ingredient when this ingredient is a narrower child.
-- Renaming `name` or `slug` must not change `ingredient_id`.
+- The database may generate a stable internal ingredient ID when indexing the file.
+- `slug` is derived from the canonical filename stem.
+- `name` is the human-facing canonical name from the level-one heading.
+- `parent` may reference another canonical ingredient when this ingredient is a narrower child.
 - Aliases are matching hints, not identity.
 
 Parent examples:
@@ -79,50 +77,36 @@ pasta
 
 Every v1 ingredient file must have:
 
-1. YAML frontmatter.
-2. A level-one heading matching the ingredient name.
+1. A level-one heading containing the ingredient name.
 
 Standard optional sections:
 
+1. `## Facts`
 1. `## Aliases`
 2. `## Packaging`
 3. `## Conversions`
 4. `## Matching Guidance`
 5. `## Notes`
 
-## Frontmatter
+## Facts Section
 
-Required fields:
+Ingredient metadata may be represented as simple bullets:
 
-```yaml
----
-schema_version: 1
-ingredient_id: chicken_breast
-slug: chicken-breast
-name: Chicken Breast
----
+```markdown
+## Facts
+
+- Parent: chicken
+- Category: meat
+- Storage area: refrigerated
+- Default unit: ounce
 ```
 
-Optional fields:
+Fact rules:
 
-```yaml
-parent_id: chicken
-category: meat
-storage_area: refrigerated
-default_unit: ounce
-tags:
-  - protein
-  - poultry
-```
-
-Field rules:
-
-- `schema_version` must be `1`.
-- `ingredient_id` must be unique across canonical ingredients.
-- `slug` should match the filename stem.
-- `name` must match the level-one heading text.
-- `parent_id`, when present, must reference an existing canonical ingredient.
-- `category`, `storage_area`, `default_unit`, and `tags` are normalized slugs.
+- Use `Label: value` bullets.
+- The known v1 labels are `Parent`, `Category`, `Storage area`, and `Default unit`.
+- Unknown fact labels may be preserved by readers even if not indexed.
+- `Parent`, when present, should refer to another ingredient slug or ID.
 
 ## Aliases Section
 
@@ -231,21 +215,14 @@ Use for boneless chicken breast recipe ingredients. Keep whole chicken, thighs, 
 ## Complete Example
 
 ````markdown
----
-schema_version: 1
-ingredient_id: chicken_breast
-slug: chicken-breast
-name: Chicken Breast
-parent_id: chicken
-category: meat
-storage_area: refrigerated
-default_unit: ounce
-tags:
-  - protein
-  - poultry
----
-
 # Chicken Breast
+
+## Facts
+
+- Parent: chicken
+- Category: meat
+- Storage area: refrigerated
+- Default unit: ounce
 
 ## Aliases
 
@@ -296,11 +273,10 @@ Use for boneless chicken breast recipe ingredients. Keep whole chicken, thighs, 
 
 An ingredient index rebuild should derive database rows from Markdown as follows:
 
-- `ingredients.ingredient_id` from frontmatter `ingredient_id`.
-- `ingredients.slug` from frontmatter `slug`.
-- `ingredients.name` from frontmatter `name` and the level-one heading.
-- `ingredients.parent_ingredient_id` from frontmatter `parent_id`.
-- `ingredients.category`, `storage_area`, `default_unit`, and tags from frontmatter.
+- `ingredients.ingredient_id` from an internal database-generated ID.
+- `ingredients.slug` from the filename stem.
+- `ingredients.name` from the level-one heading.
+- `ingredients.parent_ingredient_id`, `category`, `storage_area`, and `default_unit` from `## Facts`.
 - `ingredient_aliases` from the `## Aliases` YAML block.
 - `ingredient_packaging` from the `## Packaging` YAML block.
 - `ingredient_conversions` from the `## Conversions` YAML block.
@@ -323,11 +299,8 @@ Approving a candidate may:
 
 A v1 parser should reject or flag files when:
 
-- Frontmatter is missing.
-- `schema_version` is not `1`.
-- `ingredient_id`, `slug`, or `name` is missing.
-- The level-one heading does not match `name`.
-- `parent_id` references a missing ingredient.
+- The level-one heading is missing.
+- `Parent` references a missing ingredient.
 - YAML fenced sections are malformed.
 - Alias, packaging, or conversion IDs collide in a way that makes indexing ambiguous.
 
