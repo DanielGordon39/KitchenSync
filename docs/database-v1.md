@@ -58,11 +58,14 @@ Ingredient Markdown remains the portable source of truth for canonical ingredien
 
 The database may persist app workflow state that is not represented in recipe or ingredient Markdown.
 
+SQLite row IDs are internal database identities. New recipe and ingredient rows use plain UUID hex strings. These IDs are not stored in Markdown and may be regenerated if the SQLite database is rebuilt. Slugs remain the human-readable file identity and lookup key for Markdown-backed records.
+
 Rebuildable from recipe Markdown:
 
 - recipe metadata
 - recipe ingredients
 - recipe steps
+- recipe tags
 - recipe search rows
 
 Rebuildable from ingredient Markdown:
@@ -98,6 +101,10 @@ The first implementation slice creates the core table groups and implements:
 Recipe content writing, Markdown indexing, ingredient matching, pantry, shopping, and candidate resolution come after this slice.
 
 The first recipe import implementation should include optimistic ingredient creation, not candidate-first review. Cleanup helpers such as ingredient merge and rename can come after the first 30-50 saved recipes expose the real duplicate patterns.
+
+Repeated imports should reuse an existing recipe row by source URL first, then slug as a fallback. New ingredient rows should use UUID IDs and reuse existing ingredients by slug in v1.
+
+Recipe metadata indexing includes title, slug, servings, source name, source URL, author, imported-from marker, and simple time estimate minutes. Recipe tags are indexed in `recipe_tags`. Recipe search includes title, slug, source fields, author, imported-from marker, tags, ingredient names, and raw ingredient lines; step text is stored in `recipe_steps` but not included in search text for v1.
 
 ## Cookbook Boundary
 

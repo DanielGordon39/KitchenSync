@@ -38,7 +38,7 @@ result = parse_recipe("https://example.com/recipe")
 saved = app.recipes.save_imported_recipe(result.recipe)
 
 app.recipes.save_metadata(
-    recipe_id="recipe_blackened_chicken_penne_61b0d03a",
+    recipe_id="61b0d03ab3a03377ee6b1b04a9c8f01",
     title="Blackened Chicken Penne",
     slug="blackened-chicken-penne",
     servings=2,
@@ -53,8 +53,13 @@ recipe = app.recipes.get("recipe_blackened_chicken_penne_61b0d03a")
 `save_imported_recipe(...)` is the public save boundary for accepted parsed recipes. It should:
 - write the recipe Markdown file under `data/library/recipes/{slug}.md`;
 - create or reuse canonical ingredient rows and Markdown files for each parsed ingredient name;
-- index the same accepted recipe into `recipe_recipes`, `recipe_ingredients`, `recipe_steps`, and `recipe_search`;
+- index the same accepted recipe into `recipe_recipes`, `recipe_ingredients`, `recipe_steps`, `recipe_tags`, and `recipe_search`;
 - optionally index cookbook membership through the cookbook API when the import flow says the recipe is saved to the cookbook.
+- generate plain UUID hex IDs for new recipe rows and reuse existing recipe rows by source URL first, then slug;
+- generate plain UUID hex IDs for new ingredient rows and reuse existing ingredient rows by slug in v1.
+- store recipe author, imported-from marker, time-estimate minutes, and tags in SQLite when present.
+
+Descriptions remain Markdown-only in v1. A later tag-suggestion pass may use recipe descriptions as model/parser input, but descriptions are not indexed as first-class database fields yet.
 
 All UI, CLI, scratch, and future HTTP API save flows should call this one method or a thin endpoint that delegates to it. They should not call `write_recipe_markdown_files(...)` and `save_metadata(...)` separately, because separate calls can update Markdown without SQLite or SQLite without Markdown.
 
@@ -68,7 +73,7 @@ The cookbook answers which cookbook entries exist and what cookbook-specific met
 
 ```python
 app.cookbook.index_entry(
-    recipe_id="recipe_blackened_chicken_penne_61b0d03a",
+    recipe_id="61b0d03ab3a03377ee6b1b04a9c8f01",
     recipe_slug="blackened-chicken-penne",
     title="Blackened Chicken Penne",
     cookbook_path="cookbook/blackened-chicken-penne.md",

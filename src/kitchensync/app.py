@@ -3,6 +3,7 @@ from __future__ import annotations
 import sqlite3
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from .markdown import (
     ingredient_to_markdown,
@@ -26,6 +27,9 @@ CREATE TABLE IF NOT EXISTS recipe_recipes (
     servings INTEGER,
     source_name TEXT,
     source_url TEXT,
+    author TEXT,
+    imported_from TEXT,
+    time_estimate_minutes INTEGER,
     markdown_path TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -53,6 +57,13 @@ CREATE TABLE IF NOT EXISTS recipe_steps (
 CREATE TABLE IF NOT EXISTS recipe_search (
     recipe_id TEXT PRIMARY KEY REFERENCES recipe_recipes(recipe_id) ON DELETE CASCADE,
     search_text TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recipe_tags (
+    recipe_id TEXT NOT NULL REFERENCES recipe_recipes(recipe_id) ON DELETE CASCADE,
+    tag_order INTEGER NOT NULL,
+    tag_slug TEXT NOT NULL,
+    PRIMARY KEY (recipe_id, tag_order)
 );
 
 CREATE TABLE IF NOT EXISTS ingredient_ingredients (
@@ -160,6 +171,13 @@ CREATE TABLE IF NOT EXISTS candidate_events (
 """
 
 
+RECIPE_RECIPE_COLUMNS = {
+    "author": "TEXT",
+    "imported_from": "TEXT",
+    "time_estimate_minutes": "INTEGER",
+}
+
+
 def _connect(database_path: Path) -> sqlite3.Connection:
     database_path.parent.mkdir(parents=True, exist_ok=True)
     connection = sqlite3.connect(database_path)
@@ -176,6 +194,25 @@ def _rows(rows: list[sqlite3.Row]) -> list[dict[str, Any]]:
     return [dict(row) for row in rows]
 
 
+def _time_estimate_minutes(recipe: Recipe) -> int | None:
+    if recipe.time_estimate is None:
+        return None
+
+    return recipe.time_estimate.base_minutes
+
+
+def _migrate_schema(connection: sqlite3.Connection) -> None:
+    recipe_columns = {
+        row["name"]
+        for row in connection.execute("PRAGMA table_info(recipe_recipes)").fetchall()
+    }
+    for column_name, column_type in RECIPE_RECIPE_COLUMNS.items():
+        if column_name not in recipe_columns:
+            connection.execute(
+                f"ALTER TABLE recipe_recipes ADD COLUMN {column_name} {column_type}"
+            )
+
+
 class KitchenSyncApp:
     def __init__(self, connection: sqlite3.Connection, database_path: Path):
         self.connection = connection
@@ -189,6 +226,7 @@ class KitchenSyncApp:
         database_path = Path(database_path)
         connection = _connect(database_path)
         connection.executescript(SCHEMA_SQL)
+        _migrate_schema(connection)
         connection.commit()
         return cls(connection, database_path)
 
@@ -209,7 +247,7 @@ class RecipesAPI:
 
     def save_imported_recipe(self, recipe: Recipe) -> None:
         slug = slugify(recipe.name)
-        recipe_id = f"recipe_{slug}"
+        recipe_id = self._recipe_id_for_import(recipe, slug)
 
         self._write_recipe_file(recipe, slug)
         self._ensure_ingredient_files_and_rows(recipe)
@@ -220,10 +258,14 @@ class RecipesAPI:
             servings=recipe.servings,
             source_name=recipe.metadata.source_name,
             source_url=recipe.metadata.source_url,
+            author=recipe.metadata.author,
+            imported_from=recipe.metadata.imported_from,
+            time_estimate_minutes=_time_estimate_minutes(recipe),
             markdown_path=f"recipes/{slug}.md",
         )
         self._replace_recipe_ingredient_rows(recipe_id, recipe)
         self._replace_recipe_step_rows(recipe_id, recipe)
+        self._replace_recipe_tag_rows(recipe_id, recipe)
         self._upsert_recipe_search(
             recipe_id,
             [
@@ -231,13 +273,45 @@ class RecipesAPI:
                 slug,
                 recipe.metadata.source_name,
                 recipe.metadata.source_url,
+                recipe.metadata.author,
+                recipe.metadata.imported_from,
+                *recipe.tags,
                 *(item.ingredient.name for item in recipe.ingredients),
                 *(raw_ingredient_text(item) for item in recipe.ingredients),
-                *(step.text for step in recipe.steps),
             ],
         )
 
         self.connection.commit()
+
+    def _recipe_id_for_import(self, recipe: Recipe, slug: str) -> str:
+        if recipe.metadata.source_url:
+            row = self.connection.execute(
+                """
+                SELECT recipe_id
+                FROM recipe_recipes
+                WHERE source_url = ?
+                ORDER BY created_at
+                LIMIT 1
+                """,
+                (recipe.metadata.source_url,),
+            ).fetchone()
+            if row is not None:
+                return row["recipe_id"]
+
+        row = self.connection.execute(
+            """
+            SELECT recipe_id
+            FROM recipe_recipes
+            WHERE slug = ?
+            ORDER BY created_at
+            LIMIT 1
+            """,
+            (slug,),
+        ).fetchone()
+        if row is not None:
+            return row["recipe_id"]
+
+        return uuid4().hex
 
     def save_metadata(
         self,
@@ -248,6 +322,9 @@ class RecipesAPI:
         servings: int | None = None,
         source_name: str | None = None,
         source_url: str | None = None,
+        author: str | None = None,
+        imported_from: str | None = None,
+        time_estimate_minutes: int | None = None,
         markdown_path: str | None = None,
     ) -> None:
         self._upsert_recipe_row(
@@ -257,9 +334,15 @@ class RecipesAPI:
             servings=servings,
             source_name=source_name,
             source_url=source_url,
+            author=author,
+            imported_from=imported_from,
+            time_estimate_minutes=time_estimate_minutes,
             markdown_path=markdown_path,
         )
-        self._upsert_recipe_search(recipe_id, [title, slug, source_name, source_url])
+        self._upsert_recipe_search(
+            recipe_id,
+            [title, slug, source_name, source_url, author, imported_from],
+        )
         self.connection.commit()
 
     def _write_recipe_file(self, recipe: Recipe, slug: str) -> None:
@@ -278,7 +361,7 @@ class RecipesAPI:
                 continue
             seen_slugs.add(slug)
 
-            ingredient_id = f"ingredient_{slug}"
+            ingredient_id = self._ingredient_id_for_slug(slug)
             ingredient_path = ingredient_dir / f"{slug}.md"
 
             if not ingredient_path.exists():
@@ -298,6 +381,21 @@ class RecipesAPI:
                 (ingredient_id, item.ingredient.name, slug),
             )
 
+    def _ingredient_id_for_slug(self, slug: str) -> str:
+        row = self.connection.execute(
+            """
+            SELECT ingredient_id
+            FROM ingredient_ingredients
+            WHERE slug = ?
+            LIMIT 1
+            """,
+            (slug,),
+        ).fetchone()
+        if row is not None:
+            return row["ingredient_id"]
+
+        return uuid4().hex
+
     def _upsert_recipe_row(
         self,
         *,
@@ -307,24 +405,50 @@ class RecipesAPI:
         servings: int | None = None,
         source_name: str | None = None,
         source_url: str | None = None,
+        author: str | None = None,
+        imported_from: str | None = None,
+        time_estimate_minutes: int | None = None,
         markdown_path: str | None = None,
     ) -> None:
         self.connection.execute(
             """
             INSERT INTO recipe_recipes (
-                recipe_id, title, slug, servings, source_name, source_url, markdown_path
+                recipe_id,
+                title,
+                slug,
+                servings,
+                source_name,
+                source_url,
+                author,
+                imported_from,
+                time_estimate_minutes,
+                markdown_path
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(recipe_id) DO UPDATE SET
                 title = excluded.title,
                 slug = excluded.slug,
                 servings = excluded.servings,
                 source_name = excluded.source_name,
                 source_url = excluded.source_url,
+                author = excluded.author,
+                imported_from = excluded.imported_from,
+                time_estimate_minutes = excluded.time_estimate_minutes,
                 markdown_path = excluded.markdown_path,
                 updated_at = CURRENT_TIMESTAMP
             """,
-            (recipe_id, title, slug, servings, source_name, source_url, markdown_path),
+            (
+                recipe_id,
+                title,
+                slug,
+                servings,
+                source_name,
+                source_url,
+                author,
+                imported_from,
+                time_estimate_minutes,
+                markdown_path,
+            ),
         )
 
     def _replace_recipe_ingredient_rows(self, recipe_id: str, recipe: Recipe) -> None:
@@ -336,6 +460,7 @@ class RecipesAPI:
         for index, item in enumerate(recipe.ingredients, start=1):
             quantity = item.quantity
             ingredient_slug = slugify(item.ingredient.name)
+            ingredient_id = self._ingredient_id_for_slug(ingredient_slug)
 
             self.connection.execute(
                 """
@@ -355,7 +480,7 @@ class RecipesAPI:
                     recipe_id,
                     index,
                     raw_ingredient_text(item),
-                    f"ingredient_{ingredient_slug}",
+                    ingredient_id,
                     item.ingredient.name,
                     quantity.amount if quantity else None,
                     quantity.unit if quantity else None,
@@ -376,6 +501,21 @@ class RecipesAPI:
                 VALUES (?, ?, ?)
                 """,
                 (recipe_id, step.order, step.text),
+            )
+
+    def _replace_recipe_tag_rows(self, recipe_id: str, recipe: Recipe) -> None:
+        self.connection.execute(
+            "DELETE FROM recipe_tags WHERE recipe_id = ?",
+            (recipe_id,),
+        )
+
+        for index, tag in enumerate(recipe.tags, start=1):
+            self.connection.execute(
+                """
+                INSERT INTO recipe_tags (recipe_id, tag_order, tag_slug)
+                VALUES (?, ?, ?)
+                """,
+                (recipe_id, index, tag),
             )
 
     def _upsert_recipe_search(

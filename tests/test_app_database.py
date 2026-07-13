@@ -1,10 +1,19 @@
 import sqlite3
+from uuid import UUID
 
 import pytest
 
 from kitchensync import KitchenSyncApp
 from kitchensync.app import SCHEMA_SQL
-from kitchensync.models import Ingredient, Quantity, Recipe, RecipeIngredient, RecipeStep
+from kitchensync.models import (
+    Ingredient,
+    Quantity,
+    Recipe,
+    RecipeIngredient,
+    RecipeMetadata,
+    RecipeStep,
+    TimeEstimate,
+)
 
 
 def test_open_initializes_v1_database_tables(tmp_path):
@@ -23,6 +32,7 @@ def test_open_initializes_v1_database_tables(tmp_path):
         "recipe_ingredients",
         "recipe_steps",
         "recipe_search",
+        "recipe_tags",
         "ingredient_ingredients",
         "ingredient_aliases",
         "ingredient_packaging",
@@ -85,6 +95,12 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
     recipe = Recipe(
         name="Tomato Soup",
         servings=4,
+        tags=["soup", "weeknight"],
+        time_estimate=TimeEstimate(base_minutes=45),
+        metadata=RecipeMetadata(
+            author="KitchenSync Test",
+            imported_from="manual-test",
+        ),
         ingredients=[
             RecipeIngredient(
                 ingredient=Ingredient(name="Roma Tomato"),
@@ -111,6 +127,15 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
             "SELECT * FROM recipe_recipes WHERE slug = ?",
             ("tomato-soup",),
         ).fetchone()
+        tag_rows = app.connection.execute(
+            """
+            SELECT tag_order, tag_slug
+            FROM recipe_tags
+            WHERE recipe_id = ?
+            ORDER BY tag_order
+            """,
+            (saved_recipe["recipe_id"],),
+        ).fetchall()
         ingredient_rows = app.connection.execute(
             """
             SELECT ingredient_order, raw_text, parsed_name, quantity_amount,
@@ -138,6 +163,9 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
             """
         ).fetchall()
         search_results = app.recipes.search("stock")
+        tag_search_results = app.recipes.search("weeknight")
+        author_search_results = app.recipes.search("KitchenSync")
+        step_search_results = app.recipes.search("Simmer")
 
     assert (library_root / "recipes" / "tomato-soup.md").exists()
     assert (library_root / "ingredients" / "roma-tomato.md").exists()
@@ -145,7 +173,14 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
 
     assert saved_recipe["title"] == "Tomato Soup"
     assert saved_recipe["servings"] == 4
+    assert saved_recipe["author"] == "KitchenSync Test"
+    assert saved_recipe["imported_from"] == "manual-test"
+    assert saved_recipe["time_estimate_minutes"] == 45
     assert saved_recipe["markdown_path"] == "recipes/tomato-soup.md"
+    assert [dict(row) for row in tag_rows] == [
+        {"tag_order": 1, "tag_slug": "soup"},
+        {"tag_order": 2, "tag_slug": "weeknight"},
+    ]
     assert [dict(row) for row in ingredient_rows] == [
         {
             "ingredient_order": 1,
@@ -173,6 +208,9 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
         {"slug": "roma-tomato", "name": "Roma Tomato"},
     ]
     assert [result["slug"] for result in search_results] == ["tomato-soup"]
+    assert [result["slug"] for result in tag_search_results] == ["tomato-soup"]
+    assert [result["slug"] for result in author_search_results] == ["tomato-soup"]
+    assert step_search_results == []
 
 
 def test_save_imported_recipe_does_not_overwrite_existing_ingredient_markdown(
@@ -214,6 +252,100 @@ def test_save_imported_recipe_does_not_overwrite_existing_ingredient_markdown(
 
     assert ingredient["name"] == "Roma Tomato"
     assert ingredient_path.read_text(encoding="utf-8") == existing_ingredient_markdown
+
+
+def test_save_imported_recipe_uses_uuid_ids_and_reuses_by_source_url(tmp_path):
+    library_root = tmp_path / "library"
+    first_recipe = Recipe(
+        name="Tomato Soup",
+        metadata=RecipeMetadata(source_url="https://example.com/tomato-soup"),
+        ingredients=[
+            RecipeIngredient(
+                ingredient=Ingredient(name="Roma Tomato"),
+                notes=["raw: 6 Roma tomatoes"],
+            )
+        ],
+    )
+    updated_recipe = Recipe(
+        name="Better Tomato Soup",
+        metadata=RecipeMetadata(source_url="https://example.com/tomato-soup"),
+        ingredients=[
+            RecipeIngredient(
+                ingredient=Ingredient(name="Roma Tomato"),
+                notes=["raw: 8 Roma tomatoes"],
+            )
+        ],
+    )
+
+    with KitchenSyncApp.open(library_root / "kitchensync.sqlite") as app:
+        app.recipes.save_imported_recipe(first_recipe)
+        first_recipe_row = app.connection.execute(
+            "SELECT recipe_id FROM recipe_recipes WHERE source_url = ?",
+            ("https://example.com/tomato-soup",),
+        ).fetchone()
+        first_ingredient_row = app.connection.execute(
+            "SELECT ingredient_id FROM ingredient_ingredients WHERE slug = ?",
+            ("roma-tomato",),
+        ).fetchone()
+
+        app.recipes.save_imported_recipe(updated_recipe)
+        recipe_rows = app.connection.execute(
+            "SELECT recipe_id, title, slug FROM recipe_recipes"
+        ).fetchall()
+        ingredient_rows = app.connection.execute(
+            "SELECT ingredient_id, slug FROM ingredient_ingredients"
+        ).fetchall()
+        ingredient_link = app.connection.execute(
+            """
+            SELECT ingredient_id
+            FROM recipe_ingredients
+            WHERE recipe_id = ?
+            """,
+            (first_recipe_row["recipe_id"],),
+        ).fetchone()
+
+    UUID(hex=first_recipe_row["recipe_id"])
+    UUID(hex=first_ingredient_row["ingredient_id"])
+    assert len(first_recipe_row["recipe_id"]) == 32
+    assert len(first_ingredient_row["ingredient_id"]) == 32
+    assert not first_recipe_row["recipe_id"].startswith("recipe_")
+    assert not first_ingredient_row["ingredient_id"].startswith("ingredient_")
+    assert [dict(row) for row in recipe_rows] == [
+        {
+            "recipe_id": first_recipe_row["recipe_id"],
+            "title": "Better Tomato Soup",
+            "slug": "better-tomato-soup",
+        }
+    ]
+    assert [dict(row) for row in ingredient_rows] == [
+        {
+            "ingredient_id": first_ingredient_row["ingredient_id"],
+            "slug": "roma-tomato",
+        }
+    ]
+    assert ingredient_link["ingredient_id"] == first_ingredient_row["ingredient_id"]
+
+
+def test_save_imported_recipe_reuses_existing_recipe_by_slug_without_source_url(
+    tmp_path,
+):
+    library_root = tmp_path / "library"
+    recipe = Recipe(name="Tomato Soup")
+
+    with KitchenSyncApp.open(library_root / "kitchensync.sqlite") as app:
+        app.recipes.save_imported_recipe(recipe)
+        first_recipe_id = app.connection.execute(
+            "SELECT recipe_id FROM recipe_recipes WHERE slug = ?",
+            ("tomato-soup",),
+        ).fetchone()["recipe_id"]
+
+        app.recipes.save_imported_recipe(recipe)
+        recipe_rows = app.connection.execute(
+            "SELECT recipe_id FROM recipe_recipes WHERE slug = ?",
+            ("tomato-soup",),
+        ).fetchall()
+
+    assert [row["recipe_id"] for row in recipe_rows] == [first_recipe_id]
 
 
 def test_cookbook_entry_index_is_separate_from_recipe_existence(tmp_path):

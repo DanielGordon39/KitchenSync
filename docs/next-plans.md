@@ -30,6 +30,8 @@ Decided:
 - Treat ingredient aliases, packaging, conversions, categories, and storage rules as rebuildable from ingredient Markdown.
 - For v1, assume parsed imported recipe ingredients are good enough to auto-create or reuse canonical ingredient entries.
 - Keep raw recipe ingredient text and parsed fields in the recipe index so ingredient cleanup is possible after importing a starter corpus.
+- Index recipe author, imported-from marker, time-estimate minutes, and tags in SQLite.
+- Keep recipe descriptions Markdown-first for now; use descriptions as possible input for generated tag suggestions later.
 - Use one local SQLite file at `data/library/kitchensync.sqlite` for v1.
 - Keep recipe, ingredient, cookbook, pantry, shopping, and candidate data as separate logical database areas inside that SQLite file.
 - Use `data/library/cookbook/{recipe_slug}.md` as the durable source for cookbook entry metadata.
@@ -62,6 +64,7 @@ TODO:
 - Decide if durable parsed ingredient overrides are needed after v1.
 - After importing roughly 30-50 recipes, review ingredient duplicates and decide which candidate-first rules belong in v2.
 - Revisit package/container handling when shopping-list generation starts.
+- Explore automatic ingredient category suggestions for newly created canonical ingredients, with review before treating categories as trusted app knowledge.
 
 ## UI Follow-Ups
 

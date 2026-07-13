@@ -5,7 +5,9 @@ from kitchensync.models import (
     Recipe,
     RecipeMetadata,
     RecipeStep,
+    TimeEstimate,
 )
+from kitchensync.markdown import slugify
 
 from .ingredients import parse_recipe_ingredient_line
 from .result import ParseResult, ParseStatus
@@ -46,6 +48,49 @@ def _parse_servings(value: object) -> int | None:
     return int(match.group()) if match else None
 
 
+def _parse_minutes(value: object) -> int | None:
+    if isinstance(value, (int, float)):
+        return int(value) if value > 0 else None
+
+    if not isinstance(value, str):
+        return None
+
+    match = re.search(r"\d+", value)
+    return int(match.group()) if match else None
+
+
+def _tags_from_scraper(scraper) -> list[str]:
+    values = []
+    for field_name in ("category", "cuisine", "keywords"):
+        field = getattr(scraper, field_name, None)
+        if field is None:
+            continue
+        values.extend(_tag_values(_try(field)))
+
+    tags = []
+    seen_tags = set()
+    for value in values:
+        tag = slugify(value)
+        if tag and tag != "untitled" and tag not in seen_tags:
+            tags.append(tag)
+            seen_tags.add(tag)
+
+    return tags
+
+
+def _tag_values(value: object) -> list[str]:
+    if value is None:
+        return []
+
+    if isinstance(value, str):
+        return [part.strip() for part in value.split(",") if part.strip()]
+
+    if isinstance(value, (list, tuple, set)):
+        return [str(part).strip() for part in value if str(part).strip()]
+
+    return [str(value).strip()]
+
+
 def _recipe_from_scraper(scraper, source_url: str) -> Recipe:
     ingredients = [
         parse_recipe_ingredient_line(line)
@@ -64,6 +109,8 @@ def _recipe_from_scraper(scraper, source_url: str) -> Recipe:
         servings=_parse_servings(_try(scraper.yields)),
         ingredients=ingredients,
         steps=steps,
+        tags=_tags_from_scraper(scraper),
+        time_estimate=TimeEstimate(base_minutes=_parse_minutes(_try(scraper.total_time))),
         metadata=RecipeMetadata(
             description=_try(scraper.description),
             author=_try(scraper.author),

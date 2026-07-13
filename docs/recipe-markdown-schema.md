@@ -236,13 +236,15 @@ An index rebuild should derive database rows from Markdown as follows:
 - `recipes.slug` from the filename stem.
 - `recipes.markdown_path` from the file path.
 - `recipes.title` from the level-one heading.
-- `recipes.servings`, `recipes.source_*`, and `recipes.imported_from` from the fact block.
+- `recipes.servings`, `recipes.source_*`, `recipes.author`, and `recipes.imported_from` from the fact block.
+- `recipes.time_estimate_minutes` from recipe time metadata when available from parser or UI input.
+- `recipe_tags` from recipe tags when available from parser or UI input.
 - `recipe_ingredients.raw_text` from the raw ingredient bullet list.
 - `recipe_ingredients.*` parsed fields by re-running the ingredient parser over each ingredient bullet.
 - `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database, auto-creating minimal canonical ingredient records in v1 when no match exists.
 - V2 ingredient candidates from unmatched or low-confidence ingredient observations that need review.
 - `recipe_steps.*` from `### Step N` sections.
-- Full-text search text from title, description, ingredient bullets, parser-derived ingredient names, steps, tags, and notes.
+- Search text from title, slug, source fields, author, imported-from marker, ingredient bullets, parser-derived ingredient names, and tags. Step text and description remain Markdown content, not v1 search-index inputs.
 
 The database may store a full parsed JSON snapshot for speed, but that snapshot is rebuildable cache data.
 
