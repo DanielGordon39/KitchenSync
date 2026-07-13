@@ -219,6 +219,7 @@ class KitchenSyncApp:
         self.database_path = database_path
         self.library_root = database_path.parent
         self.recipes = RecipesAPI(connection, self.library_root)
+        self.ingredients = IngredientsAPI(connection)
         self.cookbook = CookbookAPI(connection)
 
     @classmethod
@@ -538,7 +539,61 @@ class RecipesAPI:
             "SELECT * FROM recipe_recipes WHERE recipe_id = ?",
             (recipe_id,),
         ).fetchone()
-        return _row_dict(row)
+        return self._recipe_row(row)
+
+    def get_by_slug(self, slug: str) -> dict[str, Any] | None:
+        row = self.connection.execute(
+            "SELECT * FROM recipe_recipes WHERE slug = ?",
+            (slug,),
+        ).fetchone()
+        return self._recipe_row(row)
+
+    def list(self) -> list[dict[str, Any]]:
+        rows = self.connection.execute(
+            """
+            SELECT *
+            FROM recipe_recipes
+            ORDER BY lower(title)
+            """
+        ).fetchall()
+        return [self._recipe_row(row) for row in rows if row is not None]
+
+    def get_detail(self, recipe_id: str) -> dict[str, Any] | None:
+        recipe = self.get(recipe_id)
+        if recipe is None:
+            return None
+
+        ingredients = self.connection.execute(
+            """
+            SELECT
+                ingredient_order,
+                raw_text,
+                ingredient_id,
+                parsed_name,
+                quantity_amount,
+                quantity_unit,
+                preparation
+            FROM recipe_ingredients
+            WHERE recipe_id = ?
+            ORDER BY ingredient_order
+            """,
+            (recipe_id,),
+        ).fetchall()
+        steps = self.connection.execute(
+            """
+            SELECT step_order, text
+            FROM recipe_steps
+            WHERE recipe_id = ?
+            ORDER BY step_order
+            """,
+            (recipe_id,),
+        ).fetchall()
+
+        return {
+            "recipe": recipe,
+            "ingredients": _rows(ingredients),
+            "steps": _rows(steps),
+        }
 
     def search(self, query: str) -> list[dict[str, Any]]:
         pattern = f"%{query.casefold()}%"
@@ -551,6 +606,48 @@ class RecipesAPI:
             ORDER BY lower(r.title)
             """,
             (pattern, pattern),
+        ).fetchall()
+        return [self._recipe_row(row) for row in rows if row is not None]
+
+    def _recipe_row(self, row: sqlite3.Row | None) -> dict[str, Any] | None:
+        recipe = _row_dict(row)
+        if recipe is None:
+            return None
+
+        recipe["tags"] = self._recipe_tags(recipe["recipe_id"])
+        return recipe
+
+    def _recipe_tags(self, recipe_id: str) -> list[str]:
+        rows = self.connection.execute(
+            """
+            SELECT tag_slug
+            FROM recipe_tags
+            WHERE recipe_id = ?
+            ORDER BY tag_order
+            """,
+            (recipe_id,),
+        ).fetchall()
+        return [row["tag_slug"] for row in rows]
+
+
+class IngredientsAPI:
+    def __init__(self, connection: sqlite3.Connection):
+        self.connection = connection
+
+    def list(self) -> list[dict[str, Any]]:
+        rows = self.connection.execute(
+            """
+            SELECT
+                ingredient_id,
+                name,
+                slug,
+                parent_ingredient_id,
+                category,
+                storage_area,
+                default_unit
+            FROM ingredient_ingredients
+            ORDER BY lower(name)
+            """
         ).fetchall()
         return _rows(rows)
 

@@ -1,0 +1,22 @@
+# Add one recipe URL per line.
+# Blank lines and lines starting with # are ignored.
+#
+# Good starting points are explicit recipe pages from domains supported by
+# recipe-scrapers, such as:
+#
+# https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
+# https://www.allrecipes.com/
+# https://www.foodnetwork.com/
+# https://www.budgetbytes.com/
+# https://www.bbcgoodfood.com/
+
+https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
+https://www.hellofresh.com/recipes/pork-sausage-gnocchi-bake-5dcf0dffa003f55b8d2a1044
+https://www.hellofresh.com/recipes/adobo-loco-steak-5b76e5cd30006c0a0d19fcf2
+https://recipeland.com/recipe/v/sichuan-messy-corn-stir-fry-53776
+https://recipeland.com/recipe/v/butternut-squash-bell-pepper-co-51535
+https://recipeland.com/recipe/v/roasted-cauliflower-with-garlic-52546
+https://recipeland.com/recipe/v/baked-herbed-zucchini-ricotta-52011
+https://www.simplyrecipes.com/roasted-sweet-potato-salad-recipe-7092466
+https://www.simplyrecipes.com/beef-bulgogi-recipe-5235423
+https://www.simplyrecipes.com/spaghetti-squash-carbonara-recipe-6544101

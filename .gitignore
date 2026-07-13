@@ -5,3 +5,4 @@ __pycache__/
 data/library/
 scratch/recipe_parse_probe_output/
 scratch/recipe_input_probe_output/
+scratch/batch_import_probe_output/

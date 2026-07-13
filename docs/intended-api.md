@@ -67,6 +67,16 @@ Search in v1 can use a simple SQLite `LIKE` query over indexed metadata. Full-te
 
 `save_metadata(...)` is the low-level index helper for tests and rebuild tasks. It should not be the recipe-import API.
 
+Read methods for the first UI:
+
+```python
+recipes = app.recipes.list()
+recipe = app.recipes.get_by_slug("blackened-chicken-penne")
+detail = app.recipes.get_detail(recipe["recipe_id"])
+```
+
+`list()`, `get(...)`, `get_by_slug(...)`, and `search(...)` return recipe rows with a `tags` list attached. `get_detail(...)` returns a dictionary with `recipe`, `ingredients`, and `steps` keys so the UI can render a detail page without querying SQLite directly.
+
 ## Cookbook
 
 The cookbook answers which cookbook entries exist and what cookbook-specific metadata has been indexed for search and UI views.
@@ -107,6 +117,14 @@ Ingredient cleanup comes after there is enough real recipe data to review. The l
 app.ingredients.merge(source_id="chicken-breast-strips", target_id="chicken-breast")
 app.ingredients.rename("roma-tomato", name="Roma Tomato")
 ```
+
+The first UI can use:
+
+```python
+ingredients = app.ingredients.list()
+```
+
+This returns indexed ingredient rows ordered by name. It is read-only for now; cleanup actions such as merge and rename should remain explicit later APIs.
 
 ## Pantry
 

@@ -1,8 +1,10 @@
 # Scratch
 
-Tracked exploratory scripts for debugging KitchenSync behavior across machines.
+Tracked exploratory scripts for KitchenSync data-import experiments.
 
-Files here are allowed to call live URLs, print output, and help inspect APIs. They are not imported by package code and are not production entrypoints.
+Current tools:
 
-Current probe:
-- `recipe_input_probe.py`: parse a recipe URL, print the parsed Markdown, and write recipe/ingredient Markdown files under an ignored probe output directory.
+- `recipe_urls.txt`: newline-separated recipe URLs for local batch import testing.
+- `batch_import_probe.py`: parses URLs, optionally saves successful recipes to `data/library`, and writes summary reports under `scratch/batch_import_probe_output/`.
+
+Scratch scripts are not production entrypoints. They may call live URLs and write local ignored probe output.

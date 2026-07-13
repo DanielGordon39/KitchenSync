@@ -213,6 +213,75 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
     assert step_search_results == []
 
 
+def test_recipe_and_ingredient_read_apis_return_ui_ready_rows(tmp_path):
+    library_root = tmp_path / "library"
+    recipe = Recipe(
+        name="Tomato Soup",
+        servings=4,
+        tags=["soup", "weeknight"],
+        time_estimate=TimeEstimate(base_minutes=45),
+        metadata=RecipeMetadata(
+            author="KitchenSync Test",
+            imported_from="manual-test",
+            source_url="https://example.com/tomato-soup",
+        ),
+        ingredients=[
+            RecipeIngredient(
+                ingredient=Ingredient(name="Roma Tomato"),
+                quantity=Quantity(amount=6, unit="unit"),
+                preparation="diced",
+                notes=["raw: 6 Roma tomatoes, diced"],
+            )
+        ],
+        steps=[RecipeStep(order=1, text="Simmer tomatoes.")],
+    )
+
+    with KitchenSyncApp.open(library_root / "kitchensync.sqlite") as app:
+        app.recipes.save_imported_recipe(recipe)
+
+        recipes = app.recipes.list()
+        recipe_by_slug = app.recipes.get_by_slug("tomato-soup")
+        detail = app.recipes.get_detail(recipes[0]["recipe_id"])
+        ingredients = app.ingredients.list()
+        missing_by_slug = app.recipes.get_by_slug("missing")
+        missing_detail = app.recipes.get_detail("missing")
+
+    assert len(recipes) == 1
+    assert recipes[0]["title"] == "Tomato Soup"
+    assert recipes[0]["tags"] == ["soup", "weeknight"]
+    assert recipes[0]["time_estimate_minutes"] == 45
+    assert recipe_by_slug is not None
+    assert recipe_by_slug["recipe_id"] == recipes[0]["recipe_id"]
+    assert detail == {
+        "recipe": recipes[0],
+        "ingredients": [
+            {
+                "ingredient_order": 1,
+                "raw_text": "6 Roma tomatoes, diced",
+                "ingredient_id": ingredients[0]["ingredient_id"],
+                "parsed_name": "Roma Tomato",
+                "quantity_amount": 6,
+                "quantity_unit": "unit",
+                "preparation": "diced",
+            }
+        ],
+        "steps": [{"step_order": 1, "text": "Simmer tomatoes."}],
+    }
+    assert ingredients == [
+        {
+            "ingredient_id": ingredients[0]["ingredient_id"],
+            "name": "Roma Tomato",
+            "slug": "roma-tomato",
+            "parent_ingredient_id": None,
+            "category": None,
+            "storage_area": None,
+            "default_unit": None,
+        }
+    ]
+    assert missing_by_slug is None
+    assert missing_detail is None
+
+
 def test_save_imported_recipe_does_not_overwrite_existing_ingredient_markdown(
     tmp_path,
 ):
