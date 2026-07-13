@@ -4,6 +4,14 @@ import sqlite3
 from pathlib import Path
 from typing import Any
 
+from .markdown import (
+    ingredient_to_markdown,
+    raw_ingredient_text,
+    recipe_to_markdown,
+    slugify,
+)
+from .models import Ingredient, Recipe
+
 
 DEFAULT_DATABASE_PATH = Path("data/library/kitchensync.sqlite")
 
@@ -169,17 +177,20 @@ def _rows(rows: list[sqlite3.Row]) -> list[dict[str, Any]]:
 
 
 class KitchenSyncApp:
-    def __init__(self, connection: sqlite3.Connection):
+    def __init__(self, connection: sqlite3.Connection, database_path: Path):
         self.connection = connection
-        self.recipes = RecipesAPI(connection)
+        self.database_path = database_path
+        self.library_root = database_path.parent
+        self.recipes = RecipesAPI(connection, self.library_root)
         self.cookbook = CookbookAPI(connection)
 
     @classmethod
     def open(cls, database_path: str | Path = DEFAULT_DATABASE_PATH) -> KitchenSyncApp:
-        connection = _connect(Path(database_path))
+        database_path = Path(database_path)
+        connection = _connect(database_path)
         connection.executescript(SCHEMA_SQL)
         connection.commit()
-        return cls(connection)
+        return cls(connection, database_path)
 
     def close(self) -> None:
         self.connection.close()
@@ -192,10 +203,102 @@ class KitchenSyncApp:
 
 
 class RecipesAPI:
-    def __init__(self, connection: sqlite3.Connection):
+    def __init__(self, connection: sqlite3.Connection, library_root: Path):
         self.connection = connection
+        self.library_root = library_root
+
+    def save_imported_recipe(self, recipe: Recipe) -> None:
+        slug = slugify(recipe.name)
+        recipe_id = f"recipe_{slug}"
+
+        self._write_recipe_file(recipe, slug)
+        self._ensure_ingredient_files_and_rows(recipe)
+        self._upsert_recipe_row(
+            recipe_id=recipe_id,
+            title=recipe.name,
+            slug=slug,
+            servings=recipe.servings,
+            source_name=recipe.metadata.source_name,
+            source_url=recipe.metadata.source_url,
+            markdown_path=f"recipes/{slug}.md",
+        )
+        self._replace_recipe_ingredient_rows(recipe_id, recipe)
+        self._replace_recipe_step_rows(recipe_id, recipe)
+        self._upsert_recipe_search(
+            recipe_id,
+            [
+                recipe.name,
+                slug,
+                recipe.metadata.source_name,
+                recipe.metadata.source_url,
+                *(item.ingredient.name for item in recipe.ingredients),
+                *(raw_ingredient_text(item) for item in recipe.ingredients),
+                *(step.text for step in recipe.steps),
+            ],
+        )
+
+        self.connection.commit()
 
     def save_metadata(
+        self,
+        *,
+        recipe_id: str,
+        title: str,
+        slug: str | None = None,
+        servings: int | None = None,
+        source_name: str | None = None,
+        source_url: str | None = None,
+        markdown_path: str | None = None,
+    ) -> None:
+        self._upsert_recipe_row(
+            recipe_id=recipe_id,
+            title=title,
+            slug=slug,
+            servings=servings,
+            source_name=source_name,
+            source_url=source_url,
+            markdown_path=markdown_path,
+        )
+        self._upsert_recipe_search(recipe_id, [title, slug, source_name, source_url])
+        self.connection.commit()
+
+    def _write_recipe_file(self, recipe: Recipe, slug: str) -> None:
+        recipe_path = self.library_root / "recipes" / f"{slug}.md"
+        recipe_path.parent.mkdir(parents=True, exist_ok=True)
+        recipe_path.write_text(recipe_to_markdown(recipe), encoding="utf-8")
+
+    def _ensure_ingredient_files_and_rows(self, recipe: Recipe) -> None:
+        ingredient_dir = self.library_root / "ingredients"
+        ingredient_dir.mkdir(parents=True, exist_ok=True)
+
+        seen_slugs: set[str] = set()
+        for item in recipe.ingredients:
+            slug = slugify(item.ingredient.name)
+            if slug in seen_slugs:
+                continue
+            seen_slugs.add(slug)
+
+            ingredient_id = f"ingredient_{slug}"
+            ingredient_path = ingredient_dir / f"{slug}.md"
+
+            if not ingredient_path.exists():
+                ingredient_path.write_text(
+                    ingredient_to_markdown(Ingredient(name=item.ingredient.name)),
+                    encoding="utf-8",
+                )
+
+            self.connection.execute(
+                """
+                INSERT INTO ingredient_ingredients (ingredient_id, name, slug)
+                VALUES (?, ?, ?)
+                ON CONFLICT(ingredient_id) DO UPDATE SET
+                    name = excluded.name,
+                    slug = excluded.slug
+                """,
+                (ingredient_id, item.ingredient.name, slug),
+            )
+
+    def _upsert_recipe_row(
         self,
         *,
         recipe_id: str,
@@ -223,22 +326,72 @@ class RecipesAPI:
             """,
             (recipe_id, title, slug, servings, source_name, source_url, markdown_path),
         )
+
+    def _replace_recipe_ingredient_rows(self, recipe_id: str, recipe: Recipe) -> None:
+        self.connection.execute(
+            "DELETE FROM recipe_ingredients WHERE recipe_id = ?",
+            (recipe_id,),
+        )
+
+        for index, item in enumerate(recipe.ingredients, start=1):
+            quantity = item.quantity
+            ingredient_slug = slugify(item.ingredient.name)
+
+            self.connection.execute(
+                """
+                INSERT INTO recipe_ingredients (
+                    recipe_id,
+                    ingredient_order,
+                    raw_text,
+                    ingredient_id,
+                    parsed_name,
+                    quantity_amount,
+                    quantity_unit,
+                    preparation
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    recipe_id,
+                    index,
+                    raw_ingredient_text(item),
+                    f"ingredient_{ingredient_slug}",
+                    item.ingredient.name,
+                    quantity.amount if quantity else None,
+                    quantity.unit if quantity else None,
+                    item.preparation,
+                ),
+            )
+
+    def _replace_recipe_step_rows(self, recipe_id: str, recipe: Recipe) -> None:
+        self.connection.execute(
+            "DELETE FROM recipe_steps WHERE recipe_id = ?",
+            (recipe_id,),
+        )
+
+        for step in recipe.steps:
+            self.connection.execute(
+                """
+                INSERT INTO recipe_steps (recipe_id, step_order, text)
+                VALUES (?, ?, ?)
+                """,
+                (recipe_id, step.order, step.text),
+            )
+
+    def _upsert_recipe_search(
+        self,
+        recipe_id: str,
+        values: list[str | None],
+    ) -> None:
+        search_text = " ".join(value for value in values if value)
         self.connection.execute(
             """
             INSERT INTO recipe_search (recipe_id, search_text)
             VALUES (?, ?)
             ON CONFLICT(recipe_id) DO UPDATE SET search_text = excluded.search_text
             """,
-            (
-                recipe_id,
-                " ".join(
-                    value
-                    for value in (title, slug, source_name, source_url)
-                    if value is not None
-                ),
-            ),
+            (recipe_id, search_text),
         )
-        self.connection.commit()
 
     def get(self, recipe_id: str) -> dict[str, Any] | None:
         row = self.connection.execute(
