@@ -12,6 +12,8 @@ Working direction after the initial recipe parsing scaffold.
 - Recipe Markdown Schema v1 is documented in `docs/recipe-markdown-schema.md`.
 - Ingredient Markdown Schema v1 is documented in `docs/ingredient-markdown-schema.md`.
 - Model data flow is documented in `docs/model-data-flow.md`.
+- Database v1 is documented in `docs/database-v1.md`.
+- Intended Python API v1 is documented in `docs/intended-api.md`.
 
 ## Persistence Decisions
 
@@ -26,18 +28,23 @@ Decided:
 - Use ingredient Markdown files as the source of truth for canonical ingredients.
 - Treat ingredient aliases, packaging, conversions, categories, and storage rules as rebuildable from ingredient Markdown.
 - Send new or uncertain ingredient observations to an ingredient candidate queue instead of auto-promoting them into canonical ingredients.
+- Use one local SQLite file at `data/library/kitchensync.sqlite` for v1.
+- Keep recipe, ingredient, cookbook, pantry, shopping, and candidate data as separate logical database areas inside that SQLite file.
+- Use `data/library/cookbook/{recipe_slug}.md` as the durable source for cookbook entry metadata.
+- Treat cookbook membership and cookbook-specific recipe metadata as rebuildable from cookbook entry Markdown.
+- Treat pantry inventory, shopping lists, and candidate review state as durable app state.
+- Keep recipe existence separate from cookbook membership, even though v1 starts with one app-wide cookbook.
 
 Remaining:
-- Decide the exact database implementation. SQLite remains the likely first local database.
 - Define the review workflow for matching, approving, aliasing, rejecting, and ignoring ingredient candidates.
-- Decide whether ingredient candidates start database-only or become file-backed under `ingredients/_candidates/`.
 
 Likely first pass:
 - Save recipe markdown as the durable artifact.
 - Save canonical ingredient markdown as durable app knowledge.
-- Use SQLite for searchable recipe metadata, ingredient lookup, matching, and app workflow state.
-- Treat recipe and ingredient indexes as rebuildable until a feature truly needs durable database-only state.
-- Keep ingredient candidate review state as durable app state until reviewed.
+- Save cookbook entry markdown as durable cookbook-specific recipe metadata.
+- Use SQLite for searchable recipe metadata, ingredient lookup, matching, cookbook state, pantry state, shopping lists, and app workflow state.
+- Treat recipe, ingredient, and cookbook indexes as rebuildable until a feature truly needs durable database-only state.
+- Keep candidate review state as durable database state until reviewed.
 
 ## Ingredient Parsing Follow-Ups
 

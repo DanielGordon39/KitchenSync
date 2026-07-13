@@ -8,6 +8,10 @@ This document describes how recipe and ingredient data move through KitchenSync.
 - The recipe database is a rebuildable index/cache derived from recipe Markdown.
 - Ingredient Markdown is the durable source of truth for canonical ingredient knowledge.
 - The ingredient database is a rebuildable index/cache derived from ingredient Markdown.
+- Cookbook entry Markdown is the durable source of truth for cookbook-specific recipe metadata.
+- The cookbook database is a rebuildable index/cache derived from cookbook entry Markdown.
+- V1 uses one physical SQLite database with separate logical areas for recipe, ingredient, cookbook, pantry, shopping, and candidate data.
+- Pantry inventory, shopping lists, and candidate review state are durable app state.
 - New or uncertain ingredient observations should enter a review queue before becoming canonical ingredient data.
 - Receipt parsing should use the same ingredient candidate flow as recipe imports.
 
@@ -117,6 +121,8 @@ Review actions:
 
 ## Database Role Split
 
+See `docs/database-v1.md` for the physical SQLite file and table-prefix contract.
+
 Rebuildable from recipe Markdown:
 
 - Recipe metadata index
@@ -127,8 +133,16 @@ Rebuildable from recipe Markdown:
 
 Durable app knowledge:
 
+- Pantry inventory
+- Shopping lists
 - Ingredient candidate review state
 - User corrections waiting to be applied to ingredient Markdown
+
+Rebuildable from cookbook entry Markdown:
+
+- Cookbook membership
+- Cookbook-specific notes, ratings, favorite state, status, and cook history
+- Cookbook entry search rows
 
 Rebuildable from ingredient Markdown:
 

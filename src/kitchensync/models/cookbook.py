@@ -10,18 +10,20 @@ class CookEvent(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
-class CookbookRecipe(BaseModel):
-    id: str | None = None
-    recipe: Recipe
+class CookbookMetadata(BaseModel):
     favorite: bool = False
-
     rating: int | None = None
+    status: str = "active"
     notes: list[str] = Field(default_factory=list)
-
     cook_history: list[CookEvent] = Field(default_factory=list)
+
+
+class CookbookEntry(BaseModel):
+    recipe: Recipe
+    metadata: CookbookMetadata = Field(default_factory=CookbookMetadata)
 
 
 class Cookbook(BaseModel):
     id: str | None = None
     name: str
-    recipes: list[CookbookRecipe] = Field(default_factory=list) 
+    entries: list[CookbookEntry] = Field(default_factory=list)
