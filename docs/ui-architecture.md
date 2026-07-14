@@ -10,6 +10,10 @@ Status: browser-first direction for the first KitchenSync UI. The framework choi
 - Keep recipe parsing, persistence, indexing, and other business rules in Python.
 - Teach the UI stack incrementally instead of introducing every useful package on day one.
 
+## Product UI Plan
+
+The screen, navigation, flow, and component plan lives in `docs/ui-plan/README.md`. Keep product behavior decisions there and technical framework decisions in this document.
+
 ## Current Direction
 
 Use a client-rendered single-page application with:

@@ -17,6 +17,7 @@ Working direction after the initial recipe parsing scaffold.
 - `app.recipes.save_imported_recipe(...)` now implements the accepted recipe save boundary and keeps Markdown and SQLite indexing together.
 - Browser-first UI architecture is documented in `docs/ui-architecture.md`.
 - The KitchenSync-specific TypeScript learning path is documented in `docs/typescript-ui-tutorial.md`.
+- The iterative navigation, screen, flow, and component plan is documented under `docs/ui-plan/`.
 
 ## Persistence Decisions
 
@@ -77,6 +78,7 @@ Recommended starting direction:
 - Use a browser-first React and TypeScript UI built with Vite.
 - Keep the UI responsive for desktop and mobile browsers.
 - Keep Python business and persistence behavior behind an HTTP/JSON boundary.
+- Build the Cookbook and recipe create/edit slice first, then Ingredients, then Shopping generated from cookbook recipes.
 - Reuse the static web UI later through Tauri for desktop and evaluate Capacitor for Android/iOS.
 - Defer PWA service-worker behavior, Tauri packaging, and Capacitor projects until the browser workflow is stable.
 - No UI scaffold or browser-facing Python HTTP API exists yet.
