@@ -28,6 +28,17 @@ Use a client-rendered single-page application with:
 
 This is a web-first choice, not a web-only choice. Vite produces static HTML, CSS, and JavaScript that can run in a browser, a Tauri webview, or a Capacitor webview.
 
+### Package Manager Decision
+
+Use **npm** as the package manager for the initial UI and throughout v1 development.
+
+- npm ships with Node.js, matches most beginner-oriented TypeScript and React documentation, and keeps the initial toolchain small.
+- Commit `package-lock.json` so local development and automated builds install the same resolved dependency versions.
+- Use `npm install` while deliberately adding or updating packages and `npm ci` for clean, lockfile-driven installs in automated environments.
+- Do not mix npm and Bun lockfiles in the repository. `package-lock.json` is the single UI lockfile while npm is the chosen package manager.
+
+Revisit **Bun** after the browser UI is stable. Consider migrating when faster dependency installation or Bun's integrated tooling would solve a demonstrated development or build problem, and only after the Vite, testing, desktop, and mobile toolchains have been checked for compatibility. If adopted, treat it as a deliberate migration from `package-lock.json` to `bun.lock`, not as a second package manager used alongside npm.
+
 ### Why React Is the Starting Recommendation
 
 - Its component and hook model is well documented with TypeScript examples.

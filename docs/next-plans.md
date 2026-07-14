@@ -76,11 +76,13 @@ The save contract is clear. The next prerequisite for real browser data is a thi
 
 Recommended starting direction:
 - Use a browser-first React and TypeScript UI built with Vite.
+- Use npm as the v1 package manager and keep `package-lock.json` as the single UI lockfile.
 - Keep the UI responsive for desktop and mobile browsers.
 - Keep Python business and persistence behavior behind an HTTP/JSON boundary.
 - Build the Cookbook and recipe create/edit slice first, then Ingredients, then Shopping generated from cookbook recipes.
 - Reuse the static web UI later through Tauri for desktop and evaluate Capacitor for Android/iOS.
 - Defer PWA service-worker behavior, Tauri packaging, and Capacitor projects until the browser workflow is stable.
+- Reconsider a deliberate migration from npm to Bun after the browser workflow is stable and only when it provides a concrete speed or tooling benefit.
 - No UI scaffold or browser-facing Python HTTP API exists yet.
 
 TODO:
