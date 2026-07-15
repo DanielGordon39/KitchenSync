@@ -13,6 +13,12 @@ Before modifying this repository, read:
 
 Use the Obsidian notes listed in `.agents/design-sources.md` as design and planning context. Treat repository code and tests as implementation truth.
 
+## Command Working Directory
+
+- Assume commands are run from the repository root unless explicitly stated otherwise.
+- Prefer commands that can be executed from the repository root instead of requiring a directory change.
+- For UI scripts, use npm's `--prefix ui` form, such as `npm --prefix ui run dev` and `npm --prefix ui run build`.
+
 ## Testing
 
 - Use `uv run pytest` as the standard test command.

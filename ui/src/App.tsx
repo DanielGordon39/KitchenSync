@@ -1,16 +1,10 @@
 import tomatoPlaceholder from './assets/recipes/tomato-placeholder.png'
 import './App.css'
+import type { RecipeCardDto } from './lib/api/recipe-types'
+import { useEffect, useState } from 'react'
 
-type RecipeCardData = {
-  recipe_id: string
-  title: string
-  image_url: string | null
-  description: string | null
-  favorite?: boolean
-  rating?: number | null
-}
-
-function RecipeCard({ recipe }: { recipe: RecipeCardData }) {
+function RecipeCard({ recipe }: { recipe: RecipeCardDto }) {
+  const rating = recipe.cookbook?.rating
   return (
     <article className="recipe-card">
       <img
@@ -21,7 +15,7 @@ function RecipeCard({ recipe }: { recipe: RecipeCardData }) {
 
       <h2 className="recipe-card__title">{recipe.title}</h2>
 
-      {recipe.favorite && (
+      {recipe.cookbook?.favorite && (
         <span
           className="recipe-card__favorite"
           aria-label="Favorite recipe"
@@ -36,45 +30,62 @@ function RecipeCard({ recipe }: { recipe: RecipeCardData }) {
         </p>
       )}
 
-      {recipe.rating !== null && recipe.rating !== undefined && (
+      {rating !== null && rating !== undefined && (
         <span
           className="recipe-card__rating"
-          aria-label={`Rated ${recipe.rating} out of 5`}
+          aria-label={`Rated ${rating} out of 5`}
         >
-          {recipe.rating} / 5
+          {rating} / 5
         </span>
       )}
     </article>
   )
 }
 
-const recipes: RecipeCardData[] = [
-  {
-    recipe_id: 'tomato-soup',
-    title: 'Tomato Soup',
-    image_url: tomatoPlaceholder,
-    description: 'A warm tomato soup for an easy weeknight dinner.',
-    favorite: true,
-    rating: 4,
-  },
-  {
-    recipe_id: 'tomato-pasta',
-    title: 'Tomato Pasta',
-    image_url: null,
-    description: 'A quick pasta coated in a bright tomato sauce.',
-    favorite: false,
-    rating: 5,
-  },
-  {
-    recipe_id: 'roasted-tomato-salad',
-    title: 'Roasted Tomato Salad',
-    image_url: tomatoPlaceholder,
-    description: 'Roasted tomatoes served with greens and a simple dressing.',
-    rating: null,
-  },
-]
-
 function App() {
+  const [recipes, setRecipes] = useState<RecipeCardDto[] | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function loadRecipes() {
+      try {
+        const response = await fetch('/api/recipes')
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`)
+        }
+
+        const data: RecipeCardDto[] = await response.json()
+        setRecipes(data)
+      } catch (caughtError) {
+        const message =
+          caughtError instanceof Error
+            ? caughtError.message
+            : 'Unable to load recipes'
+
+        setError(message)
+      }
+    }
+
+    void loadRecipes()
+  }, [])
+
+  if (error) {
+    return (
+      <main>
+        <p role="alert">Could not load recipes: {error}</p>
+      </main>
+    )
+  }
+
+  if (recipes === null) {
+    return (
+      <main>
+        <p role="status">Loading recipes…</p>
+      </main>
+    )
+  }
+
   return (
     <main>
       <section className="recipe-grid" aria-label="Recipes">
