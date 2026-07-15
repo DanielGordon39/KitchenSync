@@ -1,12 +1,19 @@
 import tomatoPlaceholder from './assets/recipes/tomato-placeholder.png'
 import './App.css'
+import { RecipeMainView } from './features/recipes/RecipeMainView'
+import { listRecipes } from './lib/api/recipes'
 import type { RecipeCardDto } from './lib/api/recipe-types'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-function RecipeCard({ recipe }: { recipe: RecipeCardDto }) {
-  const rating = recipe.cookbook?.rating
+function RecipeCard({
+  recipe,
+  onOpen,
+}: {
+  recipe: RecipeCardDto
+  onOpen: () => void
+}) {
   return (
-    <article className="recipe-card">
+    <button type="button" className="recipe-card" onClick={onOpen}>
       <img
         className="recipe-card__image"
         src={recipe.image_url ?? tomatoPlaceholder}
@@ -15,49 +22,35 @@ function RecipeCard({ recipe }: { recipe: RecipeCardDto }) {
 
       <h2 className="recipe-card__title">{recipe.title}</h2>
 
-      {recipe.cookbook?.favorite && (
-        <span
-          className="recipe-card__favorite"
-          aria-label="Favorite recipe"
-        >
-          ★
-        </span>
-      )}
-
       {recipe.description && (
         <p className="recipe-card__description">
           {recipe.description}
         </p>
       )}
-
-      {rating !== null && rating !== undefined && (
-        <span
-          className="recipe-card__rating"
-          aria-label={`Rated ${rating} out of 5`}
-        >
-          {rating} / 5
-        </span>
-      )}
-    </article>
+    </button>
   )
 }
 
 function App() {
   const [recipes, setRecipes] = useState<RecipeCardDto[] | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [selectedRecipe, setSelectedRecipe] = useState<RecipeCardDto | null>(
+    null,
+  )
+  const lastFocusedElement = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     async function loadRecipes() {
       try {
-        const response = await fetch('/api/recipes')
-
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`)
-        }
-
-        const data: RecipeCardDto[] = await response.json()
+        const data = await listRecipes(controller.signal)
         setRecipes(data)
       } catch (caughtError) {
+        if (controller.signal.aborted) {
+          return
+        }
+
         const message =
           caughtError instanceof Error
             ? caughtError.message
@@ -68,7 +61,20 @@ function App() {
     }
 
     void loadRecipes()
+
+    return () => controller.abort()
   }, [])
+
+  function openRecipe(recipe: RecipeCardDto) {
+    lastFocusedElement.current = document.activeElement as HTMLElement | null
+    setSelectedRecipe(recipe)
+  }
+
+  function closeRecipe() {
+    const elementToRestore = lastFocusedElement.current
+    setSelectedRecipe(null)
+    window.requestAnimationFrame(() => elementToRestore?.focus())
+  }
 
   if (error) {
     return (
@@ -90,9 +96,17 @@ function App() {
     <main>
       <section className="recipe-grid" aria-label="Recipes">
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe.recipe_id} recipe={recipe} />
+          <RecipeCard
+            key={recipe.recipe_id}
+            recipe={recipe}
+            onOpen={() => openRecipe(recipe)}
+          />
         ))}
       </section>
+
+      {selectedRecipe && (
+        <RecipeMainView recipe={selectedRecipe} onClose={closeRecipe} />
+      )}
     </main>
   )
 }

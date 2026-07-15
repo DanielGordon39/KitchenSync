@@ -13,20 +13,38 @@ main {
 
 .recipe-card {
   display: grid;
-  grid-template-columns: 10rem minmax(0, 1fr) auto;
+  grid-template-columns: 10rem minmax(0, 1fr);
   grid-template-areas:
-    "image title favorite"
-    "image description rating";
+    "image title"
+    "image description";
   gap: 0.5rem 1rem;
 
+  width: 100%;
   padding: 1rem;
   box-sizing: border-box;
 
+  font: inherit;
+  color: inherit;
   text-align: left;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    transform 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.recipe-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+
+.recipe-card:focus-visible {
+  outline: 3px solid var(--accent-border);
+  outline-offset: 3px;
 }
 
 .recipe-card__image {
@@ -52,9 +70,268 @@ main {
   grid-area: description;
 }
 
-.recipe-card__rating {
-  grid-area: rating;
-  align-self: end;
+.recipe-main-view {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  background: var(--bg);
+  border: 0;
+}
+
+.recipe-main-view::backdrop {
+  background: rgba(8, 6, 13, 0.55);
+}
+
+.recipe-main-view[open] {
+  animation: recipe-main-view-enter 180ms ease-out;
+}
+
+.recipe-main-view__surface {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg);
+  text-align: left;
+}
+
+.recipe-main-view__topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  padding: max(0.75rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right)) 0.75rem;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.recipe-main-view__close {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  place-items: center;
   color: var(--text-h);
-  font-weight: 600;
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.recipe-main-view__close:hover,
+.recipe-main-view__close:focus-visible {
+  border-color: var(--accent-border);
+  outline: none;
+}
+
+.recipe-main-view__content {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  box-sizing: border-box;
+}
+
+.recipe-main-view__hero {
+  display: grid;
+  grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.recipe-main-view__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.recipe-main-view__eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.recipe-main-view h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+  line-height: 1;
+}
+
+.recipe-main-view__metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 1rem 0;
+  color: var(--text-h);
+  border-block: 1px solid var(--border);
+}
+
+.recipe-main-view__metadata > *:not(:last-child)::after {
+  margin-left: 0.75rem;
+  color: var(--border);
+  content: "•";
+}
+
+.recipe-main-view__metadata a {
+  color: var(--accent);
+}
+
+.recipe-main-view__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+}
+
+.recipe-main-view__tags li {
+  padding: 0.25rem 0.65rem;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+}
+
+.recipe-main-view__body {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.5fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  margin-top: 2.5rem;
+}
+
+.recipe-main-view__body h2 {
+  margin-bottom: 1rem;
+}
+
+.recipe-main-view__ingredients,
+.recipe-main-view__steps {
+  display: grid;
+  gap: 0.85rem;
+  padding-left: 1.35rem;
+  margin: 0;
+}
+
+.recipe-main-view__steps {
+  gap: 1.25rem;
+}
+
+.recipe-main-view__steps li {
+  padding-left: 0.5rem;
+}
+
+.recipe-main-view__loading {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.recipe-main-view__skeleton {
+  height: 8rem;
+  background: linear-gradient(
+    90deg,
+    var(--code-bg),
+    var(--accent-bg),
+    var(--code-bg)
+  );
+  background-size: 200% 100%;
+  border-radius: 0.75rem;
+  animation: recipe-skeleton 1.2s ease-in-out infinite;
+}
+
+.recipe-main-view__error {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  border: 1px solid var(--accent-border);
+  border-radius: 0.75rem;
+}
+
+.recipe-main-view__error button {
+  padding: 0.6rem 0.9rem;
+  color: var(--text-h);
+  font: inherit;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+@keyframes recipe-main-view-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(0.5rem);
+  }
+}
+
+@keyframes recipe-skeleton {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 48rem) {
+  main {
+    padding: 1rem;
+  }
+
+  .recipe-card {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+  }
+
+  .recipe-card__image {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .recipe-main-view__content {
+    padding-top: 1.25rem;
+  }
+
+  .recipe-main-view__hero,
+  .recipe-main-view__body {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-main-view__hero {
+    gap: 1.25rem;
+  }
+
+  .recipe-main-view__image {
+    max-height: 18rem;
+  }
+
+  .recipe-main-view__metadata {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .recipe-main-view__metadata > *:not(:last-child)::after {
+    content: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-card,
+  .recipe-main-view[open],
+  .recipe-main-view__skeleton {
+    transition: none;
+    animation: none;
+  }
 }
