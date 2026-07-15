@@ -14,7 +14,7 @@ from kitchensync.parsing import ParseStatus, parse_recipe
 
 
 DEFAULT_URL_FILE = Path(__file__).parent / "recipe_urls.txt"
-DEFAULT_REPORT_DIR = Path(__file__).parent / "batch_import_probe_output"
+DEFAULT_REPORT_DIR = Path("data/imports/web_recipe_reports")
 
 
 @dataclass

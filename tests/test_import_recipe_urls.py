@@ -6,12 +6,12 @@ from kitchensync.models import Ingredient, Recipe, RecipeIngredient, RecipeMetad
 from kitchensync.parsing import ParseResult, ParseStatus
 
 
-def test_batch_import_probe_saves_successes_and_writes_reports(
+def test_import_recipe_urls_saves_successes_and_writes_reports(
     tmp_path,
     monkeypatch,
     capsys,
 ):
-    probe = _load_probe_module()
+    importer = _load_importer_module()
     url_file = tmp_path / "urls.txt"
     url_file.write_text(
         "\n".join(
@@ -48,9 +48,9 @@ def test_batch_import_probe_saves_successes_and_writes_reports(
             source=url,
         )
 
-    monkeypatch.setattr(probe, "parse_recipe", fake_parse_recipe)
+    monkeypatch.setattr(importer, "parse_recipe", fake_parse_recipe)
 
-    rows = probe.run_batch_import(
+    rows = importer.run_batch_import(
         url_file,
         database_path=tmp_path / "library" / "kitchensync.sqlite",
         report_dir=tmp_path / "reports",
@@ -73,10 +73,10 @@ def test_batch_import_probe_saves_successes_and_writes_reports(
     ).read_text(encoding="utf-8")
 
 
-def test_batch_import_probe_can_write_supported_sites(tmp_path):
-    probe = _load_probe_module()
+def test_import_recipe_urls_can_write_supported_sites(tmp_path):
+    importer = _load_importer_module()
 
-    path = probe.write_supported_sites(tmp_path)
+    path = importer.write_supported_sites(tmp_path)
     text = path.read_text(encoding="utf-8")
 
     assert "recipe-scrapers supported hosts" in text
@@ -84,9 +84,9 @@ def test_batch_import_probe_can_write_supported_sites(tmp_path):
     assert "hellofresh.com" in text
 
 
-def _load_probe_module():
-    probe_path = Path(__file__).parents[1] / "scratch" / "batch_import_probe.py"
-    spec = importlib.util.spec_from_file_location("batch_import_probe", probe_path)
+def _load_importer_module():
+    importer_path = Path(__file__).parents[1] / "scripts" / "import_recipe_urls.py"
+    spec = importlib.util.spec_from_file_location("import_recipe_urls", importer_path)
     assert spec is not None
     assert spec.loader is not None
 

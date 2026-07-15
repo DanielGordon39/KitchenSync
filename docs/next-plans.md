@@ -64,11 +64,14 @@ Remaining:
 
 - Preserve enough source information to distinguish the main recipe image from future step images.
 - Decide how imports should handle duplicates and very large files.
+- For social imports, initially use the platform thumbnail or first post image as the main-image candidate.
+- Add a review-time frame selector that can scrub downloaded video, record a chosen timestamp as import evidence, and extract exactly one frame into the existing `recipes/{slug}/images/main.{ext}` location.
+- Keep generated frame previews and downloaded review media temporary; do not add every candidate frame to the durable `Recipe` model.
 - Add step images only after real sources expose reliable step-level media.
 
 ### 3. Social-Media Recipe Import Research Spike
 
-Treat social-media recipe import as a key KitchenSync feature. Research Instagram, TikTok, and Facebook separately before committing to a shared implementation because their public metadata, caption, transcript, authentication, and rate-limit boundaries may differ.
+Treat social-media recipe import as a key KitchenSync feature. Research YouTube Shorts, Instagram, TikTok, and Facebook separately before committing to a shared implementation because their public metadata, caption, transcript, authentication, and rate-limit boundaries may differ.
 
 Target pipeline:
 
@@ -90,13 +93,14 @@ The research spike should evaluate:
 - Authentication/session requirements, rate limits, and likely reliability
 - Existing caption retrieval versus local or hosted speech-to-text
 - Privacy, storage, cost, and failure behavior for downloaded media and transcripts
-- A small observed URL corpus for Instagram, TikTok, and Facebook
+- A small observed URL corpus for YouTube Shorts, Instagram, TikTok, and Facebook
 
 Expected direction:
 
 - A custom KitchenSync orchestration layer is likely even if maintained libraries handle individual platform or transcription steps.
 - Keep platform adapters separate instead of building one large social-media scraper.
 - Preserve the source description and transcript as import evidence so extraction can be reviewed or rerun.
+- Preserve platform thumbnails, post images, and selected video-frame timestamps as image-candidate evidence until review chooses the durable main image.
 - Do not save uncertain social-media extraction directly as canonical recipe content without an explicit review step.
 - The first successful boundary is a reviewable recipe candidate or a clear unsupported/failure result, not perfect automatic parsing.
 
@@ -107,7 +111,7 @@ Research deliverable:
 - A minimal shared adapter contract
 - A transcription recommendation
 - Risks that require user authentication, browser automation, or custom extraction
-- A proposed thin vertical slice for one platform before expanding to all three
+- A proposed YouTube Shorts vertical slice before expanding to the other platforms
 
 ## Persistence Decisions
 

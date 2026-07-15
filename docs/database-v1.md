@@ -89,19 +89,20 @@ Durable app state:
 - shopping lists
 - candidate review state, when a workflow explicitly creates candidates
 
-## V1 Schema Slice
+## Current V1 Schema Slice
 
-The first implementation slice creates the core table groups and implements:
+The implemented slice now includes:
 
-- database initialization
-- recipe metadata upsert
-- recipe metadata search
-- cookbook entry indexing
-- cookbook entry listing
+- database initialization and additive schema migration;
+- accepted recipe saves through `app.recipes.save_imported_recipe(...)`;
+- recipe and ingredient Markdown writes;
+- local main-image persistence;
+- recipe metadata, ingredient, step, tag, and search indexing;
+- recipe list/detail reads for the browser UI;
+- optimistic ingredient creation and reuse by slug;
+- cookbook entry indexing and listing.
 
-Recipe content writing, Markdown indexing, ingredient matching, pantry, shopping, and candidate resolution come after this slice.
-
-The first recipe import implementation should include optimistic ingredient creation, not candidate-first review. Cleanup helpers such as ingredient merge and rename can come after the first 30-50 saved recipes expose the real duplicate patterns.
+Pantry, shopping, candidate resolution, ingredient merge/rename helpers, and full Markdown-to-index rebuild commands remain future work. Candidate-first ingredient import stays deferred until roughly 30-50 saved recipes expose practical duplicate and alias patterns.
 
 Repeated imports should reuse an existing recipe row by source URL first, then slug as a fallback. New ingredient rows should use UUID IDs and reuse existing ingredients by slug in v1.
 

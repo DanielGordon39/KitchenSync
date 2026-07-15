@@ -1,6 +1,6 @@
 # UI Architecture and Platform Direction
 
-Status: browser-first direction for the first KitchenSync UI. The framework choices below are recommendations for the initial scaffold, not installed dependencies yet.
+Status: browser-first React/Vite UI and thin FastAPI read layer are implemented for the first recipe-grid and recipe-detail slice. The remaining framework choices describe the direction for later screens and packaging.
 
 ## Goals
 
@@ -81,25 +81,16 @@ The UI should not:
 - Reimplement recipe scaling, parsing, ingredient matching, or save rules.
 - Assume that a TypeScript type proves untrusted JSON is valid at runtime.
 
-## Important Current Gap
+## Current HTTP Boundary
 
-The repository has a Python `KitchenSyncApp` facade, but it does not yet expose a browser-facing HTTP API. A browser cannot directly call `app.recipes.list()` or open local Markdown and SQLite files.
-
-Before the real UI can load KitchenSync data, add a thin HTTP layer that delegates to the existing facade. FastAPI is a strong candidate because it works naturally with Python type hints and Pydantic, produces OpenAPI, and can expose the existing application methods without moving business logic into the web layer.
-
-This is a separate future implementation decision. Adding FastAPI would change runtime dependencies and requires explicit confirmation before editing project configuration or application code.
-
-Illustrative first endpoints:
+The repository now has a thin FastAPI layer that delegates to `KitchenSyncApp` and serves local recipe images under `/library/...`. The React UI uses the first two read endpoints:
 
 ```text
 GET  /api/recipes
 GET  /api/recipes/{recipe_id}
-GET  /api/recipes/search?q=tomato
-POST /api/imports/preview
-POST /api/recipes/imported
 ```
 
-Endpoint names are not locked. The important rule is that the save endpoint delegates to `app.recipes.save_imported_recipe(...)` rather than reproducing its Markdown and SQLite behavior.
+Search, import preview, and accepted-save endpoints remain future additions. Any accepted-save endpoint must delegate to `app.recipes.save_imported_recipe(...)` rather than reproduce its Markdown and SQLite behavior.
 
 ## Platform Roadmap
 
@@ -129,9 +120,9 @@ Do not add Capacitor until:
 
 If KitchenSync later needs a deeply native interface, extensive background execution, or native widgets that are awkward in a webview, reassess Expo/React Native. That would trade UI reuse for a more native component system.
 
-## Recommended Project Location
+## Project Location
 
-When the user is ready to scaffold code, keep the frontend isolated under `ui/`:
+The implemented frontend is isolated under `ui/`:
 
 ```text
 KitchenSync/
@@ -164,14 +155,14 @@ Avoid a monorepo manager until multiple JavaScript packages create a concrete ne
 
 Install packages only when the current lesson or feature needs them.
 
-### Initial Scaffold
+### Installed Initial Scaffold
 
-| Package | Purpose | Why now |
+| Package | Purpose | Status |
 | --- | --- | --- |
-| `typescript` | Static type checking | Core language choice. |
-| `react` and `react-dom` | Components and browser rendering | Core UI library. |
-| `vite` and `@vitejs/plugin-react` | Development and static builds | Small browser-first toolchain. |
-| `react-router` | URLs, layouts, loaders, and navigation | Add when the second screen appears. |
+| `typescript` | Static type checking | Installed. |
+| `react` and `react-dom` | Components and browser rendering | Installed. |
+| `vite` and `@vitejs/plugin-react` | Development and static builds | Installed. |
+| `react-router` | URLs, layouts, loaders, and navigation | Deferred until URL-backed navigation is needed. |
 
 The Vite `react-ts` template supplies the core React and TypeScript boilerplate.
 
@@ -224,14 +215,17 @@ Start with tests around the first real workflow rather than testing empty scaffo
 
 ## First Vertical Slice
 
-Build one end-to-end path before creating every navigation tab:
+The first read-only boundary is implemented:
 
-1. Show a recipe list from `GET /api/recipes`.
-2. Open the selected recipe in a full-screen detail popup without changing the Cookbook URL.
+1. The recipe grid loads from `GET /api/recipes`.
+2. The selected recipe opens in a full-screen detail popup through `GET /api/recipes/{recipe_id}` without changing the Cookbook URL.
+
+The next write boundary remains:
+
 3. Enter a recipe URL.
 4. Preview the parsed recipe.
 5. Review raw and parsed ingredient values.
-6. Save through the one accepted-recipe endpoint.
+6. Save through one accepted-recipe endpoint that delegates to `app.recipes.save_imported_recipe(...)`.
 7. Return to the recipe detail screen.
 
 This slice exercises routing, TypeScript DTOs, loading states, forms, API errors, and responsive layout while staying close to KitchenSync's current implementation.
@@ -246,18 +240,13 @@ This slice exercises routing, TypeScript DTOs, loading states, forms, API errors
 - Test at narrow phone width, wide phone width, tablet width, and desktop width.
 - Prefer normal document flow and CSS Grid/Flexbox over absolute positioning.
 
-## Suggested Scaffold Command
-
-Run this only when the user asks to create UI boilerplate:
+## Current Development Commands
 
 ```powershell
-npm create vite@latest ui -- --template react-ts
-cd ui
-npm install
-npm run dev
+npm --prefix ui install
+npm --prefix ui run dev
+npm --prefix ui run build
 ```
-
-Then add packages lesson-by-lesson instead of installing the entire package progression at once.
 
 ## Official References
 
