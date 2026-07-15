@@ -2,7 +2,7 @@
 
 Phase: 2
 
-Ingredient UI work begins after Cookbook browsing, recipe detail, and basic custom recipe editing are usable.
+Ingredient UI work begins after Cookbook browsing, Main Recipe View, and basic custom recipe editing are usable.
 
 ## Ingredient Catalog Screen
 
@@ -65,4 +65,3 @@ These should be explicit reviewed actions rather than silent automatic mutations
 - How are merge consequences previewed?
 - Which ingredient fields should appear in the default list?
 - When should recipe parsing create candidates instead of canonical ingredients directly?
-

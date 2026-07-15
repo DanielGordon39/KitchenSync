@@ -10,7 +10,7 @@ Let the user select recipes, choose intended servings, review generated ingredie
 
 ## Entry Points
 
-- Add a recipe from Recipe Detail
+- Add a recipe from Main Recipe View
 - Select multiple recipes from Cookbook
 - Open Shopping and create a list from cookbook recipes
 
@@ -84,4 +84,3 @@ Shopping APIs are planned but not implemented. The UI will eventually require pr
 - Should raw recipe ingredient text remain visible in the preview?
 - How should optional recipe ingredients be handled?
 - Does checking an item update pantry state, or remain shopping-only?
-

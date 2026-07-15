@@ -227,7 +227,7 @@ Start with tests around the first real workflow rather than testing empty scaffo
 Build one end-to-end path before creating every navigation tab:
 
 1. Show a recipe list from `GET /api/recipes`.
-2. Open a recipe detail route.
+2. Open the selected recipe in a full-screen detail popup without changing the Cookbook URL.
 3. Enter a recipe URL.
 4. Preview the parsed recipe.
 5. Review raw and parsed ingredient values.

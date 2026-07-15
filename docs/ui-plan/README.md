@@ -18,12 +18,12 @@ Start with the Cookbook as the first complete UI slice. It uses the recipe datab
 
 - Browsing recipes
 - Searching recipes
-- Opening recipe details
+- Expanding a recipe card into the full-screen Main Recipe View popup
 - Adding custom recipes
 - Editing recipes
 - Exercising the browser, API, Markdown, and SQLite path during base testing
 
-For the first UI, the **Cookbook** can present the recipe catalog directly. The backend should still preserve the distinction between recipe existence and cookbook-specific state so favorites, ratings, and other cookbook metadata can evolve independently.
+For the first UI, the **Cookbook** can present the recipe catalog directly. The Main Recipe View remains recipe-only. The backend should still preserve the distinction between recipe existence and cookbook-specific state so a later cookbook-backed expansion can add personal notes, cook history, favorites, ratings, and other relationship metadata independently.
 
 ### Phase 2: Ingredients
 
@@ -57,7 +57,8 @@ For each feature, work from the outside inward:
 
 ## Design Vocabulary
 
-- **Page or screen:** A route-level user destination such as Cookbook or Recipe Detail.
+- **Page or screen:** A route-level user destination such as Cookbook or Ingredients.
+- **Full-screen view:** A focused overlay within the current page, such as Main Recipe View.
 - **Feature component:** A substantial part of a workflow, such as Recipe Search or Shopping Preview.
 - **Shared product component:** A KitchenSync-specific element reused across features, such as Recipe Card or Ingredient Line.
 - **Base component:** A small generic control such as Button, Text Input, Dialog, or Empty State.
@@ -80,10 +81,11 @@ Prefer a few meaningful variants over a component with many unrelated options.
 
 The next iteration should decide:
 
-1. What information belongs on a Cookbook recipe card?
-2. Which filters should exist in the first Cookbook release?
-3. Does adding a custom recipe open a full page, side panel, or dialog?
-4. Should editing use the same form as adding a recipe?
-5. Which recipe fields are required for a manually created recipe?
-6. How should a user select recipes for a shopping list?
-
+1. Which filters should exist in the first Cookbook release?
+2. Does adding a custom recipe open a full page, side panel, or dialog?
+3. Does Edit transform the Main Recipe View popup in place or open a separate editor?
+4. How should Main Recipe View load Markdown-only descriptions, recipe notes, and images?
+5. How should Git-backed recipe history, diffs, and recovery appear in the UI?
+6. Should editing use the same form as adding a recipe?
+7. Which recipe fields are required for a manually created recipe?
+8. How should a user select recipes for a shopping list?

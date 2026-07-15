@@ -38,6 +38,7 @@ Product-specific elements likely to appear across features:
 - `RecipeSearchToolbar`
 - `RecipeFilterPanel`
 - `RecipeGrid`
+- `RecipeMainView`
 - `RecipeDetailHeader`
 - `RecipeIngredientList`
 - `RecipeStepList`
@@ -98,9 +99,20 @@ Used by:
 
 | State | Preferred owner | Example |
 | --- | --- | --- |
-| Server state | Route or API data layer | Recipe list and recipe detail |
+| Server state | Route or API data layer | Recipe list and full recipe data |
 | URL state | Router/search parameters | Search text, tag filter, sorting |
 | Form state | Recipe or ingredient form | Unsaved title and ingredient rows |
-| Local UI state | Closest component that needs it | Open filter drawer |
+| Local UI state | Closest component that needs it | Selected recipe popup or open filter drawer |
 | Durable workflow state | Python API and SQLite | Saved shopping list |
 
+## Recipe Card to Main View Boundary
+
+- `RecipeCard` owns the user's open/select action and the visual origin of the expansion.
+- `RecipeGrid` owns visible-window rendering and the trigger for loading more summary pages.
+- The grid may keep a larger overscan buffer below than above the viewport, but it does not preload full recipe details.
+- The Cookbook screen owns the selected recipe ID as local UI state; opening a recipe does not change the URL.
+- `RecipeMainView` owns the full-screen dialog composition and its loading, not-found, and error states.
+- Recipe data comes from the data or API layer; it should not be copied into long-lived card-local state.
+- The grid loads lightweight summaries. Full ingredients, steps, and other detail are fetched only for the selected recipe.
+- Closing the popup should release its detail state or leave only a deliberately small cache; it must not accumulate every opened recipe indefinitely.
+- Cookbook relationship data such as favorites, ratings, personal notes, and cook history belongs to a later cookbook-specific section, not the first `RecipeMainView` contract.

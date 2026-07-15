@@ -7,8 +7,12 @@ Open Cookbook
   -> load recipe summaries
   -> search or browse
   -> select recipe
-  -> load recipe detail
+  -> store the selected recipe ID in local UI state
+  -> expand the selected card into the Main Recipe View popup
+  -> load full detail for only the selected recipe
 ```
+
+Close or Escape clears the selection and reveals the still-mounted Cookbook at its prior search, filters, and scroll position. The URL remains `/cookbook`; the expansion is a visual transition, not the owner of recipe data or navigation state.
 
 Failure paths:
 
@@ -25,7 +29,7 @@ Open Cookbook
   -> enter recipe fields
   -> validate
   -> save through Python API
-  -> open saved recipe detail
+  -> open the saved recipe in Main Recipe View
 ```
 
 Failure and exit paths:
@@ -35,16 +39,18 @@ Failure and exit paths:
 - Markdown or index update fails
 - User cancels with unsaved changes
 
-## Phase 1: Edit a Recipe
+## Phase 1 TODO: Edit a Recipe
+
+The Edit action can begin from Main Recipe View, but the edit-mode shape and its user-facing history or recovery behavior are not decided yet.
 
 ```text
-Open Recipe Detail
+Open Main Recipe View
   -> choose Edit
-  -> load editable recipe
+  -> enter the future edit mode
   -> change fields
   -> validate
   -> save Markdown and index together
-  -> return to Recipe Detail
+  -> return to Main Recipe View
 ```
 
 Important behavior:
@@ -52,6 +58,7 @@ Important behavior:
 - Editing should use the durable recipe representation, not only the search-index row.
 - Cancelling should not mutate durable data.
 - Save failure should preserve the user's unsaved values.
+- Git can provide Markdown history, diffs, and rollback, but the UI workflow over that history is a separate design decision.
 
 ## Phase 2: Review an Ingredient
 
@@ -67,7 +74,7 @@ Open Ingredients
 ## Phase 3: Build Shopping List From Recipes
 
 ```text
-Open Cookbook or Recipe Detail
+Open Cookbook or Main Recipe View
   -> select recipe or recipes
   -> choose servings
   -> generate shopping preview
@@ -89,4 +96,3 @@ For each new workflow, record:
 - Cancel and back behavior
 - Unsaved-change behavior
 - Mobile-specific interaction differences
-

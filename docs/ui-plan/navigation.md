@@ -56,7 +56,7 @@ Primary actions belong near the page title or in an obvious mobile action area:
 - Search and filters should use URL query parameters when restoring or sharing the view is useful.
 - Unsaved editor values should remain form state, not URL state.
 - The selected top-level area comes from the current route.
-- Temporary menus and dialogs remain local UI state.
+- Temporary menus and dialogs remain local UI state, including the recipe selected for the Main Recipe View popup.
 
 ## Open Questions
 
@@ -64,4 +64,3 @@ Primary actions belong near the page title or in an obvious mobile action area:
 - Bottom navigation or menu navigation on mobile?
 - Should Add Recipe be global or Cookbook-only?
 - Should an active shopping list display a badge or item count in navigation?
-
