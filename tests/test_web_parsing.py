@@ -35,6 +35,9 @@ class FakeScraper:
     def keywords(self):
         return ["Soup", "Weeknight Meal"]
 
+    def image(self):
+        return "https://example.com/tomato-soup.jpg"
+
 
 def test_recipe_from_scraper_populates_tags_and_time_estimate():
     recipe = _recipe_from_scraper(
@@ -47,3 +50,6 @@ def test_recipe_from_scraper_populates_tags_and_time_estimate():
     assert recipe.time_estimate.base_minutes == 45
     assert recipe.metadata.author == "KitchenSync Test"
     assert recipe.metadata.imported_from == "recipe-scrapers"
+    assert len(recipe.metadata.images) == 1
+    assert recipe.metadata.images[0].uri == "https://example.com/tomato-soup.jpg"
+    assert recipe.metadata.images[0].alt_text == "Tomato Soup"

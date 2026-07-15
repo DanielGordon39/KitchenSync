@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from urllib.parse import quote
 
-from .app import KitchenSyncApp
+from .app import DEFAULT_DATABASE_PATH, KitchenSyncApp
 
 
 class CookbookCardDto(BaseModel):
@@ -27,6 +29,7 @@ class RecipeDetailRecipeDto(BaseModel):
     author: str | None
     imported_from: str | None
     time_estimate_minutes: int | None
+    image_url: str | None
     tags: list[str]
 
 
@@ -52,6 +55,11 @@ class RecipeDetailDto(BaseModel):
 
 
 app = FastAPI(title="KitchenSync")
+app.mount(
+    "/library",
+    StaticFiles(directory=DEFAULT_DATABASE_PATH.parent, check_dir=False),
+    name="library",
+)
 
 
 @app.get("/api/recipes")
@@ -63,7 +71,7 @@ def list_recipes() -> list[RecipeCardDto]:
         RecipeCardDto(
             recipe_id=recipe["recipe_id"],
             title=recipe["title"],
-            image_url=None,
+            image_url=_library_url(recipe.get("main_image_path")),
             description=None,
             cookbook=None,
         )
@@ -82,4 +90,12 @@ def get_recipe_detail(recipe_id: str) -> RecipeDetailDto:
     if detail is None:
         raise HTTPException(status_code=404, detail="Recipe not found")
 
+    detail["recipe"]["image_url"] = _library_url(detail["recipe"].get("main_image_path"))
     return RecipeDetailDto.model_validate(detail)
+
+
+def _library_url(path: str | None) -> str | None:
+    if not path:
+        return None
+
+    return "/library/" + quote(path.replace("\\", "/"), safe="/")

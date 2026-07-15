@@ -29,15 +29,15 @@ Schema v1 does not yet cover durable parsed ingredient overrides, pantry state, 
 Saved recipes should live at:
 
 ```text
-recipes/{slug}.md
+recipes/{slug}/recipe.md
 ```
 
-The `slug` is the filename stem and should be human-readable and stable enough for Git diffs. V1 does not require recipe identity to be stored in Markdown.
+The `slug` is the recipe folder name and should be human-readable and stable enough for Git diffs. V1 does not require recipe identity to be stored in Markdown.
 
 Attachments for a recipe should live under:
 
 ```text
-recipes/{slug}/
+recipes/{slug}/images/
 ```
 
 ## Identity Rules
@@ -56,10 +56,11 @@ Every v1 recipe file must have:
 1. A level-one heading containing the recipe title.
 2. An optional description paragraph.
 3. An optional fact bullet block.
-4. An `## Ingredients` section.
-5. A raw ingredient bullet list.
-6. An `## Steps` section.
-7. Ordered `### Step N` subsections.
+4. An optional `## Images` section.
+5. An `## Ingredients` section.
+6. A raw ingredient bullet list.
+7. An `## Steps` section.
+8. Ordered `### Step N` subsections.
 
 ## Fact Block
 
@@ -78,7 +79,7 @@ Fact block rules:
 - Use `Label: value` bullets.
 - The known v1 labels are `Servings`, `Source`, `Author`, `URL`, and `Imported from`.
 - Unknown fact labels may be preserved by readers even if not indexed.
-- Tags and images are deferred until the UI needs them.
+- Tags are deferred until the UI needs them.
 - Large raw import artifacts, if retained later, should be sidecar files under `recipes/{slug}/`.
 
 ## Body
@@ -96,6 +97,22 @@ Creamy penne pasta with blackened chicken, scallions, and tomato.
 ```
 
 The description ends at the next heading.
+
+## Images Section
+
+Recipe-level images are optional. Web imports save the main recipe image locally at `recipes/{slug}/images/main.{ext}` when the source exposes a usable image and the download succeeds. The recipe Markdown references the local file relative to `recipe.md`:
+
+```markdown
+## Images
+
+![Main recipe image](images/main.jpg)
+```
+
+Image rules:
+
+- Do not hotlink remote recipe images from durable Markdown.
+- A failed image download must not block saving the recipe text, ingredients, steps, and index rows.
+- Step images are deferred until an import source exposes reliable step-level media.
 
 ## Ingredients Section
 
@@ -206,6 +223,10 @@ Creamy penne pasta with blackened chicken, scallions, and tomato.
 - URL: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
 - Imported from: recipe-scrapers
 
+## Images
+
+![Main recipe image](images/main.jpg)
+
 ## Ingredients
 
 - 10 ounce Chicken Breast Strips
@@ -233,8 +254,9 @@ Creamy penne pasta with blackened chicken, scallions, and tomato.
 An index rebuild should derive database rows from Markdown as follows:
 
 - `recipes.recipe_id` from an internal database-generated ID.
-- `recipes.slug` from the filename stem.
+- `recipes.slug` from the recipe folder name.
 - `recipes.markdown_path` from the file path.
+- `recipes.main_image_path` from the first recipe-level image reference when present.
 - `recipes.title` from the level-one heading.
 - `recipes.servings`, `recipes.source_*`, `recipes.author`, and `recipes.imported_from` from the fact block.
 - `recipes.time_estimate_minutes` from recipe time metadata when available from parser or UI input.

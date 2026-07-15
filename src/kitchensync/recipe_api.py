@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import sqlite3
+import mimetypes
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 from uuid import uuid4
 
 from .database import row_dict, rows
@@ -13,6 +16,18 @@ from .markdown import (
     slugify,
 )
 from .models import Ingredient, Recipe
+
+IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".webp"}
+
+
+def _fetch_image(uri: str) -> tuple[bytes, str | None]:
+    request = Request(
+        uri,
+        headers={"User-Agent": "KitchenSync/0.1 recipe image fetcher"},
+    )
+    with urlopen(request, timeout=15) as response:
+        content_type = response.headers.get_content_type()
+        return response.read(), content_type
 
 
 def _time_estimate_minutes(recipe: Recipe) -> int | None:
@@ -30,8 +45,11 @@ class RecipesAPI:
     def save_imported_recipe(self, recipe: Recipe) -> None:
         slug = slugify(recipe.name)
         recipe_id = self._recipe_id_for_import(recipe, slug)
+        main_image_path = self._save_main_image(recipe, slug)
+        if main_image_path is None:
+            main_image_path = self._existing_main_image_path(recipe_id)
 
-        self._write_recipe_file(recipe, slug)
+        self._write_recipe_file(recipe, slug, main_image_path)
         self._ensure_ingredient_files_and_rows(recipe)
         self._upsert_recipe_row(
             recipe_id=recipe_id,
@@ -43,7 +61,8 @@ class RecipesAPI:
             author=recipe.metadata.author,
             imported_from=recipe.metadata.imported_from,
             time_estimate_minutes=_time_estimate_minutes(recipe),
-            markdown_path=f"recipes/{slug}.md",
+            main_image_path=main_image_path,
+            markdown_path=f"recipes/{slug}/recipe.md",
         )
         self._replace_recipe_ingredient_rows(recipe_id, recipe)
         self._replace_recipe_step_rows(recipe_id, recipe)
@@ -107,6 +126,7 @@ class RecipesAPI:
         author: str | None = None,
         imported_from: str | None = None,
         time_estimate_minutes: int | None = None,
+        main_image_path: str | None = None,
         markdown_path: str | None = None,
     ) -> None:
         self._upsert_recipe_row(
@@ -119,6 +139,7 @@ class RecipesAPI:
             author=author,
             imported_from=imported_from,
             time_estimate_minutes=time_estimate_minutes,
+            main_image_path=main_image_path,
             markdown_path=markdown_path,
         )
         self._upsert_recipe_search(
@@ -127,10 +148,56 @@ class RecipesAPI:
         )
         self.connection.commit()
 
-    def _write_recipe_file(self, recipe: Recipe, slug: str) -> None:
-        recipe_path = self.library_root / "recipes" / f"{slug}.md"
+    def _write_recipe_file(
+        self,
+        recipe: Recipe,
+        slug: str,
+        main_image_path: str | None,
+    ) -> None:
+        recipe_path = self.library_root / "recipes" / slug / "recipe.md"
         recipe_path.parent.mkdir(parents=True, exist_ok=True)
-        recipe_path.write_text(recipe_to_markdown(recipe), encoding="utf-8")
+        recipe_path.write_text(
+            recipe_to_markdown(
+                recipe,
+                main_image_path=_markdown_image_path(slug, main_image_path),
+            ),
+            encoding="utf-8",
+        )
+
+    def _save_main_image(self, recipe: Recipe, slug: str) -> str | None:
+        image = next((image for image in recipe.metadata.images if image.uri), None)
+        if image is None:
+            return None
+
+        try:
+            content, content_type = _fetch_image(image.uri)
+        except Exception:
+            return None
+
+        if not content:
+            return None
+
+        relative_path = Path("recipes") / slug / "images" / (
+            "main" + _image_extension(image.uri, content_type)
+        )
+        image_path = self.library_root / relative_path
+        image_path.parent.mkdir(parents=True, exist_ok=True)
+        image_path.write_bytes(content)
+        return relative_path.as_posix()
+
+    def _existing_main_image_path(self, recipe_id: str) -> str | None:
+        row = self.connection.execute(
+            """
+            SELECT main_image_path
+            FROM recipe_recipes
+            WHERE recipe_id = ?
+            """,
+            (recipe_id,),
+        ).fetchone()
+        if row is None:
+            return None
+
+        return row["main_image_path"]
 
     def _ensure_ingredient_files_and_rows(self, recipe: Recipe) -> None:
         ingredient_dir = self.library_root / "ingredients"
@@ -190,6 +257,7 @@ class RecipesAPI:
         author: str | None = None,
         imported_from: str | None = None,
         time_estimate_minutes: int | None = None,
+        main_image_path: str | None = None,
         markdown_path: str | None = None,
     ) -> None:
         self.connection.execute(
@@ -204,9 +272,10 @@ class RecipesAPI:
                 author,
                 imported_from,
                 time_estimate_minutes,
+                main_image_path,
                 markdown_path
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(recipe_id) DO UPDATE SET
                 title = excluded.title,
                 slug = excluded.slug,
@@ -216,6 +285,7 @@ class RecipesAPI:
                 author = excluded.author,
                 imported_from = excluded.imported_from,
                 time_estimate_minutes = excluded.time_estimate_minutes,
+                main_image_path = excluded.main_image_path,
                 markdown_path = excluded.markdown_path,
                 updated_at = CURRENT_TIMESTAMP
             """,
@@ -229,6 +299,7 @@ class RecipesAPI:
                 author,
                 imported_from,
                 time_estimate_minutes,
+                main_image_path,
                 markdown_path,
             ),
         )
@@ -409,3 +480,23 @@ class RecipesAPI:
             (recipe_id,),
         ).fetchall()
         return [row["tag_slug"] for row in tag_rows]
+
+
+def _image_extension(uri: str, content_type: str | None) -> str:
+    if content_type:
+        guessed = mimetypes.guess_extension(content_type)
+        if guessed == ".jpe":
+            guessed = ".jpg"
+        if guessed in IMAGE_EXTENSIONS:
+            return guessed
+
+    suffix = Path(urlparse(uri).path).suffix.lower()
+    return suffix if suffix in IMAGE_EXTENSIONS else ".jpg"
+
+
+def _markdown_image_path(slug: str, main_image_path: str | None) -> str | None:
+    if not main_image_path:
+        return None
+
+    prefix = f"recipes/{slug}/"
+    return main_image_path.removeprefix(prefix)

@@ -50,6 +50,15 @@ def test_recipe_to_markdown_uses_readable_facts_without_frontmatter():
     assert "## Notes" in markdown
 
 
+def test_recipe_to_markdown_can_reference_local_main_image():
+    recipe = Recipe(name="Tomato Soup")
+
+    markdown = recipe_to_markdown(recipe, main_image_path="images/main.jpg")
+
+    assert "## Images" in markdown
+    assert "![Main recipe image](images/main.jpg)" in markdown
+
+
 def test_ingredient_to_markdown_uses_heading_and_aliases():
     markdown = ingredient_to_markdown(
         Ingredient(name="Chicken Breast", aliases=["chicken breast strips"]),
@@ -76,10 +85,10 @@ def test_write_recipe_markdown_files_writes_recipe_and_ingredient_stubs(tmp_path
     paths = write_recipe_markdown_files(recipe, tmp_path)
 
     assert paths == [
-        tmp_path / "recipes" / "tomato-soup.md",
+        tmp_path / "recipes" / "tomato-soup" / "recipe.md",
         tmp_path / "ingredients" / "roma-tomato.md",
     ]
-    recipe_text = (tmp_path / "recipes" / "tomato-soup.md").read_text(
+    recipe_text = (tmp_path / "recipes" / "tomato-soup" / "recipe.md").read_text(
         encoding="utf-8"
     )
     assert recipe_text.startswith("# Tomato Soup\n")

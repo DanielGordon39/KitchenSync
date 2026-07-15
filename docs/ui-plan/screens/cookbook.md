@@ -168,7 +168,7 @@ Give the selected recipe the full screen so the user can read all recipe content
 
 ### Detail Content Source TODO
 
-The current detail endpoint can return indexed recipe metadata, tags, ingredients, and steps. Recipe descriptions, recipe notes, and images are not currently part of `app.recipes.get_detail(...)` because they are not indexed in SQLite.
+The current detail endpoint can return indexed recipe metadata, tags, ingredients, steps, and the local main image URL. Recipe descriptions and recipe notes are not currently part of `app.recipes.get_detail(...)` because they are not indexed in SQLite.
 
 Before Main Recipe View promises those fields, decide whether the detail read should:
 

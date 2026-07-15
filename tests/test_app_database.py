@@ -6,6 +6,7 @@ import pytest
 from kitchensync import KitchenSyncApp
 from kitchensync.app import SCHEMA_SQL
 from kitchensync.models import (
+    ImageRef,
     Ingredient,
     Quantity,
     Recipe,
@@ -90,7 +91,18 @@ def test_recipe_metadata_upsert_updates_search_text(tmp_path):
     assert results[0]["title"] == "Roasted Pepper Soup"
 
 
-def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
+def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(
+    tmp_path,
+    monkeypatch,
+):
+    import kitchensync.recipe_api as recipe_api
+
+    monkeypatch.setattr(
+        recipe_api,
+        "_fetch_image",
+        lambda uri: (b"fake image bytes", "image/jpeg"),
+    )
+
     library_root = tmp_path / "library"
     recipe = Recipe(
         name="Tomato Soup",
@@ -100,6 +112,7 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
         metadata=RecipeMetadata(
             author="KitchenSync Test",
             imported_from="manual-test",
+            images=[ImageRef(uri="https://example.com/tomato-soup.jpg")],
         ),
         ingredients=[
             RecipeIngredient(
@@ -167,7 +180,10 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
         author_search_results = app.recipes.search("KitchenSync")
         step_search_results = app.recipes.search("Simmer")
 
-    assert (library_root / "recipes" / "tomato-soup.md").exists()
+    assert (library_root / "recipes" / "tomato-soup" / "recipe.md").exists()
+    assert (
+        library_root / "recipes" / "tomato-soup" / "images" / "main.jpg"
+    ).read_bytes() == b"fake image bytes"
     assert (library_root / "ingredients" / "roma-tomato.md").exists()
     assert (library_root / "ingredients" / "chicken-stock.md").exists()
 
@@ -176,7 +192,11 @@ def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(tmp_path):
     assert saved_recipe["author"] == "KitchenSync Test"
     assert saved_recipe["imported_from"] == "manual-test"
     assert saved_recipe["time_estimate_minutes"] == 45
-    assert saved_recipe["markdown_path"] == "recipes/tomato-soup.md"
+    assert saved_recipe["main_image_path"] == "recipes/tomato-soup/images/main.jpg"
+    assert saved_recipe["markdown_path"] == "recipes/tomato-soup/recipe.md"
+    assert "![Main recipe image](images/main.jpg)" in (
+        library_root / "recipes" / "tomato-soup" / "recipe.md"
+    ).read_text(encoding="utf-8")
     assert [dict(row) for row in tag_rows] == [
         {"tag_order": 1, "tag_slug": "soup"},
         {"tag_order": 2, "tag_slug": "weeknight"},
@@ -423,7 +443,7 @@ def test_cookbook_entry_index_is_separate_from_recipe_existence(tmp_path):
             recipe_id="recipe_blackened_chicken_penne",
             title="Blackened Chicken Penne",
             slug="blackened-chicken-penne",
-            markdown_path="recipes/blackened-chicken-penne.md",
+            markdown_path="recipes/blackened-chicken-penne/recipe.md",
         )
 
         assert app.cookbook.list_entries() == []
@@ -432,7 +452,7 @@ def test_cookbook_entry_index_is_separate_from_recipe_existence(tmp_path):
             recipe_id="recipe_blackened_chicken_penne",
             recipe_slug="blackened-chicken-penne",
             title="Blackened Chicken Penne",
-            recipe_path="recipes/blackened-chicken-penne.md",
+            recipe_path="recipes/blackened-chicken-penne/recipe.md",
             cookbook_path="cookbook/blackened-chicken-penne.md",
             favorite=True,
             rating=4,

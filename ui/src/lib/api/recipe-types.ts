@@ -19,6 +19,7 @@ export type RecipeDetailRecipeDto = {
   author: string | null
   imported_from: string | null
   time_estimate_minutes: number | null
+  image_url: string | null
   tags: string[]
 }
 

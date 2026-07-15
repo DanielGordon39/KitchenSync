@@ -20,6 +20,7 @@ Working direction after the initial recipe parsing scaffold.
 - The iterative navigation, screen, flow, and component plan is documented under `docs/ui-plan/`.
 - The browser UI now loads recipe cards from `GET /api/recipes`.
 - `GET /api/recipes/{recipe_id}` and the full-screen Main Recipe View popup now provide the first complete read-only UI slice.
+- Web imports now capture the primary recipe image URI, and accepted saves download the main image into the recipe folder for card/detail display.
 
 ## Near-Term Feature Priorities
 
@@ -50,20 +51,20 @@ Add explicit filters alongside free-text search:
 
 ### 2. Imported Recipe Main Image
 
-Update webpage imports to retain at least the recipe's primary image:
+Current v1 behavior:
 
 - Extract the main image URI exposed by `recipe-scrapers` when available.
-- Map it into the existing `RecipeMetadata.images` / `ImageRef` model.
+- Map it into the existing `RecipeMetadata.images` / `ImageRef` model during parse.
+- Download the main image only when an accepted recipe is saved through `app.recipes.save_imported_recipe(...)`.
+- Store recipes as folders: `recipes/{slug}/recipe.md` plus assets such as `recipes/{slug}/images/main.jpg`.
+- Index `main_image_path` in SQLite and expose it to the browser as a local `/library/...` URL.
+- Show a stable fallback when a source has no usable image or the image download fails.
+
+Remaining:
+
 - Preserve enough source information to distinguish the main recipe image from future step images.
-- Show a stable fallback when a source has no usable image or the remote image later fails.
-- Add parser tests with fake scraper output; do not depend on live websites in the contract tests.
-
-Before making images a durable UI contract, decide:
-
-- Whether KitchenSync references the remote URL, downloads a local copy, or keeps both
-- How image references are represented in recipe Markdown
-- Which image fields belong in the rebuildable SQLite index for card and detail display
-- How imports handle hotlink failures, expiring URLs, duplicates, and very large files
+- Decide how imports should handle duplicates and very large files.
+- Add step images only after real sources expose reliable step-level media.
 
 ### 3. Social-Media Recipe Import Research Spike
 
@@ -114,7 +115,8 @@ Before building UI, define what happens when a parsed recipe is accepted and sav
 
 Decided:
 - Use `data/library/` as the local v1 development library root.
-- Use `recipes/{slug}.md` as the v1 recipe markdown location.
+- Use `recipes/{slug}/recipe.md` as the v1 recipe markdown location.
+- Keep recipe-owned assets such as downloaded images under the same `recipes/{slug}/` folder.
 - Keep recipe Markdown human-first without required technical frontmatter.
 - Derive database identity during indexing, with `slug` from the filename and source URL as import metadata.
 - Preserve compact import fields as readable recipe fact bullets and large raw artifacts as sidecar files.
@@ -124,6 +126,7 @@ Decided:
 - For v1, assume parsed imported recipe ingredients are good enough to auto-create or reuse canonical ingredient entries.
 - Keep raw recipe ingredient text and parsed fields in the recipe index so ingredient cleanup is possible after importing a starter corpus.
 - Index recipe author, imported-from marker, time-estimate minutes, and tags in SQLite.
+- Index the local main image path in SQLite for recipe card and detail display.
 - Keep recipe descriptions Markdown-first for now; use descriptions as possible input for generated tag suggestions later.
 - Use one local SQLite file at `data/library/kitchensync.sqlite` for v1.
 - Keep recipe, ingredient, cookbook, pantry, shopping, and candidate data as separate logical database areas inside that SQLite file.

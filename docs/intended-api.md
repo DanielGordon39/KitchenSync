@@ -51,13 +51,14 @@ recipe = app.recipes.get("recipe_blackened_chicken_penne_61b0d03a")
 ```
 
 `save_imported_recipe(...)` is the public save boundary for accepted parsed recipes. It should:
-- write the recipe Markdown file under `data/library/recipes/{slug}.md`;
+- write the recipe Markdown file under `data/library/recipes/{slug}/recipe.md`;
+- download the main imported image, when available, under `data/library/recipes/{slug}/images/` and reference it from Markdown;
 - create or reuse canonical ingredient rows and Markdown files for each parsed ingredient name;
 - index the same accepted recipe into `recipe_recipes`, `recipe_ingredients`, `recipe_steps`, `recipe_tags`, and `recipe_search`;
 - optionally index cookbook membership through the cookbook API when the import flow says the recipe is saved to the cookbook.
 - generate plain UUID hex IDs for new recipe rows and reuse existing recipe rows by source URL first, then slug;
 - generate plain UUID hex IDs for new ingredient rows and reuse existing ingredient rows by slug in v1.
-- store recipe author, imported-from marker, time-estimate minutes, and tags in SQLite when present.
+- store recipe author, imported-from marker, time-estimate minutes, main image path, and tags in SQLite when present.
 
 Descriptions remain Markdown-only in v1. A later tag-suggestion pass may use recipe descriptions as model/parser input, but descriptions are not indexed as first-class database fields yet.
 

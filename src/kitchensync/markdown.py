@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 
-def recipe_to_markdown(recipe: Recipe) -> str:
+def recipe_to_markdown(recipe: Recipe, *, main_image_path: str | None = None) -> str:
     lines = [f"# {recipe.name}", ""]
 
     if recipe.metadata.description:
@@ -24,6 +24,9 @@ def recipe_to_markdown(recipe: Recipe) -> str:
     if facts:
         lines.extend(f"- {fact}" for fact in facts)
         lines.append("")
+
+    if main_image_path:
+        lines.extend(["## Images", "", f"![Main recipe image]({main_image_path})", ""])
 
     if recipe.ingredients:
         lines.extend(["## Ingredients", ""])
@@ -74,7 +77,8 @@ def write_recipe_markdown_files(recipe: Recipe, output_dir: Path) -> list[Path]:
     ingredient_dir.mkdir(parents=True, exist_ok=True)
 
     paths = []
-    recipe_path = recipe_dir / f"{slugify(recipe.name)}.md"
+    recipe_path = recipe_dir / slugify(recipe.name) / "recipe.md"
+    recipe_path.parent.mkdir(parents=True, exist_ok=True)
     recipe_path.write_text(recipe_to_markdown(recipe), encoding="utf-8")
     paths.append(recipe_path)
 

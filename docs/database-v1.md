@@ -63,6 +63,7 @@ SQLite row IDs are internal database identities. New recipe and ingredient rows 
 Rebuildable from recipe Markdown:
 
 - recipe metadata
+- recipe main image path
 - recipe ingredients
 - recipe steps
 - recipe tags
@@ -104,7 +105,7 @@ The first recipe import implementation should include optimistic ingredient crea
 
 Repeated imports should reuse an existing recipe row by source URL first, then slug as a fallback. New ingredient rows should use UUID IDs and reuse existing ingredients by slug in v1.
 
-Recipe metadata indexing includes title, slug, servings, source name, source URL, author, imported-from marker, and simple time estimate minutes. Recipe tags are indexed in `recipe_tags`. Recipe search includes title, slug, source fields, author, imported-from marker, tags, ingredient names, and raw ingredient lines; step text is stored in `recipe_steps` but not included in search text for v1.
+Recipe metadata indexing includes title, slug, servings, source name, source URL, author, imported-from marker, simple time estimate minutes, Markdown path, and main image path. Recipe tags are indexed in `recipe_tags`. Recipe search includes title, slug, source fields, author, imported-from marker, tags, ingredient names, and raw ingredient lines; step text is stored in `recipe_steps` but not included in search text for v1.
 
 ## Cookbook Boundary
 
@@ -133,6 +134,7 @@ Recipe-owned fields include:
 - title
 - slug
 - source metadata
+- main image path
 - ingredient rows
 - step rows
 - search text

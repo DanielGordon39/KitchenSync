@@ -11,6 +11,7 @@ def test_list_recipes_delegates_and_shapes_recipe_cards(monkeypatch):
                 {
                     "recipe_id": "recipe_tomato_soup",
                     "title": "Tomato Soup",
+                    "main_image_path": "recipes/tomato-soup/images/main.jpg",
                     "ignored_index_field": "not exposed",
                 }
             ]
@@ -41,7 +42,7 @@ def test_list_recipes_delegates_and_shapes_recipe_cards(monkeypatch):
         {
             "recipe_id": "recipe_tomato_soup",
             "title": "Tomato Soup",
-            "image_url": None,
+            "image_url": "/library/recipes/tomato-soup/images/main.jpg",
             "description": None,
             "cookbook": None,
         }
@@ -79,7 +80,8 @@ def test_get_recipe_detail_delegates_and_shapes_response(monkeypatch):
                     "author": "Test Author",
                     "imported_from": "manual-test",
                     "time_estimate_minutes": 45,
-                    "markdown_path": "recipes/tomato-soup.md",
+                    "main_image_path": "recipes/tomato-soup/images/main.jpg",
+                    "markdown_path": "recipes/tomato-soup/recipe.md",
                     "created_at": "2026-07-14 12:00:00",
                     "updated_at": "2026-07-14 12:00:00",
                     "tags": ["soup", "weeknight"],
@@ -138,6 +140,7 @@ def test_get_recipe_detail_delegates_and_shapes_response(monkeypatch):
             "author": "Test Author",
             "imported_from": "manual-test",
             "time_estimate_minutes": 45,
+            "image_url": "/library/recipes/tomato-soup/images/main.jpg",
             "tags": ["soup", "weeknight"],
         },
         "ingredients": [

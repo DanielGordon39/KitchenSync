@@ -2,6 +2,7 @@ import re
 from urllib.request import Request, urlopen
 
 from kitchensync.models import (
+    ImageRef,
     Recipe,
     RecipeMetadata,
     RecipeStep,
@@ -91,6 +92,14 @@ def _tag_values(value: object) -> list[str]:
     return [str(value).strip()]
 
 
+def _images_from_scraper(scraper) -> list[ImageRef]:
+    uri = _try(scraper.image)
+    if not isinstance(uri, str) or not uri.strip():
+        return []
+
+    return [ImageRef(uri=uri.strip(), alt_text=_try(scraper.title))]
+
+
 def _recipe_from_scraper(scraper, source_url: str) -> Recipe:
     ingredients = [
         parse_recipe_ingredient_line(line)
@@ -117,6 +126,7 @@ def _recipe_from_scraper(scraper, source_url: str) -> Recipe:
             source_name=_try(scraper.site_name),
             source_url=source_url,
             imported_from="recipe-scrapers",
+            images=_images_from_scraper(scraper),
         ),
     )
 

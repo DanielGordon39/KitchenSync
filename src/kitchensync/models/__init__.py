@@ -1,7 +1,7 @@
 from .common import Quantity, UnitSlug
 from .cookbook import CookEvent, Cookbook, CookbookEntry, CookbookMetadata
 from .ingredient import Ingredient, IngredientSlug
-from .recipe import Recipe, RecipeIngredient, RecipeMetadata, RecipeStep, RecipeStepType, TimeEstimate
+from .recipe import ImageRef, Recipe, RecipeIngredient, RecipeMetadata, RecipeStep, RecipeStepType, TimeEstimate
 from .tags import TagSlug
 
 __all__ = [
@@ -10,6 +10,7 @@ __all__ = [
     "CookbookEntry",
     "CookbookMetadata",
     "Ingredient",
+    "ImageRef",
     "IngredientSlug",
     "Quantity",
     "Recipe",

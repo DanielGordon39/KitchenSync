@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS recipe_recipes (
     author TEXT,
     imported_from TEXT,
     time_estimate_minutes INTEGER,
+    main_image_path TEXT,
     markdown_path TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -163,6 +164,7 @@ RECIPE_RECIPE_COLUMNS = {
     "author": "TEXT",
     "imported_from": "TEXT",
     "time_estimate_minutes": "INTEGER",
+    "main_image_path": "TEXT",
 }
 
 

@@ -63,7 +63,9 @@ def test_batch_import_probe_saves_successes_and_writes_reports(
     assert rows[0].title == "Tomato Soup"
     assert rows[1].saved is False
     assert "Tomato Soup" in captured.out
-    assert (tmp_path / "library" / "recipes" / "tomato-soup.md").exists()
+    assert (
+        tmp_path / "library" / "recipes" / "tomato-soup" / "recipe.md"
+    ).exists()
     assert (tmp_path / "reports" / "import_report.csv").exists()
     assert (tmp_path / "reports" / "import_report.jsonl").exists()
     assert "stubbed failure" in (
