@@ -73,6 +73,28 @@ The UI must not call `save_metadata(...)` directly as a substitute for a complet
 - Keep search and Add Recipe easy to reach.
 - Move secondary filters into a drawer or expandable section only if they no longer fit clearly.
 
+### Search and Filter Direction
+
+Place one free-text search field above the recipe grid. Search the complete backend result set, not only the recipe cards already loaded in the browser.
+
+Rank matches by:
+
+1. Fuzzy recipe-title match
+2. Exact or spelling-corrected tag match
+3. Fuzzy ingredient match
+
+Title matches receive the strongest weight. Tag matching should prefer known normalized tags and visibly suggest a corrected tag rather than silently rewriting the query. Ingredient matching can use canonical ingredient names, parsed names, and raw ingredient text.
+
+Provide explicit tag and ingredient filters in addition to free-text search. Filters act as constraints on the result set and should remain usable with an empty text query. Search, filters, sorting, and infinite loading must use the same stable backend ordering and paging contract.
+
+Before implementation, create representative examples for:
+
+- Misspelled recipe titles
+- Misspelled or partial tags
+- Ingredient synonyms and partial ingredient names
+- Queries that match a title, tag, and ingredient at different strengths
+- Multiple active filters with and without text search
+
 ### Eventual Infinite Scroll Direction
 
 The target Cookbook grid is an infinite, virtualized list of recipe summaries. Keep these concerns separate:

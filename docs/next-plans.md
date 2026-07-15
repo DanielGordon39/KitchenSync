@@ -18,6 +18,95 @@ Working direction after the initial recipe parsing scaffold.
 - Browser-first UI architecture is documented in `docs/ui-architecture.md`.
 - The KitchenSync-specific TypeScript learning path is documented in `docs/typescript-ui-tutorial.md`.
 - The iterative navigation, screen, flow, and component plan is documented under `docs/ui-plan/`.
+- The browser UI now loads recipe cards from `GET /api/recipes`.
+- `GET /api/recipes/{recipe_id}` and the full-screen Main Recipe View popup now provide the first complete read-only UI slice.
+
+## Near-Term Feature Priorities
+
+### 1. Cookbook Search and Filters
+
+Add a search bar above the recipe grid. Search must cover the complete indexed recipe library, not only cards currently loaded for infinite scrolling.
+
+Rank text matches in this order:
+
+1. **Recipe title:** fuzzy matching with the strongest ranking weight.
+2. **Tags:** prefer exact normalized tag matches, then offer spelling-corrected or nearest-known-tag matches.
+3. **Ingredients:** fuzzy matching over canonical ingredient names, parsed names, and raw recipe ingredient text.
+
+Search behavior:
+
+- A strong title match should normally outrank tag or ingredient-only matches.
+- Tag correction must be visible to the user, such as `Showing results for weeknight`, instead of silently changing the query.
+- Use a stable tie-breaker after relevance so results do not jump between requests.
+- Search and infinite loading must share one backend result set with paging or a cursor.
+- Build a small expected-match corpus with typos and ambiguous terms before selecting a fuzzy-search or spelling-correction implementation.
+
+Add explicit filters alongside free-text search:
+
+- Tag filter using normalized tag slugs
+- Ingredient filter using canonical ingredient identity when available
+- Multiple filters should combine as deliberate constraints rather than changing fuzzy relevance unexpectedly.
+- Filters should continue to work when the text query is empty.
+
+### 2. Imported Recipe Main Image
+
+Update webpage imports to retain at least the recipe's primary image:
+
+- Extract the main image URI exposed by `recipe-scrapers` when available.
+- Map it into the existing `RecipeMetadata.images` / `ImageRef` model.
+- Preserve enough source information to distinguish the main recipe image from future step images.
+- Show a stable fallback when a source has no usable image or the remote image later fails.
+- Add parser tests with fake scraper output; do not depend on live websites in the contract tests.
+
+Before making images a durable UI contract, decide:
+
+- Whether KitchenSync references the remote URL, downloads a local copy, or keeps both
+- How image references are represented in recipe Markdown
+- Which image fields belong in the rebuildable SQLite index for card and detail display
+- How imports handle hotlink failures, expiring URLs, duplicates, and very large files
+
+### 3. Social-Media Recipe Import Research Spike
+
+Treat social-media recipe import as a key KitchenSync feature. Research Instagram, TikTok, and Facebook separately before committing to a shared implementation because their public metadata, caption, transcript, authentication, and rate-limit boundaries may differ.
+
+Target pipeline:
+
+```text
+Social media URL
+  -> platform adapter
+  -> source description/caption + source metadata
+  -> existing captions or audio/video transcript
+  -> normalized import document
+  -> recipe extraction
+  -> explicit review
+  -> accepted Recipe save boundary
+```
+
+The research spike should evaluate:
+
+- Official platform APIs, permissions, and permitted public-post access
+- Maintained libraries or tools for post metadata, descriptions, captions, media, and transcripts
+- Authentication/session requirements, rate limits, and likely reliability
+- Existing caption retrieval versus local or hosted speech-to-text
+- Privacy, storage, cost, and failure behavior for downloaded media and transcripts
+- A small observed URL corpus for Instagram, TikTok, and Facebook
+
+Expected direction:
+
+- A custom KitchenSync orchestration layer is likely even if maintained libraries handle individual platform or transcription steps.
+- Keep platform adapters separate instead of building one large social-media scraper.
+- Preserve the source description and transcript as import evidence so extraction can be reviewed or rerun.
+- Do not save uncertain social-media extraction directly as canonical recipe content without an explicit review step.
+- The first successful boundary is a reviewable recipe candidate or a clear unsupported/failure result, not perfect automatic parsing.
+
+Research deliverable:
+
+- A platform-by-platform capability matrix
+- Recommended library/API path and fallback for each platform
+- A minimal shared adapter contract
+- A transcription recommendation
+- Risks that require user authentication, browser automation, or custom extraction
+- A proposed thin vertical slice for one platform before expanding to all three
 
 ## Persistence Decisions
 
@@ -72,7 +161,7 @@ TODO:
 
 ## UI Follow-Ups
 
-The save contract is clear. The next prerequisite for real browser data is a thin HTTP API over `KitchenSyncApp`.
+The save contract is clear, and the first read-only browser slice now loads the recipe grid and Main Recipe View through thin HTTP endpoints over `KitchenSyncApp`.
 
 Recommended starting direction:
 - Use a browser-first React and TypeScript UI built with Vite.
@@ -83,10 +172,12 @@ Recommended starting direction:
 - Reuse the static web UI later through Tauri for desktop and evaluate Capacitor for Android/iOS.
 - Defer PWA service-worker behavior, Tauri packaging, and Capacitor projects until the browser workflow is stable.
 - Reconsider a deliberate migration from npm to Bun after the browser workflow is stable and only when it provides a concrete speed or tooling benefit.
-- No UI scaffold or browser-facing Python HTTP API exists yet.
+- The Vite UI scaffold, recipe-card endpoint, recipe-detail endpoint, and full-screen recipe popup now exist.
 
 TODO:
-- Define and implement the thin HTTP API that delegates to `KitchenSyncApp`.
+- Add the ranked search and tag/ingredient filtering contract described above.
+- Add paged or cursor-based recipe summaries for eventual infinite scrolling.
+- Expand the thin HTTP API only through product-level methods that delegate to `KitchenSyncApp`.
 - Create a parsed recipe review screen.
 - Show raw ingredient text beside parser-derived fields.
 - Let the user edit accepted ingredient text before saving.
