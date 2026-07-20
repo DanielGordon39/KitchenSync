@@ -1,5 +1,19 @@
 # One public social-media recipe URL per line.
 https://www.instagram.com/reel/DZWy6GlSIV-/?igsh=bTd2b3J0MGE2YXl4
-https://www.youtube.com/shorts/hvZs62R3VQg
-https://www.facebook.com/share/r/1HGv6mAMkJ/
-https://www.tiktok.com/t/ZP8G3yC2h/
+# https://www.youtube.com/shorts/hvZs62R3VQg
+# https://www.facebook.com/share/r/1HGv6mAMkJ/
+# https://www.tiktok.com/t/ZP8G3yC2h/
+
+# For the loop
+https://www.instagram.com/reel/DZWy6GlSIV-/?igsh=bTd2b3J0MGE2YXl4
+https://www.instagram.com/reel/Dalrd2uSgUR/?igsh=YmVsNm9jMmJvZjkz
+https://www.instagram.com/reel/DXHxRQagimX/?igsh=NGw0cDh0ZXBjejJr
+https://www.instagram.com/reel/DCPOOr0RPKB/?igsh=MTgzeXRrdDQ2NnBlaw==
+https://www.instagram.com/reel/DDVGjt8SpyO/?igsh=MTVhNXFuam9xNjJmMg==
+https://www.instagram.com/reel/CdBjEVZD1xq/?igsh=MXQyOTdkNGthdjJs
+https://www.instagram.com/reel/DFbDtkgzJKL/?igsh=MTlrZmMxaG1ldTR1OQ==
+https://www.instagram.com/reel/DGy7E1by5Ex/?igsh=dHJ1Y3Jzc2ZmdmRx
+https://www.instagram.com/reel/DL0YtzShRgc/?igsh=MWdwdnNweDNkb3lvZQ==
+https://www.instagram.com/reel/DNV9Yj7I03T/?igsh=MTZvanUxcDB6NjBmaQ==
+https://www.instagram.com/reel/DNYnopBpHoX/?igsh=MXNleXEzemNnNjZqOA==
+https://www.instagram.com/reel/DWOBD5QDXeU/?igsh=MXA5NTlybXN5NDM1aw==

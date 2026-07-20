@@ -6,7 +6,7 @@ Current tools:
 
 - `social_recipe_urls.txt`: newline-separated social-media recipe URLs for the current research corpus.
 - `social_import_probe.py`: owns URL-corpus loading, platform identification, `yt-dlp` evidence acquisition, and readable probe output.
-- `recipe_text_parser.py`: owns the platform-independent, deterministic boundary from acquired text to a review-only recipe candidate plus parsing diagnostics. Its current implementation is intentionally a visible not-implemented skeleton.
+- `recipe_text_parser.py`: owns platform-independent line evidence, contextual Recipe-field candidates, and review-only recipe content.
 
 Responsibility flow:
 

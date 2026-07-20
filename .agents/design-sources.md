@@ -6,10 +6,14 @@ Use these sources to understand KitchenSync's intended structure and design boun
 
 Treat these notes as design and planning context, not executable source of truth:
 
-- `C:\Obsidian\Nexus\Efforts\KitchenSync\KitchenSync.md`
-- `C:\Obsidian\Nexus\Efforts\KitchenSync\Architecture Decisions - v1 Roadmap.md`
-- `C:\Obsidian\Nexus\Efforts\KitchenSync\Diagrams\Diagram Index.md`
-- `C:\Obsidian\Nexus\Efforts\KitchenSync\Implementation\`
+KitchenSync notes have machine-specific roots. Use whichever root exists:
+- `C:\Obsidian\Nexus\Efforts\KitchenSync`
+- `C:\Users\nbuchwe\OneDrive - Clemson University\Nexus\Vault\10-Personal\12-Projects\Kitchen Sync`
+
+Within the available root, read the project hub (`KitchenSync.md` or
+`Kitchen Sync.md`), `Diagrams\Diagram Index.md`, and the relevant notes under
+`Implementation\`. Also read
+`Architecture Decisions - v1 Roadmap.md` when that file is present.
 
 ## Repository Truth
 

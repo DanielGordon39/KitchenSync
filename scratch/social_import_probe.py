@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from pprint import pprint
@@ -9,8 +10,18 @@ from urllib.parse import urlparse
 
 import yt_dlp
 
+from kitchensync.models import (
+    ImageRef,
+    Ingredient,
+    Recipe,
+    RecipeIngredient,
+    RecipeMetadata,
+    RecipeStep,
+)
+from kitchensync.parsing import parse_recipe_ingredient_line
+
 if TYPE_CHECKING:
-    from recipe_text_parser import RecipeTextParseResult
+    from recipe_text_parser import RecipeTextParseResult, SocialRecipeCandidate
 
 
 DEFAULT_URL_FILE = Path(__file__).parent / "social_recipe_urls.txt"
@@ -74,11 +85,107 @@ def print_recipe_evidence(source_info: dict[str, object]) -> None:
 
 
 def print_parse_result(result: RecipeTextParseResult) -> None:
-    print("\nRecipe text parser result:\n")
-    pprint(result.model_dump(), sort_dicts=False, width=100)
+    print("\nPer-line recipe evidence:\n")
+    for line in result.line_analyses:
+        evidence = " ".join(
+            f"{concept}={strength:.1f}"
+            for concept, strength in line.evidence.items()
+        ) or "unclassified"
+        print(f"{line.line_number:>2} | {evidence:<38} | {line.text}")
+
+    print("\nContextual Recipe field candidates:\n")
+    for candidate in result.field_candidates:
+        fields = " ".join(
+            f"{field}={score:.1f}"
+            for field, score in sorted(
+                candidate.field_scores.items(),
+                key=lambda item: item[1],
+                reverse=True,
+            )
+        )
+        start = candidate.line_numbers[0]
+        stop = candidate.line_numbers[-1]
+        line_range = str(start) if start == stop else f"{start}-{stop}"
+        print(f"{fields} | lines {line_range}")
+        for line_number, text in zip(candidate.line_numbers, candidate.lines):
+            print(f"  {line_number:>2} | {text}")
+        print()
+
+    print("\nRecipe text parser summary:\n")
+    pprint(
+        result.model_dump(exclude={"candidate", "line_analyses", "field_candidates"}),
+        sort_dicts=False,
+        width=100,
+    )
+
+
+def build_recipe_preview(
+    candidate: SocialRecipeCandidate | None,
+    source_info: dict[str, object],
+) -> Recipe | None:
+    if candidate is None or not candidate.name:
+        return None
+
+    ingredients = []
+    for raw_ingredient in candidate.raw_ingredients:
+        try:
+            ingredient = parse_recipe_ingredient_line(raw_ingredient)
+        except Exception:
+            ingredient = RecipeIngredient(
+                ingredient=Ingredient(name=raw_ingredient),
+                notes=[f"raw: {raw_ingredient}"],
+            )
+        ingredients.append(ingredient)
+
+    thumbnail = source_info.get("thumbnail")
+    images = [ImageRef(uri=thumbnail)] if isinstance(thumbnail, str) and thumbnail else []
+    source_url = source_info.get("webpage_url") or source_info.get("original_url")
+
+    return Recipe(
+        name=candidate.name,
+        servings=candidate.servings,
+        ingredients=ingredients,
+        steps=[
+            RecipeStep(order=order, text=text)
+            for order, text in enumerate(candidate.steps, start=1)
+        ],
+        tags=candidate.tags,
+        notes=candidate.notes,
+        metadata=RecipeMetadata(
+            description=candidate.description,
+            source_name=_optional_text(source_info.get("extractor")),
+            source_url=_optional_text(source_url),
+            author=_optional_text(source_info.get("uploader")),
+            imported_from="yt-dlp",
+            images=images,
+        ),
+    )
+
+
+def _optional_text(value: object) -> str | None:
+    return value if isinstance(value, str) and value else None
+
+
+def print_recipe_preview(
+    recipe: Recipe | None,
+    result: RecipeTextParseResult,
+) -> None:
+    print("\nRecipe model preview:\n")
+    if recipe is None:
+        print("(no Recipe preview: a name is required)")
+    else:
+        pprint(recipe.model_dump(), sort_dicts=False, width=120)
+
+    print("\nReview status:")
+    print("ready for review" if not result.fallback_recommended else "incomplete")
+    for warning in result.warnings:
+        print(f"- {warning}")
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     if __package__:
         from .recipe_text_parser import parse_recipe_text
     else:
@@ -86,18 +193,32 @@ def main() -> None:
 
     args = build_parser().parse_args()
     urls = read_urls(args.url_file)
+    if not urls:
+        raise SystemExit(f"No recipe URLs found in {args.url_file}")
 
-    source_info = acquire_source(urls[0])
-    print_recipe_evidence(source_info)
+    for index, url in enumerate(urls, start=1):
+        print("\n" + "=" * 100)
+        print(f"Recipe {index}/{len(urls)} [{identify_platform(url)}]")
+        print(url)
+        print("=" * 100)
 
-    description = source_info.get("description")
-    if not isinstance(description, str) or not description.strip():
-        print("\nNo description text is available for recipe parsing.")
-        return
+        try:
+            source_info = acquire_source(url)
+        except Exception as error:
+            print(f"\nSource acquisition failed: {error}")
+            continue
 
-    parse_result = parse_recipe_text(description)
-    print_parse_result(parse_result)
-    breakpoint()
+        print_recipe_evidence(source_info)
+
+        description = source_info.get("description")
+        if not isinstance(description, str) or not description.strip():
+            print("\nNo description text is available for recipe parsing.")
+            continue
+
+        parse_result = parse_recipe_text(description)
+        print_parse_result(parse_result)
+        recipe_preview = build_recipe_preview(parse_result.candidate, source_info)
+        print_recipe_preview(recipe_preview, parse_result)
 
 
 def read_urls(path: Path) -> list[str]:
@@ -155,7 +276,8 @@ def print_probe_plan(rows: list[SocialProbeRow]) -> None:
 
 # TODO(step 5): Prefer existing captions, then evaluate local faster-whisper transcription.
 # TODO(step 6): Implement recipe text parsing one stage at a time in recipe_text_parser.py.
-# TODO(step 7): Add fallback extraction only for incomplete or ambiguous parse results.
+# TODO(step 7): Add a UI workflow for user-supplied printable recipe URLs;
+# never automate comments or creator-profile navigation.
 # TODO(step 8): Add observed TikTok, Instagram, and Facebook URLs one platform at a time.
 
 
