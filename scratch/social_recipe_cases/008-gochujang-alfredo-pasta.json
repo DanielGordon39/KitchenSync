@@ -1,0 +1,54 @@
+{
+  "id": "008-gochujang-alfredo-pasta",
+  "queue_index": 8,
+  "platform": "instagram",
+  "creator": "Calvin Kang | cooklikeimbook ✌🏻",
+  "source_url": "https://www.instagram.com/reel/DFbDtkgzJKL/?igsh=MTlrZmMxaG1ldTR1OQ==",
+  "source_text_kind": "description",
+  "source_text": "don’t be like me & use a bigger bowl to mix everything\n\ngochujang alfredo pasta\n\nKorean/Italian fusion but higher in protein, less greasy, delicious, has a small kick, garlicy….just make it. \n\nMakes 5 Meal Preps\u2028Per Meal Prep: 676 Calories | 63g Protein | 13g Fat | 77g Carbs\n\nIngredients:\n448g (16oz) fettuccine pasta\n500g fat free cottage cheese\n200g Fat Free Fairlife milk- I forgot to record this in the video\n25-30g Gochujang\n20g Garlic paste or 6-8 garlic cloves\n70g Parmesan Reagiano\nParsley\nBlack pepper\nPinch of salt- for your sauce\n800g 96/4 lean ground beef- seasoned with salt, black pepper, and tossed in spinach\n\nTip: when microwaving, add in some water and itll mix so much better and saucier\n\nTip 2: DO NOT mix hot pasta or hot water into the sauce. It will curd up and not mix well. DO NOT heat the sauce in a pan either. \n\nTip 3: if you use regular Parmesan instead of Parmesan reagianno, it’s not gonna be as good but itll still be amazing\n\n#pasta\u00a0#newyear\u00a0#mealprep\u00a0#healthy\u00a0#fitness\u00a0#viral\u00a0#cottagecheese\u00a0#recipe\u00a0#easyrecipes\u00a0#dinnerideas #highprotein #koreanfood #gochujang #chicken #beef #spinach",
+  "expected": {
+    "name": "gochujang alfredo pasta",
+    "servings": 5,
+    "raw_ingredients": [
+      "448g (16oz) fettuccine pasta",
+      "500g fat free cottage cheese",
+      "200g Fat Free Fairlife milk- I forgot to record this in the video",
+      "25-30g Gochujang",
+      "20g Garlic paste or 6-8 garlic cloves",
+      "70g Parmesan Reagiano",
+      "Parsley",
+      "Black pepper",
+      "Pinch of salt- for your sauce",
+      "800g 96/4 lean ground beef- seasoned with salt, black pepper, and tossed in spinach"
+    ],
+    "steps": [
+      "Tip: when microwaving, add in some water and itll mix so much better and saucier",
+      "Tip 2: DO NOT mix hot pasta or hot water into the sauce. It will curd up and not mix well. DO NOT heat the sauce in a pan either.",
+      "Tip 3: if you use regular Parmesan instead of Parmesan reagianno, it’s not gonna be as good but itll still be amazing"
+    ],
+    "tags": [
+      "pasta",
+      "newyear",
+      "mealprep",
+      "healthy",
+      "fitness",
+      "viral",
+      "cottagecheese",
+      "recipe",
+      "easyrecipes",
+      "dinnerideas",
+      "highprotein",
+      "koreanfood",
+      "gochujang",
+      "chicken",
+      "beef",
+      "spinach"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; the explicit tips are the only caption-supported instructions.",
+    "Accepted after short title-like lines could follow an opening hook, explicit ingredient sections retained unquantified items, and numbered tip lines became instructions."
+  ]
+}

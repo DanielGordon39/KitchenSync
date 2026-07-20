@@ -1,0 +1,53 @@
+{
+  "id": "005-dakgalbi",
+  "queue_index": 5,
+  "platform": "instagram",
+  "creator": "Joe Chu",
+  "source_url": "https://www.instagram.com/reel/DCPOOr0RPKB/?igsh=MTgzeXRrdDQ2NnBlaw==",
+  "source_text_kind": "description",
+  "source_text": "⇩ Full recipe 🥘 ⇩ \n\nIngredients (makes 2 servings):\n- 100g long rice cakes\n- 250g chicken thighs boneless skinless raw\n- 1 tbsp brown sugar\n- 2 tbsp gochugaru\n- 1 tbsp gochujang\n- 2 tsp black pepper\n- 1 tbsp soysauce\n- 1/2 tbsp sesame oil\n- 1 small curry cube\n- 2 tsp minced garlic\n- 1 tbsp mirin\n- 100g nappa cabbage\n- 1 cup red onion\n- 1/2 cup green onion\n- 1 tsp sesame seeds\n- cooking spray oil\nrecipe inspo: @cafemaddy\n\nMacros (1 serving): 33g Protein, 61g Carbs, 13g Fat, 478 calories\n\nHow to make it yourself:\n1. Dice your nappa cabbage, green onions, and red onions.\n2. Cut your chicken into small pieces and in a small bowl, mix it well with brown sugar, gochugaru, black pepper, soy sauce, sesame oil, gochujang, mirin, a curry cube, and minced garlic.\n3. In a pan coated with spray oil on medium-low heat, cook your marinated chicken until cooked through.\n4. Add in your red onions, nappa cabbage, green onions, and refrigerated rice cakes and stir fry until everything is evenly marinated\n5. Top it off with sesame seeds and enjoy!\n\nThis recipe is often overlooked by the much more famous Tteokbokki, but to be honest, I personally think this tastes way better. It’s more filling, has different textures, and a more complex flavor profile while also being packed with protein for the amount of calories making it perfect for your fitness, health, and weight goals!\n\n📩 Save this Dakgalbi recipe to make for later and if you make it, post it and tag me in it! I’d love to see how you liked the recipe :)\n\n#dakgalbi #tteokbokki #koreanfood #highproteinmeals #lowcalorierecipes #weightlossrecipes #healthymeals",
+  "expected": {
+    "name": "Dakgalbi",
+    "servings": 2,
+    "raw_ingredients": [
+      "100g long rice cakes",
+      "250g chicken thighs boneless skinless raw",
+      "1 tbsp brown sugar",
+      "2 tbsp gochugaru",
+      "1 tbsp gochujang",
+      "2 tsp black pepper",
+      "1 tbsp soysauce",
+      "1/2 tbsp sesame oil",
+      "1 small curry cube",
+      "2 tsp minced garlic",
+      "1 tbsp mirin",
+      "100g nappa cabbage",
+      "1 cup red onion",
+      "1/2 cup green onion",
+      "1 tsp sesame seeds",
+      "cooking spray oil"
+    ],
+    "steps": [
+      "Dice your nappa cabbage, green onions, and red onions.",
+      "Cut your chicken into small pieces and in a small bowl, mix it well with brown sugar, gochugaru, black pepper, soy sauce, sesame oil, gochujang, mirin, a curry cube, and minced garlic.",
+      "In a pan coated with spray oil on medium-low heat, cook your marinated chicken until cooked through.",
+      "Add in your red onions, nappa cabbage, green onions, and refrigerated rice cakes and stir fry until everything is evenly marinated",
+      "Top it off with sesame seeds and enjoy!"
+    ],
+    "tags": [
+      "dakgalbi",
+      "tteokbokki",
+      "koreanfood",
+      "highproteinmeals",
+      "lowcalorierecipes",
+      "weightlossrecipes",
+      "healthymeals"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; acquisition occurred once while the queue index was temporarily shifted, then was assigned its committed queue identity.",
+    "Accepted by the parser without another rule change."
+  ]
+}

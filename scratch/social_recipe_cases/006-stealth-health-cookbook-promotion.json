@@ -1,0 +1,26 @@
+{
+  "id": "006-stealth-health-cookbook-promotion",
+  "queue_index": 6,
+  "platform": "instagram",
+  "creator": "Tom Walsh",
+  "source_url": "https://www.instagram.com/reel/DDVGjt8SpyO/?igsh=MTVhNXFuam9xNjJmMg==",
+  "source_text_kind": "description",
+  "source_text": "The Stealth Health Slow Cooker Meal Prep Cookbook, is officially available.\n\nThe culmination of over a year of focus, and built from the series that reached over half a billion views on social media - this book has all my greatest recipes and everything I’ve learned about how to meal prep in bulk using a slow cooker, which I consider to be the ultimate meal prepping machine.\n\nFrom Butter Chicken, Brisket Queso Mac n’ Cheese, Pineapple Teriyaki Pulled Pork, Chili, Japanese Curry, Chicken Tinga, to French Onion Pasta and many, many more - this book has everything you need to become a master of slow cooker meal prepping\n\nAll the recipes are designed to be prepared in bulk and stored frozen, so you can build a frozen food stockpile that keeps you eating high protein meals, for months\n\nI poured absolutely everything I have into this book. The moment you start flipping through for the first time - I think you’ll understand the sheer amount of time, effort, and care that went in to creating it. It’s the greatest thing I have ever made. And it’s the first time I have worked on a project where I looked around, and saw a team of people working just as hard as I was to bring the vision to life. \n\nYour support truly means the world to me - the work I put into this book is a reflection of how grateful I am for this opportunity to create recipes as a full time career.\n\nThe link to purchase is in my bio - and I’ll continue sharing recipes here over the coming weeks!\n\nThank you, for making this possible.\n\n- Tom\n\n#stealthhealth #slowcookermealprep #slowcookercookbook",
+  "expected": {
+    "name": null,
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "stealthhealth",
+      "slowcookermealprep",
+      "slowcookercookbook"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; this is a cookbook promotion, not one recipe.",
+    "Accepted after sentence-like first lines stopped becoming names and isolated one-line ingredient candidates stopped becoming sections."
+  ]
+}

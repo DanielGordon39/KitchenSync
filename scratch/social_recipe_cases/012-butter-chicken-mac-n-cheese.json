@@ -1,0 +1,50 @@
+{
+  "id": "012-butter-chicken-mac-n-cheese",
+  "queue_index": 12,
+  "platform": "instagram",
+  "creator": "Tom Walsh",
+  "source_url": "https://www.instagram.com/reel/DNYnopBpHoX/?igsh=MXNleXEzemNnNjZqOA==",
+  "source_text_kind": "description",
+  "source_text": "BUTTER CHICKEN MAC N’ CHEESE\n\nPer Serving (Makes 10)\n545 Calories\n42g Protein\n58g Carbs\n17g Fat\n\nSlow Cooker Meal Prep Series\nEpisode 34\n\nIngredients:\n900g (32oz) chicken breast, diced\n2 onions, sautéed until browned\n30g (2 Tbsp) tomato paste\n30g (2 Tbsp) garlic paste\n15g (1 Tbsp) ginger paste \n30g (2 Tbsp) butter\n400g (14oz) blended fire-roasted tomatoes\n15g (1 Tbsp) sugar or zero-cal sweetener\n\nSpice blend:\n2 Tbsp paprika\n1 Tbsp chili powder \n1 Tbsp spicy curry powder \n2 tsp cumin\n1 Tbsp salt\nDash of black pepper\n\nHigh: 2–3 hours\nOR\nLow: 3–4 hours\n\n672g shell pasta, cooked to 50% of box time\n1 cup pasta water\n\n400g plain 0% Greek yogurt (FAGE brand)\n120g 1/3 fat cream cheese\nChopped cilantro and green onions\n227 extra sharp cheddar\n80g reduced fat mozzarella \n1 tsp garam masala\n\n-\n\nSTEALTH HEALTH CONTAINERS ARE OFFICIALLY SHIPPING NATIONWIDE!!\n\n@stealthhealthcontainers \n\nIf you’ve followed me for a while, you know I’m obsessed with building a freezer stash of indulgent, high-protein meals.\n\nThis journey began in late 2023 when I started using brown paper take-out containers, and showing them in my videos. I was buying them in bulk off of restaurant supply websites to support my bulk meal prep efforts.\n\nSuddenly, my DM’s were flooded:\n\u2028“Where do you get those containers??”\n\nThis was the most common question on every post I made for a year and a half. The truth was - I didn’t have a great answer. \n\nThey never stayed in stock, most options weren’t microwave safe, and they were often lined with BPA plastics. Every option used cheap plastic lids that broke. There wasn’t a single trustworthy brand I felt good about promoting.\n\nSo I decided to make my own:\n\nStealth Health Containers is the world’s first fully compostable bamboo meal prep container, built for bulk meal prep. No BPA plastics, fully compostable (including the lid), freezer and microwave-safe. Incredibly sturdy and stackable.\n\nThese are the containers I personally use - and the quality difference is night and day.\n\nThank you all for the support and I can’t wait to see the freezer stashes you build using these 🤌🤝\n\n#stealthhealth #mealprep #highprotein #highproteinmealprep",
+  "expected": {
+    "name": "BUTTER CHICKEN MAC N’ CHEESE",
+    "servings": 10,
+    "raw_ingredients": [
+      "900g (32oz) chicken breast, diced",
+      "2 onions, sautéed until browned",
+      "30g (2 Tbsp) tomato paste",
+      "30g (2 Tbsp) garlic paste",
+      "15g (1 Tbsp) ginger paste",
+      "30g (2 Tbsp) butter",
+      "400g (14oz) blended fire-roasted tomatoes",
+      "15g (1 Tbsp) sugar or zero-cal sweetener",
+      "2 Tbsp paprika",
+      "1 Tbsp chili powder",
+      "1 Tbsp spicy curry powder",
+      "2 tsp cumin",
+      "1 Tbsp salt",
+      "Dash of black pepper",
+      "672g shell pasta, cooked to 50% of box time",
+      "1 cup pasta water",
+      "400g plain 0% Greek yogurt (FAGE brand)",
+      "120g 1/3 fat cream cheese",
+      "Chopped cilantro and green onions",
+      "227 extra sharp cheddar",
+      "80g reduced fat mozzarella",
+      "1 tsp garam masala"
+    ],
+    "steps": [],
+    "tags": [
+      "stealthhealth",
+      "mealprep",
+      "highprotein",
+      "highproteinmealprep"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; heat settings and durations alone do not supply an explicit preparation instruction.",
+    "Accepted after series metadata and standalone slow-cooker heat timings stopped masquerading as ingredients."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "010-one-pan-creamy-lemon-and-garlic-salmon-orzo",
+  "queue_index": 10,
+  "platform": "instagram",
+  "creator": "Ben Chelin",
+  "source_url": "https://www.instagram.com/reel/DL0YtzShRgc/?igsh=MWdwdnNweDNkb3lvZQ==",
+  "source_text_kind": "description",
+  "source_text": "One-Pan Creamy Lemon & Garlic Salmon Orzo 🍋\n\nComment “Recipe” and I’ll send you the full recipe card for free!!\n\nMinimal effort, max flavor. Creamy, zesty, buttery… all in one pan.\n\nFor the Orzo:\n-1 tbsp olive oil\n-1/4 cup cooking wine, optional\n-1 large shallot, minced\n-7 garlic cloves, minced\n-1 cup orzo\n-2 1/4 cups low sodium chicken broth\n-1/2 cup heavy cream, room temperature\n-3 tbsp butter\n-1/2 cup parmesan cheese\n-Juice of 1/2 lemon\n-3 tbsp fresh chopped parsley, optional\n-1/2 cup mozzarella, optional\nFor the Salmon:\n-18 oz (540 g) salmon, cubed\n-2 tbsp olive oil\n-1 tsp each: salt, black pepper, garlic powder, Italian seasoning\n-2 tsp paprika\n-1 tbsp dijon mustard\n-1/2 lemon juiced\n-2 tbsp butter (baste)\n\n1. Remove the salmon skin, then cube into large bite-sized chunks and pat dry. Mix 1 tbsp olive oil, seasonings, Dijon, and lemon juice. Toss the salmon cubes in the marinade until well coated. Marinate for as long as you wish… I went straight to the pan, but hey, patience is a virtue.\n2. Heat a large pan with 2 tbsp olive oil over medium-high heat. Add the salmon and cook for 3–4 mins per side until a golden crust has formed. During the last 2–3 mins, baste with 2 tbsp of unsalted butter by spooning it over the fish.\n3. Remove salmon, deglaze pan with wine (if using), and cook off for 2 minutes. Add a splash of oil and butter, then sauté shallots 2–3 minutes. Add garlic for 1 minute, then toast orzo for 1–2 minutes.\n4. Pour in the broth and bring to a simmer then cover with a lid. Stir occasionally for about 10 minutes until the orzo is al dente and most of the liquid is absorbed. We want creamy, not soupy.\n5. Stir in the heavy cream, 2 tbsp of butter, mozzarella (if using), and parmesan. Let everything melt together into a creamy sauce. Add the lemon juice and parsley, then give it a good stir. Nestle the salmon cubes back on top of the orzo. Top off with a final flourish of parmesan and parsley.",
+  "expected": {
+    "name": "One-Pan Creamy Lemon & Garlic Salmon Orzo",
+    "servings": null,
+    "raw_ingredients": [
+      "1 tbsp olive oil",
+      "1/4 cup cooking wine, optional",
+      "1 large shallot, minced",
+      "7 garlic cloves, minced",
+      "1 cup orzo",
+      "2 1/4 cups low sodium chicken broth",
+      "1/2 cup heavy cream, room temperature",
+      "3 tbsp butter",
+      "1/2 cup parmesan cheese",
+      "Juice of 1/2 lemon",
+      "3 tbsp fresh chopped parsley, optional",
+      "1/2 cup mozzarella, optional",
+      "18 oz (540 g) salmon, cubed",
+      "2 tbsp olive oil",
+      "1 tsp each: salt, black pepper, garlic powder, Italian seasoning",
+      "2 tsp paprika",
+      "1 tbsp dijon mustard",
+      "1/2 lemon juiced",
+      "2 tbsp butter (baste)"
+    ],
+    "steps": [
+      "Remove the salmon skin, then cube into large bite-sized chunks and pat dry. Mix 1 tbsp olive oil, seasonings, Dijon, and lemon juice. Toss the salmon cubes in the marinade until well coated. Marinate for as long as you wish… I went straight to the pan, but hey, patience is a virtue.",
+      "Heat a large pan with 2 tbsp olive oil over medium-high heat. Add the salmon and cook for 3–4 mins per side until a golden crust has formed. During the last 2–3 mins, baste with 2 tbsp of unsalted butter by spooning it over the fish.",
+      "Remove salmon, deglaze pan with wine (if using), and cook off for 2 minutes. Add a splash of oil and butter, then sauté shallots 2–3 minutes. Add garlic for 1 minute, then toast orzo for 1–2 minutes.",
+      "Pour in the broth and bring to a simmer then cover with a lid. Stir occasionally for about 10 minutes until the orzo is al dente and most of the liquid is absorbed. We want creamy, not soupy.",
+      "Stir in the heavy cream, 2 tbsp of butter, mozzarella (if using), and parmesan. Let everything melt together into a creamy sauce. Add the lemon juice and parsley, then give it a good stir. Nestle the salmon cubes back on top of the orzo. Top off with a final flourish of parmesan and parsley."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output.",
+    "Accepted by the parser without another rule change."
+  ]
+}

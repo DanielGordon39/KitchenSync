@@ -1,0 +1,58 @@
+{
+  "id": "007-high-protein-chicken-egg-fried-rice",
+  "queue_index": 7,
+  "platform": "instagram",
+  "creator": "Jalal",
+  "source_url": "https://www.instagram.com/reel/CdBjEVZD1xq/?igsh=MXQyOTdkNGthdjJs",
+  "source_text_kind": "description",
+  "source_text": "High Protein Chicken Egg Fried Rice! 519 calories per serving - 58g protein / 46g carbs / 11.5g fat\n\nProbably the easiest meal you could make. This is perfect for weight loss, delicious and so easy to make! Another great example that you can eat lots of food for lower calories. I’ve also used this recipe many times for meal prep especially for those busy days!\n\nFor the chicken:\n\n• Cubed up chicken breast (300g raw weight)\n• 1 tsp olive oil\n• 1 tsp garlic powder\n• 1 tsp onion powder\n• 1 tsp black pepper\n• 1-2 tbsp soy sauce (i use 2 sometimes)\nMix well then cook on high heat for 4 mins each side and set aside\n\nFor cooking:\n\n• 120g mixed veg (carrots, sweetcorn, peas)\n• 1/2 cup chopped green onion + more for garnish\n• 1 whole egg + 2 egg whites\n• 280g cooked basmati rice\n• Extra soy sauce (1 tbsp)\n• 1 tsp sesame oil\nA great tip while this is all cooking, spray cooking spray over the pan and let it simmer. It will give that nice oily texture that fried rice normally has without the crazy calories\n\nServe and ENJOY!\n\nThis recipe gives 2 good servings\n\nCalories and macros per serving\n519 calories\n58g protein \n46g carbs\n11.5g fat\n\nHope you enjoy this one!\n.\n.\n.\n.\n#friedrice #eggfriedrice #chickenrecipes #healthyrecipes #chickenfriedrice #healthymeals #weightlossmeals #lowcalorie #easyrecipe #quickmeals #eathealthy #healthyeats #healthyfood #highprotein #mealprep #recipe #healthylunch #healthydinner",
+  "expected": {
+    "name": "High Protein Chicken Egg Fried Rice",
+    "servings": 2,
+    "raw_ingredients": [
+      "Cubed up chicken breast (300g raw weight)",
+      "1 tsp olive oil",
+      "1 tsp garlic powder",
+      "1 tsp onion powder",
+      "1 tsp black pepper",
+      "1-2 tbsp soy sauce (i use 2 sometimes)",
+      "120g mixed veg (carrots, sweetcorn, peas)",
+      "1/2 cup chopped green onion + more for garnish",
+      "1 whole egg + 2 egg whites",
+      "280g cooked basmati rice",
+      "Extra soy sauce (1 tbsp)",
+      "1 tsp sesame oil"
+    ],
+    "steps": [
+      "Mix well then cook on high heat for 4 mins each side and set aside",
+      "A great tip while this is all cooking, spray cooking spray over the pan and let it simmer. It will give that nice oily texture that fried rice normally has without the crazy calories",
+      "Serve and ENJOY!"
+    ],
+    "tags": [
+      "friedrice",
+      "eggfriedrice",
+      "chickenrecipes",
+      "healthyrecipes",
+      "chickenfriedrice",
+      "healthymeals",
+      "weightlossmeals",
+      "lowcalorie",
+      "easyrecipe",
+      "quickmeals",
+      "eathealthy",
+      "healthyeats",
+      "healthyfood",
+      "highprotein",
+      "mealprep",
+      "recipe",
+      "healthylunch",
+      "healthydinner"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; unnumbered direction lines are retained as instructions because they explicitly direct preparation and serving.",
+    "Accepted after general handling for nutrition suffixes in title lines, qualified serving phrases, and imperative or tip-prefaced instructions."
+  ]
+}

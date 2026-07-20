@@ -1,0 +1,47 @@
+{
+  "id": "001-one-pan-high-protein-mapo-tofu",
+  "queue_index": 1,
+  "platform": "instagram",
+  "creator": "Joe Chu",
+  "source_url": "https://www.instagram.com/reel/DZWy6GlSIV-/?igsh=bTd2b3J0MGE2YXl4",
+  "source_text_kind": "description",
+  "source_text": "⇩ Full Recipe 🌶️ ⇩\n\nMacros per serving:\nProtein: 46g\nCarbs: 17g\nFat: 15g\nCalories: 398\n\nIngredients per serving (makes 2 servings):\n- 1lb 90/10 lean ground beef\n- 2.5 tbsp garlic minced\n- 1 tbsp ginger minced\n- 2 tbsp doubanjiang (spicy bean paste)\n- 1 tbsp oyster sauce\n- 2 tsp soy sauce\n- 2 tsp Sichuan peppercorn\n- 1 tsp chicken bouillon powder\n- 1.5 tbsp cornstarch\n- 6 tbsp water\n- 15 oz silken tofu\n- 1 green onion\n\nHow to make it yourself:\n1. Thinly slice your green onions\n2. In a pan on medium heat, cook your ground beef and salt and pepper to taste\n3. Add in minced garlic, minced ginger, oyster sauce, doubanjiang paste, soy sauce, sichuan peppercorn, and chicken bouillon powder and mix.\n4. Mix together cornstarch and water to make a cornstarch slurry and slowly pour in the pan as your mix it in.\n5. Score your silken tofu into small cubes with a knife and add into the pan and gently stir until fully incorperated.\n6. Top off with green onions and enjoy!\n\n📩 Save this One Pan High Protein Mapo Tofu recipe to make for later and if you make it, post it and tag me in it! I’d love to see how you liked the recipe! :)\n\n#lowcalorie #highprotein #healthyrecipes #weightlossrecipes",
+  "expected": {
+    "name": "One Pan High Protein Mapo Tofu",
+    "servings": 2,
+    "raw_ingredients": [
+      "1lb 90/10 lean ground beef",
+      "2.5 tbsp garlic minced",
+      "1 tbsp ginger minced",
+      "2 tbsp doubanjiang (spicy bean paste)",
+      "1 tbsp oyster sauce",
+      "2 tsp soy sauce",
+      "2 tsp Sichuan peppercorn",
+      "1 tsp chicken bouillon powder",
+      "1.5 tbsp cornstarch",
+      "6 tbsp water",
+      "15 oz silken tofu",
+      "1 green onion"
+    ],
+    "steps": [
+      "Thinly slice your green onions",
+      "In a pan on medium heat, cook your ground beef and salt and pepper to taste",
+      "Add in minced garlic, minced ginger, oyster sauce, doubanjiang paste, soy sauce, sichuan peppercorn, and chicken bouillon powder and mix.",
+      "Mix together cornstarch and water to make a cornstarch slurry and slowly pour in the pan as your mix it in.",
+      "Score your silken tofu into small cubes with a knife and add into the pan and gently stir until fully incorperated.",
+      "Top off with green onions and enjoy!"
+    ],
+    "tags": [
+      "lowcalorie",
+      "highprotein",
+      "healthyrecipes",
+      "weightlossrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen caption; the baseline parser matched exactly.",
+    "Queue entry 2 repeated this URL and returned the same caption."
+  ]
+}

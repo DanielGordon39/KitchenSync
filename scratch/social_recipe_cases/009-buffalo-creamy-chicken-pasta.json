@@ -1,0 +1,39 @@
+{
+  "id": "009-buffalo-creamy-chicken-pasta",
+  "queue_index": 9,
+  "platform": "instagram",
+  "creator": "Kyle Smith",
+  "source_url": "https://www.instagram.com/reel/DGy7E1by5Ex/?igsh=dHJ1Y3Jzc2ZmdmRx",
+  "source_text_kind": "description",
+  "source_text": "Buffalo Creamy chicken pasta \nPart 1: MEAL PREPS FOR GYM RATS, hit me with a “ITS PROTEIN TIME” if you dig it. \nThe Perfect Macro-Friendly Meal Prep: Easy Buffalo Chicken Pasta. EMPHASIS ON EASY. \n\n🔥 Buffalo Creamy chicken pasta (7 Servings) \nGet ready for , creamy, spicy, and cheesy pasta that’s sure to WOW your taste buds! Perfectly balanced with protein, bacon, and a zesty buffalo kick!\nIngredients:\n* 32oz skinless raw chicken breast\n* Garlic, salt, pepper, paprika (to taste)\n* 11.5oz Barilla protein pasta\n* 1 cup Frank’s Red Hot Buffalo Sauce\n* 2 cups fat-free evaporated milk\n* 1.5 cups chicken broth (or stock)\n* 50g 1/3 reduced fat cream cheese\n* 200g reduced fat cheddar cheese\n* 7 slices center-cut bacon\nSteps:\n1. Cook the Bacon: In a large pan, cook the 7 slices of center-cut bacon until crispy. Remove and set aside, leaving a bit of bacon grease in the pan for extra flavor. Crumble the bacon once cooled.\n2. Griddle the Chicken: Season the chicken breasts with garlic, salt, pepper, and paprika. Grill them on the griddle over medium-high heat until golden and cooked through (about 6-7 minutes per side). Once done, chop into bite-sized pieces.\n3. Cook the Pasta: While the chicken is grilling, cook the Barilla protein pasta according to package instructions. Drain and set aside.\n4. Make the Creamy Buffalo Sauce: In the same pan (with the bacon grease), combine the Frank’s Red Hot Buffalo Sauce, evaporated milk, and chicken broth. Bring to a simmer and stir in the reduced-fat cream cheese. Let it melt and thicken, creating a creamy sauce (about 5 minutes).\n5. Add the Cheese: Stir in the reduced-fat cheddar cheese until melted and the sauce is smooth and creamy.\n6. Combine & Serve: Add the cooked pasta, chicken, and crumbled bacon to the creamy buffalo sauce. Toss everything together to coat evenly. Serve hot and garnish with extra crumbled bacon if you like!\nYOU CAN DO IT. \n\n527 cals, 58g protein 36 carbs 17 fat",
+  "expected": {
+    "name": "Buffalo Creamy chicken pasta",
+    "servings": 7,
+    "raw_ingredients": [
+      "32oz skinless raw chicken breast",
+      "Garlic, salt, pepper, paprika (to taste)",
+      "11.5oz Barilla protein pasta",
+      "1 cup Frank’s Red Hot Buffalo Sauce",
+      "2 cups fat-free evaporated milk",
+      "1.5 cups chicken broth (or stock)",
+      "50g 1/3 reduced fat cream cheese",
+      "200g reduced fat cheddar cheese",
+      "7 slices center-cut bacon"
+    ],
+    "steps": [
+      "Cook the Bacon: In a large pan, cook the 7 slices of center-cut bacon until crispy. Remove and set aside, leaving a bit of bacon grease in the pan for extra flavor. Crumble the bacon once cooled.",
+      "Griddle the Chicken: Season the chicken breasts with garlic, salt, pepper, and paprika. Grill them on the griddle over medium-high heat until golden and cooked through (about 6-7 minutes per side). Once done, chop into bite-sized pieces.",
+      "Cook the Pasta: While the chicken is grilling, cook the Barilla protein pasta according to package instructions. Drain and set aside.",
+      "Make the Creamy Buffalo Sauce: In the same pan (with the bacon grease), combine the Frank’s Red Hot Buffalo Sauce, evaporated milk, and chicken broth. Bring to a simmer and stir in the reduced-fat cream cheese. Let it melt and thicken, creating a creamy sauce (about 5 minutes).",
+      "Add the Cheese: Stir in the reduced-fat cheddar cheese until melted and the sauce is smooth and creamy.",
+      "Combine & Serve: Add the cooked pasta, chicken, and crumbled bacon to the creamy buffalo sauce. Toss everything together to coat evenly. Serve hot and garnish with extra crumbled bacon if you like!"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output.",
+    "Accepted by the parser without another rule change."
+  ]
+}

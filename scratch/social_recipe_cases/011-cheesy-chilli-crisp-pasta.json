@@ -1,0 +1,42 @@
+{
+  "id": "011-cheesy-chilli-crisp-pasta",
+  "queue_index": 11,
+  "platform": "instagram",
+  "creator": "Jess & Dan | Tofu Club",
+  "source_url": "https://www.instagram.com/reel/DNV9Yj7I03T/?igsh=MTZvanUxcDB6NjBmaQ==",
+  "source_text_kind": "description",
+  "source_text": "CHEESY CHILLI CRISP PASTA? 🧀🌶️ Follow @vegan_punks for everything tofu + grab the recipe below.\n\nWhoever hits re-post and adds the best name suggestion to the notes gets 6 months of Tofu Club! And no Cheesy McPasta Face isn’t going to cut it!\n\nAnd huge inspo credit to @craigamorrison especially for the marbling chilli crisp tip 🔥\n\nHere’s the recipe though:\n\nINGREDIENTS (serves 2)\n\n200g pasta\n2 tbsp margarine\n1 tbsp flour\n200ml soy milk\n200g silken tofu\n1/4 cup nutritional yeast\n0.5 tsp apple cider vinegar\n0.5 tsp garlic granules\n0.25 tsp onion granules\n2 tbsp chilli crisp\n\nTo serve:\n\nChives\nSesame seeds\n\nINSTRUCTIONS\n\n1. Put a pan of water on to boil and cook your pasta according to the packet instructions until al dente.\n2. Pop your silken tofu and soy milk into a blender and blitz for a few seconds until smooth.\n3. Throw the margarine into a pan over a medium heat until melted, then whisk in the flour and, once combined, pour in a little of the soy/tofu liquid while whisking to make sure the sauce is smooth. Keep adding a little of the liquid at a time until it’s all whisked in and you have a nice smooth sauce.\n4. Bring the sauce to a low simmer and add the nutritional yeast, ACV, garlic and onion granules to the sauce and whisk until the nutritional yeast is dissolved and combined. At this point if the sauce looks too thick, add a little of the pasta water to loosen it up.\n5. Finish the sauce by adding the chilli crisp, but only stir it a few times if you want that nice marbled effect like in the video.\n6. You can either stir the cooked pasta into the sauce directly in the pan, or mix it in the bowl. Then top with plenty of fresh chives and sesame seeds.",
+  "expected": {
+    "name": "CHEESY CHILLI CRISP PASTA",
+    "servings": 2,
+    "raw_ingredients": [
+      "200g pasta",
+      "2 tbsp margarine",
+      "1 tbsp flour",
+      "200ml soy milk",
+      "200g silken tofu",
+      "1/4 cup nutritional yeast",
+      "0.5 tsp apple cider vinegar",
+      "0.5 tsp garlic granules",
+      "0.25 tsp onion granules",
+      "2 tbsp chilli crisp",
+      "Chives",
+      "Sesame seeds"
+    ],
+    "steps": [
+      "Put a pan of water on to boil and cook your pasta according to the packet instructions until al dente.",
+      "Pop your silken tofu and soy milk into a blender and blitz for a few seconds until smooth.",
+      "Throw the margarine into a pan over a medium heat until melted, then whisk in the flour and, once combined, pour in a little of the soy/tofu liquid while whisking to make sure the sauce is smooth. Keep adding a little of the liquid at a time until it’s all whisked in and you have a nice smooth sauce.",
+      "Bring the sauce to a low simmer and add the nutritional yeast, ACV, garlic and onion granules to the sauce and whisk until the nutritional yeast is dissolved and combined. At this point if the sauce looks too thick, add a little of the pasta water to loosen it up.",
+      "Finish the sauce by adding the chilli crisp, but only stir it a few times if you want that nice marbled effect like in the video.",
+      "You can either stir the cooked pasta into the sauce directly in the pan, or mix it in the bowl. Then top with plenty of fresh chives and sesame seeds."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output.",
+    "Accepted after social follow text was removed from title lines and short bare ingredient lists under component headings were distinguished from nutrition blocks."
+  ]
+}

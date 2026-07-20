@@ -1,0 +1,49 @@
+{
+  "id": "013-gochujang-and-coconut-chicken",
+  "queue_index": 13,
+  "platform": "instagram",
+  "creator": "Bella | Cooking Made Easy 🍝",
+  "source_url": "https://www.instagram.com/reel/DWOBD5QDXeU/?igsh=MXA5NTlybXN5NDM1aw==",
+  "source_text_kind": "description",
+  "source_text": "Weeknight meals Episode 17/ Gochujang & coconut chicken 🌶️\n\nIf you hadn’t noticed, I LOVE coconut milk. \n\nIngredients \n6 chicken thighs, deboned \n@lachinatasmokedpaprika 3 tsp paprika\nPinch of MSG \n1 tsp ginger powder \n2 tsp gochugaru flakes \n1 400ml tin coconut milk \n1 small red onion, diced\n3 cloves of garlic, diced \n1 tablespoon tomato paste \n1 tablespoon Gochujang paste \n1 lime leaf \n@wearegoodphats avocado oil \n1/4 juice of lime per person \nCoriander, optional \n\n1) get the chicken marinated in the above powdered spices with a bit of oil to help combine. Leave to marinate while you prep your onions and garlic. \n2) in a shallow pan, heat some oil and fry the chicken on medium heat, skin side down, until the skin is crispy. Flip and cook for a further few minutes. Don’t worry if it’s not cooked all the way through. \n3) remove the chicken from the pan but leave the juices. Add in the onion, tomato paste, Gochujang paste and cook for 5 minutes until jammy. Add the garlic and cook for a further two minutes. \n4) pour in the entire gin of coconut milk, add the lime leaf and let it come to a simmer. Chicken goes back in, cook for a further ten minutes or until the chicken is cooked through. \n5) serve with rice, lime and coriander. \n\n#chickenrecipes #chickenandrice #easymeals #easyrecipe #weeknightdinner",
+  "expected": {
+    "name": "Gochujang & coconut chicken",
+    "servings": null,
+    "raw_ingredients": [
+      "6 chicken thighs, deboned",
+      "@lachinatasmokedpaprika 3 tsp paprika",
+      "Pinch of MSG",
+      "1 tsp ginger powder",
+      "2 tsp gochugaru flakes",
+      "1 400ml tin coconut milk",
+      "1 small red onion, diced",
+      "3 cloves of garlic, diced",
+      "1 tablespoon tomato paste",
+      "1 tablespoon Gochujang paste",
+      "1 lime leaf",
+      "@wearegoodphats avocado oil",
+      "1/4 juice of lime per person",
+      "Coriander, optional"
+    ],
+    "steps": [
+      "get the chicken marinated in the above powdered spices with a bit of oil to help combine. Leave to marinate while you prep your onions and garlic.",
+      "in a shallow pan, heat some oil and fry the chicken on medium heat, skin side down, until the skin is crispy. Flip and cook for a further few minutes. Don’t worry if it’s not cooked all the way through.",
+      "remove the chicken from the pan but leave the juices. Add in the onion, tomato paste, Gochujang paste and cook for 5 minutes until jammy. Add the garlic and cook for a further two minutes.",
+      "pour in the entire gin of coconut milk, add the lime leaf and let it come to a simmer. Chicken goes back in, cook for a further ten minutes or until the chicken is cooked through.",
+      "serve with rice, lime and coriander."
+    ],
+    "tags": [
+      "chickenrecipes",
+      "chickenandrice",
+      "easymeals",
+      "easyrecipe",
+      "weeknightdinner"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output; creator handles are preserved because raw ingredient evidence is frozen as written.",
+    "Accepted after a general series-and-episode title prefix was removed from the recipe name."
+  ]
+}

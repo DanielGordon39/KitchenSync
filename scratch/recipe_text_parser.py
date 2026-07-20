@@ -59,24 +59,37 @@ NUTRITION_HEADING = re.compile(
     re.IGNORECASE,
 )
 NUTRITION_VALUE = re.compile(
-    r"^(protein|carb(?:ohydrate)?s?|fat|calories?|fiber|fibre|sugar|sodium)"
-    r"\s*:?\s*\d",
+    r"^(?:(protein|carb(?:ohydrate)?s?|fat|calories?|fiber|fibre|sugar|sodium)"
+    r"\s*:?\s*\d|\d+(?:\.\d+)?\s*(?:calories?|k?cal)\b)",
     re.IGNORECASE,
 )
 BULLET_ITEM = re.compile(r"^(?P<marker>[-*•])\s*(?P<content>.*)$")
+BRACKETED_HEADING = re.compile(r"^\[[^\[\]]{1,40}\]$")
+INGREDIENT_HEADING = re.compile(
+    r"^ingredients?\b(?:\s*\([^)]*\))?\s*:?$",
+    re.IGNORECASE,
+)
+TIP_LINE = re.compile(r"^tip(?:\s+\d+)?:\s+\S", re.IGNORECASE)
+SERIES_METADATA = re.compile(r"\bseries\b|^episode\s+\d+\b", re.IGNORECASE)
+COOK_SETTING = re.compile(
+    r"^(?:high|low)\s*:\s*.+\b(?:hours?|minutes?|mins?)\b",
+    re.IGNORECASE,
+)
 IMPERATIVE_START = re.compile(
-    r"^(?:add|bake|blend|boil|brown|chop|combine|cook|fold|heat|mix|pour|"
-    r"preheat|roast|season|serve|simmer|slice|stir|top|whisk)\b",
+    r"^(?:(?:a\s+(?:great\s+)?|pro\s+)?tip\b.*?,\s*)?"
+    r"(?:add|bake|blend|boil|brown|chop|combine|cook|fold|heat|mix|pour|"
+    r"preheat|roast|season|serve|simmer|slice|spray|stir|top|whisk)\b",
     re.IGNORECASE,
 )
 INSTRUCTION_HEADINGS = ("directions", "how to", "instructions", "method", "steps")
 SERVINGS_CUE = re.compile(
-    r"\b(?:makes?|serves?)\s+\d+\b|\b\d+\s+servings?\b",
+    r"\b(?:makes?|serves?)\s+\d+\b|"
+    r"\b\d+(?:\s+(?!per\b)\w+){0,2}\s+servings?\b",
     re.IGNORECASE,
 )
 SERVINGS_VALUE = re.compile(
     r"\b(?:makes?|serves?)\s+(?P<first>\d+)\b|"
-    r"\b(?P<second>\d+)\s+servings?\b",
+    r"\b(?P<second>\d+)(?:\s+(?!per\b)\w+){0,2}\s+servings?\b",
     re.IGNORECASE,
 )
 SAVE_RECIPE_NAME = re.compile(
@@ -164,14 +177,38 @@ def analyze_line(line_number: int, text: str) -> LineAnalysis:
         return LineAnalysis(line_number=line_number, text=text, evidence=evidence)
 
     is_nutrition_heading = bool(NUTRITION_HEADING.fullmatch(text))
-    is_nutrition_value = bool(NUTRITION_VALUE.match(text))
-    mentions_nutrition = "nutrition" in folded or "macro" in folded
-    is_heading = is_nutrition_heading or text.endswith(":") or (
-        len(text) <= 40
-        and bool(RECIPE_WORD.search(text))
-        and not text.endswith((".", "!", "?"))
+    nutrition_term_count = sum(
+        term in folded for term in ("calorie", "protein", "carb", "fat")
     )
-    is_instruction = bool(NUMBERED_INSTRUCTION.match(text))
+    is_nutrition_value = bool(NUTRITION_VALUE.match(text)) or (
+        any(character.isdigit() for character in text)
+        and nutrition_term_count >= 2
+    )
+    mentions_nutrition = bool(re.search(r"\bnutrition\b|\bmacros?\b", folded))
+    is_servings_value = bool(SERVINGS_CUE.search(text))
+    is_series_metadata = bool(SERIES_METADATA.search(text))
+    is_cook_setting = bool(COOK_SETTING.match(text))
+    is_heading = (
+        is_nutrition_heading
+        or bool(BRACKETED_HEADING.fullmatch(text))
+        or bool(INGREDIENT_HEADING.fullmatch(text))
+        or (
+            len(text) <= 40
+            and sum(character.isalpha() for character in text) >= 3
+            and text == text.upper()
+        )
+        or text.endswith(":")
+        or (
+            len(text) <= 40
+            and bool(RECIPE_WORD.search(text))
+            and not text.endswith((".", "!", "?"))
+        )
+    )
+    is_instruction = bool(
+        NUMBERED_INSTRUCTION.match(text)
+        or IMPERATIVE_START.match(text)
+        or TIP_LINE.match(text)
+    )
 
     if is_heading:
         evidence["heading"] = 1.0
@@ -188,11 +225,26 @@ def analyze_line(line_number: int, text: str) -> LineAnalysis:
     elif mentions_nutrition:
         evidence["nutrition"] = 0.2
         evidence["narrative"] = 1.0
+    if is_servings_value:
+        evidence["servings"] = 1.0
+    if is_series_metadata:
+        evidence["metadata"] = 1.0
+    if is_cook_setting:
+        evidence["timing"] = 1.0
     if text.startswith("#"):
         evidence["tag"] = 1.0
 
     ingredient_text = bullet_content if bullet_content is not None else text
-    semantic_evidence = {"divider", "heading", "instruction", "nutrition", "tag"}
+    semantic_evidence = {
+        "divider",
+        "heading",
+        "instruction",
+        "metadata",
+        "nutrition",
+        "servings",
+        "tag",
+        "timing",
+    }
     if not semantic_evidence.intersection(evidence):
         parsed_ingredient = _parse_ingredient(ingredient_text)
         if bullet_match:
@@ -202,7 +254,11 @@ def analyze_line(line_number: int, text: str) -> LineAnalysis:
             else:
                 evidence["ingredient"] = 0.2
                 evidence["instruction"] = 0.8
-        elif parsed_ingredient is not None and parsed_ingredient.amount:
+        elif (
+            len(text) <= 100
+            and parsed_ingredient is not None
+            and parsed_ingredient.amount
+        ):
             evidence["ingredient"] = 0.7
 
     if not evidence:
@@ -337,6 +393,8 @@ def _field_candidate(block: list[LineAnalysis]) -> RecipeFieldCandidate | None:
 
     if _looks_like_ingredient_component(block):
         field_scores["ingredients"] = max(field_scores.get("ingredients", 0.0), 0.6)
+    if _looks_like_bare_ingredient_list(block):
+        field_scores["ingredients"] = max(field_scores.get("ingredients", 0.0), 0.6)
     if block[0].line_number == 1 and len(block[0].text) <= 100:
         field_scores["name"] = 0.7
     elif any(RECIPE_WORD.search(line.text) for line in block):
@@ -374,6 +432,29 @@ def _looks_like_ingredient_component(block: list[LineAnalysis]) -> bool:
     return ingredient_like / len(body) >= 0.6
 
 
+def _looks_like_bare_ingredient_list(block: list[LineAnalysis]) -> bool:
+    if len(block) < 2:
+        return False
+    if any(
+        BULLET_ITEM.match(line.text)
+        or line.evidence.get("heading", 0.0) >= 0.8
+        or line.evidence.get("nutrition", 0.0) >= 0.2
+        or line.evidence.get("servings", 0.0) >= 0.2
+        or line.evidence.get("instruction", 0.0) >= 0.5
+        or line.evidence.get("metadata", 0.0) >= 0.5
+        or line.evidence.get("tag", 0.0) >= 0.5
+        or line.evidence.get("timing", 0.0) >= 0.5
+        or line.text.endswith((".", "!", "?"))
+        or len(line.text) > 60
+        for line in block
+    ):
+        return False
+    return all(
+        _is_good_ingredient_parse(_parse_ingredient(line.text), line.text)
+        for line in block
+    )
+
+
 def _dominant_field(candidate: RecipeFieldCandidate) -> str:
     return max(candidate.field_scores, key=candidate.field_scores.get)
 
@@ -404,26 +485,71 @@ def _recipe_name(line_analyses: list[LineAnalysis]) -> str | None:
         if match:
             return _clean_recipe_name(match.group("name"))
 
-    first_content = next((line.text for line in line_analyses if line.text), None)
-    if first_content is None:
-        return None
-    name = _clean_recipe_name(first_content)
-    if name.casefold() in {
+    generic_names = {
         "directions",
         "full",
         "full recipe",
+        "here is the",
+        "here’s the",
         "ingredient",
         "ingredients",
         "instructions",
         "method",
         "recipe",
         "steps",
-    }:
-        return None
-    return name or None
+    }
+    for line in line_analyses:
+        if not line.text or BULLET_ITEM.match(line.text):
+            continue
+        name = _clean_recipe_name(line.text)
+        if not name or name.casefold() in generic_names:
+            continue
+        suffix_was_removed = name != _clean_recipe_name_without_nutrition(line.text)
+        if not suffix_was_removed and any(
+            line.evidence.get(concept, 0.0) >= 0.8
+            for concept in (
+                "ingredient",
+                "instruction",
+                "metadata",
+                "nutrition",
+                "servings",
+                "tag",
+                "timing",
+            )
+        ):
+            continue
+        if line.text.endswith((".", "!", "?")) and not suffix_was_removed:
+            continue
+        if len(name) <= 80 and len(name.split()) <= 8:
+            return name
+    return None
 
 
 def _clean_recipe_name(text: str) -> str:
+    text = re.sub(
+        r"^.*?\bepisode\s+\d+\s*[/|:–—-]\s*",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"[?!.]\s+.*\bfollow\s+@\w+.*$",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"[.!?]?\s+\d+(?:\.\d+)?\s*(?:calories?|k?cal)\b.*$",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\s+recipe\b.*$", "", text.strip(), flags=re.IGNORECASE)
+    text = re.sub(r"^[^\w]+|[^\w]+$", "", text)
+    return " ".join(text.split())
+
+
+def _clean_recipe_name_without_nutrition(text: str) -> str:
     text = re.sub(r"\s+recipe\b.*$", "", text.strip(), flags=re.IGNORECASE)
     text = re.sub(r"^[^\w]+|[^\w]+$", "", text)
     return " ".join(text.split())
@@ -464,17 +590,44 @@ def _field_content(
     *,
     field: str,
 ) -> list[str]:
-    line_numbers = {
-        line_number
-        for candidate in field_candidates
-        if candidate.field_scores.get(field, 0.0) >= 0.5
-        for line_number in candidate.line_numbers
+    contextual_ingredient_lines = {
+        line.line_number
+        for block, _ in _context_blocks(line_analyses)
+        if (
+            block[0].evidence.get("heading", 0.0) >= 0.8
+            and block[0].evidence.get("ingredient", 0.0) >= 0.8
+        )
+        or _looks_like_ingredient_component(block)
+        or _looks_like_bare_ingredient_list(block)
+        for line in block
     }
+    if field == "steps":
+        line_numbers = {
+            line.line_number
+            for line in line_analyses
+            if line.evidence.get("instruction", 0.0) >= 0.5
+        }
+    else:
+        line_numbers = {
+            line_number
+            for candidate in field_candidates
+            if candidate.field_scores.get(field, 0.0) >= 0.5
+            and (field != "ingredients" or len(candidate.line_numbers) >= 2)
+            for line_number in candidate.line_numbers
+        }
     values = []
     for line in line_analyses:
         if line.line_number not in line_numbers:
             continue
         if line.evidence.get("heading", 0.0) >= 0.8:
+            continue
+        if (
+            field == "ingredients"
+            and line.evidence.get("ingredient", 0.0) < 0.5
+            and line.line_number not in contextual_ingredient_lines
+        ):
+            continue
+        if field == "steps" and line.evidence.get("instruction", 0.0) < 0.5:
             continue
         text = line.text
         bullet_match = BULLET_ITEM.match(text)
@@ -490,8 +643,6 @@ def _field_content(
 def _recipe_tags(field_candidates: list[RecipeFieldCandidate]) -> list[str]:
     tags = []
     for candidate in field_candidates:
-        if candidate.field_scores.get("tags", 0.0) < 0.5:
-            continue
         for line in candidate.lines:
             for match in HASHTAG.finditer(line):
                 tag = match.group("tag").casefold()
@@ -597,12 +748,21 @@ assert analyze_line(1, "Macros per serving:").evidence == {
     "nutrition": 1.0,
 }
 assert analyze_line(1, "Protein: 46g").evidence == {"nutrition": 1.0}
+assert analyze_line(1, "548 Calories | 51g Protein").evidence == {"nutrition": 1.0}
+assert analyze_line(1, "Mix well and cook for 4 minutes.").evidence == {
+    "instruction": 1.0
+}
 assert analyze_line(1, "See the printable recipe for nutrition info.").evidence == {
     "heading": 0.2,
     "nutrition": 0.2,
     "narrative": 1.0,
 }
 assert analyze_line(1, "#dinner easyrecipe").evidence == {"tag": 1.0}
+assert analyze_line(1, "[Garnish]").evidence == {"heading": 1.0}
+assert analyze_line(1, "INSTRUCTIONS").evidence == {
+    "heading": 1.0,
+    "instruction": 1.0,
+}
 
 _context_example = parse_recipe_text(
     "Ingredients:\n-1 cup rice\n\nInstructions:\n•Mix the rice.\n\n•Serve warm.\n\n#dinner"

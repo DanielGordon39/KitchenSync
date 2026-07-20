@@ -46,6 +46,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_URL_FILE,
         help="Text file with one social-media recipe URL per line.",
     )
+    parser.add_argument(
+        "--index",
+        type=int,
+        help="Process one 1-based queue entry instead of the complete file.",
+    )
+    parser.add_argument(
+        "--acquire-only",
+        action="store_true",
+        help="Print source evidence without running the text parser.",
+    )
     return parser
 
 
@@ -196,9 +206,15 @@ def main() -> None:
     if not urls:
         raise SystemExit(f"No recipe URLs found in {args.url_file}")
 
-    for index, url in enumerate(urls, start=1):
+    indexed_urls = list(enumerate(urls, start=1))
+    if args.index is not None:
+        if not 1 <= args.index <= len(urls):
+            raise SystemExit(f"--index must be between 1 and {len(urls)}")
+        indexed_urls = [indexed_urls[args.index - 1]]
+
+    for index, url in indexed_urls:
         print("\n" + "=" * 100)
-        print(f"Recipe {index}/{len(urls)} [{identify_platform(url)}]")
+        print(f"Queue entry {index}/{len(urls)} [{identify_platform(url)}]")
         print(url)
         print("=" * 100)
 
@@ -209,6 +225,9 @@ def main() -> None:
             continue
 
         print_recipe_evidence(source_info)
+
+        if args.acquire_only:
+            continue
 
         description = source_info.get("description")
         if not isinstance(description, str) or not description.strip():

@@ -1,0 +1,51 @@
+{
+  "id": "003-taiwanese-beef-kelp-noodle-soup",
+  "queue_index": 3,
+  "platform": "instagram",
+  "creator": "Joe Chu",
+  "source_url": "https://www.instagram.com/reel/Dalrd2uSgUR/?igsh=YmVsNm9jMmJvZjkz",
+  "source_text_kind": "description",
+  "source_text": "⇩ Full Recipe 🍲 ⇩\n\nMacros per serving:\nProtein: 73g\nCarbs: 25g\nFat: 9g\nCalories: 485\n\nIngredients per serving:\n- 7 oz beef shank, raw\n- 1/4 yellow onion\n- 1 tomato\n- 2.5 tbsp minced garlic\n- 1 tbsp minced ginger\n- 1/2 tbsp tomato paste\n- 1/2 tbsp doubanjiang paste\n- 2 tbsp soy sauce\n- 2 cups cup beef bone broth\n- 2 tsp five spice powder\n\n[Noodles]\n- 1.5 tbsp lemon juice\n- 2/3 tbsp baking soda\n- 6oz kelp noodles\n\n[Garnish]\n- 1 baby bok choy\n- 1 green onion\n\nHow to make it yourself:\n\n1. In a pot add in your beef shank, yellow onion, tomato, minced garlic, minced ginger, tomato paste, doubanjiang paste, soy sauce, beef bone broth, and 5 spice powder\n2. Let it simmer for 25-40 minutes, or until the beef becomes tender enough that it breaks apart easily\n3. In a bowl, mix your kelp noodles with baking soda and lemon juice and let marinate for 10 minutes. Then rinse the noodles with running water and let it sit for 15 minutes before completely draining. \n4. Once ready, drain the broth and set aside the tomato, ginger, onion, and beef to cool\n5. Slice the beef into cubes\n6. In a bowl, add your noodles, your broth, your sliced beef, and top it off with bok choy and diced green onion and enjoy!\n\n📩 Save this Taiwanese Beef Kelp Noodle Soup recipe to make for later and if you make it, post it and tag me in it! I’d love to see how you liked the recipe :)\n\n#highprotein #lowcalorie #asianfood #dietfriendly #weightlossrecipes",
+  "expected": {
+    "name": "Taiwanese Beef Kelp Noodle Soup",
+    "servings": null,
+    "raw_ingredients": [
+      "7 oz beef shank, raw",
+      "1/4 yellow onion",
+      "1 tomato",
+      "2.5 tbsp minced garlic",
+      "1 tbsp minced ginger",
+      "1/2 tbsp tomato paste",
+      "1/2 tbsp doubanjiang paste",
+      "2 tbsp soy sauce",
+      "2 cups cup beef bone broth",
+      "2 tsp five spice powder",
+      "1.5 tbsp lemon juice",
+      "2/3 tbsp baking soda",
+      "6oz kelp noodles",
+      "1 baby bok choy",
+      "1 green onion"
+    ],
+    "steps": [
+      "In a pot add in your beef shank, yellow onion, tomato, minced garlic, minced ginger, tomato paste, doubanjiang paste, soy sauce, beef bone broth, and 5 spice powder",
+      "Let it simmer for 25-40 minutes, or until the beef becomes tender enough that it breaks apart easily",
+      "In a bowl, mix your kelp noodles with baking soda and lemon juice and let marinate for 10 minutes. Then rinse the noodles with running water and let it sit for 15 minutes before completely draining.",
+      "Once ready, drain the broth and set aside the tomato, ginger, onion, and beef to cool",
+      "Slice the beef into cubes",
+      "In a bowl, add your noodles, your broth, your sliced beef, and top it off with bok choy and diced green onion and enjoy!"
+    ],
+    "tags": [
+      "highprotein",
+      "lowcalorie",
+      "asianfood",
+      "dietfriendly",
+      "weightlossrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled before the parser baseline; per-serving wording does not state a reliable total yield.",
+    "Accepted after the general structural rule that bracketed ingredient subsection labels are headings."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "004-creamy-chipotle-chicken-and-potatoes",
+  "queue_index": 4,
+  "platform": "instagram",
+  "creator": "Jalal",
+  "source_url": "https://www.instagram.com/reel/DXHxRQagimX/?igsh=NGw0cDh0ZXBjejJr",
+  "source_text_kind": "description",
+  "source_text": "Creamy Chipotle Chicken & Potatoes🍗🍟🧀\n\nOne of the most indulgent meal prep recipes, so creamy, rich in flavour and packed with protein. Using a sheet pan is a game changer for batch cooking🔥\n\nMacros Per Serving (6 Total)\n\n548 Calories | 51g Protein | 52g Carbs | 17g Fat\n\nIngredients (Makes 6 Servings)\n\nChipotle Chicken Marinade\n- 1200g Raw Boneless Chicken Thighs, trim excess fat\n- 2.5 Tsp Salt\n- 3 Tsp Parsley\n- 3 Tsp Garlic Powder\n- 3 Tsp Smoked Paprika\n- 2.5 Tsp Cumin\n- 3 Tsp Onion Powder\n- 100g Chipotle Paste\n- 1 and 1/2 Limes, juiced\n- 30g or 6 Tsp Olive Oil\nLet this marinate overnight if possible, way more flavor!\n\nCrispy Seasoned Potatoes\n- 1300g Raw Yellow Potatoes, cubed\n- 2.5 Tsp Garlic Powder\n- 3 Tsp Italian Herbs\n- 3 Tsp Smoked Paprika\n- 2.5 Tsp Onion Powder\n- Avocado Cooking Spray, heavy pass\n\nCreamy Chipotle Sauce\n- 20g Light Butter\n- 150-200g Red Onion, finely chopped\n- 1.5 Tsp Salt\n- 2 Tsp Italian Herbs\n- 60-80g Chipotle Paste (depends how spicy you want it)\n- 400g Light Evaporated Milk\n- 110g Light Cream Cheese\n- Freshly Chopped Parsley, garnish\n\n👨‍🍳 Cooking Instructions\n\n1. Trim excess fat from chicken thighs. Add seasonings, chipotle paste, lime juice, and olive oil. Mix well and marinate.\n2. Heat a large pan on low, add butter and chopped red onion. Cook for 5-7 mins until softened and lightly browned. Add seasonings and chipotle paste, mix, and cook for another 5 mins until caramelised.\n3. Keep the heat low, add evaporated milk and cream cheese. Stir continuously until smooth, rich, and creamy.\n4. Cube up potatoes, add seasoning and cooking spray, then mix well. Spread on a lined sheet pan and roast at 200C / 390F for 25 mins until golden and crispy. Season with salt, then fold into the sauce with fresh parsley until fully coated.\n5. Spread marinated chicken on sheet pan, oven bake 25 mins 200C / 390F until golden and juicy. Cut into cubes, serve with creamy potatoes and ENJOY!\n.\n.\n.\n.\n#chipotle #chipotlechicken #chickenrecipes #potatoes #highprotein #mealprep #healthyrecipes #weightloss #easyrecipes #lowcalorie #jalalsamfit",
+  "expected": {
+    "name": "Creamy Chipotle Chicken & Potatoes",
+    "servings": 6,
+    "raw_ingredients": [
+      "1200g Raw Boneless Chicken Thighs, trim excess fat",
+      "2.5 Tsp Salt",
+      "3 Tsp Parsley",
+      "3 Tsp Garlic Powder",
+      "3 Tsp Smoked Paprika",
+      "2.5 Tsp Cumin",
+      "3 Tsp Onion Powder",
+      "100g Chipotle Paste",
+      "1 and 1/2 Limes, juiced",
+      "30g or 6 Tsp Olive Oil",
+      "1300g Raw Yellow Potatoes, cubed",
+      "2.5 Tsp Garlic Powder",
+      "3 Tsp Italian Herbs",
+      "3 Tsp Smoked Paprika",
+      "2.5 Tsp Onion Powder",
+      "Avocado Cooking Spray, heavy pass",
+      "20g Light Butter",
+      "150-200g Red Onion, finely chopped",
+      "1.5 Tsp Salt",
+      "2 Tsp Italian Herbs",
+      "60-80g Chipotle Paste (depends how spicy you want it)",
+      "400g Light Evaporated Milk",
+      "110g Light Cream Cheese",
+      "Freshly Chopped Parsley, garnish"
+    ],
+    "steps": [
+      "Trim excess fat from chicken thighs. Add seasonings, chipotle paste, lime juice, and olive oil. Mix well and marinate.",
+      "Heat a large pan on low, add butter and chopped red onion. Cook for 5-7 mins until softened and lightly browned. Add seasonings and chipotle paste, mix, and cook for another 5 mins until caramelised.",
+      "Keep the heat low, add evaporated milk and cream cheese. Stir continuously until smooth, rich, and creamy.",
+      "Cube up potatoes, add seasoning and cooking spray, then mix well. Spread on a lined sheet pan and roast at 200C / 390F for 25 mins until golden and crispy. Season with salt, then fold into the sauce with fresh parsley until fully coated.",
+      "Spread marinated chicken on sheet pan, oven bake 25 mins 200C / 390F until golden and juicy. Cut into cubes, serve with creamy potatoes and ENJOY!"
+    ],
+    "tags": [
+      "chipotle",
+      "chipotlechicken",
+      "chickenrecipes",
+      "potatoes",
+      "highprotein",
+      "mealprep",
+      "healthyrecipes",
+      "weightloss",
+      "easyrecipes",
+      "lowcalorie",
+      "jalalsamfit"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen description before inspecting this case's parser output.",
+    "Accepted after field extraction began requiring matching line-level evidence and literal hashtags were collected independent of block score."
+  ]
+}
