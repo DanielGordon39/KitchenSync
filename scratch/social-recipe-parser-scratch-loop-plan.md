@@ -1,5 +1,10 @@
 # Social Recipe Parser Scratch Loop Plan
 
+> Status: Phase 1 completed its technical gate with 13 queue attempts, 12
+> unique usable Instagram cases, 100% complete coverage, 100% complete
+> precision, and 100% fallback correctness. The follow-on pass is defined in
+> `scratch/social-recipe-parser-instagram-expansion-plan.md`.
+
 ## Purpose
 
 Develop and evaluate a deterministic social-media recipe text parser entirely inside `scratch/` before any code is considered for promotion into `src/kitchensync/`.
@@ -271,15 +276,18 @@ new rule.
 
 Do not begin these phases during the first session.
 
-Phase 2 starts only after the user reviews the Phase 1 report:
-- Expand the usable frozen corpus from its Phase 1 size to 50 recipes.
-- Add more recipes from the same creators first, then nearby creators and caption styles.
+The next pass starts only after the user reviews the Phase 1 report and uses
+`scratch/social-recipe-parser-instagram-expansion-plan.md`:
+- Expand from 12 to as many as 100 unique Instagram cases: first inspect the
+  Phase 1 creators, then find additional creators through popular high-protein
+  recipe posts. Select no more than two new recipes from each Phase 1 creator
+  or three from each newly discovered creator.
 - Require every accepted Phase 1 case to remain passing.
+- Do not add a new platform until that Instagram expansion is complete and
+  audited.
 
-Phase 3 starts only after the 50-case report:
-- Expand from 50 to 100 recipes.
-- Reserve approximately 20 new recipes as an unseen validation group.
-- Report tuning-corpus and unseen-group results separately.
+Further corpus-size and unseen-validation targets should be planned after the
+first new-platform pass rather than assumed here.
 
 Promotion into `src/kitchensync/` is a separate, explicitly approved task. Scratch success does not authorize production edits.
 
