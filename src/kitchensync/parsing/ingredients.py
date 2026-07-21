@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 from ingredient_parser import parse_ingredient
 
 from kitchensync.models import Ingredient, Quantity, RecipeIngredient
@@ -6,6 +8,48 @@ from .units import is_container_unit, is_measurable_unit, normalize_unit
 
 
 CUT_PREPARATIONS = {"cubes", "diced", "strips"}
+
+
+def project_ingredient_line(text: str) -> dict[str, str | bool | None]:
+    """Project a raw line into the fields the recipe editor can represent safely."""
+    empty_projection: dict[str, str | bool | None] = {
+        "raw_text": text,
+        "safe_for_rich": True,
+        "quantity_text": None,
+        "unit": None,
+        "ingredient_name": None,
+        "preparation": None,
+        "reason": None,
+    }
+    if not text.strip():
+        return empty_projection
+
+    try:
+        parsed = parse_ingredient(text)
+    except Exception:
+        return {
+            **empty_projection,
+            "safe_for_rich": False,
+            "reason": "This line could not be parsed safely.",
+        }
+
+    reason = _rich_editor_unsupported_reason(parsed)
+    if reason is not None:
+        return {
+            **empty_projection,
+            "safe_for_rich": False,
+            "reason": reason,
+        }
+
+    amounts = getattr(parsed, "amount", None) or []
+    amount = amounts[0] if amounts else None
+    return {
+        **empty_projection,
+        "quantity_text": _editor_quantity_text(amount),
+        "unit": _amount_unit(amount) if amount is not None else None,
+        "ingredient_name": _ingredient_name(parsed),
+        "preparation": _preparation(parsed),
+    }
 
 
 def parse_recipe_ingredient_line(text: str) -> RecipeIngredient:
@@ -31,6 +75,58 @@ def _ingredient_name(parsed) -> str | None:
 
     first = names[0]
     return getattr(first, "text", None) or str(first)
+
+
+def _rich_editor_unsupported_reason(parsed) -> str | None:
+    names = getattr(parsed, "name", None) or []
+    amounts = getattr(parsed, "amount", None) or []
+
+    if not names:
+        return "No ingredient name could be identified."
+    if len(names) > 1:
+        return "Multiple ingredients need Raw view."
+    if len(amounts) > 1:
+        return "Multiple quantities need Raw view."
+    if getattr(parsed, "size", None):
+        return "Size details need Raw view."
+    if getattr(parsed, "comment", None):
+        return "Comments such as 'to taste' need Raw view."
+    if getattr(parsed, "purpose", None):
+        return "Purpose details need Raw view."
+    if amounts and getattr(amounts[0], "MULTIPLIER", False):
+        return "Multiplier quantities need Raw view."
+    return None
+
+
+def _editor_quantity_text(amount) -> str | None:
+    if amount is None:
+        return None
+
+    quantity = getattr(amount, "quantity", None)
+    if quantity is None:
+        return None
+
+    text = _format_quantity(quantity)
+    quantity_max = getattr(amount, "quantity_max", None)
+    if getattr(amount, "RANGE", False) and quantity_max is not None:
+        text = f"{text}-{_format_quantity(quantity_max)}"
+    if getattr(amount, "APPROXIMATE", False):
+        text = f"about {text}"
+    return text
+
+
+def _format_quantity(value: object) -> str:
+    if not isinstance(value, Fraction):
+        return str(value)
+    if value.denominator == 1:
+        return str(value.numerator)
+
+    sign = "-" if value < 0 else ""
+    numerator = abs(value.numerator)
+    whole, remainder = divmod(numerator, value.denominator)
+    if whole and remainder:
+        return f"{sign}{whole} {remainder}/{value.denominator}"
+    return f"{sign}{remainder}/{value.denominator}"
 
 
 def _prepared_ingredient_name(parsed) -> str | None:

@@ -1,0 +1,38 @@
+{
+  "id": "090-roasted-chicken-and-veggie-dinner",
+  "queue_index": 90,
+  "platform": "instagram",
+  "creator": "Arash Hashemi",
+  "source_url": "https://www.instagram.com/shredhappens/reel/Da9DmoEhFbr/",
+  "source_text_kind": "description",
+  "source_text": "🔥ROASTED CHICKEN & VEGGIE DINNER\n\nThe crazy thing about this recipe is, the veggies are the best part. This is all done in one pan, and the veggies come out SO GOOD!\n\n✅ Comment FLAVOR and I’ll send you the link to preorder my NEW high protein cookbook with recipes that have helped me lose 150+ lbs.\n\nHere is how I made it:\n\n1.Preheat oven to 400F.\n\n2.Add 4 chicken leg quarters to a bowl. You can use 2lbs of thighs, drumsticks, or any cut you like. Drizzle with 2-3 tbsp olive oil. Season with salt & pepper, the zest + juice of a large lemon, 1 tbsp garlic powder, 1.5 tbsp oregano, 1/2 tsp cayenne pepper, & 1 .5 tbsp sweet paprika. To add flavor and color, add 2 tbsp tomato paste and 4 minced garlic cloves. Mix really well, and ideally \nmarinade for at least 2hrs (overnight is best).\n\n3.Next, use whatever veggies you like. I used 2 medium sweet potato, a large handful broccoli florets, and 1 large shallot.\n\n4.Cut the sweet potato in smaller wedges (so they cook all the way through) and place them at the bottom of an oven safe dish or a pan (this is key!) Then add the broccoli and 1 thinly sliced shallot. Drizzle with olive oil, season with a pinch of salt, 1/2 tbsp oregano, and 1/2 tbsp garlic powder.\n\n5.Place the chicken on top of the veggies, and if there is any leftover chicken marinate add all of it. Pop into the oven at 400F for 40 mins. ***At the end, turn off the heat then let the pan sit in the oven for 20-30 minutes without the heat on to soften up the veggies and soak up the flavors even more. This is important!!\n\n6.While that’s going, grab a sauce or just mix 3 tbsp mayo with 1 tbsp tomato paste, 1 minced garlic clove, the zest and juice of 1 small lemon, and a pinch of salt.\n\n7.Remove pan from the oven, plate it up, top with finely chopped fresh parsley, a little sauce, and enjoy. \n\nYou can have this as-is, with  regular rice, or if you want more protein my @kaizenfoodco high protein rice.\n\nIf you make this, and you want more healthy recipes, be sure to let me know on SHREDHAPPENS!\n\nENJOY!\n.\n.\n.\n.\n#highprotein #chickenrecipes #lowcarb #healthyrecipes #whatsonmyplate",
+  "expected": {
+    "name": "ROASTED CHICKEN & VEGGIE DINNER",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [
+      "Preheat oven to 400F.",
+      "Add 4 chicken leg quarters to a bowl. You can use 2lbs of thighs, drumsticks, or any cut you like. Drizzle with 2-3 tbsp olive oil. Season with salt & pepper, the zest + juice of a large lemon, 1 tbsp garlic powder, 1.5 tbsp oregano, 1/2 tsp cayenne pepper, & 1 .5 tbsp sweet paprika. To add flavor and color, add 2 tbsp tomato paste and 4 minced garlic cloves. Mix really well, and ideally marinade for at least 2hrs (overnight is best).",
+      "Next, use whatever veggies you like. I used 2 medium sweet potato, a large handful broccoli florets, and 1 large shallot.",
+      "Cut the sweet potato in smaller wedges (so they cook all the way through) and place them at the bottom of an oven safe dish or a pan (this is key!) Then add the broccoli and 1 thinly sliced shallot. Drizzle with olive oil, season with a pinch of salt, 1/2 tbsp oregano, and 1/2 tbsp garlic powder.",
+      "Place the chicken on top of the veggies, and if there is any leftover chicken marinate add all of it. Pop into the oven at 400F for 40 mins. ***At the end, turn off the heat then let the pan sit in the oven for 20-30 minutes without the heat on to soften up the veggies and soak up the flavors even more. This is important!!",
+      "While that’s going, grab a sauce or just mix 3 tbsp mayo with 1 tbsp tomato paste, 1 minced garlic clove, the zest and juice of 1 small lemon, and a pinch of salt.",
+      "Remove pan from the oven, plate it up, top with finely chopped fresh parsley, a little sauce, and enjoy."
+    ],
+    "tags": [
+      "highprotein",
+      "chickenrecipes",
+      "lowcarb",
+      "healthyrecipes",
+      "whatsonmyplate"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The source embeds ingredient quantities inside instructions and provides no separate ingredient list, so raw_ingredients remains empty and fallback is expected.",
+    "A hard-wrapped continuation in step 2 is joined with one space; later serving suggestions and promotion are not method steps.",
+    "Accepted after generic compact-numbered-step handling with a decimal-safe lookahead; no creator identity or exact recipe phrase was used."
+  ]
+}

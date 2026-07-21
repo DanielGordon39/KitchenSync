@@ -1,0 +1,55 @@
+{
+  "id": "048-high-protein-chilli-lime-shrimp-bowls",
+  "queue_index": 48,
+  "platform": "instagram",
+  "creator": "Panacea Palm | Dij 🙋🏽‍♂️",
+  "source_url": "https://www.instagram.com/panaceapalm/reel/Da25K0htA-Y/",
+  "source_text_kind": "description",
+  "source_text": "High Protein Chilli Lime Shrimp Bowls!🍱🍤🤤\n\n50g Protein! ONLY 582 calories, so much flavour🔥💪🏽\n\nComment “Cookbook” and I’ll DM you a link to my High Protein Cookbook with 300+ recipes just like this one & calorie tracking barcodes!📕👨🏽‍🍳 \n\nCalories & Macros 📊\nPer Bowl: 582 calories\n50g P | 70g C | 13g F\n \nFor the Shrimp\n- 700g raw shrimp/prawns\n- 1 tsp garlic powder\n- 1 tsp smoked paprika\n- 1 tsp oregano\n- 1/2 tsp cayenne\n- 1 tsp black pepper\n- 1 tsp salt\n- Cooking spray (roughly 1 tsp oil)\n\nMango Pineapple Salsa\n- 100g tomato diced\n- 1/2 red onion diced\n- 150g diced pineapple (I used canned in juice)\n- 150g diced mango \n- 2 tbsp coriander/cilantro (chopped)\n- 1/2 lime juice \n- Salt to taste\n\nChilli Lime Sauce\n- 100g 0% Greek yoghurt\n- 30g light mayo\n- 2 tsp sriracha \n- 15ml soy sauce \n- 1 tsp sesame oil \n- 1 tbsp coriander/cilantro (chopped)\n- black pepper to taste\n- 1/2 lime juice\n- 1 tsp honey\n- Water for consistency \n\nOther ingredients\n- 6 tbsp mashed avocado (roughly 3/4 avocado)\n\nStorage & Heating ♨️\n- if storing, store the mango salsa and sauce separately and don’t add the avocado until eating. meal prep containers with. Refrigerate for up to 4 days \n- To reheat microwave partially covered for 2-3 minutes then add the mango salsa, avocado and the sauce\n\nComment “Cookbook” and I’ll DM you a link to my High Protein Cookbook with 300+ recipes just like this one & calorie tracking barcodes!📕👨🏽‍🍳 \n\n🏷️ #highprotein #chillilimeshrimp #easyrecipes #lowcalorie",
+  "expected": {
+    "name": "High Protein Chilli Lime Shrimp Bowls",
+    "servings": null,
+    "raw_ingredients": [
+      "700g raw shrimp/prawns",
+      "1 tsp garlic powder",
+      "1 tsp smoked paprika",
+      "1 tsp oregano",
+      "1/2 tsp cayenne",
+      "1 tsp black pepper",
+      "1 tsp salt",
+      "Cooking spray (roughly 1 tsp oil)",
+      "100g tomato diced",
+      "1/2 red onion diced",
+      "150g diced pineapple (I used canned in juice)",
+      "150g diced mango",
+      "2 tbsp coriander/cilantro (chopped)",
+      "1/2 lime juice",
+      "Salt to taste",
+      "100g 0% Greek yoghurt",
+      "30g light mayo",
+      "2 tsp sriracha",
+      "15ml soy sauce",
+      "1 tsp sesame oil",
+      "1 tbsp coriander/cilantro (chopped)",
+      "black pepper to taste",
+      "1/2 lime juice",
+      "1 tsp honey",
+      "Water for consistency",
+      "6 tbsp mashed avocado (roughly 3/4 avocado)"
+    ],
+    "steps": [],
+    "tags": [
+      "highprotein",
+      "chillilimeshrimp",
+      "easyrecipes",
+      "lowcalorie"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description provides ingredients plus storage and reheating guidance but no primary preparation method, so this is intentionally an incomplete fallback case.",
+    "Accepted after a general trailing-symbol Storage & Heating heading variant; no creator identity or exact recipe phrase is used."
+  ]
+}

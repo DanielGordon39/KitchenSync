@@ -1,0 +1,37 @@
+{
+  "id": "091-high-protein-cucumber-chicken-salad",
+  "queue_index": 91,
+  "platform": "instagram",
+  "creator": "Arash Hashemi",
+  "source_url": "https://www.instagram.com/shredhappens/reel/DayJIK7PPHy/",
+  "source_text_kind": "description",
+  "source_text": "💥HIGH PROTEIN CUCUMBER CHICKEN SALAD\n\n1250 calories, 154 grams of protein, 23 net carbs\nMakes 3 huge servings: 417 calories and 51g protein per serving\n\nIf you forgot to meal prep and you want something healthy, filling, and packed with protein in no time, you’ve got to give this a try. It’s as easy as it gets, and so good.\n\n✅Comment “FLAVOR” and I’ll send you details on how to preorder my new high protein cookbook with over 100 recipes that have helped me lose over 150lbs.\n\nHere is how I made it:\n\n1.Grab a bowl or a serving dish and add 3-4 thinly sliced Persian cucumbers.\n\n2️⃣ You can use 3 cups of leftover chicken or rotisserie chicken. I just finely diced it and added it to the bowl.\n\n3. Finely dice 1/2 large red onion and soak in water to remove some of the excess smell, then finely chop a handful of fresh dill (about 4 tbsp finely chopped dill). Add it to the bowl with the drained onion after its soaked for about 5 minutes.\n\n4.Cube up half a large avocado (feel free to use the whole thing if you like!)\n\n5.Finally, the dressing. I tossed this in a lemony dill dressing. Just mix together 1/2 cup greek yogurt, 2-3 tbsp mayo, I tbsp mustard, the zest and juice of 1 large lemon, 1 tbsp olive oil, 2 tbsp fresh finely chopped dill, salt, and pepper.\n\nToss it up, and enjoy on its own, as is, or scooped over some lettuce or bell peppers if you want an easy low carb option.\n\nIf you make this, be sure to let me know on SHREDHAPPENS\n\nENJOY!\n.\n.\n.\n.\n#highprotein #lowcarb #lowcarbrecipes #healthyrecipes #mediterraneanfood",
+  "expected": {
+    "name": "HIGH PROTEIN CUCUMBER CHICKEN SALAD",
+    "servings": 3,
+    "raw_ingredients": [],
+    "steps": [
+      "Grab a bowl or a serving dish and add 3-4 thinly sliced Persian cucumbers.",
+      "You can use 3 cups of leftover chicken or rotisserie chicken. I just finely diced it and added it to the bowl.",
+      "Finely dice 1/2 large red onion and soak in water to remove some of the excess smell, then finely chop a handful of fresh dill (about 4 tbsp finely chopped dill). Add it to the bowl with the drained onion after its soaked for about 5 minutes.",
+      "Cube up half a large avocado (feel free to use the whole thing if you like!)",
+      "Finally, the dressing. I tossed this in a lemony dill dressing. Just mix together 1/2 cup greek yogurt, 2-3 tbsp mayo, I tbsp mustard, the zest and juice of 1 large lemon, 1 tbsp olive oil, 2 tbsp fresh finely chopped dill, salt, and pepper.",
+      "Toss it up, and enjoy on its own, as is, or scooped over some lettuce or bell peppers if you want an easy low carb option."
+    ],
+    "tags": [
+      "highprotein",
+      "lowcarb",
+      "lowcarbrecipes",
+      "healthyrecipes",
+      "mediterraneanfood"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The source embeds quantities inside instructions and provides no separate ingredient list, so raw_ingredients remains empty and fallback is expected.",
+    "Mixed compact, spaced, and keycap numbering forms one five-step block followed by one unnumbered serving step.",
+    "Accepted by the existing creator-independent parser with no adjustment."
+  ]
+}

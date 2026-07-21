@@ -1,0 +1,40 @@
+{
+  "id": "059-bacon-cheeseburger-hot-pockets",
+  "queue_index": 59,
+  "platform": "instagram",
+  "creator": "Nikita Fair",
+  "source_url": "https://www.instagram.com/fairfiteats/reel/Da-sPYjh_XQ/",
+  "source_text_kind": "description",
+  "source_text": "Bacon Cheeseburger Hot Pockets 🍔\n(Makes 10 Hot Pockets) \n\nMacros Per Hot Pocket: \n- 400 Calories\n- 45g Protein \n- 42g Carbs \n- 5g Fat \n\nComment “Meal Prep” and I will DM you a purchase link to my Meal Prep Cookbook with 100+ recipes just like this! 📕\n\nIngredients (Dough)🥯: \n- Self Rising Flour (500g)\n- Greek Yogurt (0% Fat) (520g)\n- 1 Tbsp Garlic Salt (15g)\n- 1 Tbsp Italian Seasoning (8g)\n\nIngredients (Meat Filling)🥩: \n- 30oz Lean Ground Beef (96/4) (850g)\n- 0.5 Tbsp Garlic Salt (7g)\n- 0.5 Tbsp Smoked Paprika(4g)\n- 0.5 Tbsp Onion Powder (4g)\n- 1 Cup Diced White Onions (150g)\n- 2 Tbsps Minced Pickles (25g)\n- 1 Tbsp Ketchup (15g)\n- 1 Tbsp Yellow Mustard (15g)\n- 2 Tbsps Light Mayo (30g)\n- 1 Cup Fat Free Cheddar Cheese (112g)\n- 5 Center Cut Bacon Strips (Cooked) (75g)\n- 2.5 Cups Fat Free Mozzarella (280g)\n \nFreezing Instructions ❄️:\n1. Wrap the hot pockets in aluminum foil or put them in an airtight freezer bag\n2. Place them in the freezer and keep frozen for up to 1 month \n\nReheating Instructions🔥: \n1. Take out a frozen hot pocket and wrap it in a wet paper towel \n2. Microwave it on a plate for 3-4 minutes\n3. Toast in a pan or air fry for a few minutes if you like it crispy",
+  "expected": {
+    "name": "Bacon Cheeseburger Hot Pockets",
+    "servings": 10,
+    "raw_ingredients": [
+      "Self Rising Flour (500g)",
+      "Greek Yogurt (0% Fat) (520g)",
+      "1 Tbsp Garlic Salt (15g)",
+      "1 Tbsp Italian Seasoning (8g)",
+      "30oz Lean Ground Beef (96/4) (850g)",
+      "0.5 Tbsp Garlic Salt (7g)",
+      "0.5 Tbsp Smoked Paprika(4g)",
+      "0.5 Tbsp Onion Powder (4g)",
+      "1 Cup Diced White Onions (150g)",
+      "2 Tbsps Minced Pickles (25g)",
+      "1 Tbsp Ketchup (15g)",
+      "1 Tbsp Yellow Mustard (15g)",
+      "2 Tbsps Light Mayo (30g)",
+      "1 Cup Fat Free Cheddar Cheese (112g)",
+      "5 Center Cut Bacon Strips (Cooked) (75g)",
+      "2.5 Cups Fat Free Mozzarella (280g)"
+    ],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Only freezing and reheating directions are present; those are post-recipe handling notes, not the missing primary preparation method.",
+    "Accepted after generic post-recipe heading recognition and numbered-section context filtering; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "014-korean-spicy-tofu-stew-meal-prep",
+  "queue_index": 14,
+  "platform": "instagram",
+  "creator": "Joe Chu",
+  "source_url": "https://www.instagram.com/joexfitness/reel/Da_KeuTyev9/",
+  "source_text_kind": "description",
+  "source_text": "⇩ Full Recipe 🥘 ⇩\n\nMacros per serving:\n\nProtein: 75g\nCarbs: 19g\nFat: 20g\nCalories: 585\n\nIngredients (makes 2 servings):\n\n- 2 medium-sized green onions\n- 1 medium-sized white onion\n- 5 tbsp gochugaru\n- 3 tbsp soy sauce\n- 3 tbsp oyster sauce\n- 3 tsp dashi powder\n- 1 tbsp minced garlic\n- 2 tsp sesame oil\n- 2lb silken tofu\n- 4 eggs\n- 6 cups beef bone broth\n- salt to taste\n\nHow to make it yourself:\n\n1. Thinly slice your green onions and white onions\n2. In a large pot, on medium-low heat, add in your silken tofu and white onions.\n3. Add in gochugaru, soy sauce, oyster sauce, dashi powder, minced garlic, sesame oil, beef bone broth, and salt.\n4. Crack your eggs inside and close the lid to poach the eggs\n5. Top it off with your green onions \n6. Separate into two meal prep containers and enjoy!\n\n📩 Save this Korean Spicy Tofu Stew Meal Prep recipe to make for later and if you make it, post it and tag me in it! I’d love to see how you liked the recipe :)\n\n#highprotein #mealprep #lowcalorie #weightlossrecipes #koreanfood",
+  "expected": {
+    "name": "Korean Spicy Tofu Stew Meal Prep",
+    "servings": 2,
+    "raw_ingredients": [
+      "2 medium-sized green onions",
+      "1 medium-sized white onion",
+      "5 tbsp gochugaru",
+      "3 tbsp soy sauce",
+      "3 tbsp oyster sauce",
+      "3 tsp dashi powder",
+      "1 tbsp minced garlic",
+      "2 tsp sesame oil",
+      "2lb silken tofu",
+      "4 eggs",
+      "6 cups beef bone broth",
+      "salt to taste"
+    ],
+    "steps": [
+      "Thinly slice your green onions and white onions",
+      "In a large pot, on medium-low heat, add in your silken tofu and white onions.",
+      "Add in gochugaru, soy sauce, oyster sauce, dashi powder, minced garlic, sesame oil, beef bone broth, and salt.",
+      "Crack your eggs inside and close the lid to poach the eggs",
+      "Top it off with your green onions",
+      "Separate into two meal prep containers and enjoy!"
+    ],
+    "tags": [
+      "highprotein",
+      "mealprep",
+      "lowcalorie",
+      "weightlossrecipes",
+      "koreanfood"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The unchanged Phase 1 parser matched all scored fields and completeness exactly."
+  ]
+}

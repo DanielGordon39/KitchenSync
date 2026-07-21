@@ -1,0 +1,42 @@
+{
+  "id": "025-marry-me-salmon",
+  "queue_index": 25,
+  "platform": "instagram",
+  "creator": "Ben Chelin",
+  "source_url": "https://www.instagram.com/recipeincaption/reel/DalWasWOIJ4/",
+  "source_text_kind": "description",
+  "source_text": "Marry Me Salmon 💍\n\nComment “Recipe” and I’ll send you the full recipe with card with more details for free!! \n\nMinimal steps, maximum taste: a no-fuss dinner to win hearts 🫶\n\nIngredients:\n-0.8 lbs (400g) fresh salmon, cubed\n-1 tbsp olive oil\n-2 tsp paprika\n-Salmon seasonings: 1 tsp garlic powder, 1 tsp seasoning salt (or fish seasoning), 1 tsp italian seasoning & 1 tsp black pepper\n-1/4 cup white cooking wine\n-2 tbsp butter\n-5 garlic cloves, minced\n-1 tbsp neutral oil (I used avo)\n-1 shallot, minced\n-1/4 cup sun-dried tomatoes, chopped\n-1 tbsp sun-dried tomato oil (from the jar)\n-3/4 cup heavy cream (half & half works too), room temp\n-Fresh chopped parsley, for garnish\n\n1. Remove the skin from your salmon if applicable then cube the fillets into large bite-sized pieces. Pat them dry (super important for browning), toss with olive oil, and coat them in paprika, garlic powder, seasoning salt, Italian seasoning, and black pepper.\n2. Heat neutral oil in a large skillet over medium heat. Once hot, add the salmon cubes. Cook for about 4 minutes per side until golden and sizzling. Reduce heat to medium-low, toss in butter and garlic, and gently sauté for 2–3 minutes until fragrant.\n3. Still using the same pan, deglaze with white cooking wine, scraping up the garlicky goodness stuck to the bottom. Add minced shallot and cook for 3–4 mins, stirring often.\n4. Add in chopped sun-dried tomatoes and a tablespoon of that flavorful oil from the jar. Let that mingle for 2 mins, then slowly pour in the heavy cream. Stir and bring to a light simmer. Reduce heat to low and let it thicken for 4–5 minutes.\n5. Grab a plate and spoon down a generous bed of warm mashed potatoes. Place your salmon bites on top. Now pour that luscious marry me sauce right over the top, letting it drizzle into the potatoes. Finish with a sprinkle of fresh parsley if you’re feeling fancy (or trying to make your situationship official).",
+  "expected": {
+    "name": "Marry Me Salmon",
+    "servings": null,
+    "raw_ingredients": [
+      "0.8 lbs (400g) fresh salmon, cubed",
+      "1 tbsp olive oil",
+      "2 tsp paprika",
+      "Salmon seasonings: 1 tsp garlic powder, 1 tsp seasoning salt (or fish seasoning), 1 tsp italian seasoning & 1 tsp black pepper",
+      "1/4 cup white cooking wine",
+      "2 tbsp butter",
+      "5 garlic cloves, minced",
+      "1 tbsp neutral oil (I used avo)",
+      "1 shallot, minced",
+      "1/4 cup sun-dried tomatoes, chopped",
+      "1 tbsp sun-dried tomato oil (from the jar)",
+      "3/4 cup heavy cream (half & half works too), room temp",
+      "Fresh chopped parsley, for garnish"
+    ],
+    "steps": [
+      "Remove the skin from your salmon if applicable then cube the fillets into large bite-sized pieces. Pat them dry (super important for browning), toss with olive oil, and coat them in paprika, garlic powder, seasoning salt, Italian seasoning, and black pepper.",
+      "Heat neutral oil in a large skillet over medium heat. Once hot, add the salmon cubes. Cook for about 4 minutes per side until golden and sizzling. Reduce heat to medium-low, toss in butter and garlic, and gently sauté for 2–3 minutes until fragrant.",
+      "Still using the same pan, deglaze with white cooking wine, scraping up the garlicky goodness stuck to the bottom. Add minced shallot and cook for 3–4 mins, stirring often.",
+      "Add in chopped sun-dried tomatoes and a tablespoon of that flavorful oil from the jar. Let that mingle for 2 mins, then slowly pour in the heavy cream. Stir and bring to a light simmer. Reduce heat to low and let it thicken for 4–5 minutes.",
+      "Grab a plate and spoon down a generous bed of warm mashed potatoes. Place your salmon bites on top. Now pour that luscious marry me sauce right over the top, letting it drizzle into the potatoes. Finish with a sprinkle of fresh parsley if you’re feeling fancy (or trying to make your situationship official)."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

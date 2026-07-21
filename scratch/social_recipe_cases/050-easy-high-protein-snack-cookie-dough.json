@@ -1,0 +1,39 @@
+{
+  "id": "050-easy-high-protein-snack-cookie-dough",
+  "queue_index": 50,
+  "platform": "instagram",
+  "creator": "Panacea Palm | Dij 🙋🏽‍♂️",
+  "source_url": "https://www.instagram.com/panaceapalm/reel/Daax35HN3N_/",
+  "source_text_kind": "description",
+  "source_text": "Easy High Protein Snack Cookie Dough! 🍪💪🏽\n\nONLY 266 Calories per serve! With 22g of Protein, Same macros as most protein bars🔥\n\nComment “Cookbook” and I’ll DM you a link to my High Protein Cookbook with 300+ recipes just like & calorie tracking barcodes! 📕👨🏽‍🍳 \n\nServes 2: 🍪🍪\n\nCalories & Macros 📊\nPer Serve: 266 calories \n22g P | 17g C | 13g F\n\nIngredients👇🏽\n- 30g oat flour (finely blended oats)\n- 7g almond flour (ground almonds)\n- 25g brown stevia (brand: pure via)\n- 15g choc chips\n- pinch of salt\n- 28g melted light butter (brand: lurpak light)\n- tsp vanilla extract\n- 25g 0 calorie maple syrup (@proteinworks - use code PANACEA for a Discount!)\n- 45g vanilla protein powder (I used 23g whey and 23g casein - a whey/casein blend gives the best texture for this recipe) - @proteinworks \n\nA great lower calorie option for a dessert or late night snack you’re craving something sweet! and packed with protein too! 💪\n\nComment “Cookbook” and I’ll DM you a link to my High Protein Cookbook with 300+ recipes just like & calorie tracking barcodes! 📕👨🏽‍🍳 \n\n🏷️ #highprotein #cookiedough \n#highproteindessert #lowcaloriedessert #lowcalorie musclefood gymtok",
+  "expected": {
+    "name": "Easy High Protein Snack Cookie Dough",
+    "servings": 2,
+    "raw_ingredients": [
+      "30g oat flour (finely blended oats)",
+      "7g almond flour (ground almonds)",
+      "25g brown stevia (brand: pure via)",
+      "15g choc chips",
+      "pinch of salt",
+      "28g melted light butter (brand: lurpak light)",
+      "tsp vanilla extract",
+      "25g 0 calorie maple syrup (@proteinworks - use code PANACEA for a Discount!)",
+      "45g vanilla protein powder (I used 23g whey and 23g casein - a whey/casein blend gives the best texture for this recipe) - @proteinworks"
+    ],
+    "steps": [],
+    "tags": [
+      "highprotein",
+      "cookiedough",
+      "highproteindessert",
+      "lowcaloriedessert",
+      "lowcalorie"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description provides ingredients but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

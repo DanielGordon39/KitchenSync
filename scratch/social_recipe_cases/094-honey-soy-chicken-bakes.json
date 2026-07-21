@@ -1,0 +1,23 @@
+{
+  "id": "094-honey-soy-chicken-bakes",
+  "queue_index": 94,
+  "platform": "instagram",
+  "creator": "Eliya Hachem",
+  "source_url": "https://www.instagram.com/eliya.eats/reel/DaNE6tnv3cx/",
+  "source_text_kind": "description",
+  "source_text": "Honey Soy Chicken Bakes 🫶\n\n430 cals 38g protein \n\nFull recipe is in the link in my bio (press “all my latest recipes”) OR comment “Recipe” and I’ll send the recipe link straight to your DM’s ✨",
+  "expected": {
+    "name": "Honey Soy Chicken Bakes",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description supplies a title and nutrition summary but directs readers elsewhere for the full recipe; description-only fallback is expected.",
+    "Accepted by the existing creator-independent parser with no adjustment."
+  ]
+}

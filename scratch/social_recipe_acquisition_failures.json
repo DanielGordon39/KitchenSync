@@ -1,0 +1,22 @@
+[
+  {
+    "queue_index": 40,
+    "source_url": "https://www.instagram.com/proteinmusclemeals/p/Da6KJy2la9N/",
+    "reason": "yt-dlp could not acquire the carousel description because child item Da6J-sTtv9_ reported no video formats."
+  },
+  {
+    "queue_index": 57,
+    "source_url": "https://www.instagram.com/gymratrecipes/p/Da6K4ffgafM/",
+    "reason": "yt-dlp could not acquire the carousel description because child item Da6Ked3Bfxe reported no video formats."
+  },
+  {
+    "queue_index": 58,
+    "source_url": "https://www.instagram.com/gymratrecipes/p/DaoVCQrjgbN/",
+    "reason": "yt-dlp could not acquire the carousel description because child item DaoUvG5uSbm reported no video formats."
+  },
+  {
+    "queue_index": 68,
+    "source_url": "https://www.instagram.com/noahperlofit/reel/Da6PLkZBN5o/",
+    "reason": "yt-dlp could not reach Instagram after two attempts because DNS resolution for www.instagram.com failed."
+  }
+]

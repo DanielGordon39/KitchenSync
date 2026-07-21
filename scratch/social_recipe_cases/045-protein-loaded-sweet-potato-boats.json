@@ -1,0 +1,43 @@
+{
+  "id": "045-protein-loaded-sweet-potato-boats",
+  "queue_index": 45,
+  "platform": "instagram",
+  "creator": "Food In 5 | Bill",
+  "source_url": "https://www.instagram.com/foodinfivemins/reel/Da-rXn5qC2R/",
+  "source_text_kind": "description",
+  "source_text": "Protein loaded sweet potato boats 🍠 \n\nComment ‘recipe’ and I’ll send you a link to where you can find the full recipe 🙏\n\nMacros per boat 💪 \n54g protein\n18g fat\n52g carbs \n\n580 calories per boat 🤤 \n\nIngredients for 2 sweet potato boats 🛶 \nhandful Spinach\n3 Garlic clove\n1/2 Red onion\n2 Large sweet potato\n400g Beef mince\n100g Light mozzarella\n2 tbsp Italian mixed herbs\n1 tbsp Chilli powder\n2 tbsp Paprika\n4 tbsp Tomato paste\n\nAir Fryer: 190°C (375°F) for 40-45 minutes, turning halfway.\nOven: 200°C (400°F) for 50-60 minutes, flipping halfway.\n\n#highprotein #easyrecipes #lunchideas #healthyfood #gymfood",
+  "expected": {
+    "name": "Protein loaded sweet potato boats",
+    "servings": 2,
+    "raw_ingredients": [
+      "handful Spinach",
+      "3 Garlic clove",
+      "1/2 Red onion",
+      "2 Large sweet potato",
+      "400g Beef mince",
+      "100g Light mozzarella",
+      "2 tbsp Italian mixed herbs",
+      "1 tbsp Chilli powder",
+      "2 tbsp Paprika",
+      "4 tbsp Tomato paste"
+    ],
+    "steps": [
+      "Air Fryer: 190°C (375°F) for 40-45 minutes, turning halfway.",
+      "Oven: 200°C (400°F) for 50-60 minutes, flipping halfway."
+    ],
+    "tags": [
+      "highprotein",
+      "easyrecipes",
+      "lunchideas",
+      "healthyfood",
+      "gymfood"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The appliance temperature/time lines are the only supported cooking instructions in the description.",
+    "Accepted after general ingredient-yield heading and appliance-direction signals, while preserving slow-cooker timing as metadata; no creator identity or exact recipe phrase is used."
+  ]
+}

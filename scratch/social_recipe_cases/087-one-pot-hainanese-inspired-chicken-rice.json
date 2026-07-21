@@ -1,0 +1,51 @@
+{
+  "id": "087-one-pot-hainanese-inspired-chicken-rice",
+  "queue_index": 87,
+  "platform": "instagram",
+  "creator": "Emily English",
+  "source_url": "https://www.instagram.com/emthenutritionist/reel/Da-7pynNnAs/",
+  "source_text_kind": "description",
+  "source_text": "One Pot Hainanese Inspired Chicken Rice\n\u00a0\nAD This one-pot chicken and rice is inspired by the iconic Hainanese chicken rice. A slightly lighter recipe perfect for making midweek. My @lecreusetuk Cast Iron Shallow Casserole (26cm) is genuinely one of my must-have pieces of kitchen kit. It is timeless, distributes heat beautifully, it can go straight from the hob into the oven which makes it perfect for recipes like this where everything cooks together in one pot. With a lifetime guarantee too, it really is the forever pan.  \n\u00a0\nServes 4\n560 kcal & 35g protein per serving\n\u00a0\n600g boneless, skinless chicken thighs\n250g jasmine rice\n1 tbsp toasted sesame oil\n5 spring onions\n4 garlic cloves, finely grated\n1 tsp grated ginger\n450ml chicken stock\n1 large cucumber, sliced\n\nFor the chilli sauce\n2 tbsp sriracha\n1 tbsp light soy sauce\n1 tbsp honey\n1 tsp toasted sesame oil\nJuice of 1 lime\n1 small garlic clove, finely grated\n½ fresh red chilli, finely chopped\n½ tsp finely grated ginger\n\nPreheat the oven to 190°C fan. Rinse the jasmine rice under cold water until the water runs clear. \n\u00a0\nPat the chicken dry, season. Finely slice the spring onions, keep the green tops for serving. Heat sesame oil in a pan over a medium heat. Add the spring onions, garlic and ginger, sauté for 2 minutes until softened but dont burn. Add the rice to the pan and stir, coating the grains. Pour in the chicken stock and stir. Nestle the seasoned chicken thighs to the rice, bring to a gentle simmer.\n\u00a0\nCover tightly with the lid and transfer to the oven for 20 to 25 minutes, until the rice has absorbed the stock and the chicken is completely cooked through. Dont lift the lid while it cooks, to keep steam inside. Remove from the oven, leave to rest with the lid on for 10 minutes.\n\u00a0\nMix all the chilli sauce ingredients together. Taste and adjust to suit.\n\u00a0\nFinish with the spring onion tops, serve with plenty of fresh sliced cucumber and chilli sauce spooned over the top.\n\n#healthyrecipes #healthyfood #onepotmeal",
+  "expected": {
+    "name": "One Pot Hainanese Inspired Chicken Rice",
+    "servings": 4,
+    "raw_ingredients": [
+      "600g boneless, skinless chicken thighs",
+      "250g jasmine rice",
+      "1 tbsp toasted sesame oil",
+      "5 spring onions",
+      "4 garlic cloves, finely grated",
+      "1 tsp grated ginger",
+      "450ml chicken stock",
+      "1 large cucumber, sliced",
+      "2 tbsp sriracha",
+      "1 tbsp light soy sauce",
+      "1 tbsp honey",
+      "1 tsp toasted sesame oil",
+      "Juice of 1 lime",
+      "1 small garlic clove, finely grated",
+      "½ fresh red chilli, finely chopped",
+      "½ tsp finely grated ginger"
+    ],
+    "steps": [
+      "Preheat the oven to 190°C fan. Rinse the jasmine rice under cold water until the water runs clear.",
+      "Pat the chicken dry, season. Finely slice the spring onions, keep the green tops for serving. Heat sesame oil in a pan over a medium heat. Add the spring onions, garlic and ginger, sauté for 2 minutes until softened but dont burn. Add the rice to the pan and stir, coating the grains. Pour in the chicken stock and stir. Nestle the seasoned chicken thighs to the rice, bring to a gentle simmer.",
+      "Cover tightly with the lid and transfer to the oven for 20 to 25 minutes, until the rice has absorbed the stock and the chicken is completely cooked through. Dont lift the lid while it cooks, to keep steam inside. Remove from the oven, leave to rest with the lid on for 10 minutes.",
+      "Mix all the chilli sauce ingredients together. Taste and adjust to suit.",
+      "Finish with the spring onion tops, serve with plenty of fresh sliced cucumber and chilli sauce spooned over the top."
+    ],
+    "tags": [
+      "healthyrecipes",
+      "healthyfood",
+      "onepotmeal"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The unlabelled main ingredients and the 'For the chilli sauce' component are one ordered ingredient list.",
+    "Non-breaking-space-only lines are paragraph separators in the supplied description.",
+    "Accepted after generic title-cased first-line and common imperative-verb handling; no creator identity or exact recipe phrase was used."
+  ]
+}

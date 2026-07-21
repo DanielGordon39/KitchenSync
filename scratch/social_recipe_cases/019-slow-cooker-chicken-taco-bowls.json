@@ -1,0 +1,46 @@
+{
+  "id": "019-slow-cooker-chicken-taco-bowls",
+  "queue_index": 19,
+  "platform": "instagram",
+  "creator": "Tom Walsh",
+  "source_url": "https://www.instagram.com/stealth_health_life/reel/Das6pBdRJ-S/",
+  "source_text_kind": "description",
+  "source_text": "Slow Cooker Chicken Taco Bowls\n\nPer Serving (Makes 10)\n535 Calories\n44g Protein\n64g Carbs\n10g Fat\n\nAnother one from the Slow Cooker Meal Prep Series!\n\nThis was added to the digital Slow Cooker Cookbook in late 2025, and is included in all print copies of the book (now available on my site!)\n\nSlow Cooked Taco Chicken 1360g (48oz) boneless, skinless chicken thighs 3 packets taco seasoning 480g (2 cups) red enchilada sauce 340g (2 ⅓ cups) fire-roasted frozen corn 440g (1 can) black beans, drained Salt, to taste\n\nBone Broth Rice 480g (2 ½ cups) jasmine rice 910g (3 ¾ cups) chicken bone broth\n\nChipotle Lime Sauce 450g (1 ¾ cups) 0% Greek yogurt 30g (2 Tbsp) lime juice 3 chipotle peppers 25g (1 ½ Tbsp) adobo sauce 30g (1 ½ Tbsp) honey 10g (2 tsp) avocado oil 60ml (¼ cup) milk, or as needed Pinch of salt Chopped cilantro, to taste\n\nTo Finish Chopped cilantro, for garnish\n\nEnjoy!\n\n#stealthhealth #slowcooker #slowcookermealprep #highproteinrecipes",
+  "expected": {
+    "name": "Slow Cooker Chicken Taco Bowls",
+    "servings": 10,
+    "raw_ingredients": [
+      "1360g (48oz) boneless, skinless chicken thighs",
+      "3 packets taco seasoning",
+      "480g (2 cups) red enchilada sauce",
+      "340g (2 ⅓ cups) fire-roasted frozen corn",
+      "440g (1 can) black beans, drained",
+      "Salt, to taste",
+      "480g (2 ½ cups) jasmine rice",
+      "910g (3 ¾ cups) chicken bone broth",
+      "450g (1 ¾ cups) 0% Greek yogurt",
+      "30g (2 Tbsp) lime juice",
+      "3 chipotle peppers",
+      "25g (1 ½ Tbsp) adobo sauce",
+      "30g (1 ½ Tbsp) honey",
+      "10g (2 tsp) avocado oil",
+      "60ml (¼ cup) milk, or as needed",
+      "Pinch of salt",
+      "Chopped cilantro, to taste",
+      "Chopped cilantro, for garnish"
+    ],
+    "steps": [],
+    "tags": [
+      "stealthhealth",
+      "slowcooker",
+      "slowcookermealprep",
+      "highproteinrecipes"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output; the caption supplies ingredients but no preparation instruction.",
+    "Accepted after unlabeled ingredient components were handled by block context."
+  ]
+}

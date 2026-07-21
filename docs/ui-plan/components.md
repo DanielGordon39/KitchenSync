@@ -115,4 +115,4 @@ Used by:
 - Recipe data comes from the data or API layer; it should not be copied into long-lived card-local state.
 - The grid loads lightweight summaries. Full ingredients, steps, and other detail are fetched only for the selected recipe.
 - Closing the popup should release its detail state or leave only a deliberately small cache; it must not accumulate every opened recipe indefinitely.
-- Cookbook relationship data such as favorites, ratings, personal notes, and cook history belongs to a later cookbook-specific section, not the first `RecipeMainView` contract.
+- `RecipeMainView` adds a Cookbook-only notebook section for favorite, rating, and personal notes. Cook history remains a later expansion.

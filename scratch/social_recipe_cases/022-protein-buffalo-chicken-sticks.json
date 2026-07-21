@@ -1,0 +1,22 @@
+{
+  "id": "022-protein-buffalo-chicken-sticks",
+  "queue_index": 22,
+  "platform": "instagram",
+  "creator": "Kyle Smith",
+  "source_url": "https://www.instagram.com/tastyshreds/reel/Da3nio_y6ON/",
+  "source_text_kind": "description",
+  "source_text": "Comment “TASTY” and I’ll send you the FULL recipe!\n\n📚 Want 233+ macro-friendly recipes that actually taste amazing? Comment “COOKBOOK” and I’ll send you the link to my Tasty Shreds cookbook!\n\nThese Protein Buffalo Chicken Sticks are about to become a weekly staple. 🤤🔥\n\n✅ Only 271 calories\n💪 40g protein\n🌶️ Loaded with buffalo flavor\n🧀 Cheesy, crispy, and perfect for meal prep.\n\nYou’d never guess these are packed with almost 40g of protein each! Make a batch, throw them in the fridge, and you’ve got high-protein lunches and snacks ready all week.",
+  "expected": {
+    "name": "Protein Buffalo Chicken Sticks",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output; the caption names the preparation but gates the full recipe externally.",
+    "Accepted after demonstrative-subject titles and emoji-prefixed nutrition values were handled structurally."
+  ]
+}

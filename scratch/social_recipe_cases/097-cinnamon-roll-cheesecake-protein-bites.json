@@ -1,0 +1,46 @@
+{
+  "id": "097-cinnamon-roll-cheesecake-protein-bites",
+  "queue_index": 97,
+  "platform": "instagram",
+  "creator": "Jasmine Hyare",
+  "source_url": "https://www.instagram.com/healthysweetsandeats/reel/Da8UTUvRzUD/",
+  "source_text_kind": "description",
+  "source_text": "These Cinnamon Roll Cheesecake Protein Bites  taste like the center of a cinnamon roll, but they’re packed with protein and come together with just a handful of simple ingredients. Each bite is only 82 calories with 7g of protein, making them the perfect little snack or healthier dessert. \n\nSave this recipe and follow @healthysweetsandeats for more easy, high-protein recipes!\n\nMacros (per bite, makes 10): 82 calories | 7g protein | 3.5g carbs | 5.4g fat | 1.5g fiber\n\nIngredients:\u20281/2 cup nonfat plain Greek yogurt\u20282 tbsp light cream cheese, softened\n1/2 teaspoon maple extract\n1/2 teaspoon vanilla bean paste (or vanilla extract)\u20281 scoop vanilla protein powder\u20283/4 cup finely ground almond flour\u20281 1/2 tsp ground cinnamon\u20281/4 tsp salt\nCinnamon Swirl:\u20281 tsp melted butter\u20281 tbsp coconut sugar\u20281 tsp ground cinnamon\nOptional: 1 tablespoon of cane sugar, and 1 teaspoon of cinnamon for coating. \n\nDirections:\n1️⃣ In a medium bowl, whisk together the Greek yogurt and softened cream cheese until smooth (if your cream cheese is not soft enough, you may need to use a blender) Stir in the vanilla, maple, cinnamon, salt, and protein powder until well combined. Fold in the almond flour until a soft dough forms. Refrigerate for at least 20-30 minutes.\n\n2️⃣ In a small bowl, mix together the melted butter, coconut sugar, and cinnamon. Gently fold the cinnamon mixture into the dough just 2-3 times so you create ribbons of cinnamon throughout without fully mixing it in.\n\n3️⃣ Scoop into 10 equal portions, roll into balls, and refrigerate for at least 1 hour until firm. Store in the refrigerator for up to 5 days or freeze for a firmer, ice cream-like texture.\n\n#glutenfree #cinnamonroll #proteinballs #easysnacks",
+  "expected": {
+    "name": "Cinnamon Roll Cheesecake Protein Bites",
+    "servings": 10,
+    "raw_ingredients": [
+      "1/2 cup nonfat plain Greek yogurt",
+      "2 tbsp light cream cheese, softened",
+      "1/2 teaspoon maple extract",
+      "1/2 teaspoon vanilla bean paste (or vanilla extract)",
+      "1 scoop vanilla protein powder",
+      "3/4 cup finely ground almond flour",
+      "1 1/2 tsp ground cinnamon",
+      "1/4 tsp salt",
+      "1 tsp melted butter",
+      "1 tbsp coconut sugar",
+      "1 tsp ground cinnamon",
+      "Optional: 1 tablespoon of cane sugar, and 1 teaspoon of cinnamon for coating."
+    ],
+    "steps": [
+      "In a medium bowl, whisk together the Greek yogurt and softened cream cheese until smooth (if your cream cheese is not soft enough, you may need to use a blender) Stir in the vanilla, maple, cinnamon, salt, and protein powder until well combined. Fold in the almond flour until a soft dough forms. Refrigerate for at least 20-30 minutes.",
+      "In a small bowl, mix together the melted butter, coconut sugar, and cinnamon. Gently fold the cinnamon mixture into the dough just 2-3 times so you create ribbons of cinnamon throughout without fully mixing it in.",
+      "Scoop into 10 equal portions, roll into balls, and refrigerate for at least 1 hour until firm. Store in the refrigerator for up to 5 days or freeze for a firmer, ice cream-like texture."
+    ],
+    "tags": [
+      "glutenfree",
+      "cinnamonroll",
+      "proteinballs",
+      "easysnacks"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators delimit several ingredient lines; the main, cinnamon-swirl, and optional components form one ordered list.",
+    "Storage text remains part of the third numbered direction because it is authored within that same step.",
+    "Accepted after generic nutrition-yield title rejection and demonstrative-action title handling; no creator identity or exact recipe phrase was used."
+  ]
+}

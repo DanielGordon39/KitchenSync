@@ -1,0 +1,41 @@
+{
+  "id": "028-coriander-garlic-and-butter-prawns-and-clam",
+  "queue_index": 28,
+  "platform": "instagram",
+  "creator": "Bella | Cooking Made Easy 🍝",
+  "source_url": "https://www.instagram.com/ciaobellaa/reel/DacRzs3NrFK/",
+  "source_text_kind": "description",
+  "source_text": "Episode 24: coriander, garlic & butter prawns & clam 🍤\n\nMight be the easiest dish of them all!! \n\nFor the butter: \n250g @allthingsdairy__ butter \nBunch of coriander, finely chopped \n5 cloves garlic, diced \nBig pinch of salt \n\nSauce: \n1 large shallot, diced \n1 stick of bruised lemongrass \n150g compound butter \n50-100g prawns \n100g clams \n2 tablespoons coconut milk \n\nOptional: \nChilli \nSpring onions \n\n1. Combine butter, coriander, garlic and salt together. Either by hand or in a food processor. \n2. on a medium heat, saute some the shallots in a pinch of salt until slightly softened. \n3. Add a bashed stock of lemongrass and the butter and let it melt. \n4. Throw in the prawns, saute for 2 minutes before adding clams and two tablespoons of coconut milk. \n5. Serve everything in a bowl with some toasted bread, chilli’s and spring onions",
+  "expected": {
+    "name": "coriander, garlic & butter prawns & clam",
+    "servings": null,
+    "raw_ingredients": [
+      "250g @allthingsdairy__ butter",
+      "Bunch of coriander, finely chopped",
+      "5 cloves garlic, diced",
+      "Big pinch of salt",
+      "1 large shallot, diced",
+      "1 stick of bruised lemongrass",
+      "150g compound butter",
+      "50-100g prawns",
+      "100g clams",
+      "2 tablespoons coconut milk",
+      "Chilli",
+      "Spring onions"
+    ],
+    "steps": [
+      "Combine butter, coriander, garlic and salt together. Either by hand or in a food processor.",
+      "on a medium heat, saute some the shallots in a pinch of salt until slightly softened.",
+      "Add a bashed stock of lemongrass and the butter and let it melt.",
+      "Throw in the prawns, saute for 2 minutes before adding clams and two tablespoons of coconut milk.",
+      "Serve everything in a bowl with some toasted bread, chilli’s and spring onions"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

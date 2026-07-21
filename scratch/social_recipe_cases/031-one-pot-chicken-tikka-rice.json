@@ -1,0 +1,29 @@
+{
+  "id": "031-one-pot-chicken-tikka-rice",
+  "queue_index": 31,
+  "platform": "instagram",
+  "creator": "Vimarsh Patel",
+  "source_url": "https://www.instagram.com/amateurprochef/reel/Dan2Mh7sO86/",
+  "source_text_kind": "description",
+  "source_text": "#RemitlyPartner One Pot Chicken TIkka Rice \nFull recipe in my bio!\n\nTransfer money with confidence with @remitly.\n\nUse code AMATEURPROCHEF to get $20 off your first transfer of $40 or more from the USA or Canada. \n\nTo redeem, visit the ‘Rewards’ tab and enter the code. New customers only. Offer expires 12/31/2026.\n\nSee details: bit.ly/remitlyTC\n\n#easyrecipe #chicken #tikka #rice",
+  "expected": {
+    "name": "One Pot Chicken TIkka Rice",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "remitlypartner",
+      "easyrecipe",
+      "chicken",
+      "tikka",
+      "rice"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description only links to the full recipe, so this is intentionally an incomplete fallback case.",
+    "Accepted after general separation of leading hashtags from a concise same-line title; no creator, sponsor, or exact recipe phrase is used."
+  ]
+}

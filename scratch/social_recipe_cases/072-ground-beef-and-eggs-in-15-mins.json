@@ -1,0 +1,38 @@
+{
+  "id": "072-ground-beef-and-eggs-in-15-mins",
+  "queue_index": 72,
+  "platform": "instagram",
+  "creator": "Mayra Wendolyne | Low Carb Love",
+  "source_url": "https://www.instagram.com/low.carb.love/reel/DawcE5ztYM9/",
+  "source_text_kind": "description",
+  "source_text": "GROUND BEEF & EGGS in 15 MINS🍳🥩\n(High protein, low carb)\n\nAnyone else trying to get more protein in without overcomplicating meals? 👀💪\n\nThis beef & egg skillet is one of my favorite high-protein meals. It’s simple, packed with flavor, and comes together in no time. 🤌\n\nIngredients:\nGround beef\nEggs\nOnions\nChili oil\n\nSauce:\nSoy sauce\nDark soy sauce\nOyster sauce\nHoney (or sweetener of your choice)\nWhite pepper\nWater\n\nOptional: You can add a tsp of corn starch or arrowroot starch to the sauce. This will help thicken and give the meat a good texture. \n\nBrown the ground beef with the onions, pour in the sauce, then crack the eggs right into the skillet and cook until they’re just set.\n\nTop with green onions and chili oil, then dig in! 🔥\n\nPerfect when you want an easy, protein-packed meal that keeps you full and satisfied.\n\nWould you eat this for breakfast, lunch, or dinner? 👇🍳",
+  "expected": {
+    "name": "GROUND BEEF & EGGS in 15 MINS",
+    "servings": null,
+    "raw_ingredients": [
+      "Ground beef",
+      "Eggs",
+      "Onions",
+      "Chili oil",
+      "Soy sauce",
+      "Dark soy sauce",
+      "Oyster sauce",
+      "Honey (or sweetener of your choice)",
+      "White pepper",
+      "Water"
+    ],
+    "steps": [
+      "Optional: You can add a tsp of corn starch or arrowroot starch to the sauce. This will help thicken and give the meat a good texture.",
+      "Brown the ground beef with the onions, pour in the sauce, then crack the eggs right into the skillet and cook until they’re just set.",
+      "Top with green onions and chili oil, then dig in! 🔥"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The optional starch sentence is a supported preparation instruction, not an ingredient line.",
+    "Accepted after generalized title-subtitle layout precedence and optional modal-instruction handling; no creator identity or exact recipe phrase is used."
+  ]
+}

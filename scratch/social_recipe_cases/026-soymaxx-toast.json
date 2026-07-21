@@ -1,0 +1,37 @@
+{
+  "id": "026-soymaxx-toast",
+  "queue_index": 26,
+  "platform": "instagram",
+  "creator": "Jess & Dan | Tofu Club",
+  "source_url": "https://www.instagram.com/vegan_punks/p/Da79IDFDFLY/",
+  "source_text_kind": "description",
+  "source_text": "SOYMAXX TOAST 🧀 Follow @vegan_punks for all the best tofu recipes, and grab the recipe for this one below!\n\nWhen served on 4 big slices of sourdough this one packs in 26g of protein and 10g fibre per slice.\n\nI’m not sure what the RDA for soy is, but I’m going to say it’s like 10 soys, so this is a good way to kick your day off.\n\nAnd it’s our go-to for after a Saturday morning workout, or just when we need a quick lunch in the week.\n\nP.S. as always, this is also inside Tofu Club where it’s easier to read, has nutritional info, you can print it, save to a meal plan, create shopping lists and save to your favourites. Plus 181(and counting) other tofu recipes, guides and tips…comment “I’m in” and we’ll DM you so you can check it out.\n\nIngredients (makes ~4 slices, depending on how big your sourdough is)\n4 big slices of sourdough\n600g frozen edamame\n4 spring onions\n1 clove garlic\n1 tbsp white miso paste\n1 tbsp light soy sauce\n2 tbsp of lime juice\n2 tbsp olive oil\n\n1. Blanch your edamame beans by briefly boiling them and then putting them into some cold water, before draining them.\n2. Add the edamame, spring onions, garlic, miso, soy sauce, lime juice and olive oil to a blender or food processor.\n2. Blend until smooth, adding water a tablespoon at a time if needed, until you reach a thick, scoopable consistency.\n3. Taste and adjust - more lime for sharpness, or more soy or salt for seasoning.\n4. Scoop onto thick slices of toasted sourdough and serve.",
+  "expected": {
+    "name": "SOYMAXX TOAST",
+    "servings": 4,
+    "raw_ingredients": [
+      "4 big slices of sourdough",
+      "600g frozen edamame",
+      "4 spring onions",
+      "1 clove garlic",
+      "1 tbsp white miso paste",
+      "1 tbsp light soy sauce",
+      "2 tbsp of lime juice",
+      "2 tbsp olive oil"
+    ],
+    "steps": [
+      "Blanch your edamame beans by briefly boiling them and then putting them into some cold water, before draining them.",
+      "Add the edamame, spring onions, garlic, miso, soy sauce, lime juice and olive oil to a blender or food processor.",
+      "Blend until smooth, adding water a tablespoon at a time if needed, until you reach a thick, scoopable consistency.",
+      "Taste and adjust - more lime for sharpness, or more soy or salt for seasoning.",
+      "Scoop onto thick slices of toasted sourdough and serve."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Accepted after general handling for a same-line promotional suffix and an approximate makes yield; no creator identity or exact recipe phrase is used."
+  ]
+}

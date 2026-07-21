@@ -1,0 +1,47 @@
+{
+  "id": "029-super-speedy-laksa",
+  "queue_index": 29,
+  "platform": "instagram",
+  "creator": "Bella | Cooking Made Easy 🍝",
+  "source_url": "https://www.instagram.com/ciaobellaa/reel/DaKOl-CoRQo/",
+  "source_text_kind": "description",
+  "source_text": "Any season is soup season if you truly believe 🤗 I know it’s hot but I simply won’t sacrifice good food. \nEpisode 23: super speedy laksa \n\nIngredients:\n3 tablespoons laksa paste \n3 garlic cloves, finely chopped\n1 large shallot, diced \n1 lemongrass stick (not shown in video), bruised \n1 tin coconut milk \n2 teaspoons fish sauce \n500g prawns \nJuice from 1/2 lime \n3-4 lime leaves, crushed \n@boroughbrothcompany chicken stock cubes \n1 nest vermicelli noodles per person \n1 pak Choi per person \n\nMethod: \n1) brown off your laksa paste in a hot pan. \n2) lower the heat, add in garlic, onions, a pinch of saltand a stick of lemon grass. Saute for 5 minutes until the onions are softening.\n3) pour in the top layer of the coconut milk and simmer until thickened, remove the lemongrass stick. \n4) add the remaining coconut milk, fish sauce, lime leaves, lime juice, chicken stock cubes, and pak choi. Simmer, covered, until the pak Choi is al dente (5-10 minutes) \n5) stir in your prawns and Thai basil, cook for a further minute until the prawns are pink in colour. Serve over noodles and enjoy. \n\n#speedynoodles #noodledishes #noodles #easydinner #easyrecipe",
+  "expected": {
+    "name": "super speedy laksa",
+    "servings": null,
+    "raw_ingredients": [
+      "3 tablespoons laksa paste",
+      "3 garlic cloves, finely chopped",
+      "1 large shallot, diced",
+      "1 lemongrass stick (not shown in video), bruised",
+      "1 tin coconut milk",
+      "2 teaspoons fish sauce",
+      "500g prawns",
+      "Juice from 1/2 lime",
+      "3-4 lime leaves, crushed",
+      "@boroughbrothcompany chicken stock cubes",
+      "1 nest vermicelli noodles per person",
+      "1 pak Choi per person"
+    ],
+    "steps": [
+      "brown off your laksa paste in a hot pan.",
+      "lower the heat, add in garlic, onions, a pinch of saltand a stick of lemon grass. Saute for 5 minutes until the onions are softening.",
+      "pour in the top layer of the coconut milk and simmer until thickened, remove the lemongrass stick.",
+      "add the remaining coconut milk, fish sauce, lime leaves, lime juice, chicken stock cubes, and pak choi. Simmer, covered, until the pak Choi is al dente (5-10 minutes)",
+      "stir in your prawns and Thai basil, cook for a further minute until the prawns are pink in colour. Serve over noodles and enjoy."
+    ],
+    "tags": [
+      "speedynoodles",
+      "noodledishes",
+      "noodles",
+      "easydinner",
+      "easyrecipe"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Accepted after a general precedence rule for explicit Episode-number titles over generic opening prose; no creator identity or exact recipe phrase is used."
+  ]
+}

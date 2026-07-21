@@ -25,4 +25,22 @@ class IngredientsAPI:
             ORDER BY lower(name)
             """
         ).fetchall()
-        return rows(ingredient_rows)
+        ingredients = rows(ingredient_rows)
+        aliases_by_ingredient: dict[str, list[str]] = {}
+        alias_rows = self.connection.execute(
+            """
+            SELECT ingredient_id, alias
+            FROM ingredient_aliases
+            ORDER BY lower(alias)
+            """
+        ).fetchall()
+        for alias_row in alias_rows:
+            aliases_by_ingredient.setdefault(alias_row["ingredient_id"], []).append(
+                alias_row["alias"]
+            )
+
+        for ingredient in ingredients:
+            ingredient["aliases"] = aliases_by_ingredient.get(
+                ingredient["ingredient_id"], []
+            )
+        return ingredients

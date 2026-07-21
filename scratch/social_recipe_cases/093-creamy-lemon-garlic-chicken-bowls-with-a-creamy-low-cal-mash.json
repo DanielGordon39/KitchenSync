@@ -1,0 +1,23 @@
+{
+  "id": "093-creamy-lemon-garlic-chicken-bowls-with-a-creamy-low-cal-mash",
+  "queue_index": 93,
+  "platform": "instagram",
+  "creator": "Eliya Hachem",
+  "source_url": "https://www.instagram.com/eliya.eats/reel/Dauy79xpISy/",
+  "source_text_kind": "description",
+  "source_text": "Creamy Lemon Garlic Chicken Bowls with a creamy low cal mash ✨\n\nRecipe serves 4 and is only 470 cals with 41g protein per serve 🫶\n\nFull recipe is in the link in my bio (press “all my latest recipes”) OR comment “Recipe” and I’ll send the recipe link straight to your DM’s ✨",
+  "expected": {
+    "name": "Creamy Lemon Garlic Chicken Bowls with a creamy low cal mash",
+    "servings": 4,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description supplies a title and yield but directs readers elsewhere for the full recipe; description-only fallback is expected.",
+    "Accepted after generic nearby-yield corroboration for a longer first-line title; no creator identity or exact recipe phrase was used."
+  ]
+}

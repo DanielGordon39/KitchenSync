@@ -1,0 +1,29 @@
+{
+  "id": "063-creamy-tomato-parm-shrimp-orzo-skillet",
+  "queue_index": 63,
+  "platform": "instagram",
+  "creator": "Anastasia D’Amario | High Protein Recipes",
+  "source_url": "https://www.instagram.com/fitfoodiestasia/reel/Da543h1MiGs/",
+  "source_text_kind": "description",
+  "source_text": "One pan. 15 minutes. Maximum flavor! 🔥\n\nBare Minimum Meals, Episode 10: Creamy Tomato Parm Shrimp Orzo Skillet 🍤🍅🧀\n\nIf eating healthy still looks like dry chicken and plain rice… let me change your life. 👀\n\nThis easy one-pan dinner pairs juicy shrimp with rich, cheesy tomato-Parmesan orzo infused with garlic butter. It packs 39 g of protein and tastes better than anything you’d order at a restaurant! 🙌🏼\n\nComment “need this” and I’ll send you the recipe card! 💌\n\n•\n\n#healthyrecipes #easyrecipes #mealprep #highproteinmeals #onepanmeal",
+  "expected": {
+    "name": "Creamy Tomato Parm Shrimp Orzo Skillet",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "healthyrecipes",
+      "easyrecipes",
+      "mealprep",
+      "highproteinmeals",
+      "onepanmeal"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The explicit episode line names the dish, but both ingredients and method remain behind a comment-to-DM call to action.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

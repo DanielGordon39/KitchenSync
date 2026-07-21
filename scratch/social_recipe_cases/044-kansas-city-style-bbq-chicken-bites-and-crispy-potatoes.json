@@ -1,0 +1,62 @@
+{
+  "id": "044-kansas-city-style-bbq-chicken-bites-and-crispy-potatoes",
+  "queue_index": 44,
+  "platform": "instagram",
+  "creator": "Better Cheat Meals 🇳🇿 | Steve Kemp",
+  "source_url": "https://www.instagram.com/bettercheatmeals/reel/DFS_xLyyOy2/",
+  "source_text_kind": "description",
+  "source_text": "Kansas City-Style BBQ Chicken Bites & Crispy Potatoes 🔽\n\n452 Cal | 48g P | 45g Carb | 6g F\n\n👉 Stay on track with 110+ quick & satisfying digital recipes, link in bio 📱\n\nServed in 2½ cup (600 ml) glass containers\n\nServings: 4\n\n🔥 Ingredients\nChicken:\n-1¾ lb (800 g) chicken breast cut into 1-inch pieces\n-olive oil spray\n-2 lbs (1 kg) lotatoes/Carisma potatoes low-carb potatoes, cut into small pieces\n\nBBQ-Style Coating:\n-½ cup (60 g) all-purpose flour\n-2 tbsp (16 g) cornstarch\n-1 tsp baking powder\n-1 tsp salt\n-1 tsp garlic powder\n-1 tsp onion powder\n-3 tsp paprika or smoked paprika\n-1 tsp chili powder\n-1 tsp ground black pepper\n\nBBQ Sauce:\n-⅓ cup (70 g) replacement brown sugar (monk fruit)\n-⅓ cup (80 ml) low-sugar ketchup\n-1½ tsp red wine vinegar\n-½ tsp Worcestershire sauce\n-1½ tsp dry mustard\n-¾ tsp paprika\n-¾ tsp salt\n-½ tsp pepper\n-dash hot sauce\n\nInstructions \n-Preheat oven to 400 F (200 C), prep 2 baking sheets with parchment \n-Dice chicken into 1-in (2.5 cm) pieces \n-Cut potatoes into cubes\n\nBaking: \n-Toss potatoes with oil spray, salt, pepper; spread on sheet \n-Bake 25-30 mins, flip halfway until crispy \n-Mix chicken and coating in a sealed container \n-Arrange on second sheet, bake 15-20 mins until internal temp of 165 F (74 C)\n\nSauce: \n-Combine sauce ingredients in saucepan \n-Simmer on medium heat to blend flavors \n\nAssembly: \n-Layer potatoes in bowls \n-Top with BBQ chicken \n-Drizzle sauce, garnish with green onions\n\nStorage & Reheating \nFridge: Chicken & potatoes 3-4 days, sauce 1 week \nFreezer: Up to 3 months \n\nReheat: Oven 350 F (180 C) 12-15 mins covered, or microwave 2-3 mins\nNotes \n-For low-carb: Use Lotatoes/Carisma potatoes or swap for cauliflower \n-If using regular potatoes, reduce to 1 lb (453g) for similar macros\n\n#mealprep #weightloss #fatloss",
+  "expected": {
+    "name": "Kansas City-Style BBQ Chicken Bites & Crispy Potatoes",
+    "servings": 4,
+    "raw_ingredients": [
+      "1¾ lb (800 g) chicken breast cut into 1-inch pieces",
+      "olive oil spray",
+      "2 lbs (1 kg) lotatoes/Carisma potatoes low-carb potatoes, cut into small pieces",
+      "½ cup (60 g) all-purpose flour",
+      "2 tbsp (16 g) cornstarch",
+      "1 tsp baking powder",
+      "1 tsp salt",
+      "1 tsp garlic powder",
+      "1 tsp onion powder",
+      "3 tsp paprika or smoked paprika",
+      "1 tsp chili powder",
+      "1 tsp ground black pepper",
+      "⅓ cup (70 g) replacement brown sugar (monk fruit)",
+      "⅓ cup (80 ml) low-sugar ketchup",
+      "1½ tsp red wine vinegar",
+      "½ tsp Worcestershire sauce",
+      "1½ tsp dry mustard",
+      "¾ tsp paprika",
+      "¾ tsp salt",
+      "½ tsp pepper",
+      "dash hot sauce"
+    ],
+    "steps": [
+      "Preheat oven to 400 F (200 C), prep 2 baking sheets with parchment",
+      "Dice chicken into 1-in (2.5 cm) pieces",
+      "Cut potatoes into cubes",
+      "Toss potatoes with oil spray, salt, pepper; spread on sheet",
+      "Bake 25-30 mins, flip halfway until crispy",
+      "Mix chicken and coating in a sealed container",
+      "Arrange on second sheet, bake 15-20 mins until internal temp of 165 F (74 C)",
+      "Combine sauce ingredients in saucepan",
+      "Simmer on medium heat to blend flavors",
+      "Layer potatoes in bowls",
+      "Top with BBQ chicken",
+      "Drizzle sauce, garnish with green onions"
+    ],
+    "tags": [
+      "mealprep",
+      "weightloss",
+      "fatloss"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Storage & Reheating and Notes are post-recipe guidance, not primary preparation steps.",
+    "Accepted after general instruction-verb and post-recipe heading signals; no creator identity or exact recipe phrase is used."
+  ]
+}

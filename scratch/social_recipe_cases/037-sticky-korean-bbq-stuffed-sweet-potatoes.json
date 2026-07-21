@@ -1,0 +1,38 @@
+{
+  "id": "037-sticky-korean-bbq-stuffed-sweet-potatoes",
+  "queue_index": 37,
+  "platform": "instagram",
+  "creator": "Hunter Micheletto",
+  "source_url": "https://www.instagram.com/hunt4shredz/reel/Dax4UzSR6_M/",
+  "source_text_kind": "description",
+  "source_text": "🔥 Sticky Korean BBQ Stuffed Sweet Potatoes\n\n✅ Save this because these are ridiculously good.\n\n📕 Comment “cookbook” and I’ll send you the link purchase link to 225+ high-protein recipes with full macros and step-by-step videos.\n\n🛒 WHAT YOU NEED (4 SERVINGS)\n\n🍠 Sweet Potatoes\n* 4 medium sweet potatoes (about 1.8–2 lbs total)\n\n🥩 Korean BBQ Beef\n* 1 lb (454g) 96/4 lean ground beef\n* salt, pepper, garlic \n* 1/3 cup low-sodium soy sauce\n* 1 tbsp honey\n* 1 tbsp gochujang\n* 1 tbsp rice vinegar\n* 6 garlic cloves, minced\n* 1 tsp ginger paste\n* 1 tsp corn starch \n* Green onions \n\n🍳 Toppings\n* 4 eggs\n* 2 green onions, sliced\n* 2 tsp sesame seeds\n\nMacros (Per Serving)\nCalories: 485\nProtein: 35g\nCarbs: 41g\nFat: 18g",
+  "expected": {
+    "name": "Sticky Korean BBQ Stuffed Sweet Potatoes",
+    "servings": 4,
+    "raw_ingredients": [
+      "4 medium sweet potatoes (about 1.8–2 lbs total)",
+      "1 lb (454g) 96/4 lean ground beef",
+      "salt, pepper, garlic",
+      "1/3 cup low-sodium soy sauce",
+      "1 tbsp honey",
+      "1 tbsp gochujang",
+      "1 tbsp rice vinegar",
+      "6 garlic cloves, minced",
+      "1 tsp ginger paste",
+      "1 tsp corn starch",
+      "Green onions",
+      "4 eggs",
+      "2 green onions, sliced",
+      "2 tsp sesame seeds"
+    ],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description provides ingredients and macros but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

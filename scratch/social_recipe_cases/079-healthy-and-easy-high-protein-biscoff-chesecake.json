@@ -1,0 +1,47 @@
+{
+  "id": "079-healthy-and-easy-high-protein-biscoff-chesecake",
+  "queue_index": 79,
+  "platform": "instagram",
+  "creator": "Gymhealthu",
+  "source_url": "https://www.instagram.com/gymhealthu/reel/DXPdkQviOlJ/",
+  "source_text_kind": "description",
+  "source_text": "Healthy & Easy High Protein Biscoff Chesecake 🍰\n82g Protein💪🏼🤯\n\n(Macros: Per Slice - 4 Total)\n277 Calories\n25.5gC | 11gF | 20.5gP\n\nIngredients:\n400g Flavoured Low Fat Yoghurt (YoPro Caramel Low Fat Yoghurt - or your choice of flavour)\n2 Eggs\n15g Cornflour/Cornstarch\n80g Zero Calorie Sweetener (Natvia Natural Sweetener)\n1 Tsp Vanilla or Cheesecake Extract\n150g Light Cream Cheese\n60g Biscoff Spread\n100ml Low Fat Milk\n3 Crushed Mini Biscoff Biscuits\n\nDirections:\n1. In a blender cup add flavoured low fat yoghurt, 2 eggs, 15g cornflour/cornstarch, 80g zero calorie sweetener, 1 tsp vanilla or cheesecake extract & blend until smooth & creamy.\n2. Pour the mixture into a lightly greased & lined  cake baking dish.\n3. Wrap the outside of the baking dish with aluminium foil.\n4. Place the baking dish into a large tray & fill the tray approximately half way with water (or place the baking dish into the middle of the oven with a tray filled with water at the bottom of the oven)\n5. Bake in the oven at 165C/330F for approximately 45 minutes, once cooked set aside until cool.\n6. While the cheesecake is baking in a bowl add 30g of biscoff spread with 100ml of low fat milk, microwave for 20 - 30 seconds, add another 30g of biscoff spread & continue mixing until thick.\n7. Pour the sauce over the top of the cheesecake evenly, crush 3 mini biscoff biscuits & equally sprinkle them around the edge of the cheesecake. Place in the fridge once more to set, cut into 4 slices & enjoy.\n\n#cheesecake #biscoff #easyrecipe #highprotein #healthyrecipes",
+  "expected": {
+    "name": "Healthy & Easy High Protein Biscoff Chesecake",
+    "servings": 4,
+    "raw_ingredients": [
+      "400g Flavoured Low Fat Yoghurt (YoPro Caramel Low Fat Yoghurt - or your choice of flavour)",
+      "2 Eggs",
+      "15g Cornflour/Cornstarch",
+      "80g Zero Calorie Sweetener (Natvia Natural Sweetener)",
+      "1 Tsp Vanilla or Cheesecake Extract",
+      "150g Light Cream Cheese",
+      "60g Biscoff Spread",
+      "100ml Low Fat Milk",
+      "3 Crushed Mini Biscoff Biscuits"
+    ],
+    "steps": [
+      "In a blender cup add flavoured low fat yoghurt, 2 eggs, 15g cornflour/cornstarch, 80g zero calorie sweetener, 1 tsp vanilla or cheesecake extract & blend until smooth & creamy.",
+      "Pour the mixture into a lightly greased & lined  cake baking dish.",
+      "Wrap the outside of the baking dish with aluminium foil.",
+      "Place the baking dish into a large tray & fill the tray approximately half way with water (or place the baking dish into the middle of the oven with a tray filled with water at the bottom of the oven)",
+      "Bake in the oven at 165C/330F for approximately 45 minutes, once cooked set aside until cool.",
+      "While the cheesecake is baking in a bowl add 30g of biscoff spread with 100ml of low fat milk, microwave for 20 - 30 seconds, add another 30g of biscoff spread & continue mixing until thick.",
+      "Pour the sauce over the top of the cheesecake evenly, crush 3 mini biscoff biscuits & equally sprinkle them around the edge of the cheesecake. Place in the fridge once more to set, cut into 4 slices & enjoy."
+    ],
+    "tags": [
+      "cheesecake",
+      "biscoff",
+      "easyrecipe",
+      "highprotein",
+      "healthyrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired title spelling 'Chesecake' and the doubled space in step 2 are preserved exactly.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

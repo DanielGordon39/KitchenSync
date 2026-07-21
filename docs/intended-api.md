@@ -48,6 +48,7 @@ app.recipes.save_metadata(
 
 results = app.recipes.search("chicken")
 recipe = app.recipes.get("recipe_blackened_chicken_penne_61b0d03a")
+updated = app.recipes.update_recipe(recipe["recipe_id"], edited_recipe)
 ```
 
 `save_imported_recipe(...)` is the public save boundary for accepted parsed recipes. It should:
@@ -60,11 +61,13 @@ recipe = app.recipes.get("recipe_blackened_chicken_penne_61b0d03a")
 - generate plain UUID hex IDs for new ingredient rows and reuse existing ingredient rows by slug in v1.
 - store recipe author, imported-from marker, time-estimate minutes, main image path, and tags in SQLite when present.
 
-Descriptions remain Markdown-only in v1. A later tag-suggestion pass may use recipe descriptions as model/parser input, but descriptions are not indexed as first-class database fields yet.
+Descriptions and recipe notes remain Markdown-only in v1. `get_detail(...)` combines those fields from canonical Markdown with the indexed recipe data so the editor can preserve and update them without promoting them into SQLite columns.
 
 All UI, CLI, scratch, and future HTTP API save flows should call this one method or a thin endpoint that delegates to it. They should not call `write_recipe_markdown_files(...)` and `save_metadata(...)` separately, because separate calls can update Markdown without SQLite or SQLite without Markdown.
 
-Search in v1 can use a simple SQLite `LIKE` query over indexed metadata. Full-text search can replace it when search behavior needs ranking or tokenization.
+Search v1 ranks fuzzy title matches above tag and ingredient matches using a standard-library scorer over the local indexed catalog. Exact hashtag requests and the common tag filters are applied by the backend before relevance ordering. Full-text search and cursor paging can replace the in-memory scoring path when the catalog is large enough to require them.
+
+Browser-facing search uses `GET /api/recipes` with optional `q`, repeated exact `tag`, grouped `meal` and `cuisine`, required `diet`, and `scope=global|cookbook` query parameters. `GET /api/recipe-tags` accepts the same scope and returns current normalized tag slugs and recipe counts for hashtag autocomplete and the filter menu. The recipe editor loads canonical ingredient names, aliases, and default units from `GET /api/ingredients`; `POST /api/ingredient-lines/parse` returns a lossless Rich-edit projection or a reason to keep each line Raw. `PUT /api/recipes/{recipe_id}` still accepts canonical raw ingredient lines and delegates editable recipe content to `app.recipes.update_recipe(...)`, which writes Markdown and refreshes all recipe index rows together. Future account support should scope these endpoints to the authenticated account's visible recipes rather than adding user IDs to browser query parameters.
 
 `save_metadata(...)` is the low-level index helper for tests and rebuild tasks. It should not be the recipe-import API.
 
@@ -76,25 +79,25 @@ recipe = app.recipes.get_by_slug("blackened-chicken-penne")
 detail = app.recipes.get_detail(recipe["recipe_id"])
 ```
 
-`list()`, `get(...)`, `get_by_slug(...)`, and `search(...)` return recipe rows with a `tags` list attached. `get_detail(...)` returns a dictionary with `recipe`, `ingredients`, and `steps` keys so the UI can render a detail page without querying SQLite directly.
+`list()`, `get(...)`, `get_by_slug(...)`, and `search(...)` return recipe rows with a `tags` list attached. `get_detail(...)` returns a dictionary with `recipe`, `ingredients`, and `steps` keys, including Markdown-backed description and recipe notes, so the UI can render and edit a recipe without querying SQLite directly.
 
 ## Cookbook
 
 The cookbook answers which cookbook entries exist and what cookbook-specific metadata has been indexed for search and UI views.
 
 ```python
-app.cookbook.index_entry(
-    recipe_id="61b0d03ab3a03377ee6b1b04a9c8f01",
-    recipe_slug="blackened-chicken-penne",
-    title="Blackened Chicken Penne",
-    cookbook_path="cookbook/blackened-chicken-penne.md",
+app.cookbook.save_entry(
+    "61b0d03ab3a03377ee6b1b04a9c8f01",
     favorite=True,
     rating=4,
+    notes="Try smoked paprika next time.",
 )
 entries = app.cookbook.list_entries()
 ```
 
-Recipe existence is separate from cookbook entry existence. Cookbook entry Markdown lives under `data/library/cookbook/{recipe_slug}.md` and is the durable source for cookbook-specific metadata.
+Recipe existence is separate from cookbook entry existence. Cookbook entry Markdown lives under `data/library/cookbook/{recipe_slug}.md` and is the durable source for cookbook-specific metadata. `save_entry(...)` writes that Markdown and updates its index together; `index_entry(...)` remains the low-level rebuild/test helper.
+
+Browser endpoints are `POST /api/recipes/{recipe_id}/cookbook` to add membership and `PATCH /api/recipes/{recipe_id}/cookbook` to update favorite, rating, and notes.
 
 ## Ingredients
 
@@ -168,6 +171,6 @@ Candidate review state starts database-only. V1 keeps ingredient import optimist
 
 ## V2 Boundary
 
-V1 does not model accounts, sharing, sync, or separate global and personal databases.
+V1 does not model accounts, sharing, sync, recipe copies, or separate global and personal databases. It assumes one implicit user and treats every recipe as editable. Later global-catalog versions should gate recipe edits by creator or approved-editor permission while cookbook metadata becomes account-specific.
 
 The API keeps recipe, ingredient, cookbook, pantry, shopping, and candidate concepts separate so v2 can split catalog data from account state without rewriting user-facing operations.

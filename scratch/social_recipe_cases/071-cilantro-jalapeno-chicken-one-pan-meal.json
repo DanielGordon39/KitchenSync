@@ -1,0 +1,39 @@
+{
+  "id": "071-cilantro-jalapeno-chicken-one-pan-meal",
+  "queue_index": 71,
+  "platform": "instagram",
+  "creator": "Mayra Wendolyne | Low Carb Love",
+  "source_url": "https://www.instagram.com/low.carb.love/reel/Da4DbdKtfo_/",
+  "source_text_kind": "description",
+  "source_text": "CILANTRO JALAPEÑO CHICKEN - ONE PAN MEAL! 🥘 \n(High Protein & Delicious) \n\nHave you tried this yet?! 👀 \n\nAll you need is:\nChicken thighs\nAvocado oil\nGarlic powder\nChili powder\nCumin\nOregano\nPaprika\nSalt and pepper\nGarlic\nCilantro\nLime juice\nGreen onion\nHomemade pickled onions\nAvocado\nCumin\n\nThat's it... I topped it with my cilantro jalapeño crema and guys this came out so juicy and super flavorful!\n\nLet me know if you will give this a try ❤️",
+  "expected": {
+    "name": "CILANTRO JALAPEÑO CHICKEN - ONE PAN MEAL",
+    "servings": null,
+    "raw_ingredients": [
+      "Chicken thighs",
+      "Avocado oil",
+      "Garlic powder",
+      "Chili powder",
+      "Cumin",
+      "Oregano",
+      "Paprika",
+      "Salt and pepper",
+      "Garlic",
+      "Cilantro",
+      "Lime juice",
+      "Green onion",
+      "Homemade pickled onions",
+      "Avocado",
+      "Cumin"
+    ],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The 'All you need is' block supports an unquantified ingredient list, while the caption supplies no primary preparation method.",
+    "Accepted after generalized explicit ingredient-boundary and call-to-action filtering; no creator identity or exact recipe phrase is used."
+  ]
+}

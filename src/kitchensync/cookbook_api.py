@@ -1,14 +1,71 @@
 from __future__ import annotations
 
 import sqlite3
+from pathlib import Path
 from typing import Any
 
 from .database import rows
 
 
 class CookbookAPI:
-    def __init__(self, connection: sqlite3.Connection):
+    def __init__(self, connection: sqlite3.Connection, library_root: Path):
         self.connection = connection
+        self.library_root = library_root
+
+    def save_entry(
+        self,
+        recipe_id: str,
+        *,
+        favorite: bool = False,
+        rating: int | None = None,
+        notes: str | None = None,
+    ) -> dict[str, Any] | None:
+        if rating is not None and not 1 <= rating <= 5:
+            raise ValueError("rating must be between 1 and 5")
+
+        recipe = self.connection.execute(
+            "SELECT * FROM recipe_recipes WHERE recipe_id = ?",
+            (recipe_id,),
+        ).fetchone()
+        if recipe is None:
+            return None
+
+        existing = self.get_entry(recipe_id)
+        cookbook_path = (
+            existing["cookbook_path"]
+            if existing
+            else f"cookbook/{recipe['slug'] or recipe_id}.md"
+        )
+        status = existing["status"] if existing else "active"
+        last_cooked_on = existing["last_cooked_on"] if existing else None
+
+        path = self.library_root / cookbook_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            _entry_markdown(
+                title=recipe["title"],
+                recipe_path=recipe["markdown_path"],
+                favorite=favorite,
+                rating=rating,
+                status=status,
+                notes=notes,
+                last_cooked_on=last_cooked_on,
+            ),
+            encoding="utf-8",
+        )
+        self.index_entry(
+            recipe_id=recipe_id,
+            recipe_slug=recipe["slug"],
+            title=recipe["title"],
+            recipe_path=recipe["markdown_path"],
+            cookbook_path=cookbook_path,
+            favorite=favorite,
+            rating=rating,
+            status=status,
+            notes=notes,
+            last_cooked_on=last_cooked_on,
+        )
+        return self.get_entry(recipe_id)
 
     def index_entry(
         self,
@@ -74,9 +131,9 @@ class CookbookAPI:
             """
             SELECT
                 c.recipe_id,
-                c.recipe_slug,
-                c.title,
-                c.recipe_path,
+                r.slug AS recipe_slug,
+                r.title,
+                r.markdown_path AS recipe_path,
                 c.cookbook_path,
                 r.servings,
                 r.source_name,
@@ -93,3 +150,51 @@ class CookbookAPI:
             """
         ).fetchall()
         return rows(entry_rows)
+
+    def get_entry(self, recipe_id: str) -> dict[str, Any] | None:
+        row = self.connection.execute(
+            """
+            SELECT
+                c.recipe_id,
+                r.slug AS recipe_slug,
+                r.title,
+                r.markdown_path AS recipe_path,
+                c.cookbook_path,
+                c.favorite,
+                c.rating,
+                c.status,
+                c.notes,
+                c.last_cooked_on,
+                c.indexed_at
+            FROM cookbook_entries AS c
+            JOIN recipe_recipes AS r ON r.recipe_id = c.recipe_id
+            WHERE c.recipe_id = ?
+            """,
+            (recipe_id,),
+        ).fetchone()
+        return dict(row) if row is not None else None
+
+
+def _entry_markdown(
+    *,
+    title: str,
+    recipe_path: str | None,
+    favorite: bool,
+    rating: int | None,
+    status: str,
+    notes: str | None,
+    last_cooked_on: str | None,
+) -> str:
+    lines = [
+        f"# {title}",
+        "",
+        f"- Recipe: {recipe_path or ''}",
+        f"- Favorite: {'yes' if favorite else 'no'}",
+        f"- Rating: {rating or ''}",
+        f"- Status: {status}",
+    ]
+    if last_cooked_on:
+        lines.append(f"- Last cooked: {last_cooked_on}")
+    if notes and notes.strip():
+        lines.extend(["", "## Notes", "", notes.strip()])
+    return "\n".join(lines).strip() + "\n"

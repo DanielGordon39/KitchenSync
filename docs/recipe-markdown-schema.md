@@ -68,6 +68,8 @@ Recipe metadata may be represented as simple bullets after the description and b
 
 ```markdown
 - Servings: 2
+- Time: 45 minutes
+- Tags: pasta, dinner, weeknight
 - Source: HelloFresh
 - Author: Michelle Doll Olson
 - URL: https://www.hellofresh.com/recipes/blackened-chicken-penne-61b0d03ab3a03377ee6b1b04
@@ -77,9 +79,10 @@ Recipe metadata may be represented as simple bullets after the description and b
 Fact block rules:
 
 - Use `Label: value` bullets.
-- The known v1 labels are `Servings`, `Source`, `Author`, `URL`, and `Imported from`.
+- The known v1 labels are `Servings`, `Time`, `Tags`, `Source`, `Author`, `URL`, and `Imported from`.
 - Unknown fact labels may be preserved by readers even if not indexed.
-- Tags are deferred until the UI needs them.
+- `Time` stores the recipe-level base estimate in minutes.
+- `Tags` stores normalized tag slugs as a comma-separated list.
 - Large raw import artifacts, if retained later, should be sidecar files under `recipes/{slug}/`.
 
 ## Body
@@ -134,6 +137,10 @@ Ingredient rules:
 - If parser output is wrong in v1, correct the ingredient bullet text before saving.
 - Durable structured ingredient overrides are deferred until there is a clear product need.
 - Ingredient-specific notes may be written in the line itself.
+
+The browser editor may project a safely parsed line into Quantity, Unit, Ingredient, and Preparation fields. That Rich view is editing assistance only: it formats back into one readable ingredient line before the existing recipe save operation. Lines with unrepresented details such as multiple quantities, sizes, comments, purposes, or multipliers remain editable in Raw view so no information is discarded.
+
+Ingredient and unit autocomplete may use the rebuildable ingredient index, including aliases and default units. Selecting or creating an ingredient does not add IDs or structured fields to recipe Markdown.
 
 If parsing fails, preserve or edit the ingredient line as normal recipe text:
 
@@ -259,8 +266,8 @@ An index rebuild should derive database rows from Markdown as follows:
 - `recipes.main_image_path` from the first recipe-level image reference when present.
 - `recipes.title` from the level-one heading.
 - `recipes.servings`, `recipes.source_*`, `recipes.author`, and `recipes.imported_from` from the fact block.
-- `recipes.time_estimate_minutes` from recipe time metadata when available from parser or UI input.
-- `recipe_tags` from recipe tags when available from parser or UI input.
+- `recipes.time_estimate_minutes` from the `Time` fact when present.
+- `recipe_tags` from the comma-separated `Tags` fact.
 - `recipe_ingredients.raw_text` from the raw ingredient bullet list.
 - `recipe_ingredients.*` parsed fields by re-running the ingredient parser over each ingredient bullet.
 - `recipe_ingredients.ingredient_id` by matching parser output and raw text against the canonical ingredient database, auto-creating minimal canonical ingredient records in v1 when no match exists.

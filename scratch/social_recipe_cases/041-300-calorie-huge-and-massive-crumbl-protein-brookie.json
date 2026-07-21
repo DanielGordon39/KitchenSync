@@ -1,0 +1,56 @@
+{
+  "id": "041-300-calorie-huge-and-massive-crumbl-protein-brookie",
+  "queue_index": 41,
+  "platform": "instagram",
+  "creator": "Nick Kazamias",
+  "source_url": "https://www.instagram.com/proteinmusclemeals/reel/DayrJYgiLbJ/",
+  "source_text_kind": "description",
+  "source_text": "(👇recipe) 300 Calorie Huge & Massive Crumbl Protein Brookie \n\n🗣️🗣️ Are you FOLLOWING @nickkaz.fit\n\n—\n\nFirst ever low cal high protein recipe generator app coming very soon\n\n✳️ Macros (per circle brookie in video - recipe makes 2 of the biggest brookies you’ve ever seen):\n305 Cals, 32g Net Carbs, 5g Fat, 32g Protein\n\nIt’s 305 calories per, I said under 300 in the video and misspoke\n\n✳️ Ingredients for Cookie Batter:\n\nWet:\n40g (3 tbsp) Plain or Vanilla Nonfat Greek Yogurt\u202825mL (1 tbsp + 2 tsp) Egg Whites\u20282.1mL (1/2 tsp) Vanilla Extract (optional)\n\nDry:\n10g (1 tbsp + 1 tsp) All Purpose Flour\u202810g (1/3 Scoop) Casein Protein Powder (@legion code nickkaz saves $$\u20285g (2 tsp) Oat Flour\u202824g (2 tbsp) Granulated Sugar Substitute\u20281g (1/4 tsp) Baking Soda\u2028Pinch of Salt\n\n✳️ Ingredients for Brownie Batter:\n\nWet:\n120mL (1/2 Cup) Egg Whites\u202880g (1/3 Cup) Plain or Vanilla Nonfat Greek Yogurt\u2028120g (1/2 Cup) Pumpkin Purée\u2028120mL (1/2 Cup) Almond Milk\n\nDry:\n35g (1/4 Cup) All Purpose Flour\nExtra 35g (1/4 Cup) All Purpose Flour (*optional - makes it denser)\u202872–96g (6–8 tbsp) Granulated Sugar Substitute\u202820g (2/3 Scoop) Whey/Casein Blend Protein Powder (@legion code nickkaz saves $$)\u202825g (1/4 Cup) Black or Dark Cocoa Powder\u20282g (1/3 tsp) Baking Soda\u20282g (1/2 tsp) Baking Powder\u2028Pinch of Salt\n\nCookie Topping:\n10g Chocolate Chips\nExtra Chocolate Chips (*optional*)\n\n*I recommend using a whey/casein blend (or 75% casein / 25% whey) for the best fudgy texture.\n\n✳️ Decoration (*optional*):\nIce Cream & Chocolate Sauce\n\n👉 Everything that is optional is NOT included in da macros\n\n✳️ Directions:\n1. Preheat oven to 350°F and lightly spray two 5- or 6-inch springform pans.\n2. Mix the cookie batter wet and dry ingredients separately, then combine.\n3. Mix the brownie batter wet and dry ingredients separately, then combine. Do not overmix.\n4. Divide the brownie batter evenly between both pans.\n5. Dollop the cookie batter over the brownie batter, gently spread, and add choc chips.\n6. Bake 28–38 min (6-inch) or 32–42 min (5-inch), until the edges are set and the centers are slightly soft.\n7. Cool in the pans for 30 minutes be",
+  "expected": {
+    "name": "300 Calorie Huge & Massive Crumbl Protein Brookie",
+    "servings": 2,
+    "raw_ingredients": [
+      "40g (3 tbsp) Plain or Vanilla Nonfat Greek Yogurt",
+      "25mL (1 tbsp + 2 tsp) Egg Whites",
+      "2.1mL (1/2 tsp) Vanilla Extract (optional)",
+      "10g (1 tbsp + 1 tsp) All Purpose Flour",
+      "10g (1/3 Scoop) Casein Protein Powder (@legion code nickkaz saves $$",
+      "5g (2 tsp) Oat Flour",
+      "24g (2 tbsp) Granulated Sugar Substitute",
+      "1g (1/4 tsp) Baking Soda",
+      "Pinch of Salt",
+      "120mL (1/2 Cup) Egg Whites",
+      "80g (1/3 Cup) Plain or Vanilla Nonfat Greek Yogurt",
+      "120g (1/2 Cup) Pumpkin Purée",
+      "120mL (1/2 Cup) Almond Milk",
+      "35g (1/4 Cup) All Purpose Flour",
+      "Extra 35g (1/4 Cup) All Purpose Flour (*optional - makes it denser)",
+      "72–96g (6–8 tbsp) Granulated Sugar Substitute",
+      "20g (2/3 Scoop) Whey/Casein Blend Protein Powder (@legion code nickkaz saves $$)",
+      "25g (1/4 Cup) Black or Dark Cocoa Powder",
+      "2g (1/3 tsp) Baking Soda",
+      "2g (1/2 tsp) Baking Powder",
+      "Pinch of Salt",
+      "10g Chocolate Chips",
+      "Extra Chocolate Chips (*optional*)",
+      "Ice Cream & Chocolate Sauce"
+    ],
+    "steps": [
+      "Preheat oven to 350°F and lightly spray two 5- or 6-inch springform pans.",
+      "Mix the cookie batter wet and dry ingredients separately, then combine.",
+      "Mix the brownie batter wet and dry ingredients separately, then combine. Do not overmix.",
+      "Divide the brownie batter evenly between both pans.",
+      "Dollop the cookie batter over the brownie batter, gently spread, and add choc chips.",
+      "Bake 28–38 min (6-inch) or 32–42 min (5-inch), until the edges are set and the centers are slightly soft.",
+      "Cool in the pans for 30 minutes be"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The final direction is visibly truncated in the acquired description and is preserved literally rather than repaired.",
+    "Accepted after general decorative recipe-prefix cleanup and contextual exclusion of nutrition-correction and recommendation prose; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "015-banh-cuon",
+  "queue_index": 15,
+  "platform": "instagram",
+  "creator": "Joe Chu",
+  "source_url": "https://www.instagram.com/joexfitness/reel/Da811jJDmRW/",
+  "source_text_kind": "description",
+  "source_text": "⇩ Full Recipe 🥗 ⇩\n\nMacros per 1 serving:\nProtein: 30g\nCarbs: 70g\nFat: 20g\nCalories: 570\n\nIngredients per 1 serving:\n- 4 sheets of rice paper\n- 4 oz ground pork, raw\n- 1 shiitake mushroom, whole\n- 1/2 shallot, whole\n- 1 green onion, whole, medium\n- 1/2 tbsp soy sauce\n- 1/2 tbsp phu quoc fish sauce\n- salt and pepper, to taste\n- 1 second spray oil\n\n[Spicy Fish Sauce]\n- 1.5 tbsp lime juice\n- 1 tbsp garlic, minced\n- 1 tbsp brown sugar\n- 1 red chili pepper (Thai chili)\n- 2 tbsp phu quoc fish sauce\n\n[Toppings]\n- 3 tbsp cilantro, diced and whole\n- 1/2 tbsp fried shallots\n- 1 red chili pepper (Thai chili)\n\nHow to make it yourself:\n1. Finely chop your shallot, mushroom, red chili pepper,\nand green onions.\n2. In a bowl, add your ground pork, diced mushrooms,\nshallots, green onions, soy sauce, fish sauce, and salt\nand pepper to taste and mix well until evenly combined.\n3. In a small bowl, mix lime juice, minced garlic brown\nsugar, red chili pepper, and fish sauce to make your\nspicy fish dipping sauce.\n4. In a pan on medium heat coated with spray oil, cook\nyour ground pork mix until cooked through. Set aside to\ncool to room temperature.\n5. Wet your rice paper in a bowl of water evenly, shake\noff excess water, and place on a flat surface and scoop\na few spoonfuls of your cooked pork onto the center of\nyour rice paper.\n6. Roll your rice paper into long logs/burritos, repeat\nwith the remaining rice paper to make more rolls, and\nplace the rolls on a plate.\n7. Pour your sauce on top of your rice paper rolls, top\noff with fried shallots, red chili peppers, and cilantro\nand enjoy!\n\n📩 Save this banh cuon recipe to make for later and if\nyou make it, post it and tag me in it! I’d love to see how\nyou liked the recipe! :)\n\n#highprotein #lowcalorierecipes #vietnamesefood\n#healthyrecipe #weightlossrecipes #banhcuon\n#ricepaper",
+  "expected": {
+    "name": "banh cuon",
+    "servings": 1,
+    "raw_ingredients": [
+      "4 sheets of rice paper",
+      "4 oz ground pork, raw",
+      "1 shiitake mushroom, whole",
+      "1/2 shallot, whole",
+      "1 green onion, whole, medium",
+      "1/2 tbsp soy sauce",
+      "1/2 tbsp phu quoc fish sauce",
+      "salt and pepper, to taste",
+      "1 second spray oil",
+      "1.5 tbsp lime juice",
+      "1 tbsp garlic, minced",
+      "1 tbsp brown sugar",
+      "1 red chili pepper (Thai chili)",
+      "2 tbsp phu quoc fish sauce",
+      "3 tbsp cilantro, diced and whole",
+      "1/2 tbsp fried shallots",
+      "1 red chili pepper (Thai chili)"
+    ],
+    "steps": [
+      "Finely chop your shallot, mushroom, red chili pepper, and green onions.",
+      "In a bowl, add your ground pork, diced mushrooms, shallots, green onions, soy sauce, fish sauce, and salt and pepper to taste and mix well until evenly combined.",
+      "In a small bowl, mix lime juice, minced garlic brown sugar, red chili pepper, and fish sauce to make your spicy fish dipping sauce.",
+      "In a pan on medium heat coated with spray oil, cook your ground pork mix until cooked through. Set aside to cool to room temperature.",
+      "Wet your rice paper in a bowl of water evenly, shake off excess water, and place on a flat surface and scoop a few spoonfuls of your cooked pork onto the center of your rice paper.",
+      "Roll your rice paper into long logs/burritos, repeat with the remaining rice paper to make more rolls, and place the rolls on a plate.",
+      "Pour your sauce on top of your rice paper rolls, top off with fried shallots, red chili peppers, and cilantro and enjoy!"
+    ],
+    "tags": [
+      "highprotein",
+      "lowcalorierecipes",
+      "vietnamesefood",
+      "healthyrecipe",
+      "weightlossrecipes",
+      "banhcuon",
+      "ricepaper"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Accepted after the parser learned to join hard-wrapped numbered-step continuations."
+  ]
+}

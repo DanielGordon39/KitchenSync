@@ -1,0 +1,29 @@
+{
+  "id": "064-biscoff-banana-loaf",
+  "queue_index": 64,
+  "platform": "instagram",
+  "creator": "Anastasia D’Amario | High Protein Recipes",
+  "source_url": "https://www.instagram.com/fitfoodiestasia/reel/Da0vp3AMe_W/",
+  "source_text_kind": "description",
+  "source_text": "I almost didn’t make this recipe… but now it’s changed my life! 🙌🏼 \n\nThis moist, fluffy, not-too-sweet Biscoff Banana Loaf is exactly what we all need right now, okay? \n\nIt’s made in one bowl, ready in 40 minutes, and each slice packs 7 grams of protein and 4 grams of fiber. Also, it’s way lower in sugar while still tasting like something you’d get at a bakery… \n\nWins all around! 🤎\n\nComment “love banana bread” and I’ll send you the recipe card‼️ \n\nWho will you be sharing a slice with? I know I can’t wait to feed my man again! (Because dessert always tastes better when someone else steals half 🤣) \n\n•\n\n#healthyrecipes #highproteinlowcarb #easyrecipes #healthydessert #bananabread",
+  "expected": {
+    "name": "Biscoff Banana Loaf",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "healthyrecipes",
+      "highproteinlowcarb",
+      "easyrecipes",
+      "healthydessert",
+      "bananabread"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The demonstrative sentence explicitly names the title-cased dish, but the ingredients and method are withheld behind a comment-to-DM call to action.",
+    "Accepted after generalized title-cased noun-phrase extraction from a demonstrative subject; no creator identity or exact recipe phrase is used."
+  ]
+}

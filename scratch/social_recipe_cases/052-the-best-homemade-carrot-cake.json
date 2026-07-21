@@ -1,0 +1,49 @@
+{
+  "id": "052-the-best-homemade-carrot-cake",
+  "queue_index": 52,
+  "platform": "instagram",
+  "creator": "Razi Khan",
+  "source_url": "https://www.instagram.com/raziyyz/reel/DadPc2zgaFR/",
+  "source_text_kind": "description",
+  "source_text": "The best homemade Carrot Cake! Packed with protein, lower in calories, and it comes out soft and fluffy every time. Here’s how to easily make it!👇🏽\n-\nIngredients:\n• 2 eggs\n• 1/2 cup greek yogurt (0%)\n• 1/2 cup any milk (I use 1%)\n• 1 tsp vanilla extract\n• 2 tsp coconut oil\n• 1 heaping cup any flour (I use blended rolled oats)\n• 2 scoops vanilla protein powder\n• 1 tsp baking powder\n• 1/2 tsp baking soda\n• 1 tsp cinnamon\n• 1/2 tsp ginger\n• 1/3 cup any sweetener (I use stevia or splenda brown sugar)\n• 1 cup grated carrot (or more to your liking)\n-\nIcing:\n• 1/4 cup light cream cheese (I use 95% light)\n• 1 tbsp any sweetener\n• 1/4 tsp vanilla extract\n• optional: 1/2 scoop vanilla protein powder\n-\nBaking Time:\n• 350F for 28-30 minutes\n-\nCalories/Macros (per slice of 10):\n• 97 calories\n• 8.5g protein, 9g carbs, 3g fat\n-\n-\n#recipe #carrotcake #healthy #dessert #homemade",
+  "expected": {
+    "name": "The best homemade Carrot Cake",
+    "servings": 10,
+    "raw_ingredients": [
+      "2 eggs",
+      "1/2 cup greek yogurt (0%)",
+      "1/2 cup any milk (I use 1%)",
+      "1 tsp vanilla extract",
+      "2 tsp coconut oil",
+      "1 heaping cup any flour (I use blended rolled oats)",
+      "2 scoops vanilla protein powder",
+      "1 tsp baking powder",
+      "1/2 tsp baking soda",
+      "1 tsp cinnamon",
+      "1/2 tsp ginger",
+      "1/3 cup any sweetener (I use stevia or splenda brown sugar)",
+      "1 cup grated carrot (or more to your liking)",
+      "1/4 cup light cream cheese (I use 95% light)",
+      "1 tbsp any sweetener",
+      "1/4 tsp vanilla extract",
+      "optional: 1/2 scoop vanilla protein powder"
+    ],
+    "steps": [
+      "350F for 28-30 minutes"
+    ],
+    "tags": [
+      "recipe",
+      "carrotcake",
+      "healthy",
+      "dessert",
+      "homemade"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The Baking Time block is the only supported cooking instruction in the description.",
+    "Accepted after a general per-unit-of-total yield pattern; no creator identity or exact recipe phrase is used."
+  ]
+}

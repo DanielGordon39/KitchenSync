@@ -1,0 +1,62 @@
+{
+  "id": "036-high-protein-animal-style-smash-burger-bowls",
+  "queue_index": 36,
+  "platform": "instagram",
+  "creator": "Hunter Micheletto",
+  "source_url": "https://www.instagram.com/hunt4shredz/reel/Da3BQctBZ9n/",
+  "source_text_kind": "description",
+  "source_text": "🍔 High-Protein Animal-Style Smash Burger Bowls (makes 4 big bowls)\n\n📕 comment “cookbook” for my purchase link\n\n🔥 What You Need\n\nFor the Beef\n• 1¼ lb (567g) 93/7 lean ground beef, raw\n• 1½ tsp (7g) salt\n• 1 tsp (2g) black pepper\n• 1½ tsp (5g) garlic powder\n• 1½ tsp (5g) onion powder\n• 1 tsp (2g) smoked paprika\n• 1 tbsp (15g) yellow mustard (cook into the beef)\n• 1 tbsp (15g) Worcestershire sauce\n\nCaramelized Onions\n• 2 medium yellow onions, diced (250g)\n• 1 tsp (5g) olive oil\n• Pinch of salt\n• Splash of water as needed to soften\n\nCrispy Potato Base\n• 800g russet potatoes, diced small (about 2 large)\n• 2 tsp (6g) garlic powder\n• 2 tsp (6g) onion powder\n• 1 tsp (2g) smoked paprika\n• 1 tsp (5g) salt\n• ½ tsp (1g) black pepper\n• 2 tsp (10g) olive oil or olive oil spray\n\nBowl Base\n• 4 heaping cups (320g) shredded iceberg lettuce\n• 4 slices (84g) reduced-fat American cheese\n• ½ cup (40–60g) dill pickle chips\n\n“Animal Style” Sauce \n• ½ cup (120g) non-fat Greek yogurt\n• 3 tbsp (about 40g) light mayo\n• 2 tbsp (30g) ketchup\n• 2 tsp (10g) yellow mustard\n• 1 tbsp pickle juice\n• 1 tbsp finely chopped dill pickles\n• ½ tsp (1g) smoked paprika\n• ¼ tsp garlic powder\n• Salt & pepper to taste\n•Water to thin if needed \n\nMacros per serving \n• Calories: 543\n• Protein: 46g\n• Carbs: 47g\n• Fat: 19\n\n#burgerbowl #animalstyle #highprotein #highproteinrecipes #mealpreprecipes",
+  "expected": {
+    "name": "High-Protein Animal-Style Smash Burger Bowls",
+    "servings": 4,
+    "raw_ingredients": [
+      "1¼ lb (567g) 93/7 lean ground beef, raw",
+      "1½ tsp (7g) salt",
+      "1 tsp (2g) black pepper",
+      "1½ tsp (5g) garlic powder",
+      "1½ tsp (5g) onion powder",
+      "1 tsp (2g) smoked paprika",
+      "1 tbsp (15g) yellow mustard (cook into the beef)",
+      "1 tbsp (15g) Worcestershire sauce",
+      "2 medium yellow onions, diced (250g)",
+      "1 tsp (5g) olive oil",
+      "Pinch of salt",
+      "Splash of water as needed to soften",
+      "800g russet potatoes, diced small (about 2 large)",
+      "2 tsp (6g) garlic powder",
+      "2 tsp (6g) onion powder",
+      "1 tsp (2g) smoked paprika",
+      "1 tsp (5g) salt",
+      "½ tsp (1g) black pepper",
+      "2 tsp (10g) olive oil or olive oil spray",
+      "4 heaping cups (320g) shredded iceberg lettuce",
+      "4 slices (84g) reduced-fat American cheese",
+      "½ cup (40–60g) dill pickle chips",
+      "½ cup (120g) non-fat Greek yogurt",
+      "3 tbsp (about 40g) light mayo",
+      "2 tbsp (30g) ketchup",
+      "2 tsp (10g) yellow mustard",
+      "1 tbsp pickle juice",
+      "1 tbsp finely chopped dill pickles",
+      "½ tsp (1g) smoked paprika",
+      "¼ tsp garlic powder",
+      "Salt & pepper to taste",
+      "Water to thin if needed"
+    ],
+    "steps": [],
+    "tags": [
+      "burgerbowl",
+      "animalstyle",
+      "highprotein",
+      "highproteinrecipes",
+      "mealpreprecipes"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description provides ingredients and macros but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after general parenthetical-yield title cleanup and non-imperative bullet inheritance from ingredient-component context; no creator identity or exact recipe phrase is used."
+  ]
+}

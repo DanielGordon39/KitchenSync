@@ -1,0 +1,50 @@
+{
+  "id": "038-air-fried-crispy-chipotle-honey-chicken-tenders",
+  "queue_index": 38,
+  "platform": "instagram",
+  "creator": "Hunter Micheletto",
+  "source_url": "https://www.instagram.com/hunt4shredz/reel/DasuCCnxyIB/",
+  "source_text_kind": "description",
+  "source_text": "🔥These Air Fried Crispy Chipotle Honey Chicken Tenders Are Insanely Good\n\n🛒 WHAT YOU NEED \n\n🍗 Chicken\n• 1.5 lbs boneless skinless chicken tenderloins\n• Salt & pepper to taste\n• 1 tsp garlic powder\n\n🥣 Breading\n• 1/4 cup @fit.flour (code: shredz) (or all-purpose flour)\n• 2 large eggs\n• 2 cups crushed cornflakes\n• Cooking spray\n\n🌶️ Chipotle Honey Glaze\n• 1/4 cup honey\n• 4-6 chipotle peppers in adobo, finely chopped\n• 1 tbsp adobo sauce\n• 2 garlic cloves, minced\n• 1 tbsp apple cider vinegar\n• Hit sauce if you desire \n• 1/4 cup of broth to stretch it out \n\nHigh Protein Ranch\n• 1 cup nonfat Greek yogurt\n• 2 tbsp light mayo\n• 1 tbsp ranch seasoning\n• 1 tbsp fresh dill, chopped\n• Splash of pickle juice\n• Splash of water to thin\n\n📊 Macros Per Serving (about 3 tenders w/ ranch ) \n406 Calories\n49g Protein\n38g Carbs\n6g Fat\n\n#highprotein #lowcalorie #recipe #easytomake #highproteinmeals",
+  "expected": {
+    "name": "Air Fried Crispy Chipotle Honey Chicken Tenders",
+    "servings": null,
+    "raw_ingredients": [
+      "1.5 lbs boneless skinless chicken tenderloins",
+      "Salt & pepper to taste",
+      "1 tsp garlic powder",
+      "1/4 cup @fit.flour (code: shredz) (or all-purpose flour)",
+      "2 large eggs",
+      "2 cups crushed cornflakes",
+      "Cooking spray",
+      "1/4 cup honey",
+      "4-6 chipotle peppers in adobo, finely chopped",
+      "1 tbsp adobo sauce",
+      "2 garlic cloves, minced",
+      "1 tbsp apple cider vinegar",
+      "Hit sauce if you desire",
+      "1/4 cup of broth to stretch it out",
+      "1 cup nonfat Greek yogurt",
+      "2 tbsp light mayo",
+      "1 tbsp ranch seasoning",
+      "1 tbsp fresh dill, chopped",
+      "Splash of pickle juice",
+      "Splash of water to thin"
+    ],
+    "steps": [],
+    "tags": [
+      "highprotein",
+      "lowcalorie",
+      "recipe",
+      "easytomake",
+      "highproteinmeals"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description provides ingredients and macros but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after general leading-symbol normalization and demonstrative-subject title extraction; no creator identity or exact recipe phrase is used."
+  ]
+}

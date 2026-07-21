@@ -1,0 +1,46 @@
+{
+  "id": "092-untitled-chocolate-peanut-butter-baked-oats",
+  "queue_index": 92,
+  "platform": "instagram",
+  "creator": "Trace’s Oats",
+  "source_url": "https://www.instagram.com/tracesoats/reel/Da0hnCKhj-B/",
+  "source_text_kind": "description",
+  "source_text": "You 🤝 oatmeal (soon)\n\n𝘿𝙚𝙩𝙖𝙞𝙡𝙨:\n\n- ½ cup (50g) oats\n- ½ cup + 2 tbsp (140g) milk\n- ½ tbsp (5g) chia seeds\n- 1 tbsp (5g) cocoa powder\n- ½ tbsp (7g) maple syrup\n- ¼ tsp vanilla extract\n- ¼ tsp baking powder\n- Pinch of salt\n- 1 scoop (31g) protein powder (I use @Legion code: TRACE)\n- **1–2 tbsp peanut butter** (for the center)\n\n𝙏𝙤𝙥𝙥𝙚𝙙 𝙬𝙞𝙩𝙝:\n\n- Chocolate chips\n\n𝘿𝙞𝙧𝙚𝙘𝙩𝙞𝙤𝙣𝙨:\n\n1. Preheat the oven to 350°F\n2. Add the oats, milk, chia seeds, cocoa powder, maple syrup, vanilla, baking powder, salt, and protein powder to a blender. Blend until smooth (about 30 seconds).\n3. Pour half of the batter into an oven-safe ramekin or baking dish.\n4. Add the peanut butter to the center, then cover with the remaining batter. Add some chocolate chips on top if you want.\n5. Bake for 15–20 minutes.\n- \n- \n- \n\n#oats #oatmeal #healthy",
+  "expected": {
+    "name": null,
+    "servings": null,
+    "raw_ingredients": [
+      "½ cup (50g) oats",
+      "½ cup + 2 tbsp (140g) milk",
+      "½ tbsp (5g) chia seeds",
+      "1 tbsp (5g) cocoa powder",
+      "½ tbsp (7g) maple syrup",
+      "¼ tsp vanilla extract",
+      "¼ tsp baking powder",
+      "Pinch of salt",
+      "1 scoop (31g) protein powder (I use @Legion code: TRACE)",
+      "**1–2 tbsp peanut butter** (for the center)",
+      "Chocolate chips"
+    ],
+    "steps": [
+      "Preheat the oven to 350°F",
+      "Add the oats, milk, chia seeds, cocoa powder, maple syrup, vanilla, baking powder, salt, and protein powder to a blender. Blend until smooth (about 30 seconds).",
+      "Pour half of the batter into an oven-safe ramekin or baking dish.",
+      "Add the peanut butter to the center, then cover with the remaining batter. Add some chocolate chips on top if you want.",
+      "Bake for 15–20 minutes."
+    ],
+    "tags": [
+      "oats",
+      "oatmeal",
+      "healthy"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The opening 'You / oatmeal (soon)' line is a slogan, not a supported dish name, so fallback is expected.",
+    "The two bulleted components form one ordered ingredient list; inline Markdown emphasis is preserved literally.",
+    "Accepted after generic pronoun-led slogan rejection and Unicode-normalized generic-heading handling; no creator identity or exact recipe phrase was used."
+  ]
+}

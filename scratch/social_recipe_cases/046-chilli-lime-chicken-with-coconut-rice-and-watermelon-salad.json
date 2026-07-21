@@ -1,0 +1,51 @@
+{
+  "id": "046-chilli-lime-chicken-with-coconut-rice-and-watermelon-salad",
+  "queue_index": 46,
+  "platform": "instagram",
+  "creator": "Food In 5 | Bill",
+  "source_url": "https://www.instagram.com/foodinfivemins/reel/Da2F4OTKJo8/",
+  "source_text_kind": "description",
+  "source_text": "Chilli lime chicken with coconut rice & watermelon salad 🍉🥥🍋‍🟩 \n\nComment ‘recipe’ and I’ll send you a link to where you can find the full written recipe 🫶\n\nMacros per serve:\n53g protein \n40g fat\n72g carbs\n\n857 calories per serve 💪 \n\nIngredients for 3 servings: \n\nFor the chicken 🍗 \n600g Chicken Thigh Fillets\n3 Cloves of Garlic\n3 Tbsp Greek Yoghurt\nSmall Handful of Fresh Coriander\n1 Tsp Paprika\n1 Tsp Chilli Flakes\n1 Tsp Onion Powder\n1 Fresh Lime\n1 Tbsp Honey\n2 Tbsp Olive Oil\n\nFor the watermelon 🍉 \n1/2 Watermelon\n1 Cucumber\n1/2 Red Onion\nSmall Handful of Fresh Mint\n1/2 Lime\n125g Feta\n2 Tbsp Olive Oil\n\nFor the coconut rice 🥥 \n200g Uncooked Rice\n400ml Coconut Milk\n\nFor the rice, cook to packeted instructions but swap 400ml of the required water for coconut milk 🤝\n\n#highprotein #easyrecipes #mealprep #healthyfood #wholefood",
+  "expected": {
+    "name": "Chilli lime chicken with coconut rice & watermelon salad",
+    "servings": 3,
+    "raw_ingredients": [
+      "600g Chicken Thigh Fillets",
+      "3 Cloves of Garlic",
+      "3 Tbsp Greek Yoghurt",
+      "Small Handful of Fresh Coriander",
+      "1 Tsp Paprika",
+      "1 Tsp Chilli Flakes",
+      "1 Tsp Onion Powder",
+      "1 Fresh Lime",
+      "1 Tbsp Honey",
+      "2 Tbsp Olive Oil",
+      "1/2 Watermelon",
+      "1 Cucumber",
+      "1/2 Red Onion",
+      "Small Handful of Fresh Mint",
+      "1/2 Lime",
+      "125g Feta",
+      "2 Tbsp Olive Oil",
+      "200g Uncooked Rice",
+      "400ml Coconut Milk"
+    ],
+    "steps": [
+      "For the rice, cook to packeted instructions but swap 400ml of the required water for coconut milk 🤝"
+    ],
+    "tags": [
+      "highprotein",
+      "easyrecipes",
+      "mealprep",
+      "healthyfood",
+      "wholefood"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Only the rice component has an explicit preparation instruction in the acquired description.",
+    "Accepted after a general component-prefixed imperative signal and lexical-word title counting; no creator identity or exact recipe phrase is used."
+  ]
+}

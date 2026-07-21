@@ -1,0 +1,29 @@
+{
+  "id": "039-chick-fil-a-bbq-chicken-mac-hack",
+  "queue_index": 39,
+  "platform": "instagram",
+  "creator": "Nick Kazamias",
+  "source_url": "https://www.instagram.com/proteinmusclemeals/reel/Da_ZrC5iQo7/",
+  "source_text_kind": "description",
+  "source_text": "👇 Chick-fil-A BBQ Chicken Mac Hack @menufit.app code NICKKAZ\n\n✅ 540 Cal • 50g Protein\nSmall Mac & Cheese\n12-Count Grilled Nuggets\nZesty Buffalo + BBQ (mixed in)\nLarge Diet Coke\n\n^ mix all together for Barbecue Chicken Mac & Cheese Bowl",
+  "expected": {
+    "name": "Chick-fil-A BBQ Chicken Mac Hack",
+    "servings": null,
+    "raw_ingredients": [
+      "Small Mac & Cheese",
+      "12-Count Grilled Nuggets",
+      "Zesty Buffalo + BBQ (mixed in)"
+    ],
+    "steps": [
+      "mix all together for Barbecue Chicken Mac & Cheese Bowl"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Large Diet Coke is an accompanying drink in the locally described meal, not a component of the named bowl.",
+    "Accepted after a general local-context rule connecting menu component lines to a following mix-for outcome instruction, plus generic handle-code suffix cleanup; no creator identity or exact ingredient phrase is used."
+  ]
+}

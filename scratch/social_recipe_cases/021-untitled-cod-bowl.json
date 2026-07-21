@@ -1,0 +1,34 @@
+{
+  "id": "021-untitled-cod-bowl",
+  "queue_index": 21,
+  "platform": "instagram",
+  "creator": "Calvin Kang",
+  "source_url": "https://www.instagram.com/cooklikeimbook/reel/DalBKVlMOiS/",
+  "source_text_kind": "description",
+  "source_text": "Nobu mid but not this - you better stand down   INGREDIENTS:\n300g cod  30g miso paste  15g Sake \n1packet Splenda or 1 tsp sweetener  10g mirin 250g white rice cooked\nSpring onion \n   for the whole bowl:\nCals: 664 kcal  Protein: 63.8 g Carbs: 84.2 g Fat: 4.7 g\n\n#nobu #cod #blackcod",
+  "expected": {
+    "name": null,
+    "servings": null,
+    "raw_ingredients": [
+      "300g cod",
+      "30g miso paste",
+      "15g Sake",
+      "1packet Splenda or 1 tsp sweetener",
+      "10g mirin",
+      "250g white rice cooked",
+      "Spring onion"
+    ],
+    "steps": [],
+    "tags": [
+      "nobu",
+      "cod",
+      "blackcod"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output; the opening comment is not a supported recipe title and the caption has no method.",
+    "Accepted after semantic nutrition and ingredient context were excluded from name and ingredient leakage."
+  ]
+}

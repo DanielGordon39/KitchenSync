@@ -1,0 +1,48 @@
+{
+  "id": "085-protein-snickers-baked-oats",
+  "queue_index": 85,
+  "platform": "instagram",
+  "creator": "Torin Redpath | Online Transformation Coach",
+  "source_url": "https://www.instagram.com/torinredpath/reel/DaxZ_DShWXc/",
+  "source_text_kind": "description",
+  "source_text": "PROTEIN SNICKERS BAKED OATS?! 🔥\n\n🚨WANT TO BUILD YOUR DREAM BODY? 🚨\n\nI’ll help you cut 10-12kg (22-30lbs) of fat over the next 90 days without giving up your favourite foods or crashing your hormones…\n\nComment “COACH” and I’ll send you the details to start your transformation 🚀\n\nSnickers for breakfast… with nearly 50g of protein? 😮‍💨\n\nBig ups @cooksana_ for the video 🙌\n\nI try and remake viral fat loss recipes and tell you if they’re worth your time, effort and calories. If that sounds good, follow @torinredpath ✅\n\n👨‍🍳 Ingredients (1 huge serve)\n\nBase:\n\n1 ripe banana (100–120g)\n30g oats\n1 egg\n1 tsp cocoa powder\n1/2 tsp baking powder\n\nProtein Cream:\n\n150g 0% Greek yogurt or Skyr\n1 scoop @ghostlifestyle Peanut Butter Cereal Milk Whey\n(Use code TORIN to save 20% 💪)\n10g peanut butter\n\nSnickers Topping:\n\n15g peanut butter, melted\n10g roasted salted peanuts, chopped\n15g dark chocolate\n1/2 tsp coconut oil\n\n👉 Method\n\nMash the banana and mix through the egg.\n\nAdd oats, cocoa powder and baking powder, then mix until combined.\n\nMicrowave for 2–3 minutes or bake at 180°C (350°F) for 10–15 minutes.\n\nLet the base cool completely.\n\nMix the Greek yogurt, protein powder and 10g peanut butter until smooth and creamy.\n\nSpread the protein cream over the cooled base.\n\nDrizzle over the melted peanut butter and add the chopped peanuts.\n\nMelt the dark chocolate with the coconut oil and pour over the top.\n\nRefrigerate overnight.\n\nWake up to Protein Snickers baked oats 😮‍💨🍫🥜\n\n📊 Estimated Calories & Macros\n\n~700 Calories\n\n~50g Protein\n\n~65g Carbs\n\n~28g Fat\n\nQuick lesson 👇\n\nYes, 700 calories is a lot for one breakfast… but this is also a MASSIVE portion with nearly 50g of protein 😂\n\nYou can easily split it into 2 serves for around 350 calories and 25g of protein each.\n\nOr, if you want to bring the calories down even further, swap the peanut butter for powdered peanut butter and use fewer peanuts on top.\n\nPeanut butter and nuts are great foods, but they’re very calorie dense. Small changes to the portions can save 100–200+ calories without completely changing the taste.",
+  "expected": {
+    "name": "PROTEIN SNICKERS BAKED OATS",
+    "servings": 1,
+    "raw_ingredients": [
+      "1 ripe banana (100–120g)",
+      "30g oats",
+      "1 egg",
+      "1 tsp cocoa powder",
+      "1/2 tsp baking powder",
+      "150g 0% Greek yogurt or Skyr",
+      "1 scoop @ghostlifestyle Peanut Butter Cereal Milk Whey (Use code TORIN to save 20% 💪)",
+      "10g peanut butter",
+      "15g peanut butter, melted",
+      "10g roasted salted peanuts, chopped",
+      "15g dark chocolate",
+      "1/2 tsp coconut oil"
+    ],
+    "steps": [
+      "Mash the banana and mix through the egg.",
+      "Add oats, cocoa powder and baking powder, then mix until combined.",
+      "Microwave for 2–3 minutes or bake at 180°C (350°F) for 10–15 minutes.",
+      "Let the base cool completely.",
+      "Mix the Greek yogurt, protein powder and 10g peanut butter until smooth and creamy.",
+      "Spread the protein cream over the cooled base.",
+      "Drizzle over the melted peanut butter and add the chopped peanuts.",
+      "Melt the dark chocolate with the coconut oil and pour over the top.",
+      "Refrigerate overnight.",
+      "Wake up to Protein Snickers baked oats 😮‍💨🍫🥜"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Component headings are structure, and the parenthetical promotion is a hard-wrapped continuation of the protein-powder ingredient.",
+    "The method ends before the estimated calories-and-macros block; the later lesson is commentary.",
+    "Accepted after generic descriptive-yield, parenthetical ingredient-continuation, and local imperative handling; no creator identity or exact recipe phrase was used."
+  ]
+}

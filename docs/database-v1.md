@@ -108,11 +108,15 @@ Repeated imports should reuse an existing recipe row by source URL first, then s
 
 Recipe metadata indexing includes title, slug, servings, source name, source URL, author, imported-from marker, simple time estimate minutes, Markdown path, and main image path. Recipe tags are indexed in `recipe_tags`. Recipe search includes title, slug, source fields, author, imported-from marker, tags, ingredient names, and raw ingredient lines; step text is stored in `recipe_steps` but not included in search text for v1.
 
+Recipe search ranks normal fuzzy text by title, then tags, then ingredients, with source metadata retained as a lower-priority fallback. Completed `#tag` tokens are exact tag requests. When several are present, recipes matching every requested tag form the first result group and recipes matching some requested tags form a second group ranked by match count. Common meal, cuisine, and diet filters use the same normalized `recipe_tags` rows and remain separate from cookbook relationship state.
+
 ## Cookbook Boundary
 
 Recipe existence is separate from cookbook membership.
 
 A recipe can exist in `recipe_recipes` without a cookbook entry.
+
+V1 assumes one implicit local user and allows every recipe to be edited. A cookbook entry points to that same canonical recipe; adding a recipe to the Cookbook does not clone or fork its content. The entry adds notebook state such as favorite, rating, and personal notes. Later account-aware versions may restrict global recipe editing to the creator or approved editors without changing this recipe-versus-cookbook ownership boundary.
 
 Cookbook entry files live at:
 

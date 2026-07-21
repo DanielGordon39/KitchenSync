@@ -1,0 +1,51 @@
+{
+  "id": "043-hawaiian-chicken-and-pineapple-bowl",
+  "queue_index": 43,
+  "platform": "instagram",
+  "creator": "Better Cheat Meals 🇳🇿 | Steve Kemp",
+  "source_url": "https://www.instagram.com/bettercheatmeals/reel/DFYH7-jy52t/",
+  "source_text_kind": "description",
+  "source_text": "Hawaiian Chicken & Pineapple Bowl 🔽\n\n578 Cal | 57g P | 55g Carb | 14g F\nInspired by @jessespt ‘s Hawaiian prep bowl, follow Jesse for seriously tasty preps.\n👉 Stay on track with 110+ quick & satisfying digital recipes, link in bio 📱\n\nServed in 2½ cup (600 ml) glass containers\nServings: 4\n🍚 Ingredients\n-1 cup (185 g) basmati rice uncooked\n-1 lb (453 g) chicken breast 1 in/2.5cm pieces\n-salt and pepper to taste\n-4 servings (150 g) ham\n-1 cup (240 g) pineapple chunks with juice\n-1 onion, finely diced\n¼ cup (60 ml) low-sodium soy sauce\n-2 tbsp (24 g) brown sugar replacement\n-1 cup (160 g) frozen peas\n-1¾ cups (355 ml) chicken bone broth\n-1 cup (100 g) reduced fat cheese for filling\n-1 cup (100 g) reduced fat cheese for topping\n\nInstructions \n-Preheat oven to 400 F (200 C)\n-Rinse rice until water runs clear\n-Evenly divide all ingredients except topping cheese to your containers\n-Cover each tightly with foil lined with baking paper\n-Bake at 400 F (200 C) for 40 minutes\n-Remove foil, check rice and chicken are cooked\n-Quick stir if needed, add a splash of hot stock if dry\n-Top each with remaining cheese (¼ cup/25g per container)\n-Bake uncovered 5 more minutes until cheese melts\n-Garnish with sriracha and green onions\n\nNotes\n-When first removed from oven, the dish will appear soupy - this is normal. Let rest 5 minutes and the rice will absorb the remaining stock as it cools\n\n-Refrigerate in airtight containers up to 4 days. Cool before storing to prevent condensation\n-Freeze up to 3 months in freezer bags (remove air) or containers (leave headspace). Label with date\n\nReheating:\n-From fridge: Microwave 2-3 minutes on high, stirring halfway. Add 30 seconds if needed\n-From frozen: Thaw overnight in fridge (recommended), then reheat as above\n\n#mealprep #weightloss #fatloss",
+  "expected": {
+    "name": "Hawaiian Chicken & Pineapple Bowl",
+    "servings": 4,
+    "raw_ingredients": [
+      "1 cup (185 g) basmati rice uncooked",
+      "1 lb (453 g) chicken breast 1 in/2.5cm pieces",
+      "salt and pepper to taste",
+      "4 servings (150 g) ham",
+      "1 cup (240 g) pineapple chunks with juice",
+      "1 onion, finely diced",
+      "¼ cup (60 ml) low-sodium soy sauce",
+      "2 tbsp (24 g) brown sugar replacement",
+      "1 cup (160 g) frozen peas",
+      "1¾ cups (355 ml) chicken bone broth",
+      "1 cup (100 g) reduced fat cheese for filling",
+      "1 cup (100 g) reduced fat cheese for topping"
+    ],
+    "steps": [
+      "Preheat oven to 400 F (200 C)",
+      "Rinse rice until water runs clear",
+      "Evenly divide all ingredients except topping cheese to your containers",
+      "Cover each tightly with foil lined with baking paper",
+      "Bake at 400 F (200 C) for 40 minutes",
+      "Remove foil, check rice and chicken are cooked",
+      "Quick stir if needed, add a splash of hot stock if dry",
+      "Top each with remaining cheese (¼ cup/25g per container)",
+      "Bake uncovered 5 more minutes until cheese melts",
+      "Garnish with sriracha and green onions"
+    ],
+    "tags": [
+      "mealprep",
+      "weightloss",
+      "fatloss"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Notes and Reheating are post-recipe guidance, not the primary preparation steps.",
+    "Accepted after general instruction-heading, post-recipe guidance, and serving-sized ingredient context rules; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "083-protein-oreo-mcflurry-dupe",
+  "queue_index": 83,
+  "platform": "instagram",
+  "creator": "Torin Redpath | Online Transformation Coach",
+  "source_url": "https://www.instagram.com/torinredpath/reel/Da-O0FLhMDE/",
+  "source_text_kind": "description",
+  "source_text": "PROTEIN OREO McFLURRY DUPE. 🔥\n\nHappy International Ice Cream Day! 🍦😂\n\nThis genuinely tastes like an Oreo McFlurry… but packed with protein 😮‍💨\n\nBig ups to @ninjakitchenau , the Ninja Creami Swirl is one of the best fat loss hacks out there, low calorie protein ice cream, no brainer! \n\n👨‍🍳 Ingredients (1 serve)\n\n400ml skim milk (I used lactose free)\n1 scoop @ghostlifestyle protein (vanilla works too) (Code “TORIN” to save 20%)\n30g stevia\n1 tsp vanilla bean paste\nPinch of salt\n3 Oreos with the cream removed\n1 tsp vanilla instant pudding mix\n\n👉 Method\n\nMix the protein powder, stevia, vanilla bean paste, instant pudding mix and salt together until smooth. I used a milk frother which made it super easy.\n\nCrush the Oreos and stir them through.\n\nPour into a Ninja Creami container and freeze for 24 hours (8 hours minimum if you’re impatient 😂).\n\nSpin using Soft Gelato Mode.\n\nDispense using the soft serve part of the Swirl machine (or just enjoy it straight from the tub, it works great either way if you’ve got a regular ninja creami or ice cream maker).\n\nTop with an optional crushed Oreo and enjoy.\n\n📊 Calories & Macros (Entire Pint)\n\n351 Calories \n40g Protein\n41g Carbs\n3g Fat\n\n—\n\nQuick lesson 👇\n\nOne of the biggest reasons people struggle with fat loss is feeling like they have to give up desserts.\n\nYou don’t.\n\nRecipes like this let you enjoy that ice cream experience while getting 40g of protein in it.\n\nIt’s not about never having the real thing… it’s about having options that make staying on track feel effortless. 🍦🔥",
+  "expected": {
+    "name": "PROTEIN OREO McFLURRY DUPE",
+    "servings": 1,
+    "raw_ingredients": [
+      "400ml skim milk (I used lactose free)",
+      "1 scoop @ghostlifestyle protein (vanilla works too) (Code “TORIN” to save 20%)",
+      "30g stevia",
+      "1 tsp vanilla bean paste",
+      "Pinch of salt",
+      "3 Oreos with the cream removed",
+      "1 tsp vanilla instant pudding mix"
+    ],
+    "steps": [
+      "Mix the protein powder, stevia, vanilla bean paste, instant pudding mix and salt together until smooth. I used a milk frother which made it super easy.",
+      "Crush the Oreos and stir them through.",
+      "Pour into a Ninja Creami container and freeze for 24 hours (8 hours minimum if you’re impatient 😂).",
+      "Spin using Soft Gelato Mode.",
+      "Dispense using the soft serve part of the Swirl machine (or just enjoy it straight from the tub, it works great either way if you’ve got a regular ninja creami or ice cream maker).",
+      "Top with an optional crushed Oreo and enjoy."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The later 'Quick lesson' block is narrative, not part of the six-step method.",
+    "Accepted after generic ingredient-heading yield and common imperative-verb handling; no creator identity or exact recipe phrase was used."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "086-broccoli-pesto-pasta",
+  "queue_index": 86,
+  "platform": "instagram",
+  "creator": "Emily English",
+  "source_url": "https://www.instagram.com/emthenutritionist/reel/DbBfDZhNrXe/",
+  "source_text_kind": "description",
+  "source_text": "Broccoli Pesto Pasta 🥦\n\nIf you love pasta but also love getting in your greens, you HAVE to make this. An absolute nutrient-packed sauce with so much flavour it’s also amazing cold for lunch the next day. \n\nApproximately 465kcal & 19g protein per serving\n\nServes 4\u2028300g pasta, such as rigatoni or fusilli\u20281 small head of broccoli, cut into florets\u20281 small garlic clove\u202820g pumpkin seeds\u202840g pecorino, finely grated\u202860g fresh basil\u2028Juice of ½ lemon\u20282 anchovy fillets\u20282 tbsp extra virgin olive oil\u2028100g ricotta, to serve\n\nBring a large pan of well-salted water to the boil. Add the broccoli and cook for 3 to 4 minutes until tender and bright green.\n\nLift the broccoli from the pan with a slotted spoon and transfer it straight into a bowl of iced water (keep the broccoli water) This stops it from cooking and keeps the colour vibrant. After a few minutes drain well. \n\nBring the broccoli water back to the boil, add the pasta and cook according to the packet instructions.\n\nMeanwhile, add the drained broccoli to a blender with the garlic, pumpkin seeds, pecorino, basil, lemon zest and juice, anchovies.  Pulse until chunky & textured. Then add in the olive oil and little pasta water at a time until you have a loose pesto consistency. Season with plenty of black pepper and salt to taste remembering the anchovies and pecorino are already salty.\n\nBefore draining the pasta, reserve a large mugful of the cooking water. Return the pasta to the pan and toss through the broccoli pesto, adding more pasta water as needed until the sauce is silky and coats every piece. If you fancy add some chilli flakes for heat.\n\nDivide between bowls and finish each serving with a generous dollop of ricotta, extra black pepper and a little more pecorino. \n\n#pasta #healthyrecipes #easyrecipes healthyfood mealpr",
+  "expected": {
+    "name": "Broccoli Pesto Pasta",
+    "servings": 4,
+    "raw_ingredients": [
+      "300g pasta, such as rigatoni or fusilli",
+      "1 small head of broccoli, cut into florets",
+      "1 small garlic clove",
+      "20g pumpkin seeds",
+      "40g pecorino, finely grated",
+      "60g fresh basil",
+      "Juice of ½ lemon",
+      "2 anchovy fillets",
+      "2 tbsp extra virgin olive oil",
+      "100g ricotta, to serve"
+    ],
+    "steps": [
+      "Bring a large pan of well-salted water to the boil. Add the broccoli and cook for 3 to 4 minutes until tender and bright green.",
+      "Lift the broccoli from the pan with a slotted spoon and transfer it straight into a bowl of iced water (keep the broccoli water) This stops it from cooking and keeps the colour vibrant. After a few minutes drain well.",
+      "Bring the broccoli water back to the boil, add the pasta and cook according to the packet instructions.",
+      "Meanwhile, add the drained broccoli to a blender with the garlic, pumpkin seeds, pecorino, basil, lemon zest and juice, anchovies.  Pulse until chunky & textured. Then add in the olive oil and little pasta water at a time until you have a loose pesto consistency. Season with plenty of black pepper and salt to taste remembering the anchovies and pecorino are already salty.",
+      "Before draining the pasta, reserve a large mugful of the cooking water. Return the pasta to the pan and toss through the broccoli pesto, adding more pasta water as needed until the sauce is silky and coats every piece. If you fancy add some chilli flakes for heat.",
+      "Divide between bowls and finish each serving with a generous dollop of ricotta, extra black pepper and a little more pecorino."
+    ],
+    "tags": [
+      "pasta",
+      "healthyrecipes",
+      "easyrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators delimit the yield and ingredient lines in the supplied description.",
+    "Instruction paragraphs are preserved as authored; only literal hashtags are tags.",
+    "Accepted after generic temporal instruction-prefix and reserve-verb handling; no creator identity or exact recipe phrase was used."
+  ]
+}

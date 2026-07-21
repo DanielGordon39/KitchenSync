@@ -1,0 +1,48 @@
+{
+  "id": "047-15min-sticky-beef-with-a-smashed-cucumber-salad",
+  "queue_index": 47,
+  "platform": "instagram",
+  "creator": "Food In 5 | Bill",
+  "source_url": "https://www.instagram.com/foodinfivemins/reel/Daull4qKF6k/",
+  "source_text_kind": "description",
+  "source_text": "15min sticky beef with a smashed cucumber salad 🥒 \n\nComment ‘recipe’ and I’ll personally send you a link to the full recipe 🙌 \n\nMacros per serve:\n58g protein\n16g fat\n81g carbs\n\n703 calories per serve 💪 \n\nIngredients for 3 servings 📋 \n\nSticky beef 🥩 \n700g 5% Beef Mince\n1/2 Onion\n3 Cloves of Garlic\n150g Mushrooms\n1 Fresh Chilli (Medium heat)\n2 Spring Onions\n4 Tbsp Oyster Sauce\n3 Tbsp Sweet Chilli\n2 Tbsp Mirin\n2 Tbsp Soy Sauce\n\nRice 🍚 \n250g Uncooked Rice\n\nSmashed cucumber salad 🥗 \n1 Tsp Chilli Flakes\n1 Tbsp Light Soy Sauce\n1 Tbsp Mirin\n1 Tbsp Sesame Oil\n1 Spring Onion\n2 Tbsp Sesame Seeds\nSmall Cucumber\n\n#highprotein #mealprep #easyrecipes #quickrecipes #lunchideas",
+  "expected": {
+    "name": "15min sticky beef with a smashed cucumber salad",
+    "servings": 3,
+    "raw_ingredients": [
+      "700g 5% Beef Mince",
+      "1/2 Onion",
+      "3 Cloves of Garlic",
+      "150g Mushrooms",
+      "1 Fresh Chilli (Medium heat)",
+      "2 Spring Onions",
+      "4 Tbsp Oyster Sauce",
+      "3 Tbsp Sweet Chilli",
+      "2 Tbsp Mirin",
+      "2 Tbsp Soy Sauce",
+      "250g Uncooked Rice",
+      "1 Tsp Chilli Flakes",
+      "1 Tbsp Light Soy Sauce",
+      "1 Tbsp Mirin",
+      "1 Tbsp Sesame Oil",
+      "1 Spring Onion",
+      "2 Tbsp Sesame Seeds",
+      "Small Cucumber"
+    ],
+    "steps": [],
+    "tags": [
+      "highprotein",
+      "mealprep",
+      "easyrecipes",
+      "quickrecipes",
+      "lunchideas"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description provides ingredients but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after a general emoji-marked two-line ingredient-component rule; no creator identity or exact recipe phrase is used."
+  ]
+}

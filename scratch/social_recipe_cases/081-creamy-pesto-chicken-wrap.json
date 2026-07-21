@@ -1,0 +1,40 @@
+{
+  "id": "081-creamy-pesto-chicken-wrap",
+  "queue_index": 81,
+  "platform": "instagram",
+  "creator": "Jess Hawkins",
+  "source_url": "https://www.instagram.com/recipeswith_jess/reel/DayAfN9IqQr/",
+  "source_text_kind": "description",
+  "source_text": "RECIPE: Creamy Pesto Chicken Wrap 🫶🏼\n\nSo these creamy chicken wraps have been a STAPLE for me for YEARS, to the point where this page was almost built on them 😂 so it felt right to finally bring them back 🤤 They’re just the perfect 10 minute lunch, incredibly customisable, absolutely delish, and SO FILLING!!! \n\nWe do not go hungry here remember 👋🏼 and if you comment FREE I’ll send you the link to 500 recipes just like this one (plus meal plans) that prove you can eat every single one of the foods you love 🫡\n\n📌 Don’t forget to SAVE this for when you need an easy lunch idea 👀\n\n📍551 Calories & 43.1g of Protein \n📍Serves 1 \n\n✨100g of cooked Chicken Breast, diced\n✨1 medium flour Tortilla Wrap\n✨20g Red or Green Pesto\n✨30g light cream cheese\n✨30g Mozzarella, cubed or grated\n✨ 20g reduced fat cheddar, sliced\n\nSimply mix your chicken breast, pesto, mozzarella and cream cheese together in a bowl with a good pinch of salt and pepper.\n\nTake your wrap (warm it for 30 seconds in the microwave first so it rolls more easily) lay your cheddar across the middle, before laying the chicken mix across the top and then fold up sides and roll the wrap as if it was a Burrito.\n\nSpray a pan with a good amount of olive oil spray,  turn the heat up to medium high, then fry for a couple of minutes on each side until the outside is golden and crisp, and the cheese is melted 🫶🏻\n\nAnd that’s literally it! Hope you enjoy Lovelies ❤️\n\n#chickenwrap #easydinner #quickrecipes #highprotein #lowcalorierecipes",
+  "expected": {
+    "name": "Creamy Pesto Chicken Wrap",
+    "servings": 1,
+    "raw_ingredients": [
+      "100g of cooked Chicken Breast, diced",
+      "1 medium flour Tortilla Wrap",
+      "20g Red or Green Pesto",
+      "30g light cream cheese",
+      "30g Mozzarella, cubed or grated",
+      "20g reduced fat cheddar, sliced"
+    ],
+    "steps": [
+      "Simply mix your chicken breast, pesto, mozzarella and cream cheese together in a bowl with a good pinch of salt and pepper.",
+      "Take your wrap (warm it for 30 seconds in the microwave first so it rolls more easily) lay your cheddar across the middle, before laying the chicken mix across the top and then fold up sides and roll the wrap as if it was a Burrito.",
+      "Spray a pan with a good amount of olive oil spray,  turn the heat up to medium high, then fry for a couple of minutes on each side until the outside is golden and crisp, and the cheese is melted 🫶🏻"
+    ],
+    "tags": [
+      "chickenwrap",
+      "easydinner",
+      "quickrecipes",
+      "highprotein",
+      "lowcalorierecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The three prose paragraphs are direct preparation instructions; the closing encouragement is not a step.",
+    "Accepted after generic simply-prefix and take-imperative handling; no creator identity or exact recipe phrase is used."
+  ]
+}

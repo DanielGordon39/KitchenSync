@@ -1,0 +1,54 @@
+{
+  "id": "088-sticky-honey-chicken-with-charred-peach-salsa",
+  "queue_index": 88,
+  "platform": "instagram",
+  "creator": "Emily English",
+  "source_url": "https://www.instagram.com/emthenutritionist/reel/DavY__ttLth/",
+  "source_text_kind": "description",
+  "source_text": "Sticky Honey Chicken with Charred Peach Salsa\n\nCook once, eat twice. This is exactly the kind of recipe I love for summer meal prep. It tastes just as good packed into lunch boxes for the next day. \n\nServes 4\u2028535 kcal & 30g protein per serving\u2028\n200g basmati rice, dry weight\n500g boneless, skinless chicken thighs\n1 tbsp honey\u20282 garlic cloves, finely chopped or grated\u20281 heaped tsp smoked paprika\u2028Juice of ½ lemon\n1 tsp any mustard\u20281/2 tsp finely chopped fresh rosemary\u2028\nFor the charred peach salsa\n2 ripe but firm peaches, diced\u20281 medium avocado, diced\u2028½ small red onion, finely diced\u2028Juice of ½ lemon\u20281 tsp honey\u2028Pinch of chilli flakes\u20282 tsp extra virgin olive oil\nLarge handful cherry tomatoes, diced (about 120g)\u2028Large handful fresh basil, torn\u202860g feta, crumbled, optional\n\nAdd the chicken thighs to a bowl with the honey, garlic, smoked paprika, mustard, lemon juice, rosemary and plenty of salt and pepper. Toss until the chicken is evenly coated. Leave to marinate whilst you prepare the rest. \n\nCook the rice according to the packet instructions.\n\nHeat a frying pan over a high heat. Add the diced peaches with honey & chilli flakes until charred around the edges. Try not to move them around too much so they have time to caramelise. Leave to cool slightly in a bowl. Add the red onion, avocado, lemon juice, olive oil and torn basil to the peaches. Season, crumble in the feta if using. Taste and adjust to your pallet. It should be bright, punchy and fresh. \n\nPreheat the air fryer to 200°C or heat the grill to its highest setting. Arrange the chicken in a single layer and air fry for 15 to 18 minutes, turning halfway, until cooked through with sticky, charred edges. Alternatively, grill for 7 to 9 minutes on each side. Leave the chicken to rest for a few minutes before slicing.\n\nDivide the rice between four bowls or lunch boxes, then top with the sliced sticky chicken and charred peach salsa. For meal prep, keep the salsa in if eating cold or store separately. \n\n#healthyrecipes #easyrecipe #highprotein #mealprep",
+  "expected": {
+    "name": "Sticky Honey Chicken with Charred Peach Salsa",
+    "servings": 4,
+    "raw_ingredients": [
+      "200g basmati rice, dry weight",
+      "500g boneless, skinless chicken thighs",
+      "1 tbsp honey",
+      "2 garlic cloves, finely chopped or grated",
+      "1 heaped tsp smoked paprika",
+      "Juice of ½ lemon",
+      "1 tsp any mustard",
+      "1/2 tsp finely chopped fresh rosemary",
+      "2 ripe but firm peaches, diced",
+      "1 medium avocado, diced",
+      "½ small red onion, finely diced",
+      "Juice of ½ lemon",
+      "1 tsp honey",
+      "Pinch of chilli flakes",
+      "2 tsp extra virgin olive oil",
+      "Large handful cherry tomatoes, diced (about 120g)",
+      "Large handful fresh basil, torn",
+      "60g feta, crumbled, optional"
+    ],
+    "steps": [
+      "Add the chicken thighs to a bowl with the honey, garlic, smoked paprika, mustard, lemon juice, rosemary and plenty of salt and pepper. Toss until the chicken is evenly coated. Leave to marinate whilst you prepare the rest.",
+      "Cook the rice according to the packet instructions.",
+      "Heat a frying pan over a high heat. Add the diced peaches with honey & chilli flakes until charred around the edges. Try not to move them around too much so they have time to caramelise. Leave to cool slightly in a bowl. Add the red onion, avocado, lemon juice, olive oil and torn basil to the peaches. Season, crumble in the feta if using. Taste and adjust to your pallet. It should be bright, punchy and fresh.",
+      "Preheat the air fryer to 200°C or heat the grill to its highest setting. Arrange the chicken in a single layer and air fry for 15 to 18 minutes, turning halfway, until cooked through with sticky, charred edges. Alternatively, grill for 7 to 9 minutes on each side. Leave the chicken to rest for a few minutes before slicing.",
+      "Divide the rice between four bowls or lunch boxes, then top with the sliced sticky chicken and charred peach salsa. For meal prep, keep the salsa in if eating cold or store separately."
+    ],
+    "tags": [
+      "healthyrecipes",
+      "easyrecipe",
+      "highprotein",
+      "mealprep"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators delimit several yield and ingredient lines in the supplied description.",
+    "The five method paragraphs are preserved as authored, including the meal-prep note attached to the final serving step.",
+    "Accepted after generic pre-yield/pre-ingredient preamble filtering; no creator identity or exact recipe phrase was used."
+  ]
+}

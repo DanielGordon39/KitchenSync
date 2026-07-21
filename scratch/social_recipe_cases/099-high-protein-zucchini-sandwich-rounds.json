@@ -1,0 +1,43 @@
+{
+  "id": "099-high-protein-zucchini-sandwich-rounds",
+  "queue_index": 99,
+  "platform": "instagram",
+  "creator": "Jasmine Hyare",
+  "source_url": "https://www.instagram.com/healthysweetsandeats/reel/DazAELiM9Vb/",
+  "source_text_kind": "description",
+  "source_text": "High-Protein Zucchini Sandwich Rounds 🥒🥪If you’ve been looking for a high-protein alternative to bread that actually holds together, you have to try these zucchini sandwich rounds. They’re cheesy, flavorful, and sturdy enough to pile high with all of your favorite sandwich toppings or even use as a pizza crust! \n\nSAVE this recipe and FOLLOW me @healthysweetsandeats for more easy, delicious high protein recipes!\n\nIngredients: \nMakes 4 regular sandwich rounds (or 2 extra-large rounds like I made in the video)\n\u20281 1/2 cups grated zucchini (about one large Zucchini) measured before squeezing\u20282 large eggs\u20281 cup freshly shredded part-skim mozzarella\u20281/4 cup grated Parmesan (grated on the smaller holes)\u20283 tbsp almond flour\u20281/2 tsp garlic powder\u20281/2 tsp onion powder\u20281/2 tsp paprika\u2028Salt and black pepper, to taste\n\n1️⃣ Preheat your oven to 400°F and line a baking sheet with parchment paper. Grate the zucchini and measure 1 1/2 cups before squeezing. Toss it with 1/2 teaspoon of salt and let it sit for about 10 minutes to help draw out the moisture, then squeeze it extremely well with a clean kitchen towel or paper towels until as much liquid as possible has been removed.\n\n2️⃣ Add the squeezed zucchini to a bowl with the eggs, mozzarella, Parmesan, almond flour, garlic powder, onion powder, paprika, salt, and pepper. Mix until well combined, let the mixture rest for 3–5 minutes, then divide into 4 sandwich rounds. You may need two sheet pans. \n\n3️⃣ Bake for 22-28 minutes, carefully flipping, halfway through until golden brown and set. Let cool COMPLETELY before filling with your favorite sandwich ingredients. I used cream cheese, turkey, cheese, tomato, and arugula.\n\nMacros (per regular sandwich round, makes 4):\u2028158 calories | 14.5g protein | 4.1g carbs | 12g fat | 0.9g fiber\n\n#glutenfree #highprotein #mealprep #zuchinni",
+  "expected": {
+    "name": "High-Protein Zucchini Sandwich Rounds",
+    "servings": 4,
+    "raw_ingredients": [
+      "1 1/2 cups grated zucchini (about one large Zucchini) measured before squeezing",
+      "2 large eggs",
+      "1 cup freshly shredded part-skim mozzarella",
+      "1/4 cup grated Parmesan (grated on the smaller holes)",
+      "3 tbsp almond flour",
+      "1/2 tsp garlic powder",
+      "1/2 tsp onion powder",
+      "1/2 tsp paprika",
+      "Salt and black pepper, to taste"
+    ],
+    "steps": [
+      "Preheat your oven to 400°F and line a baking sheet with parchment paper. Grate the zucchini and measure 1 1/2 cups before squeezing. Toss it with 1/2 teaspoon of salt and let it sit for about 10 minutes to help draw out the moisture, then squeeze it extremely well with a clean kitchen towel or paper towels until as much liquid as possible has been removed.",
+      "Add the squeezed zucchini to a bowl with the eggs, mozzarella, Parmesan, almond flour, garlic powder, onion powder, paprika, salt, and pepper. Mix until well combined, let the mixture rest for 3–5 minutes, then divide into 4 sandwich rounds. You may need two sheet pans.",
+      "Bake for 22-28 minutes, carefully flipping, halfway through until golden brown and set. Let cool COMPLETELY before filling with your favorite sandwich ingredients. I used cream cheese, turkey, cheese, tomato, and arugula."
+    ],
+    "tags": [
+      "glutenfree",
+      "highprotein",
+      "mealprep",
+      "zuchinni"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The supported canonical yield is four regular rounds; two extra-large rounds are an alternate size, not an ambiguous range.",
+    "Unicode line separators delimit ingredient and macro lines; the three keycap-numbered paragraphs are the method.",
+    "Accepted after generic emoji-to-narrative title boundary, yield-line exclusion, and short ingredient-context handling; no creator identity or exact recipe phrase was used."
+  ]
+}

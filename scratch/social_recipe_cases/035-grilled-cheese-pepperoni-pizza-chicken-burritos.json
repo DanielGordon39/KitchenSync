@@ -1,0 +1,52 @@
+{
+  "id": "035-grilled-cheese-pepperoni-pizza-chicken-burritos",
+  "queue_index": 35,
+  "platform": "instagram",
+  "creator": "AUSSIE FITNESS 🇦🇺💪🏼 | Dez Cerimagic",
+  "source_url": "https://www.instagram.com/_aussiefitness/reel/DaQztHDTIyl/",
+  "source_text_kind": "description",
+  "source_text": "Grilled Cheese Pepperoni Pizza Chicken Burritos🍕🌯🧀\n65g Protein!\n\n(Macros: Per Serving - 10 Total)\n517 Calories\n25gC | 20gF | 65gP\n\nIngredients:\n1.7KG Boneless & Skinless Chicken Breast (raw weight)\n1 Tsp Salt, 1 Tsp Garlic Powder, 1 Tsp Onion Powder, 1 Tsp Smoked Paprika\n1 Tsp Olive Oil\n200g Thinly Sliced Mini Pepperoni (beef, turkey or regular pepperoni)\n350g Pizza Sauce/Marinara (Leggo’s Garlic & Herb Pizza Sauce)\n80g Freshly Grated Parmesan Cheese\n5 Diced Garlic Cloves\n200g Light Cream Cheese\n1.5 Tsp Italian Herb Seasoning Mix\n100ml Hot Sauce/Buffalo Sauce (optional & customisable to your liking)\nFresh Parsley\n10 Warm Tortillas (Mission Carb Balance Tortillas)\n25g Light Mozzarella Cheese (inside each burrito)\n20g Light Cheddar Cheese (outside each burrito)\n4 Pepperoni Slices (outside each burrito)\n\nDirections:\n1. Start by thinly slicing/butterflying your chicken breast into thin fillets, season, add olive oil & mix well.\n2. Cook the chicken on medium - high heat for approximately 4 - 6 minutes per side, then set aside. Once the chicken has slightly cooled dice into small pieces.\n3. To the same pan cook your pepperoni until crispy, add back the diced chicken followed by pizza sauce, grated parmesan cheese, diced garlic, light cream cheese, italian herb seasoning, hot sauce & mix for approximately 5 minutes or until melted and combined. Garnish with fresh parsley.\n4. Warm one large tortilla, equally distribute 1/10th of the filling onto the middle with light mozzarella & roll tightly.\n5. Place 4 slices of pepperoni on a pan, add light cheddar cheese followed by the burrito seam side down.\n6. Let the cheese melt, scrape it alongside of the burrito, once crispy flip & set side (the crispy cheese layer will seal the burrito)\n7. Repeat for the other 9 burritos, store in the fridge or freezer & reheat when ready to eat!\n\nDon’t forget to check out my exclusive newly updated cook books with 300+ high protein recipes 👨🏻‍🍳📖 or comment “meal prep” & i’ll message it to you! \n\n#pizza #burrito #highprotein #healthyrecipes #mealprep",
+  "expected": {
+    "name": "Grilled Cheese Pepperoni Pizza Chicken Burritos",
+    "servings": 10,
+    "raw_ingredients": [
+      "1.7KG Boneless & Skinless Chicken Breast (raw weight)",
+      "1 Tsp Salt, 1 Tsp Garlic Powder, 1 Tsp Onion Powder, 1 Tsp Smoked Paprika",
+      "1 Tsp Olive Oil",
+      "200g Thinly Sliced Mini Pepperoni (beef, turkey or regular pepperoni)",
+      "350g Pizza Sauce/Marinara (Leggo’s Garlic & Herb Pizza Sauce)",
+      "80g Freshly Grated Parmesan Cheese",
+      "5 Diced Garlic Cloves",
+      "200g Light Cream Cheese",
+      "1.5 Tsp Italian Herb Seasoning Mix",
+      "100ml Hot Sauce/Buffalo Sauce (optional & customisable to your liking)",
+      "Fresh Parsley",
+      "10 Warm Tortillas (Mission Carb Balance Tortillas)",
+      "25g Light Mozzarella Cheese (inside each burrito)",
+      "20g Light Cheddar Cheese (outside each burrito)",
+      "4 Pepperoni Slices (outside each burrito)"
+    ],
+    "steps": [
+      "Start by thinly slicing/butterflying your chicken breast into thin fillets, season, add olive oil & mix well.",
+      "Cook the chicken on medium - high heat for approximately 4 - 6 minutes per side, then set aside. Once the chicken has slightly cooled dice into small pieces.",
+      "To the same pan cook your pepperoni until crispy, add back the diced chicken followed by pizza sauce, grated parmesan cheese, diced garlic, light cream cheese, italian herb seasoning, hot sauce & mix for approximately 5 minutes or until melted and combined. Garnish with fresh parsley.",
+      "Warm one large tortilla, equally distribute 1/10th of the filling onto the middle with light mozzarella & roll tightly.",
+      "Place 4 slices of pepperoni on a pan, add light cheddar cheese followed by the burrito seam side down.",
+      "Let the cheese melt, scrape it alongside of the burrito, once crispy flip & set side (the crispy cheese layer will seal the burrito)",
+      "Repeat for the other 9 burritos, store in the fridge or freezer & reheat when ready to eat!"
+    ],
+    "tags": [
+      "pizza",
+      "burrito",
+      "highprotein",
+      "healthyrecipes",
+      "mealprep"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

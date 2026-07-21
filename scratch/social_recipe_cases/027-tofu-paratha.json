@@ -1,0 +1,42 @@
+{
+  "id": "027-tofu-paratha",
+  "queue_index": 27,
+  "platform": "instagram",
+  "creator": "Jess & Dan | Tofu Club",
+  "source_url": "https://www.instagram.com/vegan_punks/reel/Da5mR4Qsb39/",
+  "source_text_kind": "description",
+  "source_text": "TOFU PARATHA 🫓 Follow @vegan_punks for all the best tofu recipes, and grab the recipe for this one below!\n\nNo tofu in the dough for this one, was that a mistake?\n\nEither way, the grated tofu filling makes for a really filling, satisfying paratha. We like them pretty fat and dough-y, but you could split the dough into 6 and roll them a lot thinner if that’s how you like your paratha.\n\nP.S. as always, this is also inside Tofu Club where it’s easier to read, has nutritional info, you can print it, save to a meal plan, create shopping lists and save to your favourites. Plus 181 (and counting) other tofu recipes, science guides and tips…comment “I’m in” and we’ll DM you so you can check it out.\n\nIngredients (makes 4)\nFor the dough:\n300g wholemeal/atta flour, plus extra for dusting\n½ tsp salt\n1 tbsp oil\n150-180ml warm water\n\nFor the tofu filling:\n200g super-firm tofu, grated\n1 green chilli, finely chopped\n1 tsp ginger, grated\n0.5 tsp cumin powder\n½ tsp kashmiri chilli powder\n1 tsp garam masala\nSmall handful fresh coriander, chopped (~1/4 cup)\nSalt to taste\n\n2 tbsp vegan butter (melted)\n\nInstructions\n1. Mix the flour and salt in a bowl. Add the oil and enough warm water to bring it together into a soft, pliable dough. Knead for 3-4 minutes until smooth. Rub a little oil on top, cover and rest for 15-20 minutes.\n3. Mix all the filling ingredients together and season with salt to taste.\n4. Divide the dough into 4 equal pieces. Roll one out into a circle on a lightly floured surface, place a spoonful of filling in the centre, bring the edges up and pinch together to seal. Flatten gently and roll out carefully into a flat circle - dust with flour as needed to prevent sticking.\n5. Cook in a dry pan over a medium-high heat for 1-2 minutes until the underside is golden and browning. Brush the top side with melted vegan butter, then flip. Cook until golden on the second side, then brush the now-cooked first side with a little more melted vegan butter and cook for a further minute or so until both sides are deeply golden, greasy and glossy. Repeat with the remaining parathas.\n6. Serve with coriander chutney, or alongside your favourite curry!",
+  "expected": {
+    "name": "TOFU PARATHA",
+    "servings": 4,
+    "raw_ingredients": [
+      "300g wholemeal/atta flour, plus extra for dusting",
+      "½ tsp salt",
+      "1 tbsp oil",
+      "150-180ml warm water",
+      "200g super-firm tofu, grated",
+      "1 green chilli, finely chopped",
+      "1 tsp ginger, grated",
+      "0.5 tsp cumin powder",
+      "½ tsp kashmiri chilli powder",
+      "1 tsp garam masala",
+      "Small handful fresh coriander, chopped (~1/4 cup)",
+      "Salt to taste",
+      "2 tbsp vegan butter (melted)"
+    ],
+    "steps": [
+      "Mix the flour and salt in a bowl. Add the oil and enough warm water to bring it together into a soft, pliable dough. Knead for 3-4 minutes until smooth. Rub a little oil on top, cover and rest for 15-20 minutes.",
+      "Mix all the filling ingredients together and season with salt to taste.",
+      "Divide the dough into 4 equal pieces. Roll one out into a circle on a lightly floured surface, place a spoonful of filling in the centre, bring the edges up and pinch together to seal. Flatten gently and roll out carefully into a flat circle - dust with flour as needed to prevent sticking.",
+      "Cook in a dry pan over a medium-high heat for 1-2 minutes until the underside is golden and browning. Brush the top side with melted vegan butter, then flip. Cook until golden on the second side, then brush the now-cooked first side with a little more melted vegan butter and cook for a further minute or so until both sides are deeply golden, greasy and glossy. Repeat with the remaining parathas.",
+      "Serve with coriander chutney, or alongside your favourite curry!"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

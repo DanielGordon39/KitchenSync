@@ -114,6 +114,10 @@ def _recipe_facts(recipe: Recipe) -> list[str]:
     facts = []
     if recipe.servings is not None:
         facts.append(f"Servings: {recipe.servings}")
+    if recipe.time_estimate and recipe.time_estimate.base_minutes is not None:
+        facts.append(f"Time: {recipe.time_estimate.base_minutes} minutes")
+    if recipe.tags:
+        facts.append(f"Tags: {', '.join(recipe.tags)}")
     if recipe.metadata.source_name:
         facts.append(f"Source: {recipe.metadata.source_name}")
     if recipe.metadata.author:

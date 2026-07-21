@@ -1,0 +1,45 @@
+{
+  "id": "100-crispy-chicken-caesar-pasta-salad",
+  "queue_index": 100,
+  "platform": "instagram",
+  "creator": "Molly Cunningham  |  👩‍⚕️🩷🌱",
+  "source_url": "https://www.instagram.com/whatmolly.eats/reel/Da286AzsdaD/",
+  "source_text_kind": "description",
+  "source_text": "PROTEIN PACKED LUNCHES, EPISODE 2: CRISPY CHICKEN CAESAR PASTA SALAD🥬🩷🥰\n \nWelcome to episode 3 of my new series Protein Packed Lunches! This series is all about high protein recipes that are perfect for work packed lunches! Easy to make, easy to prep and made with mostly whole ingredients (and as always- lots of sneaky veg incoming in these recipes🤣🩷)\n \nToday we’ve got a crispy chicken Caesar pasta salad using the BEST crispy shredded chicken from Rosie & Jim’s which I picked up from Morrisons! I absolutely love this brand as it’s made with 100% chicken breast, no artificial colours or preservatives and it’s gluten free too!! Honestly they have such a good range of chicken and the southern fried goujons are also amazzzzzing!!!🩷 this salad is packed with protein from the chicken and Greek yoghurt, fibre from the chickpeas and keeps really well for up to 4 days!🥰🩷\n \n \nCrispy Shredded Chicken Caesar Pasta Salad\n \nIngredients (serves 4⬇️)\n \nFor the salad:\n300g dried pasta (any shape you like)\n1 x tin (400g) chickpeas, drained and rinsed\n1 bag crispy shredded chicken (I used Rosie & Jim’s)\n1 bag lettuce & kale salad mix\n \nFor the High-Protein Caesar Dressing:\n200g 0% Greek yoghurt\n2 tbsp light mayonnaise\n35g finely grated Parmesan\n1 tbsp Dijon mustard\n1 tsp Worcestershire sauce\n1 tsp garlic granules\n1 tsp mixed herbs\n½ tsp Cajun seasoning\nPlenty of freshly cracked black pepper\nSplash of milk, to loosen\n \nMethod:\nCook the pasta according to the packet instructions. Drain and rinse under cold water until completely cooled!!\nCook the Rosie & Jim’s Crispy Shredded Chicken for 12-15 minutes at 200 degrees or oven cook according to the packet instructions until golden, crispy and piping hot. Leave to cool slightly.\nIn a bowl whisk together the Greek yoghurt, mayonnaise, Parmesan, Dijon mustard, Worcestershire sauce, garlic granules, mixed herbs, Cajun seasoning and plenty of black pepper. Add a splash of milk until you reach a creamy, pourable type consistency.\nIn a large mixing bowl, combine the cooled pasta, chickpeas and lettuce & kale mix.\nPour over the dressing and toss everything together until well coated.",
+  "expected": {
+    "name": "CRISPY CHICKEN CAESAR PASTA SALAD",
+    "servings": 4,
+    "raw_ingredients": [
+      "300g dried pasta (any shape you like)",
+      "1 x tin (400g) chickpeas, drained and rinsed",
+      "1 bag crispy shredded chicken (I used Rosie & Jim’s)",
+      "1 bag lettuce & kale salad mix",
+      "200g 0% Greek yoghurt",
+      "2 tbsp light mayonnaise",
+      "35g finely grated Parmesan",
+      "1 tbsp Dijon mustard",
+      "1 tsp Worcestershire sauce",
+      "1 tsp garlic granules",
+      "1 tsp mixed herbs",
+      "½ tsp Cajun seasoning",
+      "Plenty of freshly cracked black pepper",
+      "Splash of milk, to loosen"
+    ],
+    "steps": [
+      "Cook the pasta according to the packet instructions. Drain and rinse under cold water until completely cooled!!",
+      "Cook the Rosie & Jim’s Crispy Shredded Chicken for 12-15 minutes at 200 degrees or oven cook according to the packet instructions until golden, crispy and piping hot. Leave to cool slightly.",
+      "In a bowl whisk together the Greek yoghurt, mayonnaise, Parmesan, Dijon mustard, Worcestershire sauce, garlic granules, mixed herbs, Cajun seasoning and plenty of black pepper. Add a splash of milk until you reach a creamy, pourable type consistency.",
+      "In a large mixing bowl, combine the cooled pasta, chickpeas and lettuce & kale mix.",
+      "Pour over the dressing and toss everything together until well coated."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The episode headline supplies the supported recipe name; a later recipe heading adds the product-style word 'Shredded' but describes the same dish.",
+    "The salad and dressing components form one ordered ingredient list followed by five method paragraphs.",
+    "Accepted by the existing creator-independent parser with no adjustment."
+  ]
+}

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,6 +11,8 @@ from urllib.parse import urlparse
 
 import yt_dlp
 
+from kitchensync.app import KitchenSyncApp
+from kitchensync.markdown import slugify
 from kitchensync.models import (
     ImageRef,
     Ingredient,
@@ -25,6 +28,15 @@ if TYPE_CHECKING:
 
 
 DEFAULT_URL_FILE = Path(__file__).parent / "social_recipe_urls.txt"
+CASE_DIR = Path(__file__).parent / "social_recipe_cases"
+DEFAULT_PROMOTION_DATABASE = (
+    Path(__file__).parent
+    / "social_import_probe_output"
+    / "data"
+    / "library"
+    / "kitchensync.sqlite"
+)
+SCORED_FIELDS = {"name", "servings", "raw_ingredients", "steps", "tags"}
 
 
 @dataclass
@@ -55,6 +67,24 @@ def build_parser() -> argparse.ArgumentParser:
         "--acquire-only",
         action="store_true",
         help="Print source evidence without running the text parser.",
+    )
+    parser.add_argument(
+        "--promote",
+        nargs="+",
+        type=int,
+        metavar="INDEX",
+        help="Reparse selected accepted, complete frozen corpus cases.",
+    )
+    parser.add_argument(
+        "--database-path",
+        type=Path,
+        default=DEFAULT_PROMOTION_DATABASE,
+        help="Disposable SQLite path used by --promote --save.",
+    )
+    parser.add_argument(
+        "--save",
+        action="store_true",
+        help="Save promoted cases through app.recipes.save_imported_recipe(...).",
     )
     return parser
 
@@ -192,6 +222,103 @@ def print_recipe_preview(
         print(f"- {warning}")
 
 
+def load_frozen_cases(indices: list[int]) -> list[dict[str, object]]:
+    cases_by_index = {}
+    for path in CASE_DIR.glob("*.json"):
+        case = json.loads(path.read_text(encoding="utf-8"))
+        cases_by_index[case["queue_index"]] = case
+
+    missing = [index for index in indices if index not in cases_by_index]
+    if missing:
+        raise ValueError(f"No frozen case for queue index: {', '.join(map(str, missing))}")
+    if len(indices) != len(set(indices)):
+        raise ValueError("Promotion indices must be unique")
+    return [cases_by_index[index] for index in indices]
+
+
+def promotion_source_info(case: dict[str, object]) -> dict[str, object]:
+    source_info = {
+        "description": case["source_text"],
+        "extractor": "Instagram",
+        "uploader": case.get("creator"),
+        "webpage_url": case["source_url"],
+    }
+    try:
+        live_info = acquire_source(str(case["source_url"]))
+    except Exception as error:
+        print(f"Live metadata refresh failed; continuing without an image: {error}")
+        return source_info
+
+    for field in ("extractor", "thumbnail", "uploader"):
+        if live_info.get(field):
+            source_info[field] = live_info[field]
+    return source_info
+
+
+def promote_frozen_cases(
+    indices: list[int],
+    *,
+    database_path: Path,
+    save: bool,
+    parse_recipe_text,
+) -> int:
+    cases = load_frozen_cases(indices)
+    failures = 0
+    app = KitchenSyncApp.open(database_path) if save else None
+
+    try:
+        for case in cases:
+            index = case["queue_index"]
+            print("\n" + "=" * 100)
+            print(f"Frozen case {index}: {case['source_url']}")
+            print("=" * 100)
+
+            try:
+                if not case.get("accepted") or not case.get("expected_complete"):
+                    raise ValueError("only accepted complete cases may be promoted")
+
+                result = parse_recipe_text(str(case["source_text"]))
+                if result.candidate is None or result.fallback_recommended:
+                    raise ValueError("the current parser no longer produces a complete candidate")
+
+                actual = result.candidate.model_dump(include=SCORED_FIELDS)
+                if actual != case["expected"]:
+                    raise ValueError("the current parser no longer matches the frozen oracle")
+
+                source_info = promotion_source_info(case)
+                recipe = build_recipe_preview(result.candidate, source_info)
+                if recipe is None:
+                    raise ValueError("the candidate could not be converted to a Recipe")
+
+                print(
+                    f"ready: {recipe.name} / {len(recipe.ingredients)} ingredients / "
+                    f"{len(recipe.steps)} steps / image candidate: "
+                    f"{'yes' if recipe.metadata.images else 'no'}"
+                )
+                if app is not None:
+                    app.recipes.save_imported_recipe(recipe)
+                    saved = app.recipes.get_by_slug(slugify(recipe.name))
+                    print(
+                        "saved: "
+                        + str(database_path)
+                        + " / image: "
+                        + (str(saved.get("main_image_path")) if saved else "none")
+                    )
+            except Exception as error:
+                failures += 1
+                print(f"promotion failed: {error}")
+    finally:
+        if app is not None:
+            app.close()
+
+    print("\npromotion summary")
+    print(f"- selected: {len(cases)}")
+    print(f"- successful: {len(cases) - failures}")
+    print(f"- saved: {len(cases) - failures if save else 0}")
+    print(f"- database: {database_path if save else '(dry run)'}")
+    return failures
+
+
 def main() -> None:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -201,7 +328,21 @@ def main() -> None:
     else:
         from recipe_text_parser import parse_recipe_text
 
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
+    if args.save and not args.promote:
+        parser.error("--save requires --promote")
+    if args.promote:
+        if args.index is not None or args.acquire_only:
+            parser.error("--promote cannot be combined with --index or --acquire-only")
+        failures = promote_frozen_cases(
+            args.promote,
+            database_path=args.database_path,
+            save=args.save,
+            parse_recipe_text=parse_recipe_text,
+        )
+        raise SystemExit(1 if failures else 0)
+
     urls = read_urls(args.url_file)
     if not urls:
         raise SystemExit(f"No recipe URLs found in {args.url_file}")

@@ -1,0 +1,37 @@
+{
+  "id": "060-waffle-breakfast-sandwiches",
+  "queue_index": 60,
+  "platform": "instagram",
+  "creator": "Nikita Fair",
+  "source_url": "https://www.instagram.com/fairfiteats/reel/Dax9NfeIzUs/",
+  "source_text_kind": "description",
+  "source_text": "Waffle Breakfast Sandwiches 🧇\n(Makes 10 Sandwiches) \n\nMacros Per Sandwich: \n- 375 Calories\n- 45g Protein \n- 21g Carbs \n- 12g Fat \n\nIngredients: \n- 30oz Ground Chicken Breast (850g)\n- 1 Tbsp Garlic Salt (15g)\n- 0.5 Tbsp Smoked Paprika (3g)\n- 1 Tbsp Onion Powder (7g)\n- 1 Tbsp Red Pepper Flakes (5g)\n- 0.5 Tbsp Black Pepper (4g)\n- 2 Tbsps Maple Syrup (30g)\n- 3.3 Cups Egg Whites (810g)\n- Fresh Chives (10g)\n- 10 Slices Fat Free American Cheese\n- 20 Kodiak Homestyle Power Waffles \n\nFreezing Instructions ❄️:\n1. Wrap the sandwiches in aluminum foil or put them in an airtight freezer bag\n2. Place them in the freezer and keep frozen for up to 3 month \n\nReheating Instructions🔥: \n1. Take out a frozen sandwich and wrap it in a wet paper towel \n2. Microwave it on a plate for 3-4 minutes\n\n@kodiakcakes #KodiakPartner",
+  "expected": {
+    "name": "Waffle Breakfast Sandwiches",
+    "servings": 10,
+    "raw_ingredients": [
+      "30oz Ground Chicken Breast (850g)",
+      "1 Tbsp Garlic Salt (15g)",
+      "0.5 Tbsp Smoked Paprika (3g)",
+      "1 Tbsp Onion Powder (7g)",
+      "1 Tbsp Red Pepper Flakes (5g)",
+      "0.5 Tbsp Black Pepper (4g)",
+      "2 Tbsps Maple Syrup (30g)",
+      "3.3 Cups Egg Whites (810g)",
+      "Fresh Chives (10g)",
+      "10 Slices Fat Free American Cheese",
+      "20 Kodiak Homestyle Power Waffles"
+    ],
+    "steps": [],
+    "tags": [
+      "kodiakpartner"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Only freezing and reheating directions are present, so the absent primary preparation method keeps this a fallback case.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

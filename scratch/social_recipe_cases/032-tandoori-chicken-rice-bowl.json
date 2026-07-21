@@ -1,0 +1,36 @@
+{
+  "id": "032-tandoori-chicken-rice-bowl",
+  "queue_index": 32,
+  "platform": "instagram",
+  "creator": "Vimarsh Patel",
+  "source_url": "https://www.instagram.com/amateurprochef/reel/DaIjHbzA8d0/",
+  "source_text_kind": "description",
+  "source_text": "Meals for Weight-loss: Ep 9\nTandoori Chicken Rice Bowl\n\nIf you want all my recipes with macros \nComment “Recipe” and I’ll send you the link!!\n\nInstructions\n\n1. Marinate the Chicken\nIn a large bowl, combine ½ cup Greek yogurt, 1 tbsp oil, 1 tbsp ginger garlic paste, juice of ½ lemon, 2 tsp Kashmiri chili powder, 1 tsp paprika, 1½ tsp garam masala, 1½ tsp cumin, 1 tsp coriander, ½ tsp turmeric, 1 tsp salt, and ½ tsp black pepper. Add the 800 g chicken breast and coat well. Marinate for at least 1 hour, or overnight for the best flavor.\n\n2. Cook the Rice\nRinse 2 cups basmati rice until the water runs clear. Add it to a rice cooker with 3 cups water, 1 tsp turmeric, 1 tsp salt, and 1 tsp ghee. Cook using the normal white rice setting.\n\n3. Cook the Chicken\nPreheat the air fryer to 400°F (205°C). Air fry the chicken for 12 to 15 minutes, flipping halfway, until it reaches an internal temperature of 165°F (74°C). Let it rest for 5 minutes, then slice.\n\n4. Make the Pickled Onions\nIn a bowl, combine the thinly sliced red onion, juice of 1 lemon, ½ tsp salt, and ½ tsp red chili powder. Toss well and let sit for at least 20 minutes.\n\n5. Make the Green Chutney\nBlend 1 cup Greek yogurt, 1 cup cilantro, ½ cup mint, 4 green chilies, 1 tsp cumin, ½ tsp salt, and 2 tbsp water until smooth. Add a little more water if you prefer a thinner consistency.\n\n6. Assemble\nDivide the rice, sliced chicken, pickled onions, and green chutney evenly between 4 meal prep containers.\n\nThe goal is 40lbs in 90 days \nI am down 20lbs in 55 days! \n\n#homecooking #easyrecipe #chicken #tandoori #weightloss macrofriendly amateurprochef",
+  "expected": {
+    "name": "Tandoori Chicken Rice Bowl",
+    "servings": 4,
+    "raw_ingredients": [],
+    "steps": [
+      "Marinate the Chicken In a large bowl, combine ½ cup Greek yogurt, 1 tbsp oil, 1 tbsp ginger garlic paste, juice of ½ lemon, 2 tsp Kashmiri chili powder, 1 tsp paprika, 1½ tsp garam masala, 1½ tsp cumin, 1 tsp coriander, ½ tsp turmeric, 1 tsp salt, and ½ tsp black pepper. Add the 800 g chicken breast and coat well. Marinate for at least 1 hour, or overnight for the best flavor.",
+      "Cook the Rice Rinse 2 cups basmati rice until the water runs clear. Add it to a rice cooker with 3 cups water, 1 tsp turmeric, 1 tsp salt, and 1 tsp ghee. Cook using the normal white rice setting.",
+      "Cook the Chicken Preheat the air fryer to 400°F (205°C). Air fry the chicken for 12 to 15 minutes, flipping halfway, until it reaches an internal temperature of 165°F (74°C). Let it rest for 5 minutes, then slice.",
+      "Make the Pickled Onions In a bowl, combine the thinly sliced red onion, juice of 1 lemon, ½ tsp salt, and ½ tsp red chili powder. Toss well and let sit for at least 20 minutes.",
+      "Make the Green Chutney Blend 1 cup Greek yogurt, 1 cup cilantro, ½ cup mint, 4 green chilies, 1 tsp cumin, ½ tsp salt, and 2 tbsp water until smooth. Add a little more water if you prefer a thinner consistency.",
+      "Assemble Divide the rice, sliced chicken, pickled onions, and green chutney evenly between 4 meal prep containers."
+    ],
+    "tags": [
+      "homecooking",
+      "easyrecipe",
+      "chicken",
+      "tandoori",
+      "weightloss"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description embeds ingredient amounts inside prose instructions but provides no raw ingredient list, so this is intentionally an incomplete fallback case.",
+    "Accepted after general abbreviated-series metadata, explicit divide-among-containers yield, and amount-near-line-start ingredient context rules; no creator identity or exact recipe phrase is used."
+  ]
+}

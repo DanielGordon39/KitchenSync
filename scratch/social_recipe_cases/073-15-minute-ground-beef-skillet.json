@@ -1,0 +1,32 @@
+{
+  "id": "073-15-minute-ground-beef-skillet",
+  "queue_index": 73,
+  "platform": "instagram",
+  "creator": "Mayra Wendolyne | Low Carb Love",
+  "source_url": "https://www.instagram.com/low.carb.love/reel/DarMsLntFfL/",
+  "source_text_kind": "description",
+  "source_text": "15-MINUTE GROUND BEEF SKILLET!! 🫑\n(High protein, low carb)\n\nWhat’s your go-to meal when you need dinner on the table FAST? \n\nThis 15-minute ground beef skillet is one of my favorite go-to meals. It’s easy, packed with protein, full of veggies, and perfect for those busy weeknights.\n\nIngredients:\nGround beef\nGreen bell pepper\nYellow bell pepper\nOrange bell pepper\nOnion\nTomatoes\n\nThrow everything into one pan, cook until the beef is browned and the veggies are tender, and dinner is done!\nOne pan, 15 minutes, and don’t hold back!\n\nPerfect for a quick, high-protein meal that the whole family will love.\n\nAre you team one-pan meals or meal prep bowls? 👀",
+  "expected": {
+    "name": "15-MINUTE GROUND BEEF SKILLET",
+    "servings": null,
+    "raw_ingredients": [
+      "Ground beef",
+      "Green bell pepper",
+      "Yellow bell pepper",
+      "Orange bell pepper",
+      "Onion",
+      "Tomatoes"
+    ],
+    "steps": [
+      "Throw everything into one pan, cook until the beef is browned and the veggies are tender, and dinner is done!"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The single imperative sentence provides a primary one-pan method; the following slogan is not a second step.",
+    "Accepted after adding the generic throw imperative; no creator identity or exact recipe phrase is used."
+  ]
+}

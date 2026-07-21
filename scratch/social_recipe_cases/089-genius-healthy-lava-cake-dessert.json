@@ -1,0 +1,46 @@
+{
+  "id": "089-genius-healthy-lava-cake-dessert",
+  "queue_index": 89,
+  "platform": "instagram",
+  "creator": "Arash Hashemi",
+  "source_url": "https://www.instagram.com/shredhappens/reel/Da-nKU4p1sB/",
+  "source_text_kind": "description",
+  "source_text": "🤯GENIUS HEALTHY LAVA CAKE DESSERT\n\nThis is without a doubt the best high protein dessert Ive made and yes it includes cottage cheese!\n\nIt packs 43g protein and 400 calories for the entire batch, which you can easily divide into 2 or 3 servings. It’s also rich and chocolatey, and you can add as many chocolate chips as you desire to make taste even better! \n\nIf you want this and 99 other high protein recipes that have helped me lose 153lbs comment FLAVOR below and I’ll DM you the link to preorder it over to you!\n\nHere is how I made it:\n\nIngredients:\n\n8oz cottage cheese (half a 16oz tub)\n2 eggs\n4 tbsp powdered monkfruit (or sweetener of choice)\n3 tbsp cacao powder (use 2.5 tbsp if you want it less rich)\nSmall splash of vanilla extract\nOptional but highly recommended: a sprinkle of sugar free or chocolate chips\n\n1️⃣ First, the cottage cheese. I processed 8oz cottage cheese in a small food processor until smooth to get rid of the curds. Transfer to a small oven-safe bowl.\n\n2️⃣ To the processed cottage cheese, crack in 2 eggs\n\n3️⃣ Add the cacao powder (I use 3 tbsp … sometimes more… but I like it really rich)\n\n4️⃣ Stir in 3 to 4 tbsp of powdered monkfruit or preferred sweetener. Make sure it’s POWDERED. That is key\n\n5️⃣ Add a splash of vanilla extract and mix thoroughly till you have a nice smooth batter.\n\n6️⃣ Sprinkle chocolate chips on top, if desired, shake it so it somewhat submerges into the cake to get you the lava cake feel. Again, use as many as you like\n\n7️⃣ Pop it into the oven and bake at 350°F for 33-35 mins.\n\n8️⃣ Remove, let cool for two or three mins.\n\nThis is such an easy lowcarb dessert, it’s also protein packed and perfect for a healthy dessert meal prep!\n\nIf you try it, be sure to let me know on SHREDHAPPENS!\n\nENJOY\n.\n.\n.\n#healthyrecipes #lowcarbrecipes #lowcarb #keto #highprotein",
+  "expected": {
+    "name": "GENIUS HEALTHY LAVA CAKE DESSERT",
+    "servings": null,
+    "raw_ingredients": [
+      "8oz cottage cheese (half a 16oz tub)",
+      "2 eggs",
+      "4 tbsp powdered monkfruit (or sweetener of choice)",
+      "3 tbsp cacao powder (use 2.5 tbsp if you want it less rich)",
+      "Small splash of vanilla extract",
+      "Optional but highly recommended: a sprinkle of sugar free or chocolate chips"
+    ],
+    "steps": [
+      "First, the cottage cheese. I processed 8oz cottage cheese in a small food processor until smooth to get rid of the curds. Transfer to a small oven-safe bowl.",
+      "To the processed cottage cheese, crack in 2 eggs",
+      "Add the cacao powder (I use 3 tbsp … sometimes more… but I like it really rich)",
+      "Stir in 3 to 4 tbsp of powdered monkfruit or preferred sweetener. Make sure it’s POWDERED. That is key",
+      "Add a splash of vanilla extract and mix thoroughly till you have a nice smooth batter.",
+      "Sprinkle chocolate chips on top, if desired, shake it so it somewhat submerges into the cake to get you the lava cake feel. Again, use as many as you like",
+      "Pop it into the oven and bake at 350°F for 33-35 mins.",
+      "Remove, let cool for two or three mins."
+    ],
+    "tags": [
+      "healthyrecipes",
+      "lowcarbrecipes",
+      "lowcarb",
+      "keto",
+      "highprotein"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Servings are unknown because the source only says the batch can optionally be divided into either two or three servings.",
+    "The eight keycap-numbered paragraphs are the complete method; later prose and 'ENJOY' are post-recipe commentary.",
+    "Accepted after generic alternative-yield, explicitly optional ingredient, and keycap-numbered step handling; no creator identity or exact recipe phrase was used."
+  ]
+}

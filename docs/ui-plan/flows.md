@@ -3,7 +3,7 @@
 ## Phase 1: Find and Open a Recipe
 
 ```text
-Open Cookbook
+Open Global Recipes or Cookbook
   -> load recipe summaries
   -> search or browse
   -> select recipe
@@ -12,7 +12,7 @@ Open Cookbook
   -> load full detail for only the selected recipe
 ```
 
-Close or Escape clears the selection and reveals the still-mounted Cookbook at its prior search, filters, and scroll position. The URL remains `/cookbook`; the expansion is a visual transition, not the owner of recipe data or navigation state.
+Close or Escape clears the selection and reveals the still-mounted active tab at its prior search, filters, and scroll position. The first implementation keeps tab and selection state locally; the expansion is a visual transition, not the owner of recipe data or navigation state.
 
 Failure paths:
 
@@ -39,14 +39,14 @@ Failure and exit paths:
 - Markdown or index update fails
 - User cancels with unsaved changes
 
-## Phase 1 TODO: Edit a Recipe
+## Phase 1: Edit a Recipe
 
-The Edit action can begin from Main Recipe View, but the edit-mode shape and its user-facing history or recovery behavior are not decided yet.
+The Edit action switches Main Recipe View from reading to an in-place form. V1 assumes one implicit user, so Edit is available from both tabs.
 
 ```text
 Open Main Recipe View
   -> choose Edit
-  -> enter the future edit mode
+  -> enter the in-place edit mode
   -> change fields
   -> validate
   -> save Markdown and index together
@@ -59,6 +59,16 @@ Important behavior:
 - Cancelling should not mutate durable data.
 - Save failure should preserve the user's unsaved values.
 - Git can provide Markdown history, diffs, and rollback, but the UI workflow over that history is a separate design decision.
+
+## Phase 1: Add a Global Recipe to Cookbook
+
+```text
+Open a recipe from Global Recipes
+  -> choose Add to Cookbook
+  -> write cookbook entry Markdown and its index together
+  -> show the recipe in the Cookbook tab
+  -> update favorite, rating, and personal notes from Cookbook Main Recipe View
+```
 
 ## Phase 2: Review an Ingredient
 

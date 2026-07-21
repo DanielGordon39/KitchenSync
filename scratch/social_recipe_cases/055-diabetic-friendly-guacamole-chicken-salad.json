@@ -1,0 +1,41 @@
+{
+  "id": "055-diabetic-friendly-guacamole-chicken-salad",
+  "queue_index": 55,
+  "platform": "instagram",
+  "creator": "Karim Saad",
+  "source_url": "https://www.instagram.com/ice.karimcooks/reel/DalrkpwBS_S/",
+  "source_text_kind": "description",
+  "source_text": "Diabetic Friendly Guacamole 🥑 Chicken Salad and it’s Low Carb too! 🤯 (recipe 👇🏽) \n\nMacros per serving ( makes x3): 396 calories | 37g P | 11g C | 23g F\n\nAnnouncements:\n✅ Want to lose weight without eating boring food? My digital cookbooks include 180+ high-protein recipes with calories and macros included! Grab yours on my site today! 😊\n✅ OR Comment “cookbook” and I’ll send you the link! (Macros and Calories Included) 💪🏽\n✅ I developed new seasonings for everyday cooking! @spicexseasoning OUT now! 👀\n\nIngredients:\n1lb chicken, boneless, skinless & shredded 🍗 \n2 whole avocados 🥑 \n1/4 small red onion, diced 🧅 \n1/2 cup fresh cilantro, chopped 🌿 \n1 tsp onion powder 🧂 \n1 tsp garlic powder 🧄 \n1 tsp cumin 🌶️ \nJuice of 2 limes 🍋‍🟩 \nSalt & black pepper to taste 🧂 \n\nServe it on lettuce wraps, baked corn tortilla tostadas, or eat it straight up 🤤 \n\nIf you want weekly recipes and discounts straight to your email inbox every Sunday then comment “newsletter” 😌📧\n.\n.\n.\n.\n#icekarim #healthyrecipes #easyrecipes #mealprep #quickrecipes",
+  "expected": {
+    "name": "Diabetic Friendly Guacamole Chicken Salad",
+    "servings": 3,
+    "raw_ingredients": [
+      "1lb chicken, boneless, skinless & shredded 🍗",
+      "2 whole avocados 🥑",
+      "1/4 small red onion, diced 🧅",
+      "1/2 cup fresh cilantro, chopped 🌿",
+      "1 tsp onion powder 🧂",
+      "1 tsp garlic powder 🧄",
+      "1 tsp cumin 🌶️",
+      "Juice of 2 limes 🍋‍🟩",
+      "Salt & black pepper to taste 🧂"
+    ],
+    "steps": [
+      "Serve it on lettuce wraps, baked corn tortilla tostadas, or eat it straight up 🤤"
+    ],
+    "tags": [
+      "icekarim",
+      "healthyrecipes",
+      "easyrecipes",
+      "mealprep",
+      "quickrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description supports only a serving instruction, not an assembly method.",
+    "Accepted after general emoji and trailing grammatical-claim title cleanup; no creator identity or exact recipe phrase is used."
+  ]
+}

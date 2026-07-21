@@ -14,7 +14,7 @@ The plan is intentionally iterative. Sections marked **Current direction** are s
 
 ### Phase 1: Cookbook and Recipes
 
-Start with the Cookbook as the first complete UI slice. It uses the recipe database/index for:
+Start with the shared Global Recipes and Cookbook browser as the first complete UI slice. It uses the recipe database/index for:
 
 - Browsing recipes
 - Searching recipes
@@ -23,7 +23,7 @@ Start with the Cookbook as the first complete UI slice. It uses the recipe datab
 - Editing recipes
 - Exercising the browser, API, Markdown, and SQLite path during base testing
 
-For the first UI, the **Cookbook** can present the recipe catalog directly. The Main Recipe View remains recipe-only. The backend should still preserve the distinction between recipe existence and cookbook-specific state so a later cookbook-backed expansion can add personal notes, cook history, favorites, ratings, and other relationship metadata independently.
+Global Recipes presents the complete catalog. Cookbook presents only recipes with cookbook membership and adds a separate notebook section for favorite, rating, and personal notes. Both tabs open the same canonical recipe in Main Recipe View. V1 assumes one implicit user and allows all recipes to be edited; future creator or approved-editor permission checks should not merge recipe content with account-specific cookbook state.
 
 ### Phase 2: Ingredients
 
@@ -81,11 +81,8 @@ Prefer a few meaningful variants over a component with many unrelated options.
 
 The next iteration should decide:
 
-1. Which filters should exist in the first Cookbook release?
-2. Does adding a custom recipe open a full page, side panel, or dialog?
-3. Does Edit transform the Main Recipe View popup in place or open a separate editor?
-4. How should Main Recipe View load Markdown-only descriptions, recipe notes, and images?
-5. How should Git-backed recipe history, diffs, and recovery appear in the UI?
-6. Should editing use the same form as adding a recipe?
-7. Which recipe fields are required for a manually created recipe?
-8. How should a user select recipes for a shopping list?
+1. Does adding a custom recipe open a full page, side panel, or dialog?
+2. How should Git-backed recipe history, diffs, and recovery appear in the UI?
+3. Should editing use the same form as adding a recipe?
+4. Which recipe fields are required for a manually created recipe?
+5. How should a user select recipes for a shopping list?

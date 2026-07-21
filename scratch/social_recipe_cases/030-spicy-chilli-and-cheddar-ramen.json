@@ -1,0 +1,40 @@
+{
+  "id": "030-spicy-chilli-and-cheddar-ramen",
+  "queue_index": 30,
+  "platform": "instagram",
+  "creator": "Vimarsh Patel",
+  "source_url": "https://www.instagram.com/amateurprochef/reel/Dava0UuxxtE/",
+  "source_text_kind": "description",
+  "source_text": "Spicy Chilli & Cheddar Ramen\n\nSometimes you need a big bowl of ramen and to not feel bad about eating it, gotta make it protein packed like this. \n\n@otoki_global Spicy Chilli & Cheddar ramen mixed with milk, light cream cheese and finished with chilli oil, a jammy egg and chicken! All the cheesy ramen indulgence while still hitting the protein goals! \n\nIngredients:\n\n2 chicken thighs (substitute with 1 chicken breast for more protein and less calories)\n1 tbsp soy sauce\n1 tbsp garlic powder\n1 tbsp corn starch \n2 boiled eggs\n\n2 tbsp light cream cheese\n1 cup partly skimmed milk \n2 packages Otoki Cheesy Ramen in Spicy Chili & Cheddar flavor\n\nFor serving:\nChili crisp\nGreen onions\n\n#cheesyramenpartner #cheesyramen #easyrecipe #protein #spicynoodles",
+  "expected": {
+    "name": "Spicy Chilli & Cheddar Ramen",
+    "servings": null,
+    "raw_ingredients": [
+      "2 chicken thighs (substitute with 1 chicken breast for more protein and less calories)",
+      "1 tbsp soy sauce",
+      "1 tbsp garlic powder",
+      "1 tbsp corn starch",
+      "2 boiled eggs",
+      "2 tbsp light cream cheese",
+      "1 cup partly skimmed milk",
+      "2 packages Otoki Cheesy Ramen in Spicy Chili & Cheddar flavor",
+      "Chili crisp",
+      "Green onions"
+    ],
+    "steps": [],
+    "tags": [
+      "cheesyramenpartner",
+      "cheesyramen",
+      "easyrecipe",
+      "protein",
+      "spicynoodles"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description does not provide preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after a general rule that excludes parenthetical ingredient notes from whole-line nutrition classification; no creator identity or exact recipe phrase is used."
+  ]
+}

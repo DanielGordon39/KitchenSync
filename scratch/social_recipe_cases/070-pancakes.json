@@ -1,0 +1,36 @@
+{
+  "id": "070-pancakes",
+  "queue_index": 70,
+  "platform": "instagram",
+  "creator": "Noah Perlo",
+  "source_url": "https://www.instagram.com/noahperlofit/reel/DahQKqnBLVy/",
+  "source_text_kind": "description",
+  "source_text": "Save Time, Money, And Eat Better‼️\n\nThese are so good, Lower calorie, and super easy. Meal Plans linked in my bio ❤️\n\n🔥Macros for Each Pancakes (Recipe Makes 30):\n\n~ 138 Calories\n~ 10g Protein\n~ 15.5g Carbs\n~ 4g Fat\n\nIngredients for 30 (Divide by 3 for normal batch)\n\n✅ - 6 Cups Low Fat Cottage Cheese\n\n✅ - 12 Whole Eggs\n\n✅ - 3 Tsp Vanilla Extract\n\n✅ - 12 Tbsp SF Maple Syrup\n\n✅ - 3.75 Cups Self Rising Flour\n\n✅ - 180g Stevia Chocolate Chips\n\n#healthydiet #highprotein #mealprep #mealpreprecipes #healthyfood",
+  "expected": {
+    "name": "Pancakes",
+    "servings": 30,
+    "raw_ingredients": [
+      "6 Cups Low Fat Cottage Cheese",
+      "12 Whole Eggs",
+      "3 Tsp Vanilla Extract",
+      "12 Tbsp SF Maple Syrup",
+      "3.75 Cups Self Rising Flour",
+      "180g Stevia Chocolate Chips"
+    ],
+    "steps": [],
+    "tags": [
+      "healthydiet",
+      "highprotein",
+      "mealprep",
+      "mealpreprecipes",
+      "healthyfood"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The nutrition heading names pancakes and the caption supplies a yield and ingredients, but no preparation method.",
+    "Accepted after generalized nutrition-heading fallback title extraction and promotional-opener exclusion; no creator identity or exact recipe phrase is used."
+  ]
+}

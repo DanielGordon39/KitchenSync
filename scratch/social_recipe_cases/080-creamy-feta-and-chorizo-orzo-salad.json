@@ -1,0 +1,47 @@
+{
+  "id": "080-creamy-feta-and-chorizo-orzo-salad",
+  "queue_index": 80,
+  "platform": "instagram",
+  "creator": "Jess Hawkins",
+  "source_url": "https://www.instagram.com/recipeswith_jess/reel/DbBUDp1IxvS/",
+  "source_text_kind": "description",
+  "source_text": "Packed Pasta Salads episode 6 ✌🏻\n\nRECIPE: Creamy Feta & Chorizo Orzo Salad 😌\n\n📌 Don’t forget to SAVE this for when you need some easy summer lunch ideas 👀\n\nIt’s been too long since our last packed pasta salad but we’re back with a banger 😌 all of the delicious freshness of a Greek salad, with smoky chorizo, feta, and a creamy garlicky dressing to add extra protein - it is so good, and will keep for up to 4 days in the fridge 👏🏼 \n\nIt’s great with chicken added too 👀 and if you just comment ‘FREE’ below, I’ll DM you the link to try 500+ easy recipes like this one, plus weekly meal plans, to help you hit your goals in the most delicious, stress free way 👀\n\n📍 Serves 4 \n📍 501 Calories & 28.2g of protein \n\n✨ 250g orzo, dry weight, cooked and cooled\n✨ 1 Cucumber, roughly chopped\n✨ 300g cherry tomatoes, quartered \n✨ 125g feta cheese, crumbled \n✨ 100g chorizo, diced\n✨ 1 Red Onion, diced (then soaked in cold water for 10 mins)\n\nFor the dressing: \n\n✨ 150g 0% fat Greek yoghurt \n✨ 1 tsp each of garlic granules \n✨ 1 tsp dried oregano\n✨ 60g light mayo\n✨ 1 tsp dried mint \n✨ The juice of 1/2 a lemon\n✨ 50ml semi skimmed milk\n\nAdd your chorizo to a cold pan, then turn up the heat, and allow it to cook for around 5 minutes, until crispy and the fat has rendered out.\n\nMeanwhile make your dressing by combining the ingredients listed along with some salt and pepper; give them a really good mix and then taste and adjust. You may need more lemon, and add in a little water if it’s too thick.\n\nThen simply assemble! Add your pasta and salad ingredients to a large serving bowl along with your cooked chorizo, then drizzle over the dressing, mix and serve ❤️\n\n#easyrecipes #lunchrecipes #highprotein #pastasalad #lunchideas",
+  "expected": {
+    "name": "Creamy Feta & Chorizo Orzo Salad",
+    "servings": 4,
+    "raw_ingredients": [
+      "250g orzo, dry weight, cooked and cooled",
+      "1 Cucumber, roughly chopped",
+      "300g cherry tomatoes, quartered",
+      "125g feta cheese, crumbled",
+      "100g chorizo, diced",
+      "1 Red Onion, diced (then soaked in cold water for 10 mins)",
+      "150g 0% fat Greek yoghurt",
+      "1 tsp each of garlic granules",
+      "1 tsp dried oregano",
+      "60g light mayo",
+      "1 tsp dried mint",
+      "The juice of 1/2 a lemon",
+      "50ml semi skimmed milk"
+    ],
+    "steps": [
+      "Add your chorizo to a cold pan, then turn up the heat, and allow it to cook for around 5 minutes, until crispy and the fat has rendered out.",
+      "Meanwhile make your dressing by combining the ingredients listed along with some salt and pepper; give them a really good mix and then taste and adjust. You may need more lemon, and add in a little water if it’s too thick.",
+      "Then simply assemble! Add your pasta and salad ingredients to a large serving bowl along with your cooked chorizo, then drizzle over the dressing, mix and serve ❤️"
+    ],
+    "tags": [
+      "easyrecipes",
+      "lunchrecipes",
+      "highprotein",
+      "pastasalad",
+      "lunchideas"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The explicit RECIPE label supplies the title; the three prose paragraphs are primary imperative directions.",
+    "Accepted after generalized RECIPE-label, emoji-ingredient, and transition-imperative handling; no creator identity or exact recipe phrase is used."
+  ]
+}

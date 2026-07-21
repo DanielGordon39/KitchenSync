@@ -1,0 +1,50 @@
+{
+  "id": "076-loaded-big-mac-fries",
+  "queue_index": 76,
+  "platform": "instagram",
+  "creator": "Lulu Dowell",
+  "source_url": "https://www.instagram.com/fit_foodie_lulu/reel/DaxGyfCx5xb/",
+  "source_text_kind": "description",
+  "source_text": "LOADED BIG MAC FRIES 🍟🔥 Skip the greasy takeaway and make this instead. With crispy fries, seasoned beef, melted cheese and the ultimate Big Mac-style sauce, this high-protein fakeaway tastes just as indulgent while helping you stay on track with your fat loss goals.\n\nMacros (serves 4)\n• 567kcal\n• 38g P\n• 44g C\n• 12g F\n\nBurger Mince\n• 500g lean minced beef (95%)\n• 1/3 cup beef stock\n• 2 tbsp @mingleseasoning American BBQ seasoning\n• 2 tsp Worcestershire sauce\n• 1 tsp garlic powder\n\nSalad\n• 600g healthier frozen chips\n• 1 large onion finely diced\n• 4 cups shredded lettuce\n• 200g cherry tomatoes halved\n• 20 burger pickles slices \n• 4 slices burger cheese\n• 4 tbsp chopped parsley\n \nSauce\n• ½ cup low fat Greek yoghurt\n• ¼ cup reduced sugar ketchup\n• 1 tsp garlic powder\n• 1 tbsp American mustard\n• 2 tsp coconut sugar\n• 2.5 tbsp burger pickles finely diced + 1 tsp pickle juice\n• 2 tbsp sautéed onions\n \nMethod\n1. Heat a large non-stick frying pan over medium heat and spray with a little oil. Cook diced onions for 8 minutes, stirring occasionally, until softened and lightly caramelised. Reserve 2 tablespoons for the burger sauce.\n\n2. In a small bowl, combine the Greek yoghurt, reduced sugar ketchup, garlic powder, American mustard, coconut sugar, diced dill pickles, pickle juice and the reserved onions. Mix and set aside.\n\n3. Preheat your oven or air fryer and cook the chips according to the packet instructions until golden and crispy.\n\n4. Back to the pan, increase the heat to high and add the lean minced beef to the pan. Cook, breaking up the mince until well browned. Add BBQ seasoning, Worcestershire sauce and garlic powder. Stir for a minute then pour in the stock and cook for 2 minutes, stirring until the liquid has reduced and the beef is well coated.\n\n5. Divide the crispy chips between four oven-safe dishes or plates. Place a slice of burger cheese over the chips, return to the oven for 2–3 minutes, or microwave for 30 seconds, until the cheese has melted.\n\nAdd the shredded lettuce, spoon over the beef, cherry tomatoes, pickles, reserved onions, then drizzle generously with the Big Mac-style sauce and garnis",
+  "expected": {
+    "name": "LOADED BIG MAC FRIES",
+    "servings": 4,
+    "raw_ingredients": [
+      "500g lean minced beef (95%)",
+      "1/3 cup beef stock",
+      "2 tbsp @mingleseasoning American BBQ seasoning",
+      "2 tsp Worcestershire sauce",
+      "1 tsp garlic powder",
+      "600g healthier frozen chips",
+      "1 large onion finely diced",
+      "4 cups shredded lettuce",
+      "200g cherry tomatoes halved",
+      "20 burger pickles slices",
+      "4 slices burger cheese",
+      "4 tbsp chopped parsley",
+      "½ cup low fat Greek yoghurt",
+      "¼ cup reduced sugar ketchup",
+      "1 tsp garlic powder",
+      "1 tbsp American mustard",
+      "2 tsp coconut sugar",
+      "2.5 tbsp burger pickles finely diced + 1 tsp pickle juice",
+      "2 tbsp sautéed onions"
+    ],
+    "steps": [
+      "Heat a large non-stick frying pan over medium heat and spray with a little oil. Cook diced onions for 8 minutes, stirring occasionally, until softened and lightly caramelised. Reserve 2 tablespoons for the burger sauce.",
+      "In a small bowl, combine the Greek yoghurt, reduced sugar ketchup, garlic powder, American mustard, coconut sugar, diced dill pickles, pickle juice and the reserved onions. Mix and set aside.",
+      "Preheat your oven or air fryer and cook the chips according to the packet instructions until golden and crispy.",
+      "Back to the pan, increase the heat to high and add the lean minced beef to the pan. Cook, breaking up the mince until well browned. Add BBQ seasoning, Worcestershire sauce and garlic powder. Stir for a minute then pour in the stock and cook for 2 minutes, stirring until the liquid has reduced and the beef is well coated.",
+      "Divide the crispy chips between four oven-safe dishes or plates. Place a slice of burger cheese over the chips, return to the oven for 2–3 minutes, or microwave for 30 seconds, until the cheese has melted.",
+      "Add the shredded lettuce, spoon over the beef, cherry tomatoes, pickles, reserved onions, then drizzle generously with the Big Mac-style sauce and garnis"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description ends at the truncated word 'garnis'; the oracle preserves that evidence exactly.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

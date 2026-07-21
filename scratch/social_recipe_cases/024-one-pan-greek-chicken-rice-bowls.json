@@ -1,0 +1,62 @@
+{
+  "id": "024-one-pan-greek-chicken-rice-bowls",
+  "queue_index": 24,
+  "platform": "instagram",
+  "creator": "Ben Chelin",
+  "source_url": "https://www.instagram.com/recipeincaption/reel/Da6JVYeyfWy/",
+  "source_text_kind": "description",
+  "source_text": "One-Pan Greek Chicken Rice Bowls🔥\n\nComment “Recipe” and I’ll send you the full recipe card for free!!\n\nAll the bright and fresh Greek flavors packed into the ultimate summer bowl! Juicy greek chicken, refreshing greek salad, tangy tzatziki all served over lemon herb rice 👌\n\nMy trick is to add @betterthanbouillon Roasted Chicken Base in both the marinade and rice for that deep, slow-cooked flavor without any extra work. Everything is better with Better Than Bouillon.  #EverythingIsBetter #BetterThanBouillonPartner\n\nFor the Chicken:\n-4 large chicken breasts\n-⅓ cup greek yogurt\n-¼ cup olive oil\n-Seasonings: 1 tbsp paprika, 2 tsp garlic powder, 2 tsp oregano, 2 tsp salt, 2 tsp black pepper, 1 tsp thyme\n-8 garlic cloves, minced\n-1 tbsp @betterthanbouillon roasted chicken base\n-½ lemon, juiced\n\nFor the Pilaf:\n-3 tbsp butter\n-1 large yellow onion, diced\n-5 garlic cloves, minced\n-Seasonings: 2 tsp each of garlic powder, salt, black pepper & turmeric\n-1 ½ cups long-grain white rice\n-3 cups hot water + 3 tsp @betterthanbouillon roasted chicken base\n-3 tbsp fresh parsley, chopped\n-½ lemon\n\nFor the Tzaziki:\n-1 cup greek yogurt\n-1 ½ tbsp fresh dill, chopped\n-1/4 cup cucumber, grated & squeezed dry\n-1 tbsp red wine vinegar\n-3 garlic cloves, minced\n-2 tbsp olive oil\n-2 tsp salt\n\nFor the Greek Salad:\n-1 cup cherry tomatoes, halved\n-1 cup cucumbers, quartered\n-½ cup red onion, sliced\n-½ cup feta cheese\n-½ tsp dijon mustard\n-1 tsp each of: oregano, salt, black pepper\n-¼  cup olive oil\n-3 tbsp red wine vinegar\n-1 garlic clove, minced\n\n1. Combine the chicken with the marinade ingredients. Mix then marinate for as long as your patience can handle.\n2. Heat a large pan over medium-high heat, add olive oil. Cook until golden (about 5 to 7 mins per side). Remove and rest. \n3. Reduce heat to medium-low. Add butter & onion, cook until soft. Add garlic & spices, cook for 1 to 2 mins. Add rice, toast for 2 mins. Pour in the hot water with the dissolved Better Than Bouillon, stir, & bring to a boil. Cover, reduce heat to low, & simmer for 20 mins. Add fresh parsley and lemon juice.\n4. Combine all of the salad ingredients in one bowl & all of the tzatziki in another. Mix well. Enjoy!!",
+  "expected": {
+    "name": "One-Pan Greek Chicken Rice Bowls",
+    "servings": null,
+    "raw_ingredients": [
+      "4 large chicken breasts",
+      "⅓ cup greek yogurt",
+      "¼ cup olive oil",
+      "Seasonings: 1 tbsp paprika, 2 tsp garlic powder, 2 tsp oregano, 2 tsp salt, 2 tsp black pepper, 1 tsp thyme",
+      "8 garlic cloves, minced",
+      "1 tbsp @betterthanbouillon roasted chicken base",
+      "½ lemon, juiced",
+      "3 tbsp butter",
+      "1 large yellow onion, diced",
+      "5 garlic cloves, minced",
+      "Seasonings: 2 tsp each of garlic powder, salt, black pepper & turmeric",
+      "1 ½ cups long-grain white rice",
+      "3 cups hot water + 3 tsp @betterthanbouillon roasted chicken base",
+      "3 tbsp fresh parsley, chopped",
+      "½ lemon",
+      "1 cup greek yogurt",
+      "1 ½ tbsp fresh dill, chopped",
+      "1/4 cup cucumber, grated & squeezed dry",
+      "1 tbsp red wine vinegar",
+      "3 garlic cloves, minced",
+      "2 tbsp olive oil",
+      "2 tsp salt",
+      "1 cup cherry tomatoes, halved",
+      "1 cup cucumbers, quartered",
+      "½ cup red onion, sliced",
+      "½ cup feta cheese",
+      "½ tsp dijon mustard",
+      "1 tsp each of: oregano, salt, black pepper",
+      "¼  cup olive oil",
+      "3 tbsp red wine vinegar",
+      "1 garlic clove, minced"
+    ],
+    "steps": [
+      "Combine the chicken with the marinade ingredients. Mix then marinate for as long as your patience can handle.",
+      "Heat a large pan over medium-high heat, add olive oil. Cook until golden (about 5 to 7 mins per side). Remove and rest.",
+      "Reduce heat to medium-low. Add butter & onion, cook until soft. Add garlic & spices, cook for 1 to 2 mins. Add rice, toast for 2 mins. Pour in the hot water with the dissolved Better Than Bouillon, stir, & bring to a boil. Cover, reduce heat to low, & simmer for 20 mins. Add fresh parsley and lemon juice.",
+      "Combine all of the salad ingredients in one bowl & all of the tzatziki in another. Mix well. Enjoy!!"
+    ],
+    "tags": [
+      "everythingisbetter",
+      "betterthanbouillonpartner"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "095-chicken-shawarma-bowls",
+  "queue_index": 95,
+  "platform": "instagram",
+  "creator": "Eliya Hachem",
+  "source_url": "https://www.instagram.com/eliya.eats/reel/DZ7Uq57Pswp/",
+  "source_text_kind": "description",
+  "source_text": "Chicken Shawarma Bowls ✨\n\n550 cals • 44g protein\n\nRecipe (serves 2):\n\nChicken:\n- 300g raw chicken thigh (2)\n- 30g yogurt (1 tbsp)\n- 1/2 lemon, juiced\n- spices: garlic powder (or minced garlic) onion powder, chilli powder, paprika, cumin, salt & pepper\n\n1. Mix and let marinade for 1 hour minimum\n2. Airfry at 190c for 18 mins flipping halfway\n\nPotato:\n- 600g spud light potato, or white potato, peeled & chopped\n- 1/2 tsp olive oil\n- Salt (or any seasonings you like)\n1. Boil chopped potato for about 10-12 mins\n2. Drain then return to the hot pot and let it sit and steam for a minute, shaking halfway\n3. Add olive oil and salt and shake up to also breakdown some of the potato’s exterior (makes them crunchier)\n4. Airfry at 180c for 15-20 minutes (shaking the basket a few times)\n\nLow cal Garlic sauce (toum):\n- 3 cloves garlic\n- 1/2 tbsp olive oil (about 8g)\n- 80g yogurt\n- 1/4- 1/2 lemon, juiced (depending how lemony you like it)\n- salt to taste\n1. Blend garlic cloves and oil first (using an immersion blender or mini food processor), then add yogurt salt & lemon juice and blend until nice and fluffy\n\nSalad:\n- lettuce\n- chopped cucumber\n- chopped tomato\n- sliced red onion\n- salt + sumac\n- dash of pomegranate molasses + white vinegar\n\nExtras:\n- 80g hummus - I loveee @pilpelfinefoods ! (40g per plate)\n- Pickles (optional)\n\nMacros per serve (2 plates per recipe):\nCalories: 550\nProtein: 44g\nCarbohydrates: 46g\nFat: 20g\n\n#chickenshawarma #chickenshawarmabowls #highproteinbowls #highproteinrecipes healthydinnerideas",
+  "expected": {
+    "name": "Chicken Shawarma Bowls",
+    "servings": 2,
+    "raw_ingredients": [
+      "300g raw chicken thigh (2)",
+      "30g yogurt (1 tbsp)",
+      "1/2 lemon, juiced",
+      "spices: garlic powder (or minced garlic) onion powder, chilli powder, paprika, cumin, salt & pepper",
+      "600g spud light potato, or white potato, peeled & chopped",
+      "1/2 tsp olive oil",
+      "Salt (or any seasonings you like)",
+      "3 cloves garlic",
+      "1/2 tbsp olive oil (about 8g)",
+      "80g yogurt",
+      "1/4- 1/2 lemon, juiced (depending how lemony you like it)",
+      "salt to taste",
+      "lettuce",
+      "chopped cucumber",
+      "chopped tomato",
+      "sliced red onion",
+      "salt + sumac",
+      "dash of pomegranate molasses + white vinegar",
+      "80g hummus - I loveee @pilpelfinefoods ! (40g per plate)",
+      "Pickles (optional)"
+    ],
+    "steps": [
+      "Mix and let marinade for 1 hour minimum",
+      "Airfry at 190c for 18 mins flipping halfway",
+      "Boil chopped potato for about 10-12 mins",
+      "Drain then return to the hot pot and let it sit and steam for a minute, shaking halfway",
+      "Add olive oil and salt and shake up to also breakdown some of the potato’s exterior (makes them crunchier)",
+      "Airfry at 180c for 15-20 minutes (shaking the basket a few times)",
+      "Blend garlic cloves and oil first (using an immersion blender or mini food processor), then add yogurt salt & lemon juice and blend until nice and fluffy"
+    ],
+    "tags": [
+      "chickenshawarma",
+      "chickenshawarmabowls",
+      "highproteinbowls",
+      "highproteinrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Five ingredient components form one ordered list; numbering restarts for chicken, potato, and sauce instructions.",
+    "The nutrition block is not recipe content, and only literal hashtags are tags.",
+    "Accepted after generic bare-yield-title rejection and headed bullet-to-numbered-step boundary handling; no creator identity or exact recipe phrase was used."
+  ]
+}

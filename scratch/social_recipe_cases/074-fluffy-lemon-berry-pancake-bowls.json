@@ -1,0 +1,38 @@
+{
+  "id": "074-fluffy-lemon-berry-pancake-bowls",
+  "queue_index": 74,
+  "platform": "instagram",
+  "creator": "Lulu Dowell",
+  "source_url": "https://www.instagram.com/fit_foodie_lulu/reel/DbAeT03xTKH/",
+  "source_text_kind": "description",
+  "source_text": "FLUFFY LEMON BERRY PANCAKE BOWLS 🍋🍓A baked pancake bowl packed with protein, bursting with juicy berries, and finished with fresh lemon zest. It’s the perfect breakfast to support your fat loss goals without feeling like you’re missing out.\n\nMacros (1 bowl)\n• 365 kcal\n• 34g P\n• 42.2g C\n• 8.1g F\n \nIngredients\n• 1/3 cup low fat Greek yoghurt\n• 1 egg\n• 2 tbsp almond milk\n• 1 tbsp maple syrup\n• 1 tbsp lemon juice\n• ¼ cup @macr0mike Almond Protein Vanilla Buttercream\n• 2 tbsp whole meal flour\n• ½ tsp baking powder\n• 1 tsp lemon zest\n• 1/3 cup berries (I used strawberries, blueberries and raspberries\n\nMethod:\n1. Preheat your oven to 180°C. In a small oven-safe bowl, whisk together the Greek yoghurt, egg, almond milk, maple syrup and lemon juice until smooth.\n\n2. Add the protein powder, wholemeal flour, baking powder and lemon zest. Stir until just combined. Top with the mixed berries.\n\n3. Bake for 22–24 minutes, or until golden, puffed and cooked through. Let them cool for 15 minutes before eating. Delicious!",
+  "expected": {
+    "name": "FLUFFY LEMON BERRY PANCAKE BOWLS",
+    "servings": 1,
+    "raw_ingredients": [
+      "1/3 cup low fat Greek yoghurt",
+      "1 egg",
+      "2 tbsp almond milk",
+      "1 tbsp maple syrup",
+      "1 tbsp lemon juice",
+      "¼ cup @macr0mike Almond Protein Vanilla Buttercream",
+      "2 tbsp whole meal flour",
+      "½ tsp baking powder",
+      "1 tsp lemon zest",
+      "1/3 cup berries (I used strawberries, blueberries and raspberries"
+    ],
+    "steps": [
+      "Preheat your oven to 180°C. In a small oven-safe bowl, whisk together the Greek yoghurt, egg, almond milk, maple syrup and lemon juice until smooth.",
+      "Add the protein powder, wholemeal flour, baking powder and lemon zest. Stir until just combined. Top with the mixed berries.",
+      "Bake for 22–24 minutes, or until golden, puffed and cooked through. Let them cool for 15 minutes before eating. Delicious!"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The title is the all-caps phrase before the first inline emoji; the following same-line text is narrative description.",
+    "Accepted after generalized inline-emoji title and parenthetical macro-yield handling; no creator identity or exact recipe phrase is used."
+  ]
+}

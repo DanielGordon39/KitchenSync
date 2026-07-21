@@ -1,0 +1,57 @@
+{
+  "id": "042-hot-korean-beef-rice-and-cucumber-salad-bowl",
+  "queue_index": 42,
+  "platform": "instagram",
+  "creator": "Better Cheat Meals 🇳🇿 | Steve Kemp",
+  "source_url": "https://www.instagram.com/bettercheatmeals/reel/DFdS0HXSTzb/",
+  "source_text_kind": "description",
+  "source_text": "Hot Korean Beef, Rice & Cucumber Salad Bowl 🔽\n\n512 Cal | 52g P | 53g Carb | 9g F\n\n👉 Stay on track with 110+ quick & satisfying digital recipes, link in bio 📱\n\nServed in 2½ cup (600 ml) glass containers\n\nServings: 4\n\n🔥Ingredients\nBeef Coating\n-1¾ lb (800 g) top sirloin cut against grain into thin slices\n-2 tbsp cornstarch\n-½ tsp salt\n-pepper to taste\n\nSauce\n-⅓ cup soy sauce\n-3 tbsp gochujang Korean red pepper paste, 1 = mild, 2= med, 3 = hot\n-3 tbsp brown sugar replacement\n-¼ cup beef broth\n-1 tbsp rice vinegar\n-6 cloves garlic minced\n-1½ tablespoons grated ginger\n-1 tbsp cornstarch mixed in equal parts cold water for a slurry\n\nCucumber Salad\n-2 English cucumbers thinly sliced\n-1 tbsp rice vinegar\n-1 tsp sesame oil\n-½ tsp sugar\n-pinch of salt\n-1 tsp red pepper flakes optional\n-1 tsp toasted sesame seeds\n\nFor Serving\n-3 cups cooked white rice start with 1 cup uncooked\n-3 green onions chopped (reserve some for garnish)\n\nInstructions:\nCucumber Salad: Slice thin, toss with seasonings, set aside\nBeef: \n-Coat sliced beef with cornstarch, salt & pepper\n-Sear in hot wok: 45s first side, 30s second (work in batches)\n\nSauce:\n-Bring all ingredients to a gentle simmer\n-Add cornstarch slurry and stir until until thick\n\nFinish:\nToss beef with sauce (30-45s)\nServe over rice with cucumbers\nGarnish with green onions, sesame seeds\n\nStorage:\nFridge: 3-4 days (beef/rice), 2 days (salad)\nFreeze: 3 months (beef only)\nReheat: 1-2 min microwave or 3-4 min stovetop\n#mealprep #weightloss #fatloss",
+  "expected": {
+    "name": "Hot Korean Beef, Rice & Cucumber Salad Bowl",
+    "servings": 4,
+    "raw_ingredients": [
+      "1¾ lb (800 g) top sirloin cut against grain into thin slices",
+      "2 tbsp cornstarch",
+      "½ tsp salt",
+      "pepper to taste",
+      "⅓ cup soy sauce",
+      "3 tbsp gochujang Korean red pepper paste, 1 = mild, 2= med, 3 = hot",
+      "3 tbsp brown sugar replacement",
+      "¼ cup beef broth",
+      "1 tbsp rice vinegar",
+      "6 cloves garlic minced",
+      "1½ tablespoons grated ginger",
+      "1 tbsp cornstarch mixed in equal parts cold water for a slurry",
+      "2 English cucumbers thinly sliced",
+      "1 tbsp rice vinegar",
+      "1 tsp sesame oil",
+      "½ tsp sugar",
+      "pinch of salt",
+      "1 tsp red pepper flakes optional",
+      "1 tsp toasted sesame seeds",
+      "3 cups cooked white rice start with 1 cup uncooked",
+      "3 green onions chopped (reserve some for garnish)"
+    ],
+    "steps": [
+      "Cucumber Salad: Slice thin, toss with seasonings, set aside",
+      "Coat sliced beef with cornstarch, salt & pepper",
+      "Sear in hot wok: 45s first side, 30s second (work in batches)",
+      "Bring all ingredients to a gentle simmer",
+      "Add cornstarch slurry and stir until until thick",
+      "Toss beef with sauce (30-45s)",
+      "Serve over rice with cucumbers",
+      "Garnish with green onions, sesame seeds"
+    ],
+    "tags": [
+      "mealprep",
+      "weightloss",
+      "fatloss"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Accepted after general explicit-servings, servingware metadata, subheading, imperative-bullet, and storage-section context rules; no creator identity or exact recipe phrase is used."
+  ]
+}

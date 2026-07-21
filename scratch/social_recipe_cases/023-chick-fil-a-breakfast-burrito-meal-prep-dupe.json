@@ -1,0 +1,22 @@
+{
+  "id": "023-chick-fil-a-breakfast-burrito-meal-prep-dupe",
+  "queue_index": 23,
+  "platform": "instagram",
+  "creator": "Kyle Smith",
+  "source_url": "https://www.instagram.com/tastyshreds/reel/DayCfgwJzPr/",
+  "source_text_kind": "description",
+  "source_text": "🌯 CHICK-FIL-A BREAKFAST BURRITO MEAL PREP DUPE 🤤🔥\n\nThese might be the BEST breakfast meal prep I’ve made all year…\n\n💬 Comment “TASTY” and I’ll DM you the full recipe!\n📖 Comment “COOKBOOK” if you want my 233+ high-protein recipes that taste like cheat meals.\n\nEach burrito:\n🔥 496 Calories\n💪 53g Protein\n\nFor comparison, a typical Chipotle chicken burrito is around:\n🌯 1,100–1,200 Calories\n💪 50–60g Protein\n\nThat means you could eat TWO of these for fewer calories than one Chipotle burrito… while getting almost double the protein. 🤯\n\nThese are loaded with spicy chicken, fluffy egg whites, crispy bacon, reduced-fat cheddar, all wrapped in a high-protein Carb Balance tortilla. They freeze great, reheat in minutes, and make hitting your protein goals ridiculously easy.\n\nWho’s making these first? 👇🔥",
+  "expected": {
+    "name": "CHICK-FIL-A BREAKFAST BURRITO MEAL PREP DUPE",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output; the full recipe is externally gated and the prose component summary is not an ingredient section.",
+    "Accepted after comma-separated nutrition ranges were excluded from ingredient context."
+  ]
+}

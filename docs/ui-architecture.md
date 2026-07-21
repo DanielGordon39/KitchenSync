@@ -83,14 +83,20 @@ The UI should not:
 
 ## Current HTTP Boundary
 
-The repository now has a thin FastAPI layer that delegates to `KitchenSyncApp` and serves local recipe images under `/library/...`. The React UI uses the first two read endpoints:
+The repository now has a thin FastAPI layer that delegates to `KitchenSyncApp` and serves local recipe images under `/library/...`. The React UI uses these recipe and Cookbook endpoints:
 
 ```text
 GET  /api/recipes
+GET  /api/recipe-tags
+GET  /api/ingredients
+POST /api/ingredient-lines/parse
 GET  /api/recipes/{recipe_id}
+PUT  /api/recipes/{recipe_id}
+POST /api/recipes/{recipe_id}/cookbook
+PATCH /api/recipes/{recipe_id}/cookbook
 ```
 
-Search, import preview, and accepted-save endpoints remain future additions. Any accepted-save endpoint must delegate to `app.recipes.save_imported_recipe(...)` rather than reproduce its Markdown and SQLite behavior.
+Search and scoped Cookbook browsing are part of the recipe list/tag endpoints. Import preview and accepted-import save endpoints remain future additions. Any accepted-save endpoint must delegate to `app.recipes.save_imported_recipe(...)` rather than reproduce its Markdown and SQLite behavior.
 
 ## Platform Roadmap
 
@@ -215,18 +221,21 @@ Start with tests around the first real workflow rather than testing empty scaffo
 
 ## First Vertical Slice
 
-The first read-only boundary is implemented:
+The first browse and edit boundary is implemented:
 
 1. The recipe grid loads from `GET /api/recipes`.
-2. The selected recipe opens in a full-screen detail popup through `GET /api/recipes/{recipe_id}` without changing the Cookbook URL.
+2. Global Recipes and Cookbook scope the same shared grid and tag controls.
+3. The selected recipe opens in a full-screen detail popup through `GET /api/recipes/{recipe_id}` without changing the current tab.
+4. Existing recipes save through `PUT /api/recipes/{recipe_id}`.
+5. Cookbook membership and notebook metadata save through the dedicated Cookbook endpoints.
 
-The next write boundary remains:
+The next import boundary remains:
 
-3. Enter a recipe URL.
-4. Preview the parsed recipe.
-5. Review raw and parsed ingredient values.
-6. Save through one accepted-recipe endpoint that delegates to `app.recipes.save_imported_recipe(...)`.
-7. Return to the recipe detail screen.
+6. Enter a recipe URL.
+7. Preview the parsed recipe.
+8. Review raw and parsed ingredient values.
+9. Save through one accepted-recipe endpoint that delegates to `app.recipes.save_imported_recipe(...)`.
+10. Return to the recipe detail screen.
 
 This slice exercises routing, TypeScript DTOs, loading states, forms, API errors, and responsive layout while staying close to KitchenSync's current implementation.
 

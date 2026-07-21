@@ -1,0 +1,44 @@
+{
+  "id": "082-sweet-chilli-chicken-toastie",
+  "queue_index": 82,
+  "platform": "instagram",
+  "creator": "Jess Hawkins",
+  "source_url": "https://www.instagram.com/recipeswith_jess/reel/Dak-TwBo-s5/",
+  "source_text_kind": "description",
+  "source_text": "TIRED GIRL DINNERS: episode 6 🫶🏻\n\nSweet Chilli Chicken Toastie 🤍\n\nI fully stand by the fact that a sandwich is a perfect dinner choice, especially a tired girl dinner, and this cheesy sweet chilli chicken melt is one of my favourites 😍\n\nIt’s packed full of protein from the chicken, has the creaminess of mayo, kick of sweet chilli and the melt of two types of cheese…👀\n\nIt’s just SO good, and ready in less than 15 minutes! The filling preps really well too, so make it ahead and it’s even easier 👏🏼 \n\n📌 Also don’t forget to give it a save for days you need a tired girl dinner 👀\n\n📍 Serves Two\n📍 568 calories and 48.5g of protein\n\n200g of cooked chicken breast, diced\n40g light mayo\n40g reduced sugar sweet chilli sauce\n198g tinned sweetcorn, drained\n2 spring onions, finely sliced\n40g cheddar, sliced\n40g mozzarella, grated\n4 slices of white bread\n1 tsp garlic granules\n\nAdd your chicken, mayo, sweet chilli sauce, sweetcorn, spring onions, mozzarella and garlic granules to a bowl along with a good pinch of salt and pepper, and mix until fully combined.\n\nPlace half of the mix onto one slice of the bread, then add 20g of cheddar, before topping with another slice of bread. Repeat with the remaining mix and bread. \n\nSpray a large frying pan generously with oil spray, then spray each side of the Toastie, and cook over a medium heat for a few minutes on each side until the bread is crispy and golden. Don’t have the heat too high or you’ll burn the bread before the cheese inside melts. \n\nThen that’s literally it! Simply serve on it’s own, or with some oven chips, and enjoy.\n\n#toastie #easydinner #quickrecipes #sweetchilli #lowcalorierecipes",
+  "expected": {
+    "name": "Sweet Chilli Chicken Toastie",
+    "servings": 2,
+    "raw_ingredients": [
+      "200g of cooked chicken breast, diced",
+      "40g light mayo",
+      "40g reduced sugar sweet chilli sauce",
+      "198g tinned sweetcorn, drained",
+      "2 spring onions, finely sliced",
+      "40g cheddar, sliced",
+      "40g mozzarella, grated",
+      "4 slices of white bread",
+      "1 tsp garlic granules"
+    ],
+    "steps": [
+      "Add your chicken, mayo, sweet chilli sauce, sweetcorn, spring onions, mozzarella and garlic granules to a bowl along with a good pinch of salt and pepper, and mix until fully combined.",
+      "Place half of the mix onto one slice of the bread, then add 20g of cheddar, before topping with another slice of bread. Repeat with the remaining mix and bread.",
+      "Spray a large frying pan generously with oil spray, then spray each side of the Toastie, and cook over a medium heat for a few minutes on each side until the bread is crispy and golden. Don’t have the heat too high or you’ll burn the bread before the cheese inside melts.",
+      "Then that’s literally it! Simply serve on it’s own, or with some oven chips, and enjoy."
+    ],
+    "tags": [
+      "toastie",
+      "easydinner",
+      "quickrecipes",
+      "sweetchilli",
+      "lowcalorierecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The textual yield 'Serves Two' maps to 2; the series heading is metadata, not the recipe title.",
+    "Accepted after generalized series-title filtering, word-yield normalization, and explicit later-sentence imperative handling; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "065-red-thai-curry-chicken-skewers",
+  "queue_index": 65,
+  "platform": "instagram",
+  "creator": "Alex Hughes | Easy Low-Cal Recipes",
+  "source_url": "https://www.instagram.com/alexskitchenbangers/reel/DbBUo29KDOK/",
+  "source_text_kind": "description",
+  "source_text": "Red Thai Curry Chicken Skewers\n\nIf you’re looking for your new favourite summer dinner… you’ve just found it 🤭\n\nRed Thai curry marinated chicken skewers with jasmine rice, crunchy salad and the dreamiest creamy coconut red Thai sauce 🤤\n\nSo easy to make and perfect for when you need a quick & absolutely banging dinner 🤌🏼\n\nIngredients (serves 2): \nChicken Skewers\n300g boneless, skinless chicken thighs, diced into large chunks (can use breast for lower cal/ higher protein)\u202850g 0% Greek style yoghurt\u202830g red Thai curry paste\u20281 tsp garlic purée\u20281 tsp ginger purée\u2028Juice of ½ lime\n\nRed Thai Sauce\n30g red Thai curry paste\u2028100ml light coconut milk\u20281 tsp light soy sauce\u2028½ tsp honey\u2028½ tsp fish sauce\u2028Juice of ½ lime\n\nTo Serve\n1 x 250g pouch microwave jasmine rice\n ½ cucumber, diced\n1 medium carrot, julienned or ribboned\u2028Juice of ½ lime\u2028Pinch of salt\u20282-3 sprigs fresh coriander, chopped\n\n💞In a bowl combine all of the skewer ingredients.  Cover and marinate for at least 30 minutes, or overnight, then thread onto skewers.\n\n💞Air fry at 200°C for 12-14 minutes, turning halfway through, until lightly charred and cooked through.\n\n💞Toss the carrot with the lime juice and a pinch of salt. Set aside while the chicken cooks.\n\n💞Heat the jasmine rice according to the packet instructions.\n\n💞Add the red Thai curry paste to a small saucepan over a medium heat and cook for 1 minute. Add the honey, light soy & fish sauce and for a further 30 seconds before stirring in the coconut milk. Simmer until smooth and slightly thickened, then remove from the heat and stir through the lime juice.\n\n💞Divide the rice between two bowls. Arrange the cucumber and carrot alongside the rice before laying the skewers over the top.\n\n💞Drizzle over the red thai sauce and finish with the chopped coriander and an extra squeeze of fresh lime.\n\nCalories per portion: 600 | Protein: 34.9g | Fat: 24.8g | Carbs: 58.8g\n\n•\n•\n_____\n#easyrecipes #summerrecipes #healthyrecipes #weightlossfood #dinnerrecipes",
+  "expected": {
+    "name": "Red Thai Curry Chicken Skewers",
+    "servings": 2,
+    "raw_ingredients": [
+      "300g boneless, skinless chicken thighs, diced into large chunks (can use breast for lower cal/ higher protein)",
+      "50g 0% Greek style yoghurt",
+      "30g red Thai curry paste",
+      "1 tsp garlic purée",
+      "1 tsp ginger purée",
+      "Juice of ½ lime",
+      "30g red Thai curry paste",
+      "100ml light coconut milk",
+      "1 tsp light soy sauce",
+      "½ tsp honey",
+      "½ tsp fish sauce",
+      "Juice of ½ lime",
+      "1 x 250g pouch microwave jasmine rice",
+      "½ cucumber, diced",
+      "1 medium carrot, julienned or ribboned",
+      "Juice of ½ lime",
+      "Pinch of salt",
+      "2-3 sprigs fresh coriander, chopped"
+    ],
+    "steps": [
+      "In a bowl combine all of the skewer ingredients.  Cover and marinate for at least 30 minutes, or overnight, then thread onto skewers.",
+      "Air fry at 200°C for 12-14 minutes, turning halfway through, until lightly charred and cooked through.",
+      "Toss the carrot with the lime juice and a pinch of salt. Set aside while the chicken cooks.",
+      "Heat the jasmine rice according to the packet instructions.",
+      "Add the red Thai curry paste to a small saucepan over a medium heat and cook for 1 minute. Add the honey, light soy & fish sauce and for a further 30 seconds before stirring in the coconut milk. Simmer until smooth and slightly thickened, then remove from the heat and stir through the lime juice.",
+      "Divide the rice between two bowls. Arrange the cucumber and carrot alongside the rice before laying the skewers over the top.",
+      "Drizzle over the red thai sauce and finish with the chopped coriander and an extra squeeze of fresh lime."
+    ],
+    "tags": [
+      "easyrecipes",
+      "summerrecipes",
+      "healthyrecipes",
+      "weightlossfood",
+      "dinnerrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators in the acquired description delimit otherwise ordinary ingredient lines.",
+    "Accepted after generalized local component-label and imperative-prefix handling; no creator identity or exact recipe phrase is used."
+  ]
+}

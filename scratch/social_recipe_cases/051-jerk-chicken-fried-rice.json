@@ -1,0 +1,41 @@
+{
+  "id": "051-jerk-chicken-fried-rice",
+  "queue_index": 51,
+  "platform": "instagram",
+  "creator": "Razi Khan",
+  "source_url": "https://www.instagram.com/raziyyz/reel/Da2_0ujgXS9/",
+  "source_text_kind": "description",
+  "source_text": "Jerk Chicken Fried Rice! Meal prep 5 servings for the week in under 20 minutes. High protein, lower in calories, and full of flavour.👇🏽\n-\nJerk Chicken:\n• 800g chicken thighs, cubed\n• 1 tbsp oil (or sesame oil)\n• 3 tbsp jerk seasoning (I use grace mild spice)\n• 1 tsp paprika, salt, pepper\n-\nFried Rice:\n• 1 tbsp minced garlic\n• 1 large red onion, chopped\n• 1 red bell pepper, chopped\n• 1 green bell pepper, chopped\n• 1 & 1/2 cup diced pineapples\n• 1/4 cup soy sauce (I use low sodium)\n• 700g cooked rice (any kind)\n-\nPer Serving of 5: 450 calories, 36g protein, 49g carbs, 11g fat\n-\n-\n#recipe #mealprep #jerkchicken #friedrice #homemade",
+  "expected": {
+    "name": "Jerk Chicken Fried Rice",
+    "servings": 5,
+    "raw_ingredients": [
+      "800g chicken thighs, cubed",
+      "1 tbsp oil (or sesame oil)",
+      "3 tbsp jerk seasoning (I use grace mild spice)",
+      "1 tsp paprika, salt, pepper",
+      "1 tbsp minced garlic",
+      "1 large red onion, chopped",
+      "1 red bell pepper, chopped",
+      "1 green bell pepper, chopped",
+      "1 & 1/2 cup diced pineapples",
+      "1/4 cup soy sauce (I use low sodium)",
+      "700g cooked rice (any kind)"
+    ],
+    "steps": [],
+    "tags": [
+      "recipe",
+      "mealprep",
+      "jerkchicken",
+      "friedrice",
+      "homemade"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description provides ingredients but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after general same-line first-sentence title precedence and per-serving title exclusion; no creator identity or exact recipe phrase is used."
+  ]
+}

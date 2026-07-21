@@ -1,0 +1,60 @@
+{
+  "id": "066-hot-honey-cajun-beef-folded-wrap",
+  "queue_index": 66,
+  "platform": "instagram",
+  "creator": "Alex Hughes | Easy Low-Cal Recipes",
+  "source_url": "https://www.instagram.com/alexskitchenbangers/reel/Da5osInKSSQ/",
+  "source_text_kind": "description",
+  "source_text": "Hot Honey Cajun Beef Folded Wrap\n\nThat crunch at the end though 🤭 \n\nIf you love a quick & easy fakeaway, this one’s for you 🤌🏼 Sticky hot honey cajun spiced beef, homemade ranch, melted cheddar, chilli heatwave doritos and lettuce, all folded into a tortilla and toasted until golden and crispy.\n\nIngredients (serves 2): \n225g 5% lean beef mince\u20281½ tsp Cajun seasoning\u2028½ tsp smoked paprika\u20281 tsp garlic granules\u2028Salt & black pepper\u202825g honey\u20281 tsp hot sauce\u2028½ tsp mild chilli flakes (optional)\n\nRanch (or use shop bought)\n50g 0% Greek yoghurt\u202820g lighter mayonnaise\u20281 tsp garlic granules\u2028½ tsp onion granules\u2028¼ tsp dried parsley\u2028⅛ tsp dried dill\u2028¼ tsp dried chives\u20281 tsp white wine vinegar\u2028Salt & black pepper\u20282 tsp warm water\n\nTo Serve\n2 large flour tortillas\u202840g reduced fat mature cheddar, grated\u202825g Chilli heatwave doritos \u20282 handfuls shredded lettuce\n\n💞Whisk together all the ranch ingredients until smooth.\n\n💞Fry the beef mince until browned. Season with the Cajun seasoning, smoked paprika, garlic granules, salt and black pepper. Cook for a minute. \n\n💞Mix the honey, hot sauce & chilli flakes. Pour most of it into the pan reserving some to drizzle at the end.\n\n💞Lay each tortilla flat and make a cut from the centre to the edge. Add the ranch and lettuce, then the beef, Doritos and cheese. \n\n💞Fold each quarter over the next to create a triangle. If any filling pops out while folding just add it back into the centre of the wrap.\n\n💞Toast in a dry frying pan over a medium heat for 2-3 minutes per side, until the cheese has melted.\n\n💞Drizzle over any remaining hot honey on the beef & serve with any leftover ranch for dipping. \n\nCalories per portion: 529 | Protein: 38.3g | Fat: 16.3g | Carbs: 56.9g\n\n•\n•\n_______\n#fakeaway #easyrecipes #easydinnerrecipes #highproteinrecipes #quickrecipes",
+  "expected": {
+    "name": "Hot Honey Cajun Beef Folded Wrap",
+    "servings": 2,
+    "raw_ingredients": [
+      "225g 5% lean beef mince",
+      "1½ tsp Cajun seasoning",
+      "½ tsp smoked paprika",
+      "1 tsp garlic granules",
+      "Salt & black pepper",
+      "25g honey",
+      "1 tsp hot sauce",
+      "½ tsp mild chilli flakes (optional)",
+      "50g 0% Greek yoghurt",
+      "20g lighter mayonnaise",
+      "1 tsp garlic granules",
+      "½ tsp onion granules",
+      "¼ tsp dried parsley",
+      "⅛ tsp dried dill",
+      "¼ tsp dried chives",
+      "1 tsp white wine vinegar",
+      "Salt & black pepper",
+      "2 tsp warm water",
+      "2 large flour tortillas",
+      "40g reduced fat mature cheddar, grated",
+      "25g Chilli heatwave doritos",
+      "2 handfuls shredded lettuce"
+    ],
+    "steps": [
+      "Whisk together all the ranch ingredients until smooth.",
+      "Fry the beef mince until browned. Season with the Cajun seasoning, smoked paprika, garlic granules, salt and black pepper. Cook for a minute.",
+      "Mix the honey, hot sauce & chilli flakes. Pour most of it into the pan reserving some to drizzle at the end.",
+      "Lay each tortilla flat and make a cut from the centre to the edge. Add the ranch and lettuce, then the beef, Doritos and cheese.",
+      "Fold each quarter over the next to create a triangle. If any filling pops out while folding just add it back into the centre of the wrap.",
+      "Toast in a dry frying pan over a medium heat for 2-3 minutes per side, until the cheese has melted.",
+      "Drizzle over any remaining hot honey on the beef & serve with any leftover ranch for dipping."
+    ],
+    "tags": [
+      "fakeaway",
+      "easyrecipes",
+      "easydinnerrecipes",
+      "highproteinrecipes",
+      "quickrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators delimit the three local ingredient components.",
+    "Accepted after extending the shared imperative vocabulary with fry, lay, and toast; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "067-crispy-honey-buffalo-chicken-loaded-fries",
+  "queue_index": 67,
+  "platform": "instagram",
+  "creator": "Alex Hughes | Easy Low-Cal Recipes",
+  "source_url": "https://www.instagram.com/alexskitchenbangers/reel/Da0dUVEqMUU/",
+  "source_text_kind": "description",
+  "source_text": "Crispy Honey Buffalo Chicken Loaded Fries\n\nIs there anything better than crispy fried chicken drenched in a sticky sauce? 🤤🫦 \n\nWhenever I start craving a takeaway (ahem the kfc bites 🤣) I just make it at home instead and switch up the sauce depending on what I’m in the mood for. This honey buffalo version might be my favourite yet it’s sweet, spicy, tangy & just ahhhh SO good \n\nIngredients (serves 2): \nFries: \n550g potatoes, cut into fries\u2028Oil spray\u20281 tsp smoked paprika\u20281 tsp garlic granules\u2028Salt\u2028Black pepper\n\nCrispy chicken\n300g chicken breast, diced\u202825g cornflour\n30g egg white \u20281 tsp smoked paprika\u20281 tsp garlic granules\u2028Oil spray\n\nHoney buffalo sauce\n10g honey\u202820g buffalo sauce\n10g light butter melted\u2028\nRanch\n20g ranch dressing \n50g thick greek yoghurt\n¼ tsp garlic granules \nSplash of warm water to loosen\n\nTo finish\n2 tbsp chopped fresh chives or spring onions\n\n💞Optional: For extra crispy fries, soak the potatoes in cold water for 20 minutes, then drain and pat dry thoroughly.\n\n💞Season the fries with the ingredients listed. Air fry at 190°C for 22-25 minutes, shaking halfway through, until golden and crispy.\n\n💞 Add the chicken to a bowl and season with the smoked paprika, garlic granules, salt and black pepper. Pour in the egg white and mix well. \n\n💞Lift each chicken bite from the egg white mixture, allowing any excess to drip off, then lightly coat in the cornflour.\n\n💞Place into the air fryer basket in a single layer and spray lightly with oil. Air fry at 190°C for 10-12 minutes, shaking halfway through, until golden& crispy. \n\n💞Mix together the ranch dressing. \n\n💞Melt the butter in the microwave. \n\n💞Once the chicken is cooked, add it to the bowl with the butter, honey and buffalo sauce.Toss well until the chicken is evenly coated. \n\n💞 Serve the fries & top with the honey buffalo chicken.\n\n💞Spoon over the ranch in dollops and finish with the chopped chives or spring onions before serving.\n\nCalories per portion: 551 l Protein: 42.3g l Fat: 11.3g l Carbs: 67.8g \n•\n•\n_____\n#fakeaway #loadedfries #easyrecipes #highproteinmeals #dinnerrecipes",
+  "expected": {
+    "name": "Crispy Honey Buffalo Chicken Loaded Fries",
+    "servings": 2,
+    "raw_ingredients": [
+      "550g potatoes, cut into fries",
+      "Oil spray",
+      "1 tsp smoked paprika",
+      "1 tsp garlic granules",
+      "Salt",
+      "Black pepper",
+      "300g chicken breast, diced",
+      "25g cornflour",
+      "30g egg white",
+      "1 tsp smoked paprika",
+      "1 tsp garlic granules",
+      "Oil spray",
+      "10g honey",
+      "20g buffalo sauce",
+      "10g light butter melted",
+      "20g ranch dressing",
+      "50g thick greek yoghurt",
+      "¼ tsp garlic granules",
+      "Splash of warm water to loosen",
+      "2 tbsp chopped fresh chives or spring onions"
+    ],
+    "steps": [
+      "Optional: For extra crispy fries, soak the potatoes in cold water for 20 minutes, then drain and pat dry thoroughly.",
+      "Season the fries with the ingredients listed. Air fry at 190°C for 22-25 minutes, shaking halfway through, until golden and crispy.",
+      "Add the chicken to a bowl and season with the smoked paprika, garlic granules, salt and black pepper. Pour in the egg white and mix well.",
+      "Lift each chicken bite from the egg white mixture, allowing any excess to drip off, then lightly coat in the cornflour.",
+      "Place into the air fryer basket in a single layer and spray lightly with oil. Air fry at 190°C for 10-12 minutes, shaking halfway through, until golden& crispy.",
+      "Mix together the ranch dressing.",
+      "Melt the butter in the microwave.",
+      "Once the chicken is cooked, add it to the bowl with the butter, honey and buffalo sauce.Toss well until the chicken is evenly coated.",
+      "Serve the fries & top with the honey buffalo chicken.",
+      "Spoon over the ranch in dollops and finish with the chopped chives or spring onions before serving."
+    ],
+    "tags": [
+      "fakeaway",
+      "loadedfries",
+      "easyrecipes",
+      "highproteinmeals",
+      "dinnerrecipes"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The optional crisping direction is still a supported primary preparation instruction.",
+    "Accepted after generalized optional, conditional, and common-imperative handling; no creator identity or exact recipe phrase is used."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "053-the-best-homemade-tuna-pasta-salad",
+  "queue_index": 53,
+  "platform": "instagram",
+  "creator": "Razi Khan",
+  "source_url": "https://www.instagram.com/raziyyz/reel/DaQZNzgAKZX/",
+  "source_text_kind": "description",
+  "source_text": "The best homemade Tuna Pasta Salad. High in protein, lower in calories, and easy to meal prep! Make it in 20 minutes!👇🏽\n-\nPasta Salad:\n• 2 cans tuna (I use @safecatchfoods , the only brand to test every fish for mercury)\n• 2 cups cooked pasta\n• 1 cup chopped cucumbers\n• 1/2 cup chopped celery\n• 1/4 cup chopped red onions\n• 1/4 cup chopped green onions\n• 1/2 cup chopped tomatoes\n• 1/2 cup corn\n-\nSauce:\n• 1/2 cup fat free greek yogurt, plain\n• 1/2 cup light mayo (or sour cream)\n• 2 tbsp mustard (yellow or dijon)\n• 1 tbsp any hot sauce\n• 1 tbsp honey or sweetener\n• 1/4 tsp salt and garlic powder (to taste)\n-\n-\n#recipe #healthy #salad #tuna #safecatchpartner",
+  "expected": {
+    "name": "The best homemade Tuna Pasta Salad",
+    "servings": null,
+    "raw_ingredients": [
+      "2 cans tuna (I use @safecatchfoods , the only brand to test every fish for mercury)",
+      "2 cups cooked pasta",
+      "1 cup chopped cucumbers",
+      "1/2 cup chopped celery",
+      "1/4 cup chopped red onions",
+      "1/4 cup chopped green onions",
+      "1/2 cup chopped tomatoes",
+      "1/2 cup corn",
+      "1/2 cup fat free greek yogurt, plain",
+      "1/2 cup light mayo (or sour cream)",
+      "2 tbsp mustard (yellow or dijon)",
+      "1 tbsp any hot sauce",
+      "1 tbsp honey or sweetener",
+      "1/4 tsp salt and garlic powder (to taste)"
+    ],
+    "steps": [],
+    "tags": [
+      "recipe",
+      "healthy",
+      "salad",
+      "tuna",
+      "safecatchpartner"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description provides ingredients but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "096-chicken-pho",
+  "queue_index": 96,
+  "platform": "instagram",
+  "creator": "Matthew",
+  "source_url": "https://www.instagram.com/wannabechefmatt/reel/Daij5XrN133/",
+  "source_text_kind": "description",
+  "source_text": "Episode 5 of Meals for an Athlete: Chicken Pho! I love all the different things you can make with the Costco rotisserie chicken! Super cheap and high in protein which is exactly what I’m looking for in my meals while I’m training. #highproteinmeals #rotisseriechicken #easyrecipe",
+  "expected": {
+    "name": "Chicken Pho",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "highproteinmeals",
+      "rotisseriechicken",
+      "easyrecipe"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The series sentence explicitly names Chicken Pho but supplies no ingredients or instructions, so description-only fallback is expected.",
+    "Accepted after generic 'Episode N of …: Dish' name extraction and source-wide literal hashtag collection; no creator identity or exact recipe phrase was used."
+  ]
+}

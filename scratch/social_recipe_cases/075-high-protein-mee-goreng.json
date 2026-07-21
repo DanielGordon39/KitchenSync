@@ -1,0 +1,49 @@
+{
+  "id": "075-high-protein-mee-goreng",
+  "queue_index": 75,
+  "platform": "instagram",
+  "creator": "Lulu Dowell",
+  "source_url": "https://www.instagram.com/fit_foodie_lulu/reel/Da2NRTXx4Ua/",
+  "source_text_kind": "description",
+  "source_text": "HIGH-PROTEIN MEE GORENG 🔥 Skip the takeaway and make this instead! It’s loaded with juicy chicken, prawns, fresh veggies and a sweet, savoury, spicy sauce that coats every strand of noodle.\n\nMacros (serves 4)\n• 544kcal\n• 55g P\n• 60g C\n• 9g F\n\nIngredients\n• 1 tbsp sesame oil\n• 240g dried egg noodles \n• 400g chicken breast / tenders cubed + 1 tbsp oyster sauce + 1 tsp dark soy sauce\n• 250g raw prawns\n• 4 cloves garlic minced\n• 1 small brown onion thinly sliced\n• 3 cups Chinese broccoli (stems and leaves separated and chopped)\n• 1 large carrot julienned\n• 1 1/4 cup bean sprouts\n• 4 spring onions chopped\n\nSauce\n• 1 tbsp oyster sauce\n• 2.5 tbsp Kecap manis (sweet soy sauce)\n• 2 tbsp dark soy sauce\n• 2 tbsp sambal Olek\n• 2 tbsp tomato ketchup\n• 1/3 cup water\n\nTo serve: Chili oil, crispy shallots, lime wedges.\n \nMethod:\n1. Marinate the chicken with 1 tablespoon oyster sauce and 1 teaspoon dark soy sauce. In a small bowl, whisk together all the sauce ingredients and set aside.\n\n2. Cook the egg noodles according to the packet instructions until just under al dente. Drain, rinse under cold water and set aside.\n\n3. Heat ½ tbsp sesame oil in a large, deep pan over high heat. Add the chicken and cook for 4–5 minutes until lightly charred and almost cooked through. Add the prawns and cook for 1–2 minutes until just pink and opaque. Remove from the pan and set aside.\n\n4. Add the remaining ½ tbsp of sesame oil to the pan. Cook the onion for 2–3 minutes until softened, then add the garlic and cook for 30 seconds until fragrant. Add the carrot and Chinese broccoli stems and stir-fry for 2–3 minutes until just tender. Stir through the broccoli leaves and cook for a further 1–2 minutes until wilted.\n\n5. Add the cooked noodles to the pan and pour over the sauce. Toss for 1–2 minutes until the noodles are evenly coated and the sauce has slightly caramelised.\n\n6. Return the chicken, prawns and vegetables to the pan. Add the bean sprouts and spring onions, then toss everything together for 30–60 seconds until heated through.\n\nDivide between bowls and top with a drizzle of chilli oil, crispy shallots and a squeeze of fresh lim",
+  "expected": {
+    "name": "HIGH-PROTEIN MEE GORENG",
+    "servings": 4,
+    "raw_ingredients": [
+      "1 tbsp sesame oil",
+      "240g dried egg noodles",
+      "400g chicken breast / tenders cubed + 1 tbsp oyster sauce + 1 tsp dark soy sauce",
+      "250g raw prawns",
+      "4 cloves garlic minced",
+      "1 small brown onion thinly sliced",
+      "3 cups Chinese broccoli (stems and leaves separated and chopped)",
+      "1 large carrot julienned",
+      "1 1/4 cup bean sprouts",
+      "4 spring onions chopped",
+      "1 tbsp oyster sauce",
+      "2.5 tbsp Kecap manis (sweet soy sauce)",
+      "2 tbsp dark soy sauce",
+      "2 tbsp sambal Olek",
+      "2 tbsp tomato ketchup",
+      "1/3 cup water",
+      "To serve: Chili oil, crispy shallots, lime wedges."
+    ],
+    "steps": [
+      "Marinate the chicken with 1 tablespoon oyster sauce and 1 teaspoon dark soy sauce. In a small bowl, whisk together all the sauce ingredients and set aside.",
+      "Cook the egg noodles according to the packet instructions until just under al dente. Drain, rinse under cold water and set aside.",
+      "Heat ½ tbsp sesame oil in a large, deep pan over high heat. Add the chicken and cook for 4–5 minutes until lightly charred and almost cooked through. Add the prawns and cook for 1–2 minutes until just pink and opaque. Remove from the pan and set aside.",
+      "Add the remaining ½ tbsp of sesame oil to the pan. Cook the onion for 2–3 minutes until softened, then add the garlic and cook for 30 seconds until fragrant. Add the carrot and Chinese broccoli stems and stir-fry for 2–3 minutes until just tender. Stir through the broccoli leaves and cook for a further 1–2 minutes until wilted.",
+      "Add the cooked noodles to the pan and pour over the sauce. Toss for 1–2 minutes until the noodles are evenly coated and the sauce has slightly caramelised.",
+      "Return the chicken, prawns and vegetables to the pan. Add the bean sprouts and spring onions, then toss everything together for 30–60 seconds until heated through.",
+      "Divide between bowls and top with a drizzle of chilli oil, crispy shallots and a squeeze of fresh lim"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description ends mid-word at 'lim'; the frozen oracle preserves that description-only evidence exactly.",
+    "Accepted after generalized macro-title exclusion, inline serving-ingredient, and trailing method-step handling; no creator identity or exact recipe phrase is used."
+  ]
+}

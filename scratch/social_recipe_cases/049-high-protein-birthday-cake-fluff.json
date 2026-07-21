@@ -1,0 +1,42 @@
+{
+  "id": "049-high-protein-birthday-cake-fluff",
+  "queue_index": 49,
+  "platform": "instagram",
+  "creator": "Panacea Palm | Dij 🙋🏽‍♂️",
+  "source_url": "https://www.instagram.com/panaceapalm/reel/DalAzaiNkGs/",
+  "source_text_kind": "description",
+  "source_text": "High Protein Birthday Cake Fluff!🍦🎂😮‍💨💪🏽\n\n27g Protein! ONLY 250 calories | Calorie Deficit Cheat Code!\n\nComment “Cookbook” and I’ll DM you a purchase link to my High Protein Cookbook with 300+ recipes just like this one! 📕👨🏽‍🍳 \n\nMakes 1 HUGE tub\n\nCalories & Macros 📊\nPer bowl: 250 calories \n27g P | 39g C | 2g F\n\nIngredients\n- 50ml skimmed milk\n- 1 frozen banana \n- 1/2 tsp vanilla extract \n- 2 drops birthday cake extract (or just 1/2 tsp more vanilla)\n- 30g vanilla whey protein (I use @proteinworks use code PANACEAPALM for a discount)\n- 15ml of sugar free maple syrup\n- 1 cup of ice\n- 5g rainbow sprinkles \n- optional 10g sweetener \n\nBlend in a food processor on high do 5 minutes till no clumps remain and it’s tripled in volume!🔥\n\n- Serve immediately while fluffy!\n- This is a great dessert option when you’re in a deficit and will keep you full for ages!😮‍💨\n\nComment “Cookbook” and I’ll DM you a shop link to my High Protein Cookbook with 300+ recipes just like this one with calorie tracking barcodes! 📕👨🏽‍🍳 \n\n🏷️ #highprotein #lowcaloriedessert \n #highvolumedessert #fatloss #birthdaycakefluff",
+  "expected": {
+    "name": "High Protein Birthday Cake Fluff",
+    "servings": 1,
+    "raw_ingredients": [
+      "50ml skimmed milk",
+      "1 frozen banana",
+      "1/2 tsp vanilla extract",
+      "2 drops birthday cake extract (or just 1/2 tsp more vanilla)",
+      "30g vanilla whey protein (I use @proteinworks use code PANACEAPALM for a discount)",
+      "15ml of sugar free maple syrup",
+      "1 cup of ice",
+      "5g rainbow sprinkles",
+      "optional 10g sweetener"
+    ],
+    "steps": [
+      "Blend in a food processor on high do 5 minutes till no clumps remain and it’s tripled in volume!🔥",
+      "Serve immediately while fluffy!"
+    ],
+    "tags": [
+      "highprotein",
+      "lowcaloriedessert",
+      "highvolumedessert",
+      "fatloss",
+      "birthdaycakefluff"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The descriptive dessert-option bullet is not a preparation instruction.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

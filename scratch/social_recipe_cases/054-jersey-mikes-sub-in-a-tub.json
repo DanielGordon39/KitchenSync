@@ -1,0 +1,43 @@
+{
+  "id": "054-jersey-mikes-sub-in-a-tub",
+  "queue_index": 54,
+  "platform": "instagram",
+  "creator": "Karim Saad",
+  "source_url": "https://www.instagram.com/ice.karimcooks/reel/DawBKckBL2l/",
+  "source_text_kind": "description",
+  "source_text": "SAVE THIS ‼️ Jersey Mikes Sub in a Tub 🤯 (recipe 👇🏽) \n\nAnnouncements:\n✅ Want to lose weight without eating boring food? My digital cookbooks include 180+ high-protein recipes with calories and macros included! Grab yours on my site today! 😊\n✅ OR Comment “cookbook” and I’ll send you the link! (Macros and Calories Included) 💪🏽\n✅ I developed new seasonings for everyday cooking! @spicexseasoning OUT now! 👀\n\nMacros per serving ( makes x3): 457 calories | 42g P | 6g C | 27g F\n\nIngredients:\n1 small head iceberg shredded or 8 oz bag 🥬 \n4-6 slices turkey chopped 🦃 \n4-6 slices ham chopped 🍖\n4-6 slices salami chopped\n4-6 slices provolone chopped 🧀 \n1/3 cup banana peppers 🌶️ \n12 cherry tomatoes sliced 🍅 \n1/2 red onion, thinly sliced 🧅 \n\nFor the Dressing:\n1/2 cup nonfat yogurt \n2 tablespoons light mayonnaise\n4-5 tablespoons red wine vinegar\n1 1/2 teaspoon oregano 🌿 \nSalt & Pepper, to taste 🧂 \n\nIf you want weekly recipes and discounts straight to your email inbox every Sunday then comment “newsletter” 😌📧\n.\n.\n.\n.\n#icekarim #healthyrecipes #easyrecipes #mealprep #quickrecipes",
+  "expected": {
+    "name": "Jersey Mikes Sub in a Tub",
+    "servings": 3,
+    "raw_ingredients": [
+      "1 small head iceberg shredded or 8 oz bag 🥬",
+      "4-6 slices turkey chopped 🦃",
+      "4-6 slices ham chopped 🍖",
+      "4-6 slices salami chopped",
+      "4-6 slices provolone chopped 🧀",
+      "1/3 cup banana peppers 🌶️",
+      "12 cherry tomatoes sliced 🍅",
+      "1/2 red onion, thinly sliced 🧅",
+      "1/2 cup nonfat yogurt",
+      "2 tablespoons light mayonnaise",
+      "4-5 tablespoons red wine vinegar",
+      "1 1/2 teaspoon oregano 🌿",
+      "Salt & Pepper, to taste 🧂"
+    ],
+    "steps": [],
+    "tags": [
+      "icekarim",
+      "healthyrecipes",
+      "easyrecipes",
+      "mealprep",
+      "quickrecipes"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The acquired description provides ingredients but no preparation instructions, so this is intentionally an incomplete fallback case.",
+    "Accepted after general decorated-save title, x-prefixed yield, and announcements-heading handling; no creator identity or exact recipe phrase is used."
+  ]
+}

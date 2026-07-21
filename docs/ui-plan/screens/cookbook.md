@@ -2,7 +2,7 @@
 
 Phase: 1
 
-The Cookbook is the first complete UI slice. It uses recipe index data for browsing and search while preserving room for separate cookbook-specific metadata such as favorites and ratings.
+The first complete UI slice has two tabs over the same recipe browser. Global Recipes shows the complete local recipe catalog. Cookbook shows only recipes with cookbook membership and adds favorite, rating, and personal notes. V1 assumes one implicit user and allows every recipe to be edited; it does not copy a recipe when adding it to the Cookbook.
 
 ## Cookbook Screen
 
@@ -45,17 +45,18 @@ Current backend support:
 - `app.recipes.get_detail(recipe_id)`
 
 Current browser HTTP support:
-
-- `GET /api/recipes`
+- `GET /api/recipes` with optional `q`, repeated `tag`, `meal`, `cuisine`, `diet`, and `scope=global|cookbook` query parameters
+- `GET /api/recipe-tags` with the same optional scope
 - `GET /api/recipes/{recipe_id}`
+- `PUT /api/recipes/{recipe_id}`
+- `POST /api/recipes/{recipe_id}/cookbook`
+- `PATCH /api/recipes/{recipe_id}/cookbook`
 
-Still required before browser implementation:
-
-- Paged and searchable recipe-summary endpoints for the eventual infinite grid
+Still required for the eventual infinite grid:
+- A paged or cursor-based extension of the searchable recipe-summary endpoint
 - A product-level manual create operation
-- A product-level edit operation that keeps Markdown and SQLite synchronized
 
-The UI must not call `save_metadata(...)` directly as a substitute for a complete create or edit operation.
+Recipe edits delegate to `app.recipes.update_recipe(...)`; cookbook metadata writes delegate to `app.cookbook.save_entry(...)`. The UI must not call low-level index helpers directly.
 
 ### States
 
@@ -75,24 +76,30 @@ The UI must not call `save_metadata(...)` directly as a substitute for a complet
 
 ### Search and Filter Direction
 
-Place one free-text search field above the recipe grid. Search the complete backend result set, not only the recipe cards already loaded in the browser.
+Place one free-text search field and a compact filter menu above the recipe grid. Search the complete backend result set, not only the recipe cards already loaded in the browser.
 
 Rank matches by:
-
 1. Fuzzy recipe-title match
-2. Exact or spelling-corrected tag match
+2. Fuzzy tag match
 3. Fuzzy ingredient match
 
-Title matches receive the strongest weight. Tag matching should prefer known normalized tags and visibly suggest a corrected tag rather than silently rewriting the query. Ingredient matching can use canonical ingredient names, parsed names, and raw ingredient text.
+Title matches receive the strongest weight. Ingredient matching can use canonical ingredient names, parsed names, and raw ingredient text. Typing `#` starts autocomplete from normalized tags currently present in the recipe index; completing a hashtag requests that exact tag.
 
-Provide explicit tag and ingredient filters in addition to free-text search. Filters act as constraints on the result set and should remain usable with an empty text query. Search, filters, sorting, and infinite loading must use the same stable backend ordering and paging contract.
+With multiple hashtags, show recipes matching all requested tags first. Then show a visibly separate group of recipes matching some requested tags, ordered by the number of tags matched before normal text relevance. An incomplete trailing hashtag is only an autocomplete prefix.
 
-Before implementation, create representative examples for:
+The filter menu groups common indexed tags into Meal, Cuisine and style, and Diet. Meal and cuisine selections use OR within their section, filter sections combine with AND, and all selected diet tags are required. Active choices appear as removable chips. Filters remain usable with an empty text query.
 
+Cookbook-specific state such as favorites and ratings is displayed on Cookbook cards and in a separate notebook-details section, but is not part of recipe text relevance. Rating/favorite filters remain a later Cookbook expansion. TODO(accounts): scope Cookbook membership, search results, autocomplete, and available filter counts to the authenticated account while keeping the current client contract.
+
+Search, filters, sorting, and infinite loading must use the same stable backend ordering and paging contract.
+
+Keep representative examples for:
 - Misspelled recipe titles
-- Misspelled or partial tags
+- Misspelled or partial tags during normal text search
+- Exact and incomplete hashtag tokens
 - Ingredient synonyms and partial ingredient names
 - Queries that match a title, tag, and ingredient at different strengths
+- Multiple hashtags with both all-tag and some-tag matches
 - Multiple active filters with and without text search
 
 ### Eventual Infinite Scroll Direction
@@ -133,6 +140,7 @@ Current candidate information:
 - Servings
 - Tags
 - Source name
+- Cookbook favorite and rating when the Cookbook tab is active
 
 The first card does not need every field. Choose the smallest set that helps the user identify and compare recipes.
 
@@ -166,35 +174,22 @@ Give the selected recipe the full screen so the user can read all recipe content
 - Notes
 - Tags and images when available
 
-### Detail Content Source TODO
+### Detail Content Source
 
-The current detail endpoint can return indexed recipe metadata, tags, ingredients, steps, and the local main image URL. Recipe descriptions and recipe notes are not currently part of `app.recipes.get_detail(...)` because they are not indexed in SQLite.
-
-Before Main Recipe View promises those fields, decide whether the detail read should:
-
-- Parse the canonical recipe Markdown and combine it with indexed data
-- Promote selected display fields into the rebuildable SQLite index
-- Use another explicit read model derived from recipe Markdown
-
-The decision must preserve Markdown as the canonical recipe source and define how the UI avoids stale or conflicting detail data. Do not add placeholder fields to the endpoint contract until this source boundary is settled.
+The detail endpoint returns indexed metadata, tags, ingredients, steps, and the local main image URL. It reads the description and recipe notes from canonical recipe Markdown and combines them with the indexed detail model. This keeps Markdown authoritative without adding display-only columns to SQLite.
 
 ### Actions
 
 - Close the popup and return focus to the Cookbook
-- Edit recipe, after edit mode and history behavior are defined
+- Edit the recipe
+- Add a Global Recipe to the Cookbook
+- Update Cookbook favorite, rating, and personal notes when Cookbook is active
 - Add recipe to shopping workflow, in Phase 3
 - Adjust displayed serving count, after scaling behavior is defined
 
-### Recipe-Only Boundary
+### Recipe and Cookbook Boundary
 
-The first Main Recipe View displays recipe content only. It does not include cookbook-specific state such as:
-
-- Favorite state
-- Personal or family rating
-- Personal notes
-- Cook history or last-cooked information
-
-When KitchenSync begins using the cookbook database in the UI, this view can gain a separate cookbook section for that relationship data. Keep that as an explicit later expansion; do not make those fields part of the first Main Recipe View contract now.
+Recipe content remains the same canonical content in both tabs. When opened from Cookbook, Main Recipe View adds a separate notebook-details section for favorite, personal rating, and personal notes. Cook history and last-cooked controls remain later work.
 
 ### Data and Memory Boundary
 
@@ -222,15 +217,11 @@ When KitchenSync begins using the cookbook database in the UI, this view can gai
 - On wider screens, constrain line length and introduce additional columns only when ingredients and steps remain easy to follow.
 - Keep Close and future Edit actions reachable in a persistent header, including around mobile safe areas and browser controls.
 
-### Edit Mode TODO
+### Edit Mode
 
-An Edit action may switch the Main Recipe View into a dedicated edit mode, but the edit interaction is not yet settled. Before implementing it, decide:
+Edit replaces the reading layout inside the existing full-screen popup. The editor supports title, description, servings, total time, tags, ordered ingredients, ordered steps, and recipe notes. Each ingredient row can switch between Raw text and a Rich Quantity/Unit/Ingredient/Preparation projection. Rich is the remembered default, while lines that cannot be represented without loss stay Raw with an explanation. Ingredient names autocomplete from the local catalog, unmatched names are identified as new v1 ingredients, and unit suggestions can be filtered by amount/volume/weight and US/Metric without performing conversions.
 
-- Whether editing replaces the reading layout inside the popup or opens a separate editor
-- How unsaved changes, Save, Cancel, and stale recipe data behave
-- How the UI exposes version history or recovery
-
-Recipe Markdown is already Git-friendly, and Git can own file history, diffs, and rollback. The UI still needs a deliberate product workflow over that capability; do not create a second recipe-history system as part of the first detail view.
+Save formats Rich rows back into canonical ingredient lines, writes Markdown, and refreshes SQLite indexes through one backend operation. Cancel returns to the reading layout, and closing with unsaved changes uses a native discard confirmation. V1 does not add autosave, stale-write coordination, durable structured ingredient overrides, or a second history system; Git-friendly Markdown remains the recovery boundary. Editor mode and unit-system preferences are browser-local until accounts exist.
 
 ### States
 
@@ -263,6 +254,7 @@ Create a recipe manually when no import source is used or parsing fails.
 ### Behavior
 
 - Add, remove, and reorder ingredient lines.
+- Reuse the per-line Raw/Rich ingredient editor from existing-recipe edit mode.
 - Add, remove, and reorder steps.
 - Preserve unsaved values while validation messages are shown.
 - Save through one Python operation that writes Markdown and updates the index.
@@ -271,13 +263,12 @@ Create a recipe manually when no import source is used or parsing fails.
 ### Open Questions
 
 - Which fields are required besides title?
-- Should the editor show raw ingredient text only or parsed fields too?
 - Should the recipe Markdown preview be visible?
 - Should autosave exist, or should the first version use explicit Save only?
 
 ## Edit Recipe Screen
 
-Status: TODO pending the Main Recipe View edit-mode and history decisions.
+Status: Implemented in Main Recipe View for existing recipes.
 
 If a separate editor remains the chosen direction, reuse the same form structure as Add Custom Recipe when practical. Add and Edit may share field components and validation, but they remain separate behaviors:
 

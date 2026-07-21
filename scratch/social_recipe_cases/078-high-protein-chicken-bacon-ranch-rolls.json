@@ -1,0 +1,44 @@
+{
+  "id": "078-high-protein-chicken-bacon-ranch-rolls",
+  "queue_index": 78,
+  "platform": "instagram",
+  "creator": "Gymhealthu",
+  "source_url": "https://www.instagram.com/gymhealthu/reel/DXXZLq0iDuz/",
+  "source_text_kind": "description",
+  "source_text": "High Protein Chicken Bacon Ranch Rolls🍗🥓🌯\nEasy 50g Protein Meal Prep 💪🏼\n\nDon’t forget to check out my digital recipe cook books with over 280 easy, delicious & healthy high protein recipes like this 👨🏻‍🍳📚\n\n(Macros: Per Roll - 15 Total)\n378 Calories\n18.5gC | 11gF | 50gP\n\nIngredients: \n2.25KG Diced Chicken Breast (raw weight)\n1 Tsp Olive Oil\n2 Tsp Smoked Paprika, 1/2 Tsp Chilli Powder, 1 Tsp Garlic Powder, 1 Tsp Onion Powder, 1 Tsp Salt\n500g Low Fat Cottage Cheese \n80g Softened Light Cream Cheese\n2 - 4 Tsp Chipotle Paste (use more or less depending on your spice tolerance)\n4 Diced Garlic Cloves\n1 Tbsp Ranch Seasoning\n1/2 Lime Juice\n100ml Fat Free Milk\n300g Low Fat Grated Cheese (Bega 50% Less Fat Grated Cheese)\nChives\n200g Cooked & Diced Bacon (beef bacon, turkey bacon or short cut bacon)\n15 Warm Tortillas (Woolworths Soft White Wraps)\n\nReheat Instructions:\nTake one roll out of the freezer, take off the foil, microwave for approximately 2 minutes then air fry at 190C/375F for 5 - 8 minutes or until hot & crispy. This last step can also be done in a pan\n\n#burrito #burritos #chicken #chickenrecipes #mealprep highprotein healthyrecipes easyrecipe foodie lowcalorie",
+  "expected": {
+    "name": "High Protein Chicken Bacon Ranch Rolls",
+    "servings": 15,
+    "raw_ingredients": [
+      "2.25KG Diced Chicken Breast (raw weight)",
+      "1 Tsp Olive Oil",
+      "2 Tsp Smoked Paprika, 1/2 Tsp Chilli Powder, 1 Tsp Garlic Powder, 1 Tsp Onion Powder, 1 Tsp Salt",
+      "500g Low Fat Cottage Cheese",
+      "80g Softened Light Cream Cheese",
+      "2 - 4 Tsp Chipotle Paste (use more or less depending on your spice tolerance)",
+      "4 Diced Garlic Cloves",
+      "1 Tbsp Ranch Seasoning",
+      "1/2 Lime Juice",
+      "100ml Fat Free Milk",
+      "300g Low Fat Grated Cheese (Bega 50% Less Fat Grated Cheese)",
+      "Chives",
+      "200g Cooked & Diced Bacon (beef bacon, turkey bacon or short cut bacon)",
+      "15 Warm Tortillas (Woolworths Soft White Wraps)"
+    ],
+    "steps": [],
+    "tags": [
+      "burrito",
+      "burritos",
+      "chicken",
+      "chickenrecipes",
+      "mealprep"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Only reheating guidance is present, so the absent primary preparation method keeps this a fallback case.",
+    "Accepted after generalized short emoji-suffix title and check-out promotion handling; no creator identity or exact recipe phrase is used."
+  ]
+}

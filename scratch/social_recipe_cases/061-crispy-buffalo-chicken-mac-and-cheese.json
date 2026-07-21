@@ -1,0 +1,41 @@
+{
+  "id": "061-crispy-buffalo-chicken-mac-and-cheese",
+  "queue_index": 61,
+  "platform": "instagram",
+  "creator": "Nikita Fair",
+  "source_url": "https://www.instagram.com/fairfiteats/reel/DasrS4mhn0d/",
+  "source_text_kind": "description",
+  "source_text": "Crispy Buffalo Chicken Mac & Cheese 🧀\n(Makes 10 Servings) \n\nMacros Per Serving: \n- 450 Calories\n- 55g Protein \n- 45g Carbs \n- 6g Fat \n\n📕 Comment “Meal Prep” and I will DM you a purchase link to my Meal Prep Cookbook with 100+ recipes just like this!\n\nIngredients (Crispy Chicken)🍗: \n- 60oz Chicken Breast (1700g)\n- 2 Cups Flour (240g)\n- 2 Tbsps Garlic Salt (30g)\n- 1 Tbsp Cayenne Pepper (6g)\n- 1 Tbsp Black Pepper (7g)\n- 2 Cups Egg Whites (480g)\n- 0.25 Cup Pickle Juice (60g)\n- 3 Tbsps Hot Sauce (45g)\n- 3 Cups Corn Flakes (150g)\n- 1 Cup Low Calorie Buffalo Sauce (240g)\n\nIngredients (Mac & Cheese)🧀: \n- 2.5 Cups Cottage Cheese (0% Fat) (560g)\n- 2 Mac & Cheese Powder Packets (56g)\n- 3oz Reduced Fat Cream Cheese (85g)\n- 0.5 Tbsp Onion Powder (3g)\n- 0.5 Tbsp Black Pepper (3g)\n- 0.75 Cup Fat Free Milk (180g)\n- 20oz Dry Protein Pasta (565g) \n\nFreezing Instructions ❄️:\n1. Portion out 1/10 of the final dish into each air-tight meal prep container\n2. Place them in the freezer and keep frozen for up to 3 months\n\nReheating Instructions🔥: \n1. Take out a frozen containers, remove the lid, and add 1-2 Tbsps of water to the frozen pasta\n2. Cover the container with a wet paper towel \n3. Microwave for around 5-6 minutes, mixing half-way through",
+  "expected": {
+    "name": "Crispy Buffalo Chicken Mac & Cheese",
+    "servings": 10,
+    "raw_ingredients": [
+      "60oz Chicken Breast (1700g)",
+      "2 Cups Flour (240g)",
+      "2 Tbsps Garlic Salt (30g)",
+      "1 Tbsp Cayenne Pepper (6g)",
+      "1 Tbsp Black Pepper (7g)",
+      "2 Cups Egg Whites (480g)",
+      "0.25 Cup Pickle Juice (60g)",
+      "3 Tbsps Hot Sauce (45g)",
+      "3 Cups Corn Flakes (150g)",
+      "1 Cup Low Calorie Buffalo Sauce (240g)",
+      "2.5 Cups Cottage Cheese (0% Fat) (560g)",
+      "2 Mac & Cheese Powder Packets (56g)",
+      "3oz Reduced Fat Cream Cheese (85g)",
+      "0.5 Tbsp Onion Powder (3g)",
+      "0.5 Tbsp Black Pepper (3g)",
+      "0.75 Cup Fat Free Milk (180g)",
+      "20oz Dry Protein Pasta (565g)"
+    ],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Only freezing and reheating directions are present; the primary preparation method is absent.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

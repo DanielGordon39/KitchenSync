@@ -1,0 +1,37 @@
+{
+  "id": "084-chocolate-protein-rice-cake-bites",
+  "queue_index": 84,
+  "platform": "instagram",
+  "creator": "Torin Redpath | Online Transformation Coach",
+  "source_url": "https://www.instagram.com/torinredpath/reel/Daz7HrChCvE/",
+  "source_text_kind": "description",
+  "source_text": "CHOCOLATE PROTEIN RICE CAKE BITES 🍫🔥\n\n250 calories and 32g of protein for the WHOLE batch?! 👀\n\nBig ups to @chef_alleyezonje for the recipe! 🙌\n\nI try and remake viral fat loss recipes and tell you if they’re worth your time, effort and calories. If that sounds good, follow @torinredpath ✅\n\n👨‍🍳 Ingredients (1 batch)\n\n3 plain rice cakes (≈27g)\n\n1 scoop @ghostlifestyle  Milk Choc Protein (use code “TORIN” for 20% off the best tasting protein in the 🌍) (≈30g)\n\n2 tbsp cocoa powder (≈10g)\n\n2 sachets zero-calorie sweetener (≈4g)\n\n2 large egg whites (≈60g)\n\n👉 Method\n\nPreheat oven to 200°C (390°F).\n\nCrush the rice cakes into small pieces.\n\nAdd the protein powder, cocoa powder, sweetener and egg whites.\n\nMix until fully combined.\n\nForm into bite-sized clusters on a lined baking tray.\n\nBake for 6 minutes.\n\nAllow to cool before serving.\n\n📊 Calories & Macros (Whole Batch)\n\n250 Calories\n\n33g Protein\n\n20g Carbs\n\n3g Fat\n\n—\n\nQuick lesson 👇\n\nAre these the best chocolate bites you’ll ever eat? No 😂\n\nBut that’s not really the point.\n\nFor 250 calories and 32g of protein for the entire batch, the macros are absolutely ridiculous.\n\nSometimes a fat loss recipe doesn’t need to be a 10/10 dessert… it just needs to satisfy the craving, fill you up and help you stay within your calories.\n\nTaste? Solid. Macros? Elite. 👀🍫🔥",
+  "expected": {
+    "name": "CHOCOLATE PROTEIN RICE CAKE BITES",
+    "servings": 1,
+    "raw_ingredients": [
+      "3 plain rice cakes (≈27g)",
+      "1 scoop @ghostlifestyle  Milk Choc Protein (use code “TORIN” for 20% off the best tasting protein in the 🌍) (≈30g)",
+      "2 tbsp cocoa powder (≈10g)",
+      "2 sachets zero-calorie sweetener (≈4g)",
+      "2 large egg whites (≈60g)"
+    ],
+    "steps": [
+      "Preheat oven to 200°C (390°F).",
+      "Crush the rice cakes into small pieces.",
+      "Add the protein powder, cocoa powder, sweetener and egg whites.",
+      "Mix until fully combined.",
+      "Form into bite-sized clusters on a lined baking tray.",
+      "Bake for 6 minutes.",
+      "Allow to cool before serving."
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The method ends before the calories-and-macros block; the later lesson is commentary.",
+    "Accepted after generic batch-yield, long quantified-ingredient, and common imperative-verb handling; no creator identity or exact recipe phrase was used."
+  ]
+}

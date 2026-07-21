@@ -1,0 +1,29 @@
+{
+  "id": "062-roasted-honey-mustard-chicken-and-broccoli",
+  "queue_index": 62,
+  "platform": "instagram",
+  "creator": "Anastasia D’Amario | High Protein Recipes",
+  "source_url": "https://www.instagram.com/fitfoodiestasia/reel/DbBnL_1PPmq/",
+  "source_text_kind": "description",
+  "source_text": "One pan + 20 minutes = instant high-protein dinner! 🔥 \n\nBare Minimum Meals, Episode 11: Roasted Honey Mustard Chicken & Broccoli 🥦🍗🍯\n\nYou deserve healthy meals that are easy to make and actually taste delicious… so comment “YUMMY” to get the recipe card sent straight to you‼️ \n\nForget boring meal prep. Join me on my journey to simplify healthy eating without sacrifing flavor, and watch how much easier (and better) life becomes! 🙌🏼\n\n•\n\n#healthyrecipes #easyrecipes #mealprep #sheetpanmeals #onepanmeal",
+  "expected": {
+    "name": "Roasted Honey Mustard Chicken & Broccoli",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": [
+      "healthyrecipes",
+      "easyrecipes",
+      "mealprep",
+      "sheetpanmeals",
+      "onepanmeal"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description names the episode recipe but withholds both ingredients and instructions behind a comment-to-DM call to action.",
+    "Accepted after generalized explicit episode-title precedence; no creator identity or exact recipe phrase is used."
+  ]
+}

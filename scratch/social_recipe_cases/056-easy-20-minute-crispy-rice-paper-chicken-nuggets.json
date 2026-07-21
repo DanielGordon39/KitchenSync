@@ -1,0 +1,37 @@
+{
+  "id": "056-easy-20-minute-crispy-rice-paper-chicken-nuggets",
+  "queue_index": 56,
+  "platform": "instagram",
+  "creator": "Karim Saad",
+  "source_url": "https://www.instagram.com/ice.karimcooks/reel/DagtZE9B24F/",
+  "source_text_kind": "description",
+  "source_text": "Easy 20-minute Crispy rice paper Chicken Nuggets 🤯 (recipe 👇🏽)\n\nMacros per serving ( makes x2 - 14 nuggets per serving): 419 calories | 49g P | 11g C | 21g F\n\nAnnouncements:\n✅ Want to lose weight without eating boring food? My digital cookbooks include 180+ high-protein recipes with calories and macros included! Grab yours on my site today! 😊\n✅ OR Comment “cookbook” and I’ll send you the link! (Macros and Calories Included) 💪🏽\n✅ I developed new seasonings for everyday cooking! @spicexseasoning OUT now! 👀\n\nIngredients:\n1 lb Ground chicken 🐓 \n2 teaspoon @SpiceXseasoning Daily Blend (SPG)\n1 teaspoon onion powder 🧅 \n1 egg 🥚 \n1/4 cup low fat mozzarella 🧀 \n1 teaspoon SpiceX Sweet Sriracha Blend\n5 Rice paper sheets 🍚 \n\nEnjoy! 😊\n\nIf you want weekly recipes and discounts straight to your email inbox every Sunday then comment “newsletter” 😌📧\n.\n.\n.\n.\n#icekarim #healthyrecipes #easyrecipes #mealprep #quickrecipes",
+  "expected": {
+    "name": "Easy 20-minute Crispy rice paper Chicken Nuggets",
+    "servings": 2,
+    "raw_ingredients": [
+      "1 lb Ground chicken 🐓",
+      "2 teaspoon @SpiceXseasoning Daily Blend (SPG)",
+      "1 teaspoon onion powder 🧅",
+      "1 egg 🥚",
+      "1/4 cup low fat mozzarella 🧀",
+      "1 teaspoon SpiceX Sweet Sriracha Blend",
+      "5 Rice paper sheets 🍚"
+    ],
+    "steps": [],
+    "tags": [
+      "icekarim",
+      "healthyrecipes",
+      "easyrecipes",
+      "mealprep",
+      "quickrecipes"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The description supplies ingredients but no preparation method; 'Enjoy!' is not a primary instruction.",
+    "Accepted after generic trailing parenthesized recipe-marker cleanup; no creator identity or exact recipe phrase is used."
+  ]
+}

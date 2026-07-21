@@ -1,0 +1,41 @@
+{
+  "id": "098-cinnamon-raisin-cottage-cheese-bagels",
+  "queue_index": 98,
+  "platform": "instagram",
+  "creator": "Jasmine Hyare",
+  "source_url": "https://www.instagram.com/healthysweetsandeats/p/Da58ZcYH-5K/",
+  "source_text_kind": "description",
+  "source_text": "Cinnamon Raisin Cottage Cheese Bagels 🥯\nSoft, chewy, and packed with protein, these homemade cinnamon raisin bagels are perfect for breakfast or meal prep. They toast beautifully and taste even better with a little butter or cream cheese.\n\nMakes 4 bagels\nIngredients\n1 1/2 cups GF 1:1 flour or all-purpose flour, plus extra for shaping\u20281 1/4 cups blended cottage cheese\u20282 teaspoons baking powder\u20281/4 teaspoon salt\u20281 to 2 teaspoons ground cinnamon\u20283 tablespoons light brown sugar\u20281/4 cup raisins\u20281 beaten egg for brushing the tops\n\nDirections\n1️⃣ In a large bowl, stir together the flour, baking powder, salt, cinnamon, and brown sugar. Fold in the raisins so they’re evenly coated with the flour mixture.\n\n2️⃣ Add the blended cottage cheese and mix until a shaggy dough forms. If it feels too sticky, sprinkle in a little extra flour, one tablespoon at a time, until it’s easy to handle.\n\n3️⃣ Lightly flour your work surface, divide the dough into four equal pieces, roll each into a rope, and pinch the ends together to create bagel shapes.\n\n4️⃣ Arrange on a parchment-lined baking sheet, brush with the beaten egg, and bake at 350°F for 20 to 25 minutes, or until the tops are golden and the bagels are cooked through. Let cool for several minutes before slicing. They’re delicious fresh or lightly toasted.\n\nMacros (1 of 4)\nCalories: 305 | Protein: 14g | Carbs: 46g | Fat: 4.5g | Fiber: 1.5g\n\n#glutenfree #cottagecheese #bagels",
+  "expected": {
+    "name": "Cinnamon Raisin Cottage Cheese Bagels",
+    "servings": 4,
+    "raw_ingredients": [
+      "1 1/2 cups GF 1:1 flour or all-purpose flour, plus extra for shaping",
+      "1 1/4 cups blended cottage cheese",
+      "2 teaspoons baking powder",
+      "1/4 teaspoon salt",
+      "1 to 2 teaspoons ground cinnamon",
+      "3 tablespoons light brown sugar",
+      "1/4 cup raisins",
+      "1 beaten egg for brushing the tops"
+    ],
+    "steps": [
+      "In a large bowl, stir together the flour, baking powder, salt, cinnamon, and brown sugar. Fold in the raisins so they’re evenly coated with the flour mixture.",
+      "Add the blended cottage cheese and mix until a shaggy dough forms. If it feels too sticky, sprinkle in a little extra flour, one tablespoon at a time, until it’s easy to handle.",
+      "Lightly flour your work surface, divide the dough into four equal pieces, roll each into a rope, and pinch the ends together to create bagel shapes.",
+      "Arrange on a parchment-lined baking sheet, brush with the beaten egg, and bake at 350°F for 20 to 25 minutes, or until the tops are golden and the bagels are cooked through. Let cool for several minutes before slicing. They’re delicious fresh or lightly toasted."
+    ],
+    "tags": [
+      "glutenfree",
+      "cottagecheese",
+      "bagels"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Unicode line separators delimit the ingredient lines; the macros block follows the four keycap-numbered directions.",
+    "Accepted by the existing creator-independent parser with no adjustment."
+  ]
+}

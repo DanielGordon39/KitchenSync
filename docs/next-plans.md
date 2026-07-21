@@ -19,35 +19,36 @@ Working direction after the initial recipe parsing scaffold.
 - The KitchenSync-specific TypeScript learning path is documented in `docs/typescript-ui-tutorial.md`.
 - The iterative navigation, screen, flow, and component plan is documented under `docs/ui-plan/`.
 - The browser UI now loads recipe cards from `GET /api/recipes`.
-- `GET /api/recipes/{recipe_id}` and the full-screen Main Recipe View popup now provide the first complete read-only UI slice.
+- `GET /api/recipes/{recipe_id}` and the full-screen Main Recipe View popup provide the recipe detail slice; existing recipes can now be edited through `PUT /api/recipes/{recipe_id}`.
 - Web imports now capture the primary recipe image URI, and accepted saves download the main image into the recipe folder for card/detail display.
 
 ## Near-Term Feature Priorities
 
-### 1. Cookbook Search and Filters
+### 1. Recipe Search and Filters
 
-Add a search bar above the recipe grid. Search must cover the complete indexed recipe library, not only cards currently loaded for infinite scrolling.
+The recipe grid now has a search bar and compact filter menu. Search covers the complete indexed recipe library, not only cards currently visible in the browser.
 
 Rank text matches in this order:
-
 1. **Recipe title:** fuzzy matching with the strongest ranking weight.
-2. **Tags:** prefer exact normalized tag matches, then offer spelling-corrected or nearest-known-tag matches.
+2. **Tags:** fuzzy matching during normal text search.
 3. **Ingredients:** fuzzy matching over canonical ingredient names, parsed names, and raw recipe ingredient text.
 
 Search behavior:
-
 - A strong title match should normally outrank tag or ingredient-only matches.
-- Tag correction must be visible to the user, such as `Showing results for weeknight`, instead of silently changing the query.
+- Typing `#` starts autocomplete from normalized tags that exist in the indexed recipe library.
+- A completed hashtag is an exact tag request. With multiple hashtags, recipes matching every tag are shown first, followed by recipes matching some tags ranked by the number matched.
+- An incomplete trailing hashtag drives autocomplete but does not constrain results until it is completed or selected.
 - Use a stable tie-breaker after relevance so results do not jump between requests.
 - Search and infinite loading must share one backend result set with paging or a cursor.
-- Build a small expected-match corpus with typos and ambiguous terms before selecting a fuzzy-search or spelling-correction implementation.
+- Keep expanding the expected-match corpus with real typos and ambiguous terms before replacing the current standard-library scorer with full-text search or another fuzzy-search implementation.
 
-Add explicit filters alongside free-text search:
-
-- Tag filter using normalized tag slugs
-- Ingredient filter using canonical ingredient identity when available
-- Multiple filters should combine as deliberate constraints rather than changing fuzzy relevance unexpectedly.
+The filter menu exposes common indexed tags as explicit constraints:
+- Meal and cuisine selections use OR within their section.
+- Different filter sections combine with AND.
+- Diet selections all apply as required constraints.
 - Filters should continue to work when the text query is empty.
+- Cookbook-only state such as favorites and ratings does not affect recipe text relevance. Cookbook displays that state now; using it as an explicit filter remains later work.
+- TODO(accounts): scope recipe results, tag suggestions, and filter counts to recipes visible to the authenticated account without changing the browser request shape.
 
 ### 2. Imported Recipe Main Image
 
@@ -168,7 +169,9 @@ TODO:
 
 ## UI Follow-Ups
 
-The save contract is clear, and the first read-only browser slice now loads the recipe grid and Main Recipe View through thin HTTP endpoints over `KitchenSyncApp`.
+The save contract is clear, and the first browser slice now loads the recipe grid and Main Recipe View through thin HTTP endpoints over `KitchenSyncApp`.
+
+The browser now also has Global Recipes and Cookbook tabs over the shared search/filter grid. Cookbook membership adds favorite, rating, and personal notes without copying the recipe. Main Recipe View supports explicit editing of existing recipes through the canonical Markdown plus SQLite update boundary. Ingredient rows provide lossless per-line Raw/Rich editing, catalog autocomplete, and filtered unit suggestions while continuing to save canonical raw lines. V1 assumes one implicit user and allows every recipe to be edited; creator and approved-editor permissions and account-backed editor preferences are deferred to the account-aware version.
 
 Recommended starting direction:
 - Use a browser-first React and TypeScript UI built with Vite.
@@ -179,15 +182,12 @@ Recommended starting direction:
 - Reuse the static web UI later through Tauri for desktop and evaluate Capacitor for Android/iOS.
 - Defer PWA service-worker behavior, Tauri packaging, and Capacitor projects until the browser workflow is stable.
 - Reconsider a deliberate migration from npm to Bun after the browser workflow is stable and only when it provides a concrete speed or tooling benefit.
-- The Vite UI scaffold, recipe-card endpoint, recipe-detail endpoint, and full-screen recipe popup now exist.
+- The Vite UI scaffold, scoped recipe-card endpoint, recipe-detail endpoint, full-screen popup, Cookbook metadata controls, and existing-recipe editor now exist.
 
 TODO:
-- Add the ranked search and tag/ingredient filtering contract described above.
 - Add paged or cursor-based recipe summaries for eventual infinite scrolling.
 - Expand the thin HTTP API only through product-level methods that delegate to `KitchenSyncApp`.
 - Create a parsed recipe review screen.
-- Show raw ingredient text beside parser-derived fields.
-- Let the user edit accepted ingredient text before saving.
 - Add a manual recipe editor for parser failures.
 - Add a clear flow from URL input -> parse -> review -> save.
 - Add an ingredient cleanup/review mode for merging, renaming, aliasing, and enriching ingredients after the starter corpus exists.

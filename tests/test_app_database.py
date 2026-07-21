@@ -91,6 +91,131 @@ def test_recipe_metadata_upsert_updates_search_text(tmp_path):
     assert results[0]["title"] == "Roasted Pepper Soup"
 
 
+def test_recipe_search_ranks_title_then_tag_then_ingredient_matches(tmp_path):
+    with KitchenSyncApp.open(tmp_path / "kitchensync.sqlite") as app:
+        for recipe_id, title in [
+            ("title_match", "Chicken Pasta"),
+            ("tag_match", "Fast Supper"),
+            ("ingredient_match", "Garden Bowl"),
+        ]:
+            app.recipes.save_metadata(recipe_id=recipe_id, title=title)
+
+        app.connection.execute(
+            """
+            INSERT INTO recipe_tags (recipe_id, tag_order, tag_slug)
+            VALUES ('tag_match', 1, 'weeknight')
+            """
+        )
+        app.connection.execute(
+            """
+            INSERT INTO recipe_ingredients (
+                recipe_id, ingredient_order, raw_text, parsed_name
+            )
+            VALUES ('ingredient_match', 1, '2 chopped tomatoes', 'Tomato')
+            """
+        )
+        app.connection.execute(
+            """
+            INSERT INTO recipe_ingredients (
+                recipe_id, ingredient_order, raw_text, parsed_name
+            )
+            VALUES ('ingredient_match', 2, '1 chicken breast', 'Chicken')
+            """
+        )
+        app.connection.commit()
+
+        chicken_results = app.recipes.search("chikcen")
+        tag_results = app.recipes.search("weeknigt")
+        ingredient_results = app.recipes.search("tomto")
+
+    assert chicken_results[0]["recipe_id"] == "title_match"
+    assert [result["recipe_id"] for result in tag_results] == ["tag_match"]
+    assert [result["recipe_id"] for result in ingredient_results] == [
+        "ingredient_match"
+    ]
+
+
+def test_exact_tags_rank_all_matches_before_some_matches(tmp_path):
+    with KitchenSyncApp.open(tmp_path / "kitchensync.sqlite") as app:
+        for recipe_id, title, tags in [
+            ("all_tags", "All Tags", ["dinner", "quick-and-easy"]),
+            ("dinner_only", "Dinner Only", ["dinner"]),
+            ("quick_only", "Quick Only", ["quick-and-easy"]),
+            ("unrelated", "Unrelated", ["lunch"]),
+        ]:
+            app.recipes.save_metadata(recipe_id=recipe_id, title=title)
+            app.connection.executemany(
+                """
+                INSERT INTO recipe_tags (recipe_id, tag_order, tag_slug)
+                VALUES (?, ?, ?)
+                """,
+                [
+                    (recipe_id, index, tag)
+                    for index, tag in enumerate(tags, start=1)
+                ],
+            )
+        app.connection.commit()
+
+        results = app.recipes.search(
+            "", exact_tags=["dinner", "quick-and-easy"]
+        )
+        tags = app.recipes.list_tags()
+
+    assert [result["recipe_id"] for result in results] == [
+        "all_tags",
+        "dinner_only",
+        "quick_only",
+    ]
+    assert [result["tag_match"] for result in results] == ["all", "some", "some"]
+    assert {tag["tag_slug"]: tag["recipe_count"] for tag in tags} == {
+        "dinner": 2,
+        "lunch": 1,
+        "quick-and-easy": 2,
+    }
+
+
+def test_recipe_filters_use_or_for_meal_and_cuisine_and_and_for_diet(tmp_path):
+    with KitchenSyncApp.open(tmp_path / "kitchensync.sqlite") as app:
+        for recipe_id, title, tags in [
+            (
+                "matching",
+                "Matching Recipe",
+                ["dinner", "korean", "low-carb", "gluten-free"],
+            ),
+            (
+                "missing_diet",
+                "Missing Diet",
+                ["lunch", "korean", "low-carb"],
+            ),
+            (
+                "wrong_cuisine",
+                "Wrong Cuisine",
+                ["dinner", "italian", "low-carb", "gluten-free"],
+            ),
+        ]:
+            app.recipes.save_metadata(recipe_id=recipe_id, title=title)
+            app.connection.executemany(
+                """
+                INSERT INTO recipe_tags (recipe_id, tag_order, tag_slug)
+                VALUES (?, ?, ?)
+                """,
+                [
+                    (recipe_id, index, tag)
+                    for index, tag in enumerate(tags, start=1)
+                ],
+            )
+        app.connection.commit()
+
+        results = app.recipes.search(
+            "",
+            meal_tags=["breakfast", "dinner"],
+            cuisine_tags=["korean", "french"],
+            diet_tags=["low-carb", "gluten-free"],
+        )
+
+    assert [result["recipe_id"] for result in results] == ["matching"]
+
+
 def test_save_imported_recipe_writes_markdown_and_indexes_recipe_data(
     tmp_path,
     monkeypatch,
@@ -273,7 +398,7 @@ def test_recipe_and_ingredient_read_apis_return_ui_ready_rows(tmp_path):
     assert recipe_by_slug is not None
     assert recipe_by_slug["recipe_id"] == recipes[0]["recipe_id"]
     assert detail == {
-        "recipe": recipes[0],
+        "recipe": {**recipes[0], "description": None, "notes": []},
         "ingredients": [
             {
                 "ingredient_order": 1,
@@ -296,10 +421,171 @@ def test_recipe_and_ingredient_read_apis_return_ui_ready_rows(tmp_path):
             "category": None,
             "storage_area": None,
             "default_unit": None,
+            "aliases": [],
         }
     ]
     assert missing_by_slug is None
     assert missing_detail is None
+
+
+def test_ingredients_list_includes_aliases_and_default_unit(tmp_path):
+    database_path = tmp_path / "library" / "kitchensync.sqlite"
+    with KitchenSyncApp.open(database_path) as app:
+        app.connection.execute(
+            """
+            INSERT INTO ingredient_ingredients
+                (ingredient_id, name, slug, default_unit)
+            VALUES (?, ?, ?, ?)
+            """,
+            ("ingredient_scallion", "Scallion", "scallion", "bunch"),
+        )
+        app.connection.executemany(
+            "INSERT INTO ingredient_aliases (ingredient_id, alias) VALUES (?, ?)",
+            [
+                ("ingredient_scallion", "green onion"),
+                ("ingredient_scallion", "spring onion"),
+            ],
+        )
+        app.connection.commit()
+
+        ingredients = app.ingredients.list()
+
+    assert ingredients == [
+        {
+            "ingredient_id": "ingredient_scallion",
+            "name": "Scallion",
+            "slug": "scallion",
+            "parent_ingredient_id": None,
+            "category": None,
+            "storage_area": None,
+            "default_unit": "bunch",
+            "aliases": ["green onion", "spring onion"],
+        }
+    ]
+
+
+def test_recipe_ingredient_alias_reuses_the_canonical_ingredient(tmp_path):
+    database_path = tmp_path / "library" / "kitchensync.sqlite"
+    with KitchenSyncApp.open(database_path) as app:
+        app.recipes.save_imported_recipe(
+            Recipe(
+                name="Scallion Omelet",
+                ingredients=[
+                    RecipeIngredient(ingredient=Ingredient(name="Scallion"))
+                ],
+            )
+        )
+        canonical = app.connection.execute(
+            "SELECT ingredient_id FROM ingredient_ingredients WHERE slug = ?",
+            ("scallion",),
+        ).fetchone()
+        app.connection.execute(
+            "INSERT INTO ingredient_aliases (ingredient_id, alias) VALUES (?, ?)",
+            (canonical["ingredient_id"], "green onion"),
+        )
+
+        app.recipes.save_imported_recipe(
+            Recipe(
+                name="Green Onion Salad",
+                ingredients=[
+                    RecipeIngredient(
+                        ingredient=Ingredient(name="green onion"),
+                        notes=["raw: 2 green onions"],
+                    )
+                ],
+            )
+        )
+
+        ingredient_rows = app.connection.execute(
+            "SELECT ingredient_id, name, slug FROM ingredient_ingredients"
+        ).fetchall()
+        link = app.connection.execute(
+            """
+            SELECT recipe_ingredients.ingredient_id
+            FROM recipe_ingredients
+            JOIN recipe_recipes USING (recipe_id)
+            WHERE recipe_recipes.slug = ?
+            """,
+            ("green-onion-salad",),
+        ).fetchone()
+
+    assert [dict(row) for row in ingredient_rows] == [
+        {
+            "ingredient_id": canonical["ingredient_id"],
+            "name": "Scallion",
+            "slug": "scallion",
+        }
+    ]
+    assert link["ingredient_id"] == canonical["ingredient_id"]
+    assert not (database_path.parent / "ingredients" / "green-onion.md").exists()
+
+
+def test_update_recipe_keeps_identity_and_updates_markdown_and_index(tmp_path):
+    database_path = tmp_path / "library" / "kitchensync.sqlite"
+    original = Recipe(
+        name="Tomato Soup",
+        servings=4,
+        metadata=RecipeMetadata(
+            description="The original description.",
+            source_url="https://example.com/tomato-soup",
+        ),
+        ingredients=[
+            RecipeIngredient(
+                ingredient=Ingredient(name="Roma Tomato"),
+                notes=["raw: 6 Roma tomatoes"],
+            )
+        ],
+        steps=[RecipeStep(order=1, text="Simmer tomatoes.")],
+    )
+    updated = Recipe(
+        name="Roasted Tomato Soup",
+        servings=6,
+        tags=["dinner", "vegetarian"],
+        time_estimate=TimeEstimate(base_minutes=50),
+        metadata=RecipeMetadata(
+            description="A richer tomato soup.",
+            source_url="https://example.com/tomato-soup",
+        ),
+        ingredients=[
+            RecipeIngredient(
+                ingredient=Ingredient(name="Roma Tomato"),
+                notes=["raw: 8 Roma tomatoes, roasted"],
+            )
+        ],
+        steps=[
+            RecipeStep(order=1, text="Roast the tomatoes."),
+            RecipeStep(order=2, text="Blend until smooth."),
+        ],
+        notes=["Try fire-roasted tomatoes next time."],
+    )
+
+    with KitchenSyncApp.open(database_path) as app:
+        app.recipes.save_imported_recipe(original)
+        recipe_id = app.recipes.list()[0]["recipe_id"]
+        markdown_path = app.recipes.get(recipe_id)["markdown_path"]
+
+        detail = app.recipes.update_recipe(recipe_id, updated)
+
+        assert detail is not None
+        assert detail["recipe"]["recipe_id"] == recipe_id
+        assert detail["recipe"]["markdown_path"] == markdown_path
+        assert detail["recipe"]["title"] == "Roasted Tomato Soup"
+        assert detail["recipe"]["tags"] == ["dinner", "vegetarian"]
+        assert detail["recipe"]["description"] == "A richer tomato soup."
+        assert detail["recipe"]["notes"] == [
+            "Try fire-roasted tomatoes next time."
+        ]
+        assert [step["text"] for step in detail["steps"]] == [
+            "Roast the tomatoes.",
+            "Blend until smooth.",
+        ]
+
+    markdown = (database_path.parent / markdown_path).read_text(encoding="utf-8")
+    assert markdown.startswith("# Roasted Tomato Soup\n")
+    assert "- Time: 50 minutes" in markdown
+    assert "- Tags: dinner, vegetarian" in markdown
+    assert "- 8 Roma tomatoes, roasted" in markdown
+    assert "Try fire-roasted tomatoes next time." in markdown
 
 
 def test_save_imported_recipe_does_not_overwrite_existing_ingredient_markdown(
@@ -465,6 +751,38 @@ def test_cookbook_entry_index_is_separate_from_recipe_existence(tmp_path):
     assert cookbook_entries[0]["cookbook_path"] == "cookbook/blackened-chicken-penne.md"
     assert cookbook_entries[0]["favorite"] == 1
     assert cookbook_entries[0]["rating"] == 4
+
+
+def test_save_cookbook_entry_writes_notebook_markdown_and_updates_metadata(tmp_path):
+    database_path = tmp_path / "library" / "kitchensync.sqlite"
+    with KitchenSyncApp.open(database_path) as app:
+        app.recipes.save_metadata(
+            recipe_id="recipe_tomato_soup",
+            title="Tomato Soup",
+            slug="tomato-soup",
+            markdown_path="recipes/tomato-soup/recipe.md",
+        )
+
+        created = app.cookbook.save_entry("recipe_tomato_soup")
+        updated = app.cookbook.save_entry(
+            "recipe_tomato_soup",
+            favorite=True,
+            rating=5,
+            notes="Use smoked paprika next time.",
+        )
+
+    assert created is not None
+    assert updated is not None
+    assert updated["favorite"] == 1
+    assert updated["rating"] == 5
+    assert updated["notes"] == "Use smoked paprika next time."
+    entry_text = (database_path.parent / "cookbook" / "tomato-soup.md").read_text(
+        encoding="utf-8"
+    )
+    assert "- Recipe: recipes/tomato-soup/recipe.md" in entry_text
+    assert "- Favorite: yes" in entry_text
+    assert "- Rating: 5" in entry_text
+    assert "Use smoked paprika next time." in entry_text
 
 
 def test_cookbook_entry_cannot_reference_missing_recipe(tmp_path):

@@ -1,0 +1,23 @@
+{
+  "id": "101-crispy-chicken-caesar-sandwich-prep",
+  "queue_index": 101,
+  "platform": "instagram",
+  "creator": "Molly Cunningham  |  👩‍⚕️🩷🌱",
+  "source_url": "https://www.instagram.com/whatmolly.eats/reel/Dadc12tuF9F/",
+  "source_text_kind": "description",
+  "source_text": "PROTEIN PACKED LUNCHES, EPISODE 1: Crispy Chicken Caesar Sandwich Prep🥬🩷\n\nWelcome to episode 1 of my new series Protein Packed Lunches! This series is all about high protein recipes that are perfect for work packed lunches! Easy to make, easy to prep and made with mostly whole ingredients (and as always- lots of sneaky veg incoming in these recipes🤣🩷)\n\nI thought as the heatwave is incoming it was only right to start with something Caesar based!!🎉🥬 this recipe is really versatile and easy to prep, I had it in panninis this week but we’ve also enjoyed it on its own, in wraps or mixed through some cooked pasta for a prep pasta salad! 🥰 I used the panninis from Aldi as they’ve got really good ingredients for shop-bought bread and they’re nice and cheap too!! \n\nCan’t wait to hear what you think and let me know if there is any recipes or flavours you want to see next time!🩷",
+  "expected": {
+    "name": "Crispy Chicken Caesar Sandwich Prep",
+    "servings": null,
+    "raw_ingredients": [],
+    "steps": [],
+    "tags": []
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The episode headline supplies a recipe name, but the description contains only series and serving-idea prose with no ingredient list or method, so fallback is expected.",
+    "Accepted by the existing creator-independent parser with no adjustment."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "077-high-protein-chinese-egg-drop-soup",
+  "queue_index": 77,
+  "platform": "instagram",
+  "creator": "Gymhealthu",
+  "source_url": "https://www.instagram.com/gymhealthu/reel/DXuY_G8IJ-3/",
+  "source_text_kind": "description",
+  "source_text": "High Protein Chinese Egg Drop Soup! 🤤🍜💪🏽\n\n15 Minutes, ONLY 180 Calories per serve, with 14g of Protein! Delicious and so easy to make!🔥\n\nCheck bio for cookbook with meals like this! 🍜🔥🔥\n\nServes 3: 🍜🍜🍜\n\nCalories & Macros 📊\nPer Serve: 180 calories \n14g P | 11g C | 6.5g F\n\nIngredients👇🏽\n- 4 eggs\n- 1 tbsp water\n- 750ml chicken stock\n- 500ml chicken bone broth (extra collagen protein - sub with chicken stock)\n- Salt and white pepper to taste \n- 2 tbsp green onion (whites parts)\n- 1/4 cup sweet corn (optional)\n- 2 tbsp cornstarch + water (mix into a slurry before adding)\n- 1 tbsp sesame oil \n- Green onion green parts (to garnish)\n\nFollow @Gymhealthu for more 🔥  Follow @Gymhealthu for more 🔥\n\n🏷️ #highprotein #eggdropsoup\n#lowcalorie #easyrecipe #quickrecipe\nCredit: @panaceapalm",
+  "expected": {
+    "name": "High Protein Chinese Egg Drop Soup",
+    "servings": 3,
+    "raw_ingredients": [
+      "4 eggs",
+      "1 tbsp water",
+      "750ml chicken stock",
+      "500ml chicken bone broth (extra collagen protein - sub with chicken stock)",
+      "Salt and white pepper to taste",
+      "2 tbsp green onion (whites parts)",
+      "1/4 cup sweet corn (optional)",
+      "2 tbsp cornstarch + water (mix into a slurry before adding)",
+      "1 tbsp sesame oil",
+      "Green onion green parts (to garnish)"
+    ],
+    "steps": [],
+    "tags": [
+      "highprotein",
+      "eggdropsoup",
+      "lowcalorie",
+      "easyrecipe",
+      "quickrecipe"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The caption supplies a title, yield, and ingredients but no preparation instructions.",
+    "Accepted exactly with the existing creator-independent parser; no parser change was needed."
+  ]
+}

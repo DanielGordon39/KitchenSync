@@ -1,0 +1,47 @@
+{
+  "id": "034-high-protein-creamy-garlic-chicken-and-rice-burritos",
+  "queue_index": 34,
+  "platform": "instagram",
+  "creator": "AUSSIE FITNESS 🇦🇺💪🏼 | Dez Cerimagic",
+  "source_url": "https://www.instagram.com/_aussiefitness/reel/DafeFdhsaa_/",
+  "source_text_kind": "description",
+  "source_text": "High Protein Creamy Garlic Chicken & Rice Burritos🌯\n64g Protein Meal Prep💪🏼\n\n(Macros: Per Burrito - 10 Total)\n586 Calories\n60gC | 14gF | 64gP\n\nIngredients:\n1.5KG Thinly Sliced Boneless & Skinless Chicken Breast (raw weight)\n2 Tsp Olive Oil\nSeason Chicken With: 1 Tsp Garlic Powder, 1.5 Tsp Smoked Paprika, 1 Tsp Salt\n250ml Chicken Broth\n8 Diced Garlic Cloves\n450ml Fat Free Evaporated Milk (Carnation Light & Creamy)\nSeason Creamy Garlic Sauce With: 1.5 Tsp Smoked Paprika, 1 Tsp Low Sodium Chicken Stock Powder (Vegeta), 1 Tsp Oregano\n60g Freshly Grated Parmesan Cheese\n80g Light Cream Cheese\n1.2KG Cooked White Rice (approximately 400g uncooked/dry weight)\n400g Plain Low Fat Greek Yoghurt\nDiced Spring Onion/Scallions\n10 Warm Tortillas (Mission Carb Balance Tortillas)\n35g Light Mozzarella or Cheddar Cheese (per burrito - Bega 50% Less Fat Grated Cheese)\n\nImportant Tips:\n* Before you add the filling to the tortilla make sure to warm it up on a pan for approximately 30 seconds on each side, this will prevent it from ripping while rolling it.\n* When reheating from frozen: Remove burrito from wrapper, microwave for 2-3 minutes then air fry at 200C/400F for 3 - 5 minutes or pan fry until crispy on the outside & warm on the inside. \n\nDon’t forget to check out my exclusive newly updated cook books with 300+ high protein recipes 👨🏻‍🍳📖\n\n#chicken #burrito #highprotein #healthyrecipes #mealprep",
+  "expected": {
+    "name": "High Protein Creamy Garlic Chicken & Rice Burritos",
+    "servings": 10,
+    "raw_ingredients": [
+      "1.5KG Thinly Sliced Boneless & Skinless Chicken Breast (raw weight)",
+      "2 Tsp Olive Oil",
+      "Season Chicken With: 1 Tsp Garlic Powder, 1.5 Tsp Smoked Paprika, 1 Tsp Salt",
+      "250ml Chicken Broth",
+      "8 Diced Garlic Cloves",
+      "450ml Fat Free Evaporated Milk (Carnation Light & Creamy)",
+      "Season Creamy Garlic Sauce With: 1.5 Tsp Smoked Paprika, 1 Tsp Low Sodium Chicken Stock Powder (Vegeta), 1 Tsp Oregano",
+      "60g Freshly Grated Parmesan Cheese",
+      "80g Light Cream Cheese",
+      "1.2KG Cooked White Rice (approximately 400g uncooked/dry weight)",
+      "400g Plain Low Fat Greek Yoghurt",
+      "Diced Spring Onion/Scallions",
+      "10 Warm Tortillas (Mission Carb Balance Tortillas)",
+      "35g Light Mozzarella or Cheddar Cheese (per burrito - Bega 50% Less Fat Grated Cheese)"
+    ],
+    "steps": [
+      "Before you add the filling to the tortilla make sure to warm it up on a pan for approximately 30 seconds on each side, this will prevent it from ripping while rolling it.",
+      "When reheating from frozen: Remove burrito from wrapper, microwave for 2-3 minutes then air fry at 200C/400F for 3 - 5 minutes or pan fry until crispy on the outside & warm on the inside."
+    ],
+    "tags": [
+      "chicken",
+      "burrito",
+      "highprotein",
+      "healthyrecipes",
+      "mealprep"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The two Important Tips bullets are the only supported preparation instructions in the description.",
+    "Accepted after general section-context precedence for inline ingredient groups and tip bullets, plus per-unit total yield handling; no creator identity or exact recipe phrase is used."
+  ]
+}

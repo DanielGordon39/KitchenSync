@@ -19,7 +19,7 @@ class KitchenSyncApp:
         self.library_root = database_path.parent
         self.recipes = RecipesAPI(connection, self.library_root)
         self.ingredients = IngredientsAPI(connection)
-        self.cookbook = CookbookAPI(connection)
+        self.cookbook = CookbookAPI(connection, self.library_root)
 
     @classmethod
     def open(cls, database_path: str | Path = DEFAULT_DATABASE_PATH) -> KitchenSyncApp:

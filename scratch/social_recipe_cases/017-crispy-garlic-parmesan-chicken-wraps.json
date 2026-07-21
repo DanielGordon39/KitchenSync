@@ -1,0 +1,60 @@
+{
+  "id": "017-crispy-garlic-parmesan-chicken-wraps",
+  "queue_index": 17,
+  "platform": "instagram",
+  "creator": "Jalal",
+  "source_url": "https://www.instagram.com/jalalsamfit/reel/DaBQvjqOdK9/",
+  "source_text_kind": "description",
+  "source_text": "Crispy Garlic Parmesan Chicken Wraps🍗🧀🌯\n\nThe flavours are absolutely phenomenal, one of the best wraps made using a sheet pan. Low effort, minimal cleanup and incredibly delicious🔥 Great to serve for large groups/gatherings at home\n\nMacros Per Wrap (10 Total)\n\n423 Calories | 41g Protein | 25g Carbs | 18g Fat\n\nIngredients (Makes 10 Wraps)\n\nGarlic Parmesan Chicken\n- 600g Raw Boneless Skinless Chicken Thighs, cut into cubes\n- 600g Raw Chicken Breast, cut into cubes\n- 2.5 Tsp Salt\n- 2 Tsp Chilli Flakes\n- 3 Tsp Parsley\n- 4 Tsp Italian Herbs\n- 3 Tsp Paprika\n- 4 Tsp Garlic Granules or Powder\n- 200g Grated Parmesan\n- 6 Tsp Olive Oil\n- Avocado Cooking Spray (use before baking)\n\nGarlic Pamesan Creamy Sauce\n- 350g Light Evaporated Milk\n- 2 Tsp Italian Herbs\n- 1 Tsp Garlic Powder\n- 1 Tsp Paprika\n- 80g Grated Parmesan\n- 100g Light Cream Cheese\n- 15g Light Butter\n\nWraps & Filling\n- 10 Low Carb Wraps (Brand: Mission)\n- Shredded Lettuce\n- Chopped Tomatoes\n- Chopped Onions\n\n👨‍🍳 Cooking Instructions\n\n1. Slice chicken breast and thighs into cubes. Add seasonings with grated parmesan cheese and drizzle of olive oil. Mix until well coated.\n2. In a pan on low heat, add light butter with seasonings. Toast for a minute before adding evaporated milk, extra Parmesan and cream cheese. Stir till smooth and creamy.\n3. Line a sheet pan with parchment paper, spread marinated chicken evenly (do not overcrowd), add light layer of cooking spray then bake in a preheated oven for 20-22 mins at 200C until crispy.\n4. While chicken is still hot, add extra parmesan and parsley. Mix well until coated and extra cheesy.\n5. Assemble the wraps with shredded lettuce, onion, tomato, crispy chicken and sauce. ENJOY!\n\nStorage and Reheating Tips\n- Store chicken and creamy sauce in separate containers in the fridge.\n- When ready to eat, just warm up chicken in oven/air fryer for 4-5 mins 180C / 370F. Warm up sauce in a pan, serve on a wrap with fresh lettuce and enjoy\n.\n.\n.\n.\n#garlicparmesan #chickenwrap #chickenrecipes #highprotein #healthyrecipes #mealprep #easyrecipes #jalalsamfit",
+  "expected": {
+    "name": "Crispy Garlic Parmesan Chicken Wraps",
+    "servings": 10,
+    "raw_ingredients": [
+      "600g Raw Boneless Skinless Chicken Thighs, cut into cubes",
+      "600g Raw Chicken Breast, cut into cubes",
+      "2.5 Tsp Salt",
+      "2 Tsp Chilli Flakes",
+      "3 Tsp Parsley",
+      "4 Tsp Italian Herbs",
+      "3 Tsp Paprika",
+      "4 Tsp Garlic Granules or Powder",
+      "200g Grated Parmesan",
+      "6 Tsp Olive Oil",
+      "Avocado Cooking Spray (use before baking)",
+      "350g Light Evaporated Milk",
+      "2 Tsp Italian Herbs",
+      "1 Tsp Garlic Powder",
+      "1 Tsp Paprika",
+      "80g Grated Parmesan",
+      "100g Light Cream Cheese",
+      "15g Light Butter",
+      "10 Low Carb Wraps (Brand: Mission)",
+      "Shredded Lettuce",
+      "Chopped Tomatoes",
+      "Chopped Onions"
+    ],
+    "steps": [
+      "Slice chicken breast and thighs into cubes. Add seasonings with grated parmesan cheese and drizzle of olive oil. Mix until well coated.",
+      "In a pan on low heat, add light butter with seasonings. Toast for a minute before adding evaporated milk, extra Parmesan and cream cheese. Stir till smooth and creamy.",
+      "Line a sheet pan with parchment paper, spread marinated chicken evenly (do not overcrowd), add light layer of cooking spray then bake in a preheated oven for 20-22 mins at 200C until crispy.",
+      "While chicken is still hot, add extra parmesan and parsley. Mix well until coated and extra cheesy.",
+      "Assemble the wraps with shredded lettuce, onion, tomato, crispy chicken and sauce. ENJOY!"
+    ],
+    "tags": [
+      "garlicparmesan",
+      "chickenwrap",
+      "chickenrecipes",
+      "highprotein",
+      "healthyrecipes",
+      "mealprep",
+      "easyrecipes",
+      "jalalsamfit"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "The parser matched all scored fields and completeness exactly."
+  ]
+}

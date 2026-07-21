@@ -1,0 +1,33 @@
+{
+  "id": "020-cream-top",
+  "queue_index": 20,
+  "platform": "instagram",
+  "creator": "Calvin Kang",
+  "source_url": "https://www.instagram.com/cooklikeimbook/reel/Da0cXmlsZrD/",
+  "source_text_kind": "description",
+  "source_text": "Cream top IS the best way to enjoy a coffee. We can throw hands if you disagree. \n\n#1 concept to grasp while losing fat- find ways to feel full throughout the day. Cream top coffee and zero sugar sodas are my ways of suppressing my appetite\n\n24 servings: per 20grams\nCals: ~68 kcal\n\nIngredients:\n\n1 pint heavy whipping cream\n1 tbsp vanilla bean paste\n4-6tbsp Splenda (add more or less to your desired sweetness)\nPinch of salt\n\nTip: whisk until you get a gravy consistency\n\n#coffee #vanillabean #creamtop",
+  "expected": {
+    "name": "Cream top",
+    "servings": 24,
+    "raw_ingredients": [
+      "1 pint heavy whipping cream",
+      "1 tbsp vanilla bean paste",
+      "4-6tbsp Splenda (add more or less to your desired sweetness)",
+      "Pinch of salt"
+    ],
+    "steps": [
+      "whisk until you get a gravy consistency"
+    ],
+    "tags": [
+      "coffee",
+      "vanillabean",
+      "creamtop"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": true,
+  "notes": [
+    "Agent-labeled from the frozen Instagram description before viewing parser output.",
+    "Accepted after generic nutrition, hashtag, tip-label, and subject-name context signals were tightened."
+  ]
+}
