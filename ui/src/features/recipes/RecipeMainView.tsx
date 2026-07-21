@@ -1,4 +1,11 @@
-import { type FormEvent, useEffect, useRef, useState } from 'react'
+import {
+  type DragEvent,
+  type FormEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import tomatoPlaceholder from '../../assets/recipes/tomato-placeholder.png'
 import {
@@ -205,6 +212,15 @@ function moveItem(items: string[], index: number, direction: -1 | 1) {
   return moved
 }
 
+function moveItemTo(items: string[], source: number, target: number) {
+  if (source === target || source < 0 || target < 0) return items
+  if (source >= items.length || target >= items.length) return items
+  const moved = [...items]
+  const [item] = moved.splice(source, 1)
+  moved.splice(target, 0, item)
+  return moved
+}
+
 function RecipeEditor({
   detail,
   onCancel,
@@ -230,12 +246,57 @@ function RecipeEditor({
   })
   const [isSaving, setIsSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [draggedStepIndex, setDraggedStepIndex] = useState<number | null>(null)
+  const [dropTargetStepIndex, setDropTargetStepIndex] = useState<number | null>(
+    null,
+  )
 
   function updateStep(index: number, value: string) {
     setForm((current) => ({
       ...current,
       steps: current.steps.map((step, stepIndex) =>
         stepIndex === index ? value : step,
+      ),
+    }))
+  }
+
+  function startStepDragging(
+    event: DragEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', String(index))
+    setDraggedStepIndex(index)
+  }
+
+  function dropStep(event: DragEvent<HTMLElement>, target: number) {
+    event.preventDefault()
+    const transferredIndex = event.dataTransfer.getData('text/plain')
+    const source =
+      draggedStepIndex ??
+      (transferredIndex ? Number(transferredIndex) : null)
+    if (source !== null) {
+      setForm((current) => ({
+        ...current,
+        steps: moveItemTo(current.steps, source, target),
+      }))
+    }
+    setDraggedStepIndex(null)
+    setDropTargetStepIndex(null)
+  }
+
+  function reorderStepWithKeyboard(
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return
+    event.preventDefault()
+    setForm((current) => ({
+      ...current,
+      steps: moveItem(
+        current.steps,
+        index,
+        event.key === 'ArrowUp' ? -1 : 1,
       ),
     }))
   }
@@ -362,59 +423,62 @@ function RecipeEditor({
 
         <fieldset className="recipe-editor__steps recipe-editor__wide">
           <legend>Steps</legend>
-          {form.steps.map((step, index) => (
-            <div className="recipe-editor__step" key={index}>
-              <label>
-                Step {index + 1}
+          <ol className="recipe-editor__step-list">
+            {form.steps.map((step, index) => (
+              <li
+                className={`recipe-editor__step${
+                  dropTargetStepIndex === index ? ' is-drop-target' : ''
+                }${draggedStepIndex === index ? ' is-dragging' : ''}`}
+                key={index}
+                onDragOver={(event) => {
+                  event.preventDefault()
+                  event.dataTransfer.dropEffect = 'move'
+                  if (draggedStepIndex !== index) setDropTargetStepIndex(index)
+                }}
+                onDrop={(event) => dropStep(event, index)}
+              >
+                <button
+                  type="button"
+                  className="recipe-editor__step-drag-handle"
+                  draggable
+                  aria-label={`Drag step ${index + 1}; use arrow keys to reorder`}
+                  title="Drag to reorder; arrow keys also work"
+                  onDragStart={(event) => startStepDragging(event, index)}
+                  onDragEnd={() => {
+                    setDraggedStepIndex(null)
+                    setDropTargetStepIndex(null)
+                  }}
+                  onKeyDown={(event) => reorderStepWithKeyboard(event, index)}
+                >
+                  <span aria-hidden="true">☰</span>
+                </button>
+
                 <textarea
                   rows={3}
+                  aria-label={`Step ${index + 1}`}
                   value={step}
                   onChange={(event) => updateStep(index, event.target.value)}
                 />
-              </label>
-              <div>
-                <button
-                  type="button"
-                  disabled={index === 0}
-                  onClick={() =>
-                    setForm((current) => ({
-                      ...current,
-                      steps: moveItem(current.steps, index, -1),
-                    }))
-                  }
-                  aria-label={`Move step ${index + 1} up`}
-                >
-                  ↑
-                </button>
-                <button
-                  type="button"
-                  disabled={index === form.steps.length - 1}
-                  onClick={() =>
-                    setForm((current) => ({
-                      ...current,
-                      steps: moveItem(current.steps, index, 1),
-                    }))
-                  }
-                  aria-label={`Move step ${index + 1} down`}
-                >
-                  ↓
-                </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setForm((current) => ({
-                      ...current,
-                      steps: current.steps.filter(
-                        (_, stepIndex) => stepIndex !== index,
-                      ),
-                    }))
-                  }
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          ))}
+
+                <div className="recipe-editor__step-controls">
+                  <button
+                    type="button"
+                    aria-label={`Remove step ${index + 1}`}
+                    onClick={() =>
+                      setForm((current) => ({
+                        ...current,
+                        steps: current.steps.filter(
+                          (_, stepIndex) => stepIndex !== index,
+                        ),
+                      }))
+                    }
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ol>
           <button
             type="button"
             onClick={() =>

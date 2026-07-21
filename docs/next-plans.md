@@ -171,7 +171,7 @@ TODO:
 
 The save contract is clear, and the first browser slice now loads the recipe grid and Main Recipe View through thin HTTP endpoints over `KitchenSyncApp`.
 
-The browser now also has Global Recipes and Cookbook tabs over the shared search/filter grid. Cookbook membership adds favorite, rating, and personal notes without copying the recipe. Main Recipe View supports explicit editing of existing recipes through the canonical Markdown plus SQLite update boundary. Ingredient rows provide lossless per-line Raw/Rich editing, catalog autocomplete, and filtered unit suggestions while continuing to save canonical raw lines. V1 assumes one implicit user and allows every recipe to be edited; creator and approved-editor permissions and account-backed editor preferences are deferred to the account-aware version.
+The browser now also has Global Recipes and Cookbook tabs over the shared search/filter grid. Cookbook membership adds favorite, rating, and personal notes without copying the recipe. Main Recipe View supports explicit editing of existing recipes through the canonical Markdown plus SQLite update boundary. Ingredients use compact, draggable Rich rows or one bulk Raw text field for fast editing; reparsing keeps uncertain lines in per-row Raw mode for review. Catalog autocomplete and filtered unit suggestions remain editor assistance while canonical raw lines stay durable. V1 assumes one implicit user and allows every recipe to be edited; creator and approved-editor permissions and account-backed editor preferences are deferred to the account-aware version.
 
 Recommended starting direction:
 - Use a browser-first React and TypeScript UI built with Vite.

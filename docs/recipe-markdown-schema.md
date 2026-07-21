@@ -138,7 +138,7 @@ Ingredient rules:
 - Durable structured ingredient overrides are deferred until there is a clear product need.
 - Ingredient-specific notes may be written in the line itself.
 
-The browser editor may project a safely parsed line into Quantity, Unit, Ingredient, and Preparation fields. That Rich view is editing assistance only: it formats back into one readable ingredient line before the existing recipe save operation. Lines with unrepresented details such as multiple quantities, sizes, comments, purposes, or multipliers remain editable in Raw view so no information is discarded.
+The browser editor may project safely parsed lines into numbered, reorderable Quantity, Unit, Ingredient, and Preparation rows. That Rich view is editing assistance only: it formats back into readable ingredient lines before the existing recipe save operation. Global Raw mode exposes the complete ingredient list as one multiline text field for fast editing. Returning to Rich reparses those lines; details such as multiple quantities, sizes, comments, purposes, or multipliers remain in per-row Raw mode so no information is discarded.
 
 Ingredient and unit autocomplete may use the rebuildable ingredient index, including aliases and default units. Selecting or creating an ingredient does not add IDs or structured fields to recipe Markdown.
 

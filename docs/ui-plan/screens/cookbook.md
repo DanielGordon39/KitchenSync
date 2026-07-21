@@ -219,7 +219,7 @@ Recipe content remains the same canonical content in both tabs. When opened from
 
 ### Edit Mode
 
-Edit replaces the reading layout inside the existing full-screen popup. The editor supports title, description, servings, total time, tags, ordered ingredients, ordered steps, and recipe notes. Each ingredient row can switch between Raw text and a Rich Quantity/Unit/Ingredient/Preparation projection. Rich is the remembered default, while lines that cannot be represented without loss stay Raw with an explanation. Ingredient names autocomplete from the local catalog, unmatched names are identified as new v1 ingredients, and unit suggestions can be filtered by amount/volume/weight and US/Metric without performing conversions.
+Edit replaces the reading layout inside the existing full-screen popup. The editor supports title, description, servings, total time, tags, ordered ingredients, ordered steps, and recipe notes. Rich mode uses compact numbered rows with drag handles, per-row Raw/Rich controls, and a Quantity/Unit/Ingredient/Preparation projection. Global Raw mode replaces the rows with one multiline text field for fast editing. Returning to Rich reparses every line and leaves anything that cannot be represented without loss in per-row Raw mode with an explanation. Ingredient names autocomplete from the local catalog, unmatched names are identified as new v1 ingredients, and unit suggestions can be filtered by amount/volume/weight and US/Metric without performing conversions.
 
 Save formats Rich rows back into canonical ingredient lines, writes Markdown, and refreshes SQLite indexes through one backend operation. Cancel returns to the reading layout, and closing with unsaved changes uses a native discard confirmation. V1 does not add autosave, stale-write coordination, durable structured ingredient overrides, or a second history system; Git-friendly Markdown remains the recovery boundary. Editor mode and unit-system preferences are browser-local until accounts exist.
 
@@ -254,7 +254,7 @@ Create a recipe manually when no import source is used or parsing fails.
 ### Behavior
 
 - Add, remove, and reorder ingredient lines.
-- Reuse the per-line Raw/Rich ingredient editor from existing-recipe edit mode.
+- Reuse the compact Rich-row and bulk Raw ingredient editor from existing-recipe edit mode.
 - Add, remove, and reorder steps.
 - Preserve unsaved values while validation messages are shown.
 - Save through one Python operation that writes Markdown and updates the index.

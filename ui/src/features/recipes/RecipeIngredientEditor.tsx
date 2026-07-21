@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import {
+  type DragEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import { listIngredients, parseIngredientLines } from '../../lib/api/recipes'
 import type {
@@ -203,12 +209,15 @@ export function RecipeIngredientEditor({
       createRow(line, initialMode),
     ),
   )
+  const [bulkRawText, setBulkRawText] = useState(initialText)
   const [catalog, setCatalog] = useState<IngredientCatalogItemDto[]>([])
   const [catalogLoaded, setCatalogLoaded] = useState(false)
   const [catalogError, setCatalogError] = useState<string | null>(null)
   const [parseError, setParseError] = useState<string | null>(null)
   const [toolbarMessage, setToolbarMessage] = useState<string | null>(null)
   const [isParsingAll, setIsParsingAll] = useState(false)
+  const [draggedRowId, setDraggedRowId] = useState<number | null>(null)
+  const [dropTargetRowId, setDropTargetRowId] = useState<number | null>(null)
   const onChangeRef = useRef(onChange)
 
   useEffect(() => {
@@ -216,8 +225,10 @@ export function RecipeIngredientEditor({
   }, [onChange])
 
   useEffect(() => {
-    onChangeRef.current(rows.map(rowText))
-  }, [rows])
+    onChangeRef.current(
+      defaultMode === 'raw' ? bulkRawText.split('\n') : rows.map(rowText),
+    )
+  }, [bulkRawText, defaultMode, rows])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -266,43 +277,29 @@ export function RecipeIngredientEditor({
   }, [initialMode, initialText])
 
   function updateDefaultMode(mode: EditorMode) {
-    setDefaultMode(mode)
-    rememberPreference(MODE_STORAGE_KEY, mode)
+    if (mode === defaultMode) return
     setToolbarMessage(null)
     setParseError(null)
 
     if (mode === 'raw') {
-      setRows((current) => current.map(asRawRow))
+      setBulkRawText(rows.map(rowText).join('\n'))
+      setDefaultMode('raw')
+      rememberPreference(MODE_STORAGE_KEY, 'raw')
       return
     }
 
-    const targets = rows
-      .filter((row) => row.mode === 'raw')
-      .map((row) => ({ id: row.id, text: row.rawText }))
-    if (!targets.length) return
-
+    const lines = bulkRawText.split('\n')
+    const nextRows = lines.map((line) => createRow(line, 'raw'))
     setIsParsingAll(true)
-    parseIngredientLines(targets.map((target) => target.text))
+    parseIngredientLines(lines)
       .then((projections) => {
-        const byId = new Map(
-          targets.map((target, index) => [
-            target.id,
-            { text: target.text, projection: projections[index] },
-          ]),
+        setRows(
+          nextRows.map((row, index) =>
+            projections[index] ? applyProjection(row, projections[index]) : row,
+          ),
         )
-        setRows((current) =>
-          current.map((row) => {
-            const result = byId.get(row.id)
-            if (
-              !result?.projection ||
-              row.mode !== 'raw' ||
-              row.rawText !== result.text
-            ) {
-              return row
-            }
-            return applyProjection(row, result.projection)
-          }),
-        )
+        setDefaultMode('rich')
+        rememberPreference(MODE_STORAGE_KEY, 'rich')
         const exceptions = projections.filter(
           (projection) => !projection.safe_for_rich,
         ).length
@@ -389,13 +386,50 @@ export function RecipeIngredientEditor({
   }
 
   function moveRow(index: number, direction: -1 | 1) {
-    const target = index + direction
-    if (target < 0 || target >= rows.length) return
     setRows((current) => {
+      const target = index + direction
+      if (target < 0 || target >= current.length) return current
       const moved = [...current]
       ;[moved[index], moved[target]] = [moved[target], moved[index]]
       return moved
     })
+  }
+
+  function moveRowTo(sourceId: number, targetId: number) {
+    if (sourceId === targetId) return
+    setRows((current) => {
+      const sourceIndex = current.findIndex((row) => row.id === sourceId)
+      const targetIndex = current.findIndex((row) => row.id === targetId)
+      if (sourceIndex < 0 || targetIndex < 0) return current
+      const reordered = [...current]
+      const [moved] = reordered.splice(sourceIndex, 1)
+      reordered.splice(targetIndex, 0, moved)
+      return reordered
+    })
+  }
+
+  function startDragging(event: DragEvent<HTMLButtonElement>, rowId: number) {
+    event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', String(rowId))
+    setDraggedRowId(rowId)
+  }
+
+  function dropRow(event: DragEvent<HTMLElement>, targetId: number) {
+    event.preventDefault()
+    const transferredId = event.dataTransfer.getData('text/plain')
+    const sourceId = draggedRowId ?? (transferredId ? Number(transferredId) : null)
+    if (sourceId !== null) moveRowTo(sourceId, targetId)
+    setDraggedRowId(null)
+    setDropTargetRowId(null)
+  }
+
+  function reorderWithKeyboard(
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return
+    event.preventDefault()
+    moveRow(index, event.key === 'ArrowUp' ? -1 : 1)
   }
 
   const catalogOptions = ingredientOptions(catalog)
@@ -422,40 +456,44 @@ export function RecipeIngredientEditor({
           </div>
         </div>
 
-        <div>
-          <small>Unit system</small>
-          <div role="group" aria-label="Unit suggestion system">
-            {(['us', 'metric'] as const).map((system) => (
-              <button
-                type="button"
-                key={system}
-                aria-pressed={unitSystem === system}
-                onClick={() => {
-                  setUnitSystem(system)
-                  rememberPreference(UNIT_SYSTEM_STORAGE_KEY, system)
-                }}
-              >
-                {system === 'us' ? 'US' : 'Metric'}
-              </button>
-            ))}
-          </div>
-        </div>
+        {defaultMode === 'rich' && (
+          <>
+            <div>
+              <small>Unit system</small>
+              <div role="group" aria-label="Unit suggestion system">
+                {(['us', 'metric'] as const).map((system) => (
+                  <button
+                    type="button"
+                    key={system}
+                    aria-pressed={unitSystem === system}
+                    onClick={() => {
+                      setUnitSystem(system)
+                      rememberPreference(UNIT_SYSTEM_STORAGE_KEY, system)
+                    }}
+                  >
+                    {system === 'us' ? 'US' : 'Metric'}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        <div>
-          <small>Unit suggestions</small>
-          <div role="group" aria-label="Unit suggestion category">
-            {(['amount', 'volume', 'weight'] as const).map((kind) => (
-              <button
-                type="button"
-                key={kind}
-                aria-pressed={unitKind === kind}
-                onClick={() => setUnitKind(kind)}
-              >
-                {kind[0].toUpperCase() + kind.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
+            <div>
+              <small>Unit suggestions</small>
+              <div role="group" aria-label="Unit suggestion category">
+                {(['amount', 'volume', 'weight'] as const).map((kind) => (
+                  <button
+                    type="button"
+                    key={kind}
+                    aria-pressed={unitKind === kind}
+                    onClick={() => setUnitKind(kind)}
+                  >
+                    {kind[0].toUpperCase() + kind.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {toolbarMessage && <p role="status">{toolbarMessage}</p>}
@@ -477,56 +515,185 @@ export function RecipeIngredientEditor({
         ))}
       </datalist>
 
-      <div className="recipe-ingredient-editor__rows">
-        {rows.map((row, index) => {
-          const ingredientMatch = findIngredient(catalog, row.ingredientName)
-          const hasRichValue = Boolean(
-            row.quantityText.trim() ||
-              row.unit.trim() ||
-              row.ingredientName.trim() ||
-              row.preparation.trim(),
-          )
-          const isNewIngredient =
-            catalogLoaded &&
-            Boolean(row.ingredientName.trim()) &&
-            ingredientMatch === null
+      {defaultMode === 'raw' ? (
+        <label className="recipe-ingredient-editor__bulk-raw">
+          Raw ingredient text
+          <textarea
+            rows={Math.max(8, bulkRawText.split('\n').length)}
+            value={bulkRawText}
+            onChange={(event) => setBulkRawText(event.target.value)}
+          />
+          <small>
+            One ingredient per line. This fast editor skips structure; switching
+            back to Rich reparses the lines and leaves anything uncertain in Raw
+            for review.
+          </small>
+        </label>
+      ) : (
+        <>
+          <div
+            className="recipe-ingredient-editor__column-headings"
+            aria-hidden="true"
+          >
+            <span />
+            <span />
+            <div className="recipe-ingredient-editor__rich-fields">
+              <span>Quantity</span>
+              <span>Unit</span>
+              <span>Ingredient</span>
+              <span>Preparation</span>
+            </div>
+            <span />
+          </div>
+          <ol className="recipe-ingredient-editor__rows">
+          {rows.map((row, index) => {
+            const ingredientMatch = findIngredient(catalog, row.ingredientName)
+            const hasRichValue = Boolean(
+              row.quantityText.trim() ||
+                row.unit.trim() ||
+                row.ingredientName.trim() ||
+                row.preparation.trim(),
+            )
+            const isNewIngredient =
+              catalogLoaded &&
+              Boolean(row.ingredientName.trim()) &&
+              ingredientMatch === null
 
-          return (
-            <section className="recipe-ingredient-editor__row" key={row.id}>
-              <div className="recipe-ingredient-editor__row-heading">
-                <strong>Ingredient {index + 1}</strong>
+            return (
+              <li
+                className={`recipe-ingredient-editor__row${
+                  dropTargetRowId === row.id ? ' is-drop-target' : ''
+                }${draggedRowId === row.id ? ' is-dragging' : ''}`}
+                key={row.id}
+                onDragOver={(event) => {
+                  event.preventDefault()
+                  event.dataTransfer.dropEffect = 'move'
+                  if (draggedRowId !== row.id) setDropTargetRowId(row.id)
+                }}
+                onDrop={(event) => dropRow(event, row.id)}
+              >
+                <button
+                  type="button"
+                  className="recipe-ingredient-editor__drag-handle"
+                  draggable
+                  aria-label={`Drag ingredient ${index + 1}; use arrow keys to reorder`}
+                  title="Drag to reorder; arrow keys also work"
+                  onDragStart={(event) => startDragging(event, row.id)}
+                  onDragEnd={() => {
+                    setDraggedRowId(null)
+                    setDropTargetRowId(null)
+                  }}
+                  onKeyDown={(event) => reorderWithKeyboard(event, index)}
+                >
+                  <span aria-hidden="true">☰</span>
+                </button>
+
+                <div className="recipe-ingredient-editor__row-content">
+                  {row.mode === 'raw' ? (
+                    <label>
+                      Raw ingredient line
+                      <textarea
+                        rows={2}
+                        value={row.rawText}
+                        onChange={(event) =>
+                          setRows((current) =>
+                            current.map((item) =>
+                              item.id === row.id
+                                ? {
+                                    ...item,
+                                    rawText: event.target.value,
+                                    reason: null,
+                                  }
+                                : item,
+                            ),
+                          )
+                        }
+                      />
+                    </label>
+                  ) : (
+                    <div className="recipe-ingredient-editor__rich-fields">
+                      <label>
+                        <input
+                          aria-label={`Ingredient ${index + 1} quantity`}
+                          value={row.quantityText}
+                          placeholder="1/2 or about 2"
+                          onChange={(event) =>
+                            updateRichField(
+                              row.id,
+                              'quantityText',
+                              event.target.value,
+                            )
+                          }
+                        />
+                      </label>
+                      <label>
+                        <input
+                          aria-label={`Ingredient ${index + 1} unit`}
+                          list="recipe-unit-options"
+                          value={row.unit}
+                          placeholder="cup"
+                          onChange={(event) =>
+                            updateRichField(row.id, 'unit', event.target.value)
+                          }
+                        />
+                      </label>
+                      <label>
+                        <input
+                          aria-label={`Ingredient ${index + 1} name`}
+                          list="recipe-ingredient-options"
+                          required={hasRichValue}
+                          value={row.ingredientName}
+                          placeholder="Start typing an ingredient"
+                          onChange={(event) =>
+                            updateRichField(
+                              row.id,
+                              'ingredientName',
+                              event.target.value,
+                            )
+                          }
+                        />
+                        {isNewIngredient && (
+                          <span className="recipe-ingredient-editor__new">
+                            New ingredient
+                          </span>
+                        )}
+                      </label>
+                      <label>
+                        <input
+                          aria-label={`Ingredient ${index + 1} preparation`}
+                          value={row.preparation}
+                          placeholder="diced"
+                          onChange={(event) =>
+                            updateRichField(
+                              row.id,
+                              'preparation',
+                              event.target.value,
+                            )
+                          }
+                        />
+                      </label>
+                    </div>
+                  )}
+
+                  {row.parsing && (
+                    <small role="status">Checking this line…</small>
+                  )}
+                  {row.reason && <small>{row.reason}</small>}
+                </div>
+
                 <div className="recipe-ingredient-editor__row-controls">
-                  <div role="group" aria-label={`Ingredient ${index + 1} view`}>
-                    {(['rich', 'raw'] as const).map((mode) => (
-                      <button
-                        type="button"
-                        key={mode}
-                        aria-pressed={row.mode === mode}
-                        disabled={row.parsing}
-                        onClick={() => updateRowMode(row, mode)}
-                      >
-                        {mode === 'rich' ? 'Rich' : 'Raw'}
-                      </button>
-                    ))}
-                  </div>
                   <button
                     type="button"
-                    disabled={index === 0}
-                    onClick={() => moveRow(index, -1)}
-                    aria-label={`Move ingredient ${index + 1} up`}
+                    disabled={row.parsing}
+                    onClick={() =>
+                      updateRowMode(row, row.mode === 'rich' ? 'raw' : 'rich')
+                    }
                   >
-                    ↑
+                    {row.mode === 'rich' ? 'Raw' : 'Rich'}
                   </button>
                   <button
                     type="button"
-                    disabled={index === rows.length - 1}
-                    onClick={() => moveRow(index, 1)}
-                    aria-label={`Move ingredient ${index + 1} down`}
-                  >
-                    ↓
-                  </button>
-                  <button
-                    type="button"
+                    aria-label={`Remove ingredient ${index + 1}`}
                     onClick={() =>
                       setRows((current) =>
                         current.filter((item) => item.id !== row.id),
@@ -536,105 +703,29 @@ export function RecipeIngredientEditor({
                     Remove
                   </button>
                 </div>
-              </div>
+              </li>
+            )
+          })}
+          </ol>
+        </>
+      )}
 
-              {row.mode === 'raw' ? (
-                <label>
-                  Raw ingredient line
-                  <textarea
-                    rows={2}
-                    value={row.rawText}
-                    onChange={(event) =>
-                      setRows((current) =>
-                        current.map((item) =>
-                          item.id === row.id
-                            ? {
-                                ...item,
-                                rawText: event.target.value,
-                                reason: null,
-                              }
-                            : item,
-                        ),
-                      )
-                    }
-                  />
-                </label>
-              ) : (
-                <div className="recipe-ingredient-editor__rich-fields">
-                  <label>
-                    Quantity
-                    <input
-                      value={row.quantityText}
-                      placeholder="1/2 or about 2"
-                      onChange={(event) =>
-                        updateRichField(row.id, 'quantityText', event.target.value)
-                      }
-                    />
-                  </label>
-                  <label>
-                    Unit
-                    <input
-                      list="recipe-unit-options"
-                      value={row.unit}
-                      placeholder="cup"
-                      onChange={(event) =>
-                        updateRichField(row.id, 'unit', event.target.value)
-                      }
-                    />
-                  </label>
-                  <label>
-                    Ingredient
-                    <input
-                      list="recipe-ingredient-options"
-                      required={hasRichValue}
-                      value={row.ingredientName}
-                      placeholder="Start typing an ingredient"
-                      onChange={(event) =>
-                        updateRichField(
-                          row.id,
-                          'ingredientName',
-                          event.target.value,
-                        )
-                      }
-                    />
-                    {isNewIngredient && (
-                      <span className="recipe-ingredient-editor__new">
-                        New ingredient
-                      </span>
-                    )}
-                  </label>
-                  <label>
-                    Preparation
-                    <input
-                      value={row.preparation}
-                      placeholder="diced"
-                      onChange={(event) =>
-                        updateRichField(row.id, 'preparation', event.target.value)
-                      }
-                    />
-                  </label>
-                </div>
-              )}
-
-              {row.parsing && <small role="status">Checking this line…</small>}
-              {row.reason && <small>{row.reason}</small>}
-            </section>
-          )
-        })}
-      </div>
-
-      <button
-        type="button"
-        onClick={() =>
-          setRows((current) => [...current, createRow('', defaultMode)])
-        }
-      >
-        Add ingredient
-      </button>
-      <small>
-        Rich fields save back to one readable line. Custom names and units are
-        allowed.
-      </small>
+      {defaultMode === 'rich' && (
+        <>
+          <button
+            type="button"
+            onClick={() =>
+              setRows((current) => [...current, createRow('', 'rich')])
+            }
+          >
+            Add ingredient
+          </button>
+          <small>
+            Rich fields save back to one readable line. Custom names and units
+            are allowed.
+          </small>
+        </>
+      )}
     </fieldset>
   )
 }
