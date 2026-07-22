@@ -190,6 +190,22 @@ function ingredientOptions(catalog: IngredientCatalogItemDto[]) {
   return options
 }
 
+function rowTextForSave(
+  row: IngredientRow,
+  catalog: IngredientCatalogItemDto[],
+) {
+  if (row.mode === 'raw') return row.rawText
+  const match = findIngredient(catalog, row.ingredientName)
+  if (
+    match &&
+    match.name.toLocaleLowerCase() !==
+      row.ingredientName.trim().toLocaleLowerCase()
+  ) {
+    return formatRichRow({ ...row, ingredientName: match.name })
+  }
+  return rowText(row)
+}
+
 export function RecipeIngredientEditor({
   initialLines,
   onChange,
@@ -226,9 +242,11 @@ export function RecipeIngredientEditor({
 
   useEffect(() => {
     onChangeRef.current(
-      defaultMode === 'raw' ? bulkRawText.split('\n') : rows.map(rowText),
+      defaultMode === 'raw'
+        ? bulkRawText.split('\n')
+        : rows.map((row) => rowTextForSave(row, catalog)),
     )
-  }, [bulkRawText, defaultMode, rows])
+  }, [bulkRawText, catalog, defaultMode, rows])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -591,8 +609,8 @@ export function RecipeIngredientEditor({
                 <div className="recipe-ingredient-editor__row-content">
                   {row.mode === 'raw' ? (
                     <label>
-                      Raw ingredient line
                       <textarea
+                        aria-label={`Ingredient ${index + 1} raw text`}
                         rows={2}
                         value={row.rawText}
                         onChange={(event) =>
@@ -657,6 +675,11 @@ export function RecipeIngredientEditor({
                             New ingredient
                           </span>
                         )}
+                        {ingredientMatch && (
+                          <span className="recipe-ingredient-editor__existing">
+                            Existing ingredient: {ingredientMatch.name}
+                          </span>
+                        )}
                       </label>
                       <label>
                         <input
@@ -677,6 +700,11 @@ export function RecipeIngredientEditor({
 
                   {row.parsing && (
                     <small role="status">Checking this line…</small>
+                  )}
+                  {row.mode === 'raw' && row.rawText.trim() && (
+                    <small className="recipe-ingredient-editor__review">
+                      Raw review needed
+                    </small>
                   )}
                   {row.reason && <small>{row.reason}</small>}
                 </div>

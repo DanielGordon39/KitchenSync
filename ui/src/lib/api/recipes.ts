@@ -5,6 +5,8 @@ import type {
   IngredientLineProjectionDto,
   RecipeCardDto,
   RecipeDetailDto,
+  RecipeImportPreviewDto,
+  RecipeImportRequest,
   RecipeTagDto,
   RecipeUpdateRequest,
 } from './recipe-types'
@@ -24,7 +26,14 @@ async function requireSuccessfulResponse(
   fallbackMessage: string,
 ) {
   if (!response.ok) {
-    throw new Error(`${fallbackMessage} (${response.status})`)
+    let detail: string | null = null
+    try {
+      const body = (await response.json()) as { detail?: unknown }
+      if (typeof body.detail === 'string') detail = body.detail
+    } catch {
+      // Some proxy/server failures do not return JSON.
+    }
+    throw new Error(detail ?? `${fallbackMessage} (${response.status})`)
   }
 }
 
@@ -79,6 +88,30 @@ export async function parseIngredientLines(
   })
   await requireSuccessfulResponse(response, 'Unable to parse ingredient lines')
   return (await response.json()) as IngredientLineProjectionDto[]
+}
+
+export async function previewRecipeImport(
+  sourceUrl: string,
+  signal?: AbortSignal,
+) {
+  const response = await fetch('/api/recipe-imports/preview', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ source_url: sourceUrl }),
+    signal,
+  })
+  await requireSuccessfulResponse(response, 'Unable to preview recipe')
+  return (await response.json()) as RecipeImportPreviewDto
+}
+
+export async function saveRecipeImport(request: RecipeImportRequest) {
+  const response = await fetch('/api/recipe-imports', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(request),
+  })
+  await requireSuccessfulResponse(response, 'Unable to import recipe')
+  return (await response.json()) as RecipeDetailDto
 }
 
 export async function getRecipeDetail(

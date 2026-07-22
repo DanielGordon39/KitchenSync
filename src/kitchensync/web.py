@@ -7,7 +7,12 @@ from pydantic import BaseModel, Field, field_validator
 
 from .app import DEFAULT_DATABASE_PATH, KitchenSyncApp
 from .markdown import slugify
-from .models import Recipe, RecipeMetadata, RecipeStep, TimeEstimate
+from .models import ImageRef, Recipe, RecipeMetadata, RecipeStep, TimeEstimate
+from .parsing import (
+    acquire_instagram_source,
+    parse_recipe_text,
+    validate_instagram_url,
+)
 from .parsing.ingredients import parse_recipe_ingredient_line, project_ingredient_line
 
 
@@ -118,6 +123,49 @@ class RecipeUpdateRequest(BaseModel):
         return [value.strip() for value in values if value.strip()]
 
 
+class RecipeImportPreviewRequest(BaseModel):
+    source_url: str = Field(min_length=1)
+
+
+class RecipeImportDraftDto(BaseModel):
+    title: str
+    description: str | None
+    servings: int | None
+    time_estimate_minutes: int | None = None
+    tags: list[str]
+    ingredients: list[str]
+    steps: list[str]
+    notes: list[str]
+
+
+class RecipeImportMatchDto(BaseModel):
+    recipe_id: str
+    title: str
+    slug: str | None
+    matched_by: list[Literal["source_url", "slug"]]
+
+
+class RecipeImportPreviewDto(BaseModel):
+    draft: RecipeImportDraftDto
+    raw_source_description: str
+    author: str | None
+    source_name: str
+    source_url: str
+    thumbnail_url: str | None
+    warnings: list[str]
+    complete: bool
+    existing_recipe_matches: list[RecipeImportMatchDto]
+
+
+class RecipeImportRequest(BaseModel):
+    draft: RecipeUpdateRequest
+    source_url: str = Field(min_length=1)
+    source_name: str = Field(min_length=1)
+    author: str | None = None
+    thumbnail_url: str | None = None
+    duplicate_action: Literal["import", "update"]
+
+
 class CookbookUpdateRequest(BaseModel):
     favorite: bool = False
     rating: int | None = Field(default=None, ge=1, le=5)
@@ -201,6 +249,163 @@ def parse_ingredient_lines(
         IngredientLineProjectionDto.model_validate(project_ingredient_line(line))
         for line in request.lines
     ]
+
+
+@app.post(
+    "/api/recipe-imports/preview",
+    responses={
+        422: {"description": "Unsupported or incomplete Instagram source"},
+        502: {"description": "Instagram acquisition failed"},
+    },
+)
+def preview_recipe_import(
+    request: RecipeImportPreviewRequest,
+) -> RecipeImportPreviewDto:
+    try:
+        source_url = validate_instagram_url(request.source_url)
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+    try:
+        source = acquire_instagram_source(source_url)
+    except Exception as error:
+        raise HTTPException(
+            status_code=502,
+            detail="Instagram source acquisition failed. Try again or verify the post is public.",
+        ) from error
+
+    if not source.description:
+        raise HTTPException(
+            status_code=422,
+            detail="The Instagram source does not expose description text for review.",
+        )
+
+    result = parse_recipe_text(source.description)
+    candidate = result.candidate
+    title = candidate.name if candidate and candidate.name else ""
+    with KitchenSyncApp.open() as kitchen_sync:
+        matches = _recipe_import_matches(
+            kitchen_sync.recipes,
+            source_url=source.source_url,
+            title=title,
+        )
+
+    return RecipeImportPreviewDto(
+        draft=RecipeImportDraftDto(
+            title=title,
+            description=candidate.description if candidate else None,
+            servings=candidate.servings if candidate else None,
+            tags=candidate.tags if candidate else [],
+            ingredients=candidate.raw_ingredients if candidate else [],
+            steps=candidate.steps if candidate else [],
+            notes=candidate.notes if candidate else [],
+        ),
+        raw_source_description=source.description,
+        author=source.author,
+        source_name=source.source_name,
+        source_url=source.source_url,
+        thumbnail_url=source.thumbnail_url,
+        warnings=result.warnings,
+        complete=not result.fallback_recommended,
+        existing_recipe_matches=matches,
+    )
+
+
+@app.post(
+    "/api/recipe-imports",
+    responses={409: {"description": "Explicit duplicate action required"}},
+)
+def save_recipe_import(request: RecipeImportRequest) -> RecipeDetailDto:
+    try:
+        source_url = validate_instagram_url(request.source_url)
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+    if not request.draft.ingredients or not request.draft.steps:
+        raise HTTPException(
+            status_code=422,
+            detail="Add at least one ingredient and one step before importing.",
+        )
+
+    recipe = Recipe(
+        name=request.draft.title,
+        servings=request.draft.servings,
+        ingredients=[
+            parse_recipe_ingredient_line(line) for line in request.draft.ingredients
+        ],
+        steps=[
+            RecipeStep(order=index, text=text)
+            for index, text in enumerate(request.draft.steps, start=1)
+        ],
+        tags=list(
+            dict.fromkeys(
+                slugify(tag.lstrip("#"))
+                for tag in request.draft.tags
+                if tag.lstrip("#").strip()
+            )
+        ),
+        time_estimate=(
+            TimeEstimate(base_minutes=request.draft.time_estimate_minutes)
+            if request.draft.time_estimate_minutes is not None
+            else None
+        ),
+        notes=request.draft.notes,
+        metadata=RecipeMetadata(
+            description=request.draft.description,
+            source_name=request.source_name.strip(),
+            source_url=source_url,
+            author=request.author.strip() if request.author and request.author.strip() else None,
+            imported_from="yt-dlp",
+            images=(
+                [ImageRef(uri=request.thumbnail_url)] if request.thumbnail_url else []
+            ),
+        ),
+    )
+
+    with KitchenSyncApp.open() as kitchen_sync:
+        matches = _recipe_import_matches(
+            kitchen_sync.recipes,
+            source_url=source_url,
+            title=recipe.name,
+        )
+        if len(matches) > 1:
+            raise HTTPException(
+                status_code=409,
+                detail="The source URL and title match different recipes. Change the title or resolve the existing recipes first.",
+            )
+        if matches and request.duplicate_action != "update":
+            raise HTTPException(
+                status_code=409,
+                detail="This import matches an existing recipe. Review it and choose Update Existing Recipe.",
+            )
+        if not matches and request.duplicate_action != "import":
+            raise HTTPException(
+                status_code=409,
+                detail="No existing recipe matches this reviewed import.",
+            )
+
+        kitchen_sync.recipes.save_imported_recipe(recipe)
+        saved = kitchen_sync.recipes.get_by_source_url(source_url)
+        if saved is None:
+            saved = kitchen_sync.recipes.get_by_slug(slugify(recipe.name))
+        detail = (
+            kitchen_sync.recipes.get_detail(saved["recipe_id"])
+            if saved is not None
+            else None
+        )
+        entry = (
+            kitchen_sync.cookbook.get_entry(saved["recipe_id"])
+            if saved is not None
+            else None
+        )
+
+    if detail is None:
+        raise HTTPException(status_code=500, detail="Imported recipe could not be loaded.")
+    detail["recipe"]["image_url"] = _library_url(
+        detail["recipe"].get("main_image_path")
+    )
+    detail["cookbook"] = _cookbook_detail(entry)
+    return RecipeDetailDto.model_validate(detail)
 
 
 @app.get(
@@ -341,3 +546,25 @@ def _library_url(path: str | None) -> str | None:
         return None
 
     return "/library/" + quote(path.replace("\\", "/"), safe="/")
+
+
+def _recipe_import_matches(recipes, *, source_url: str, title: str) -> list[RecipeImportMatchDto]:
+    matches: dict[str, RecipeImportMatchDto] = {}
+    candidates = [("source_url", recipes.get_by_source_url(source_url))]
+    if title:
+        candidates.append(("slug", recipes.get_by_slug(slugify(title))))
+
+    for matched_by, recipe in candidates:
+        if recipe is None:
+            continue
+        recipe_id = recipe["recipe_id"]
+        if recipe_id in matches:
+            matches[recipe_id].matched_by.append(matched_by)
+        else:
+            matches[recipe_id] = RecipeImportMatchDto(
+                recipe_id=recipe_id,
+                title=recipe["title"],
+                slug=recipe.get("slug"),
+                matched_by=[matched_by],
+            )
+    return list(matches.values())

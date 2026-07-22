@@ -46,6 +46,17 @@ main {
   border-bottom-color: var(--accent);
 }
 
+.app-header__import {
+  padding: 0.55rem 0.85rem;
+  color: var(--text-h);
+  font: inherit;
+  font-weight: 600;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -750,6 +761,11 @@ main {
   font-weight: 400;
 }
 
+.recipe-editor .recipe-editor__warning {
+  color: #b45309;
+  font-weight: 600;
+}
+
 .recipe-editor__steps {
   display: grid;
   gap: 1rem;
@@ -953,6 +969,68 @@ main {
   border-radius: 999px;
 }
 
+.recipe-ingredient-editor__existing,
+.recipe-ingredient-editor__review {
+  justify-self: start;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.recipe-import-review__evidence {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.recipe-import-review__evidence img {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  border-radius: 0.65rem;
+}
+
+.recipe-import-review__evidence p,
+.recipe-import-review__notice p {
+  margin: 0.25rem 0;
+}
+
+.recipe-import-review__notice,
+.recipe-import-review__source-text {
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 0.65rem;
+}
+
+.recipe-import-review__notice ul {
+  margin-bottom: 0;
+}
+
+.recipe-import-review__source-text pre {
+  overflow-x: auto;
+  max-height: 20rem;
+  margin-bottom: 0;
+  white-space: pre-wrap;
+}
+
+.recipe-import-review__source-form {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 44rem;
+  margin: 4rem auto;
+}
+
+.recipe-import-review__source-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
 .recipe-ingredient-editor__bulk-raw textarea {
   min-height: 12rem;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
@@ -1026,6 +1104,11 @@ main {
     width: 100%;
   }
 
+  .app-header__import {
+    width: 100%;
+    margin: 0.75rem 0;
+  }
+
   .app-tabs button {
     flex: 1;
   }
@@ -1075,6 +1158,10 @@ main {
 
   .recipe-main-view__metadata > *:not(:last-child)::after {
     content: none;
+  }
+
+  .recipe-import-review__evidence {
+    grid-template-columns: 1fr;
   }
 
   .cookbook-panel__fields,

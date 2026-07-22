@@ -10,6 +10,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "recipe-scrapers>=15.11.0",
     "uvicorn>=0.51.0",
+    "yt-dlp>=2026.7.4",
 ]
 
 [build-system]
@@ -22,5 +23,4 @@ packages = ["src/kitchensync"]
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
-    "yt-dlp>=2026.7.4",
 ]

@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import tomatoPlaceholder from './assets/recipes/tomato-placeholder.png'
 import './App.css'
-import { RecipeMainView } from './features/recipes/RecipeMainView'
+import {
+  RecipeImportReview,
+  RecipeMainView,
+} from './features/recipes/RecipeMainView'
 import {
   RecipeSearchControls,
   type RecipeFilters,
@@ -9,6 +12,7 @@ import {
 import { listRecipes, listRecipeTags } from './lib/api/recipes'
 import type {
   RecipeCardDto,
+  RecipeDetailDto,
   RecipeTagDto,
 } from './lib/api/recipe-types'
 
@@ -116,6 +120,7 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeCardDto | null>(
     null,
   )
+  const [isImporting, setIsImporting] = useState(false)
   const lastFocusedElement = useRef<HTMLElement | null>(null)
   const validTags = useMemo(
     () => new Set(availableTags.map((tag) => tag.tag_slug)),
@@ -201,6 +206,30 @@ function App() {
     setRefreshVersion((version) => version + 1)
   }
 
+  function openImportReview() {
+    lastFocusedElement.current = document.activeElement as HTMLElement | null
+    setIsImporting(true)
+  }
+
+  function closeImportReview() {
+    const elementToRestore = lastFocusedElement.current
+    setIsImporting(false)
+    window.requestAnimationFrame(() => elementToRestore?.focus())
+  }
+
+  function showImportedRecipe(detail: RecipeDetailDto) {
+    setIsImporting(false)
+    setSelectedRecipe({
+      recipe_id: detail.recipe.recipe_id,
+      title: detail.recipe.title,
+      image_url: detail.recipe.image_url,
+      description: detail.recipe.description,
+      cookbook: detail.cookbook,
+      tag_match: null,
+    })
+    refreshRecipes()
+  }
+
   if (error && recipes === null) {
     return (
       <main>
@@ -270,6 +299,13 @@ function App() {
             Cookbook
           </button>
         </nav>
+        <button
+          type="button"
+          className="app-header__import"
+          onClick={openImportReview}
+        >
+          Import recipe
+        </button>
       </header>
 
       <section
@@ -346,6 +382,12 @@ function App() {
           view={activeView}
           onClose={closeRecipe}
           onChanged={refreshRecipes}
+        />
+      )}
+      {isImporting && (
+        <RecipeImportReview
+          onCancel={closeImportReview}
+          onImported={showImportedRecipe}
         />
       )}
     </main>

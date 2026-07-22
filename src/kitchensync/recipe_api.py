@@ -469,6 +469,13 @@ class RecipesAPI:
         ).fetchone()
         return self._recipe_row(row)
 
+    def get_by_source_url(self, source_url: str) -> dict[str, Any] | None:
+        row = self.connection.execute(
+            "SELECT * FROM recipe_recipes WHERE source_url = ? ORDER BY created_at LIMIT 1",
+            (source_url,),
+        ).fetchone()
+        return self._recipe_row(row)
+
     def list(self, recipe_ids: set[str] | None = None) -> list[dict[str, Any]]:
         recipe_rows = self.connection.execute(
             """

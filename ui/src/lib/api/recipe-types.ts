@@ -88,6 +88,34 @@ export type RecipeUpdateRequest = {
   notes: string[]
 }
 
+export type RecipeImportMatchDto = {
+  recipe_id: string
+  title: string
+  slug: string | null
+  matched_by: ('source_url' | 'slug')[]
+}
+
+export type RecipeImportPreviewDto = {
+  draft: RecipeUpdateRequest
+  raw_source_description: string
+  author: string | null
+  source_name: string
+  source_url: string
+  thumbnail_url: string | null
+  warnings: string[]
+  complete: boolean
+  existing_recipe_matches: RecipeImportMatchDto[]
+}
+
+export type RecipeImportRequest = {
+  draft: RecipeUpdateRequest
+  source_url: string
+  source_name: string
+  author: string | null
+  thumbnail_url: string | null
+  duplicate_action: 'import' | 'update'
+}
+
 export type CookbookUpdateRequest = {
   favorite: boolean
   rating: number | null
