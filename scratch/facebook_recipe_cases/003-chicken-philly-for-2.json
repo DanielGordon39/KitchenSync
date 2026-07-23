@@ -1,0 +1,39 @@
+{
+  "id": "003-chicken-philly-for-2",
+  "queue_index": 3,
+  "platform": "facebook",
+  "creator": "Hamilton Beach",
+  "source_url": "https://www.facebook.com/HamiltonBeach/videos/professional-cast-iron-electric-grill-with-removable-cooktop/825235199117734/",
+  "resolved_source_url": "https://www.facebook.com/HamiltonBeach/videos/professional-cast-iron-electric-grill-with-removable-cooktop/825235199117734/",
+  "source_name": "facebook",
+  "thumbnail_url": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/438051108_798586768914892_2459346693582462369_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1920&ctp=s960x960&_nc_cat=102&ccb=1-7&_nc_sid=be8305&_nc_ohc=LKbsu-8P7YUQ7kNvwH3GrC-&_nc_oc=Adre6vdo9S-MyP4pUjL9AVKpxzZXvBsKeMuPfHfZf-6klm4zywfZrPuE3Vrw_pst2GQ&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=OjcZ9Ge2xvwdKipKcEaOTQ&_nc_ss=7d289&oh=00_AQB8wlDBKlzNEZhdflqJwhnqrZpXIBoZ3OMIbkO-Mzdwzw&oe=6A6843B4",
+  "source_text_kind": "description",
+  "source_text": "Easier cast-iron cooking is possible with the Cast Iron Electric Grill, featuring adjustable temps and simple cleanup. Shop now: https://bit.ly/4bG4Dbb\n\nChicken Philly for 2 Recipe- \n\nIngredients: \n\n8 oz chicken breast, thinly sliced into small-ish pieces \n\n1 green bell pepper, thinly sliced \n\n1 red bell pepper, thinly sliced \n\n½ yellow onion, thinly sliced \n\n1 tbsp olive oil \n\n1 tbsp butter \n\n½ tsp salt \n\n¼ tsp pepper \n\n4 slices of provolone cheese \n\n2 hoagies ( + butter for toasting *optional) \n\n \n\nMethod: \n\nIn a small bowl, combine the chicken, oil, salt and pepper. Mix together and set aside. Preheat the grill to 350°F. Once hot, melt the butter on one side of the cooktop and place the onion and peppers on top. Flip them around and coat them in the butter. Let those cook down for a couple minutes, then on the other side of your cooktop drop the chicken and spread out in an even layer. After about 1-2 minutes you can flip the chicken pieces and cook for another couple minutes. They will cook fast because they are small and the cooktop is hot. Once they seem cooked through, mix them with the peppers and onions. Feel free to chop the pieces of chicken up into small pieces if you want. When the onions are tender and the chicken is cooked through, gather everything into 2 piles on the cooktop and lay 2 slices of provolone on top of each. While the cheese is melting, you can toast the hoagies if you want. They can also go straight onto the cooktop. When they are toasted, about 2-3 min, pull them off and onto a plate. After the cheese is completely melted, scoop your chicken, pepper, onion and cheese mixture up and place in the center of the hoagie. I like to put mayo on mine, but you’re pretty much done! Enjoy!",
+  "expected": {
+    "name": "Chicken Philly for 2",
+    "servings": 2,
+    "raw_ingredients": [
+      "8 oz chicken breast, thinly sliced into small-ish pieces",
+      "1 green bell pepper, thinly sliced",
+      "1 red bell pepper, thinly sliced",
+      "½ yellow onion, thinly sliced",
+      "1 tbsp olive oil",
+      "1 tbsp butter",
+      "½ tsp salt",
+      "¼ tsp pepper",
+      "4 slices of provolone cheese",
+      "2 hoagies ( + butter for toasting *optional)"
+    ],
+    "steps": [
+      "In a small bowl, combine the chicken, oil, salt and pepper. Mix together and set aside. Preheat the grill to 350°F. Once hot, melt the butter on one side of the cooktop and place the onion and peppers on top. Flip them around and coat them in the butter. Let those cook down for a couple minutes, then on the other side of your cooktop drop the chicken and spread out in an even layer. After about 1-2 minutes you can flip the chicken pieces and cook for another couple minutes. They will cook fast because they are small and the cooktop is hot. Once they seem cooked through, mix them with the peppers and onions. Feel free to chop the pieces of chicken up into small pieces if you want. When the onions are tender and the chicken is cooked through, gather everything into 2 piles on the cooktop and lay 2 slices of provolone on top of each. While the cheese is melting, you can toast the hoagies if you want. They can also go straight onto the cooktop. When they are toasted, about 2-3 min, pull them off and onto a plate. After the cheese is completely melted, scoop your chicken, pepper, onion and cheese mixture up and place in the center of the hoagie. I like to put mayo on mine, but you’re pretty much done! Enjoy!"
+    ],
+    "tags": []
+  },
+  "expected_complete": true,
+  "accepted": false,
+  "notes": [
+    "Source evidence frozen from the existing yt-dlp acquisition probe before oracle labeling.",
+    "The method is one source paragraph, so it remains one raw instruction step.",
+    "Production parser selected the product-promotion preamble as the name and missed the serving count embedded in the explicit recipe title."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "001-barilla-pasta",
+  "queue_index": 1,
+  "platform": "facebook",
+  "creator": "Barilla",
+  "source_url": "https://www.facebook.com/Barilla/videos/we-love-a-pasta-recipe-that-takes-us-straight-to-the-streets-of-naples-buon-appe/380244794982983/",
+  "resolved_source_url": "https://www.facebook.com/Barilla/videos/we-love-a-pasta-recipe-that-takes-us-straight-to-the-streets-of-naples-buon-appe/380244794982983/",
+  "source_name": "facebook",
+  "thumbnail_url": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/434726652_1559613164822698_3051503709822125259_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1920&ctp=s960x960&_nc_cat=104&ccb=1-7&_nc_sid=be8305&_nc_ohc=I1qPRy963KcQ7kNvwEvxfHX&_nc_oc=Adq0WkFIfJROZ56E2QRa0JHJI52ICFNEdiZH-TarAAhzteOm3Bwlm13uFW3sl1ghlbU&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=nOgwkeNku9Px2GSqXfysAw&_nc_ss=7d289&oh=00_AQAM9KEOPV3h5-nKOipnoQKxjR7M0zI7VhUfkO10M7BLHw&oe=6A682433",
+  "source_text_kind": "description",
+  "source_text": "We love a pasta recipe that takes us straight to the streets of Naples! \nBuon appetito! 🍝🇮🇹\n\nIngredients (serves 4):\n320g Barilla Penne Rigate\n400g Barilla Napoletana Sauce\n2 tbsp extra virgin olive oil\n1 red onion, sliced\n1 celery stick, sliced\n200g canned tuna in olive oil\n80g Spanish olives, halved\n2 tbsp flat leaf parsley\n\nMethod:\n1. Bring a pot of salted water to a boil and cook the penne according to package instructions.\n2. Drain and reserve 150ml of the cooking water.\n3. Meanwhile, heat a skillet until hot, add the extra virgin olive oil, red onion and celery and sauté for 5 minutes until just soft.\n4. Add the Napoletana sauce, salt and black pepper.\n5. Stir in the tuna and olives and simmer for 1-2 minutes until the tuna is hot.\n6. Add the penne and toss until coated, adding the pasta water little by little and cooking for 1 minute to get a creamy sauce.\n7. Serve topped with the parsley.\n\n#ASignOfLove #Barilla #Pasta",
+  "expected": {
+    "name": null,
+    "servings": 4,
+    "raw_ingredients": [
+      "320g Barilla Penne Rigate",
+      "400g Barilla Napoletana Sauce",
+      "2 tbsp extra virgin olive oil",
+      "1 red onion, sliced",
+      "1 celery stick, sliced",
+      "200g canned tuna in olive oil",
+      "80g Spanish olives, halved",
+      "2 tbsp flat leaf parsley"
+    ],
+    "steps": [
+      "Bring a pot of salted water to a boil and cook the penne according to package instructions.",
+      "Drain and reserve 150ml of the cooking water.",
+      "Meanwhile, heat a skillet until hot, add the extra virgin olive oil, red onion and celery and sauté for 5 minutes until just soft.",
+      "Add the Napoletana sauce, salt and black pepper.",
+      "Stir in the tuna and olives and simmer for 1-2 minutes until the tuna is hot.",
+      "Add the penne and toss until coated, adding the pasta water little by little and cooking for 1 minute to get a creamy sauce.",
+      "Serve topped with the parsley."
+    ],
+    "tags": [
+      "asignoflove",
+      "barilla",
+      "pasta"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": false,
+  "notes": [
+    "Source evidence frozen from the existing yt-dlp acquisition probe before oracle labeling.",
+    "Evidence has servings, ingredients, steps, and tags but no explicit recipe name, so fallback is expected.",
+    "Production parser incorrectly selected the greeting 'Buon appetito' as the name and reported a complete result."
+  ]
+}

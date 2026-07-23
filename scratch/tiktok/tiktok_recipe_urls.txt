@@ -1,0 +1,13 @@
+# TikTok feasibility queue.
+#
+# Status: discovery has not started and the queue is not frozen.
+# The TikTok Goal Mode pass should select 12 public recipe-video URLs before
+# evaluating any of them with the parser, then append the exact discovered URLs
+# below this comment block.
+#
+# Selection target:
+# - at least 8 canonical https://www.tiktok.com/@creator/video/<id> URLs;
+# - at least 2 vm.tiktok.com or vt.tiktok.com short links;
+# - at least 4 independent creators;
+# - naturally include both detailed and sparse descriptions;
+# - preserve every selected URL exactly and keep failures in place.

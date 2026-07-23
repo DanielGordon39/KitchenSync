@@ -235,7 +235,8 @@ is already adequate or needs only a small, proven scratch experiment.
 
 ## Completion report
 
-Report:
+Write the durable report to
+`scratch/facebook-recipe-parser-results.md`. Report:
 
 - all attempted URLs and acquisition outcomes;
 - usable video and text-post counts;
@@ -247,3 +248,40 @@ Report:
 - full test result;
 - whether a larger Facebook queue is justified;
 - any future production change, without implementing it.
+
+This report and the frozen Facebook evidence become inputs to
+`scratch/facebook-tiktok-comparison-plan.md`. Do not start that comparison
+until the TikTok feasibility report also exists.
+
+## Goal Mode handoff prompt
+
+Start a new chat from the KitchenSync repository with:
+
+```text
+Create a goal to execute the Facebook recipe parsing feasibility pass.
+
+Read AGENTS.md, its required policy and design sources, and
+scratch/facebook-recipe-parser-loop-plan.md completely before acting.
+
+Follow the plan through all 12 URLs in scratch/facebook_recipe_urls.txt.
+Preserve every queued URL exactly and record acquisition failures instead of
+replacing sources. Acquire and freeze source evidence before labeling expected
+fields. Run the existing production parse_recipe_text implementation first for
+every usable description.
+
+Treat src/, ui/, production configuration, dependencies, and production
+behavior as read-only. Do not save imported recipes. If at least two
+independently authored usable sources expose the same unambiguous structural
+parser failure, you may write the smallest experiment under scratch/ only.
+Do not copy the production parser or promote scratch changes during this goal.
+
+Continue through ordinary acquisition failures, incomplete sources, and parser
+mismatches. Rerun the complete Facebook corpus, the archived Instagram
+regression corpus, and uv run pytest at the checkpoints defined in the plan.
+Stop only at the documented completion gate or an explicit plan blocker.
+
+Finish with the required completion report and mark the goal complete only
+when the feasibility pass is genuinely complete. Do not begin the larger
+Facebook expansion in this goal. Save the completion report to
+scratch/facebook-recipe-parser-results.md.
+```

@@ -1,0 +1,53 @@
+{
+  "id": "004-ragu-alla-bolognese",
+  "queue_index": 4,
+  "platform": "facebook",
+  "creator": "Francesco Mattana",
+  "source_url": "https://www.facebook.com/ourcookingjourney/videos/rag%C3%B9-alla-bolognese-%EF%B8%8Frag%C3%B9-is-one-of-my-favourite-classic-italian-recipes-this-re/1463244924591669/",
+  "resolved_source_url": "https://www.facebook.com/ourcookingjourney/videos/rag%C3%B9-alla-bolognese-%EF%B8%8Frag%C3%B9-is-one-of-my-favourite-classic-italian-recipes-this-re/1463244924591669/",
+  "source_name": "facebook",
+  "thumbnail_url": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/618081813_1359611885960746_2132518899679931414_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1920&ctp=s960x960&_nc_cat=104&ccb=1-7&_nc_sid=50ce42&_nc_ohc=-ecYDKpJygsQ7kNvwHeAnHJ&_nc_oc=AdrVxIteiFJWb5UyFl0sB_EH265uuq_zKsF6cMYFcHuf_PwbgcySSySeq-jjXtpzhnU&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=S2tnIQIpOzdQ9QNPaxU0UQ&_nc_ss=7d289&oh=00_AQCTsedhgrAMlZIzT7OmcTIhAFrK3UOdVFL4ev8FFL-YQA&oe=6A6841BF",
+  "source_text_kind": "description",
+  "source_text": "Ragù Alla Bolognese! 👌❤️\n\nRagù is one of my favourite classic Italian recipes. This recipe is the perfect base for so many incredible Italian dishes, such as lasagna, cannelloni or tagliatelle al ragù! 🍝\n\nAfter 4 hours of slow cooking, the final product is incredibly rich in flavour and beautifully tender. The preparation takes around 15-20 minutes. The rest of the time is for you to have a glass of wine while you wait for the smell of ragù to fill the whole house. 😊\n\nHere are the ingredients 👇\n\n500g good quality beef mince \n400g good quality pork mince \n150g pancetta \n100g celery \n100g carrots \n200g onions\n400g can of San Marzano tomatoes \n200g red wine\n1.5L vegetable stock \nSalt \n2- 3 bay leaves\n\n#bolognese #ragu #italiancuisine #recipeshare #recipeoftheday #soulfood #comfortfood #ciboitaliano #italianrecipe #meat #cheflife #learning #recipe #sharingiscaring",
+  "expected": {
+    "name": "Ragù Alla Bolognese",
+    "servings": null,
+    "raw_ingredients": [
+      "500g good quality beef mince",
+      "400g good quality pork mince",
+      "150g pancetta",
+      "100g celery",
+      "100g carrots",
+      "200g onions",
+      "400g can of San Marzano tomatoes",
+      "200g red wine",
+      "1.5L vegetable stock",
+      "Salt",
+      "2- 3 bay leaves"
+    ],
+    "steps": [],
+    "tags": [
+      "bolognese",
+      "ragu",
+      "italiancuisine",
+      "recipeshare",
+      "recipeoftheday",
+      "soulfood",
+      "comfortfood",
+      "ciboitaliano",
+      "italianrecipe",
+      "meat",
+      "cheflife",
+      "learning",
+      "recipe",
+      "sharingiscaring"
+    ]
+  },
+  "expected_complete": false,
+  "accepted": true,
+  "notes": [
+    "Source evidence frozen from the existing yt-dlp acquisition probe before oracle labeling.",
+    "The description supplies a title and ingredient list but no method, so fallback is expected.",
+    "Production parser matched the labeled fields exactly and correctly recommended fallback."
+  ]
+}

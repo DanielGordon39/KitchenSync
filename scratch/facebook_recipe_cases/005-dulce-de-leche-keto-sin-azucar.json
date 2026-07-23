@@ -1,0 +1,49 @@
+{
+  "id": "005-dulce-de-leche-keto-sin-azucar",
+  "queue_index": 5,
+  "platform": "facebook",
+  "creator": "pulicocina",
+  "source_url": "https://www.facebook.com/pulicocina/videos/dulce-de-leche-keto-sin-az%C3%BAcar-s%C3%B3lo-3-ingredientes-y-listo-en-20-minutos-no-vas/1220502069475343/",
+  "resolved_source_url": "https://www.facebook.com/pulicocina/videos/dulce-de-leche-keto-sin-az%C3%BAcar-s%C3%B3lo-3-ingredientes-y-listo-en-20-minutos-no-vas/1220502069475343/",
+  "source_name": "facebook",
+  "thumbnail_url": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/497875937_1581386812531944_4260535055269899135_n.jpg?stp=dst-jpg_tt6&cstp=mx720x1280&ctp=s960x960&_nc_cat=104&ccb=1-7&_nc_sid=be8305&_nc_ohc=p_UU92KpR6cQ7kNvwFldnAT&_nc_oc=AdpOFfRYqd0FTJWJ1UZ_HXmyG8zo4fNXH0NIwqvewNNk_ERCF5UFEX5HV8qXN5ZeRWw&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=glSwz4bcuMvPLq-op4FYsA&_nc_ss=7d289&oh=00_AQBK-yJYJ9hy6c2fatXoaUZlL6PRtkOMX4i4Pia2D8Oj0w&oe=6A6854F2",
+  "source_text_kind": "description",
+  "source_text": "🍯DULCE de LECHE KETO SIN AZÚCAR! Sólo 3 ingredientes y listo en 20 minutos! No vas a poder creer lo bien que queda y es Bajo en Carbohidratos!💪🏻😍Guárdate la receta y seguime @pulicocina 💕🇬🇧Recipe in English below👇🏻•📝INGREDIENTES:(para un frasco)☆ 300 ml de crema de leche (puede ser light)☆ 50g de Eritritol (es un edulcorante que tiene el mismo volumen que el azúcar, se puede reemplazar por alulosa o monkfruit. Podrían probar con otros pero no va a quedar igual xq no caramelizan) ☆ ½ cdita de Bicarbonato de sodio☆ 30ml (2 Cdas) de agua•🥣PREPARACIÓN:👉🏻 Poner el endulzante con el agua a fuego mínimo, revolviendo todo el tiempo hasta que se diluya y empieze a hervir. Serán unos 5 minutos. 👉🏻 Una vez que hierve agregar el bicarbonato y seguir revolviendo. Va a empezar a cambiar el color, de transparente a caramelo. Seguir cocinando sin dejar de revolver hasta que esté color marrón oscuro, unos 10 minutos más máximo. 👉🏻 En ese momento agregar la crema de leche de a poquito sin dejar de revolver hasta que rompa hervor nuevamente. Seguir revolviendo unos 5 minutos más y listo!Si lo dejás más tiempo va a quedar más firme, tipo repostero. Tené en cuenta que una vez frío va a quedar más espeso y firme. Guárdalo en la heladera y disfrútalo solo o en todas las recetas con dulce de leche!😉•🇬🇧Recipe:👉🏻 Put 50g of monkfruit with 30ml of water in a pan over low heat, stirring all the time until it is diluted and starts to boil (5 minutes aprox.)👉🏻 Once it boils add ½ tsp of baking soda and keep stirring. It’ll start to change color, from transparent to caramel. Continue cooking, stirring constantly, until it turns dark brown, about 10 more minutes or less.👉🏻 At that moment add 300ml of cream while stirring, until it comes to a boil again. Continue stirring for about 5 more minutes and that’s it! Keep it in the fridge, it’ll harden when it gets cold. •••••#dulcedeleche #dulcedelechecasero #dulcedelecheketo #recetasketo #keto #recetasdulces #ddl #ddlketo #ddlcasero #caramel #ketocaramel #toffee #recetaddlket",
+  "expected": {
+    "name": "DULCE de LECHE KETO SIN AZÚCAR",
+    "servings": 1,
+    "raw_ingredients": [
+      "300 ml de crema de leche (puede ser light)",
+      "50g de Eritritol (es un edulcorante que tiene el mismo volumen que el azúcar, se puede reemplazar por alulosa o monkfruit. Podrían probar con otros pero no va a quedar igual xq no caramelizan)",
+      "½ cdita de Bicarbonato de sodio",
+      "30ml (2 Cdas) de agua"
+    ],
+    "steps": [
+      "Poner el endulzante con el agua a fuego mínimo, revolviendo todo el tiempo hasta que se diluya y empieze a hervir. Serán unos 5 minutos.",
+      "Una vez que hierve agregar el bicarbonato y seguir revolviendo. Va a empezar a cambiar el color, de transparente a caramelo. Seguir cocinando sin dejar de revolver hasta que esté color marrón oscuro, unos 10 minutos más máximo.",
+      "En ese momento agregar la crema de leche de a poquito sin dejar de revolver hasta que rompa hervor nuevamente. Seguir revolviendo unos 5 minutos más y listo!"
+    ],
+    "tags": [
+      "dulcedeleche",
+      "dulcedelechecasero",
+      "dulcedelecheketo",
+      "recetasketo",
+      "keto",
+      "recetasdulces",
+      "ddl",
+      "ddlketo",
+      "ddlcasero",
+      "caramel",
+      "ketocaramel",
+      "toffee",
+      "recetaddlket"
+    ]
+  },
+  "expected_complete": true,
+  "accepted": false,
+  "notes": [
+    "Source evidence frozen from the existing yt-dlp acquisition probe before oracle labeling.",
+    "The English recipe block repeats the primary Spanish method and is not duplicated in the oracle.",
+    "Production parser found only the name and tags; it did not segment the single-line emoji-delimited ingredients, method, or one-jar yield."
+  ]
+}
