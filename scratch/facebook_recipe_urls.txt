@@ -1,0 +1,19 @@
+# Facebook feasibility gate, discovered 2026-07-23.
+# Preserve these URLs exactly and record failures instead of replacing them.
+
+# Public video posts whose indexed page text contains recipe evidence.
+https://www.facebook.com/Barilla/videos/we-love-a-pasta-recipe-that-takes-us-straight-to-the-streets-of-naples-buon-appe/380244794982983/
+https://www.facebook.com/HomeCookingShow/videos/healthy-vegetable-stir-fry-recipe-paneer-veg-stir-fry-weight-loss-recipes-stir-f/284949174228815/
+https://www.facebook.com/HamiltonBeach/videos/professional-cast-iron-electric-grill-with-removable-cooktop/825235199117734/
+https://www.facebook.com/ourcookingjourney/videos/rag%C3%B9-alla-bolognese-%EF%B8%8Frag%C3%B9-is-one-of-my-favourite-classic-italian-recipes-this-re/1463244924591669/
+https://www.facebook.com/pulicocina/videos/dulce-de-leche-keto-sin-az%C3%BAcar-s%C3%B3lo-3-ingredientes-y-listo-en-20-minutos-no-vas/1220502069475343/
+https://www.facebook.com/HomeCookingShow/videos/chicken-clear-soup-easy-and-healthy-soup-chicken-broth-recipe-chicken-soup-homec/1099075208440956/
+https://www.facebook.com/HomeCookingShow/videos/jeera-masala-soda-recipe-summer-refreshing-drinks-digestive-drink-at-home/1381879369482798/
+https://www.facebook.com/HomeCookingShow/videos/mutton-brain-masala-bheja-fry-home-cooking/1051153680287252/
+https://www.facebook.com/PHinChicago/videos/chicken-adobo-recipe-by-food-vlogger-vanjo-merano-aka-panlasang-pinoy-in-celebra/403113594565645/
+
+# Public text-post controls. The current yt-dlp path may reject these; that is
+# acquisition evidence, not a parser failure.
+https://www.facebook.com/blackstoneproducts/posts/have-you-heard-of-the-sweet-potato-cottage-cheese-bowl-thats-been-taking-over-so/1118900396943513/
+https://www.facebook.com/sainsburys/posts/these-chimichurri-hot-dogs-are-what-we-like-to-call-a-crowd-pleasermade-with-tas/1222359613254773/
+https://www.facebook.com/thefoodbabe/posts/did-you-see-my-last-post-about-the-nasty-ingredients-in-chick-fil-as-frosted-lem/1236233817956634/

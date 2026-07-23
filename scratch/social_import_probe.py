@@ -27,8 +27,10 @@ if TYPE_CHECKING:
     from recipe_text_parser import RecipeTextParseResult, SocialRecipeCandidate
 
 
-DEFAULT_URL_FILE = Path(__file__).parent / "social_recipe_urls.txt"
-CASE_DIR = Path(__file__).parent / "social_recipe_cases"
+DEFAULT_URL_FILE = Path(__file__).parent / "facebook_recipe_urls.txt"
+CASE_DIR = (
+    Path(__file__).parent / "archive" / "instagram" / "social_recipe_cases"
+)
 DEFAULT_PROMOTION_DATABASE = (
     Path(__file__).parent
     / "social_import_probe_output"

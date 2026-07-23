@@ -12,7 +12,13 @@ from kitchensync.models import Ingredient, Recipe, RecipeIngredient, RecipeMetad
 from kitchensync.parsing import InstagramSource, validate_instagram_url
 
 
-CASE_DIR = Path(__file__).parents[1] / "scratch" / "social_recipe_cases"
+CASE_DIR = (
+    Path(__file__).parents[1]
+    / "scratch"
+    / "archive"
+    / "instagram"
+    / "social_recipe_cases"
+)
 
 
 @pytest.mark.parametrize(

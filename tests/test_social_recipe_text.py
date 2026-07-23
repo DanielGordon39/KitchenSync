@@ -6,7 +6,13 @@ from pathlib import Path
 from kitchensync.parsing import parse_recipe_text
 
 
-CASE_DIR = Path(__file__).parents[1] / "scratch" / "social_recipe_cases"
+CASE_DIR = (
+    Path(__file__).parents[1]
+    / "scratch"
+    / "archive"
+    / "instagram"
+    / "social_recipe_cases"
+)
 SCORED_FIELDS = {"name", "servings", "raw_ingredients", "steps", "tags"}
 
 

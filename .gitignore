@@ -7,3 +7,5 @@ data/imports/
 scratch/recipe_parse_probe_output/
 scratch/recipe_input_probe_output/
 scratch/social_import_probe_output/
+scratch/archive/instagram/social_import_probe_output/
+scratch/archive/recipe-input/recipe_input_probe_output/

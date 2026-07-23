@@ -4,7 +4,7 @@ import json
 import sys
 from pathlib import Path
 
-from recipe_text_parser import parse_recipe_text
+from kitchensync.parsing import parse_recipe_text
 
 
 CASE_DIR = Path(__file__).parent / "social_recipe_cases"

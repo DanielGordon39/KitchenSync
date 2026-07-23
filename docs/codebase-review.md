@@ -123,9 +123,9 @@ Post-refactor production counts:
 | --- | ---: | --- |
 | `tests/test_app_database.py` | 818 | Covers several product namespaces and is the strongest test-splitting candidate. Split by recipe persistence, search, ingredients, and Cookbook when the next database feature is added; a mechanical split now has little value. |
 | `tests/test_web.py` | 457 | Multiple route contracts share similar fake-app setup. Keep until a second backend resource family makes focused route files easier to navigate. |
-| `scratch/social_import_probe.py` | 445 | Broad by design: it is an exploratory acquisition and report tool, not a reusable runtime module. Keep stable while the research loop is active. |
+| `scratch/social_import_probe.py` | 447 | Broad by design: it is an exploratory acquisition and report tool, not a reusable runtime module. Keep stable while the research loop is active. |
 | `scripts/import_recipe_urls.py` | 364 | Batch orchestration, reporting, and CLI parsing are cohesive enough for one operational script. Reusable behavior already lives in the package. |
-| `scratch/run_social_recipe_review_canary.py` | 325 | Disposable end-to-end verification; keep separate from production and split only if reused outside the current canary. |
+| `scratch/archive/instagram/run_social_recipe_review_canary.py` | 325 | Archived end-to-end verification; keep separate from production and split only if it becomes an active reusable tool again. |
 
 Large frontend files also deserve monitoring: `RecipeMainView.tsx` is 931 lines, `RecipeIngredientEditor.tsx` is 759, and `App.css` is 1,228. They still map to recognizable UI responsibilities, but import review and ordinary recipe editing now share one file. A future UI-only refactor could extract `RecipeEditor` and `RecipeImportReview` after the current import flow settles.
 

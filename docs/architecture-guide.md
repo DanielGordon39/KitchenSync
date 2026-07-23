@@ -651,7 +651,7 @@ The dependency direction is generally inward toward models and persistence primi
 | `docs/` | Durable implementation, architecture, schema, and UI guidance | A decision or explanation should survive across machines and sessions |
 | `docs/archive/` | Historical reference that is not implementation truth | Preserving superseded documentation |
 | `docs/ui-plan/` | Product-facing UI flows, screens, and component plans | Describing intended UI behavior rather than framework mechanics |
-| `scratch/` | Tracked experiments, corpus evidence, canaries, and temporary research plans | Testing an uncertain parsing/import idea before promoting reusable behavior |
+| `scratch/` | Active tracked experiments plus archived corpus evidence and completed research plans | Testing an uncertain parsing/import idea before promoting reusable behavior |
 | `scripts/` | Repeatable, thin operational entry points | Orchestrating stable package APIs for maintenance or batch work |
 | `src/kitchensync/` | Installable Python application package | Adding reusable backend behavior |
 | `src/kitchensync/models/` | UI- and storage-independent domain shapes | Adding or extending a domain concept after the design is settled |
