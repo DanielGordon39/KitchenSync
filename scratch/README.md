@@ -6,7 +6,7 @@ Current tools:
 
 - `social_recipe_urls.txt`: newline-separated social-media recipe URLs for the current research corpus.
 - `social_import_probe.py`: owns URL-corpus loading, platform identification, `yt-dlp` evidence acquisition, and readable probe output.
-- `recipe_text_parser.py`: keeps compatibility imports for the production parser in `src/kitchensync/parsing/social.py`.
+- `recipe_text_parser.py`: keeps compatibility imports for the production parser in `src/kitchensync/parsing/social/`.
 - `run_social_recipe_review_canary.py`: validates reviewed cases against a disposable library, with optional live Instagram acquisition.
 
 Responsibility flow:

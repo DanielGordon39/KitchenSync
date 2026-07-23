@@ -1,3 +1,5 @@
+"""Application facade and lifecycle for one local KitchenSync library."""
+
 from __future__ import annotations
 
 import sqlite3
@@ -13,6 +15,8 @@ DEFAULT_DATABASE_PATH = Path("data/library/kitchensync.sqlite")
 
 
 class KitchenSyncApp:
+    """Expose product namespaces over one configured SQLite connection."""
+
     def __init__(self, connection: sqlite3.Connection, database_path: Path):
         self.connection = connection
         self.database_path = database_path
@@ -23,6 +27,8 @@ class KitchenSyncApp:
 
     @classmethod
     def open(cls, database_path: str | Path = DEFAULT_DATABASE_PATH) -> KitchenSyncApp:
+        """Open a library database and initialize its current schema."""
+
         database_path = Path(database_path)
         connection = connect(database_path)
         connection.executescript(SCHEMA_SQL)

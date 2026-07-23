@@ -1,9 +1,9 @@
+"""Recipe catalog operations and the accepted Markdown/SQLite save boundary."""
+
 from __future__ import annotations
 
-from difflib import SequenceMatcher
 import mimetypes
 from pathlib import Path
-import re
 import sqlite3
 from typing import Any
 from urllib.parse import urlparse
@@ -18,9 +18,9 @@ from .markdown import (
     slugify,
 )
 from .models import Ingredient, Recipe
+from .recipe_search import list_recipe_tags, search_recipes
 
 IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".webp"}
-MIN_SEARCH_SCORE = 0.45
 
 
 def _fetch_image(uri: str) -> tuple[bytes, str | None]:
@@ -41,11 +41,15 @@ def _time_estimate_minutes(recipe: Recipe) -> int | None:
 
 
 class RecipesAPI:
+    """Coordinate durable recipe files with their searchable SQLite index."""
+
     def __init__(self, connection: sqlite3.Connection, library_root: Path):
         self.connection = connection
         self.library_root = library_root
 
     def save_imported_recipe(self, recipe: Recipe) -> None:
+        """Persist one accepted import and refresh all of its index rows."""
+
         slug = slugify(recipe.name)
         recipe_id = self._recipe_id_for_import(recipe, slug)
         main_image_path = self._save_main_image(recipe, slug)
@@ -88,6 +92,8 @@ class RecipesAPI:
         self.connection.commit()
 
     def update_recipe(self, recipe_id: str, recipe: Recipe) -> dict[str, Any] | None:
+        """Replace editable content while preserving recipe identity and assets."""
+
         existing = self.get(recipe_id)
         if existing is None:
             return None
@@ -181,6 +187,8 @@ class RecipesAPI:
         main_image_path: str | None = None,
         markdown_path: str | None = None,
     ) -> None:
+        """Update low-level index metadata for tests and rebuild workflows."""
+
         self._upsert_recipe_row(
             recipe_id=recipe_id,
             title=title,
@@ -456,6 +464,8 @@ class RecipesAPI:
         )
 
     def get(self, recipe_id: str) -> dict[str, Any] | None:
+        """Return one indexed recipe row with ordered tags."""
+
         row = self.connection.execute(
             "SELECT * FROM recipe_recipes WHERE recipe_id = ?",
             (recipe_id,),
@@ -463,6 +473,8 @@ class RecipesAPI:
         return self._recipe_row(row)
 
     def get_by_slug(self, slug: str) -> dict[str, Any] | None:
+        """Return the indexed recipe identified by a Markdown-facing slug."""
+
         row = self.connection.execute(
             "SELECT * FROM recipe_recipes WHERE slug = ?",
             (slug,),
@@ -470,6 +482,8 @@ class RecipesAPI:
         return self._recipe_row(row)
 
     def get_by_source_url(self, source_url: str) -> dict[str, Any] | None:
+        """Return the first indexed recipe imported from a source URL."""
+
         row = self.connection.execute(
             "SELECT * FROM recipe_recipes WHERE source_url = ? ORDER BY created_at LIMIT 1",
             (source_url,),
@@ -477,6 +491,8 @@ class RecipesAPI:
         return self._recipe_row(row)
 
     def list(self, recipe_ids: set[str] | None = None) -> list[dict[str, Any]]:
+        """List indexed recipes, optionally restricted to an ID set."""
+
         recipe_rows = self.connection.execute(
             """
             SELECT *
@@ -492,6 +508,8 @@ class RecipesAPI:
         ]
 
     def get_detail(self, recipe_id: str) -> dict[str, Any] | None:
+        """Combine indexed rows with Markdown-backed description and notes."""
+
         recipe = self.get(recipe_id)
         if recipe is None:
             return None
@@ -576,111 +594,22 @@ class RecipesAPI:
         diet_tags: list[str] | None = None,
         recipe_ids: set[str] | None = None,
     ) -> list[dict[str, Any]]:
-        query = query.strip()
-        exact_tag_set = _tag_set(exact_tags)
-        meal_tag_set = _tag_set(meal_tags)
-        cuisine_tag_set = _tag_set(cuisine_tags)
-        diet_tag_set = _tag_set(diet_tags)
+        """Filter and rank the local recipe catalog for browser search."""
 
-        recipe_rows = self.connection.execute(
-            "SELECT * FROM recipe_recipes"
-        ).fetchall()
-        tag_rows = self.connection.execute(
-            "SELECT recipe_id, tag_slug FROM recipe_tags ORDER BY tag_order"
-        ).fetchall()
-        ingredient_rows = self.connection.execute(
-            """
-            SELECT recipe_id, parsed_name, raw_text
-            FROM recipe_ingredients
-            ORDER BY ingredient_order
-            """
-        ).fetchall()
-
-        tags_by_recipe: dict[str, list[str]] = {}
-        for row in tag_rows:
-            tags_by_recipe.setdefault(row["recipe_id"], []).append(row["tag_slug"])
-
-        ingredients_by_recipe: dict[str, list[str]] = {}
-        for row in ingredient_rows:
-            values = ingredients_by_recipe.setdefault(row["recipe_id"], [])
-            if row["parsed_name"]:
-                values.append(row["parsed_name"])
-            values.append(row["raw_text"])
-
-        ranked: list[tuple[int, int, float, str, str, dict[str, Any]]] = []
-        for row in recipe_rows:
-            recipe = row_dict(row)
-            if recipe is None:
-                continue
-
-            recipe_id = recipe["recipe_id"]
-            if recipe_ids is not None and recipe_id not in recipe_ids:
-                continue
-            tags = tags_by_recipe.get(recipe_id, [])
-            tag_set = set(tags)
-
-            if meal_tag_set and not tag_set.intersection(meal_tag_set):
-                continue
-            if cuisine_tag_set and not tag_set.intersection(cuisine_tag_set):
-                continue
-            if diet_tag_set and not diet_tag_set.issubset(tag_set):
-                continue
-
-            matched_tag_count = len(tag_set.intersection(exact_tag_set))
-            tag_match: str | None = None
-            tag_group = 0
-            if exact_tag_set:
-                if matched_tag_count == 0:
-                    continue
-                tag_match = (
-                    "all" if matched_tag_count == len(exact_tag_set) else "some"
-                )
-                tag_group = 0 if tag_match == "all" else 1
-
-            relevance = _recipe_search_score(
-                query,
-                recipe,
-                tags,
-                ingredients_by_recipe.get(recipe_id, []),
-            )
-            if query and relevance < MIN_SEARCH_SCORE:
-                continue
-
-            recipe["tags"] = tags
-            recipe["tag_match"] = tag_match
-            ranked.append(
-                (
-                    tag_group,
-                    -matched_tag_count,
-                    -relevance,
-                    recipe["title"].casefold(),
-                    recipe_id,
-                    recipe,
-                )
-            )
-
-        # ponytail: score the local catalog in memory; add FTS/paging when its
-        # size makes this measurably slow.
-        ranked.sort(key=lambda item: item[:-1])
-        return [item[-1] for item in ranked]
+        return search_recipes(
+            self.connection,
+            query,
+            exact_tags=exact_tags,
+            meal_tags=meal_tags,
+            cuisine_tags=cuisine_tags,
+            diet_tags=diet_tags,
+            recipe_ids=recipe_ids,
+        )
 
     def list_tags(self, recipe_ids: set[str] | None = None) -> list[dict[str, Any]]:
-        tag_rows = self.connection.execute(
-            """
-            SELECT recipe_id, tag_slug
-            FROM recipe_tags
-            ORDER BY tag_slug, recipe_id
-            """
-        ).fetchall()
-        counts: dict[str, int] = {}
-        for row in tag_rows:
-            if recipe_ids is not None and row["recipe_id"] not in recipe_ids:
-                continue
-            counts[row["tag_slug"]] = counts.get(row["tag_slug"], 0) + 1
-        return [
-            {"tag_slug": tag_slug, "recipe_count": count}
-            for tag_slug, count in sorted(counts.items())
-        ]
+        """Return normalized tag counts for a catalog or Cookbook scope."""
+
+        return list_recipe_tags(self.connection, recipe_ids)
 
     def _recipe_row(self, row: sqlite3.Row | None) -> dict[str, Any] | None:
         recipe = row_dict(row)
@@ -721,68 +650,3 @@ def _markdown_image_path(slug: str, main_image_path: str | None) -> str | None:
 
     prefix = f"recipes/{slug}/"
     return main_image_path.removeprefix(prefix)
-
-
-def _tag_set(values: list[str] | None) -> set[str]:
-    return {
-        slugify(value.lstrip("#"))
-        for value in values or []
-        if value.strip().lstrip("#")
-    }
-
-
-def _search_text(value: str | None) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", (value or "").casefold()).strip()
-
-
-def _fuzzy_score(query: str, candidate: str | None) -> float:
-    normalized_query = _search_text(query)
-    normalized_candidate = _search_text(candidate)
-    if not normalized_query or not normalized_candidate:
-        return 0.0
-    if normalized_query == normalized_candidate:
-        return 1.0
-    if normalized_candidate.startswith(normalized_query):
-        return 0.98
-    if normalized_query in normalized_candidate:
-        return 0.95
-
-    score = SequenceMatcher(None, normalized_query, normalized_candidate).ratio()
-    if " " not in normalized_query:
-        score = max(
-            score,
-            *(
-                SequenceMatcher(None, normalized_query, token).ratio()
-                for token in normalized_candidate.split()
-            ),
-        )
-    return score
-
-
-def _best_fuzzy_score(query: str, values: list[str | None]) -> float:
-    return max((_fuzzy_score(query, value) for value in values), default=0.0)
-
-
-def _recipe_search_score(
-    query: str,
-    recipe: dict[str, Any],
-    tags: list[str],
-    ingredients: list[str],
-) -> float:
-    if not query:
-        return 0.0
-
-    title_score = _fuzzy_score(query, recipe["title"])
-    tag_score = _best_fuzzy_score(query, tags) * 0.82
-    ingredient_score = _best_fuzzy_score(query, ingredients) * 0.68
-    metadata_score = _best_fuzzy_score(
-        query,
-        [
-            recipe.get("slug"),
-            recipe.get("source_name"),
-            recipe.get("source_url"),
-            recipe.get("author"),
-            recipe.get("imported_from"),
-        ],
-    ) * 0.5
-    return max(title_score, tag_score, ingredient_score, metadata_score)

@@ -1,3 +1,5 @@
+"""Read access to the indexed canonical ingredient catalog."""
+
 from __future__ import annotations
 
 import sqlite3
@@ -7,10 +9,14 @@ from .database import rows
 
 
 class IngredientsAPI:
+    """Expose ingredient rows and aliases used by recipe editing."""
+
     def __init__(self, connection: sqlite3.Connection):
         self.connection = connection
 
     def list(self) -> list[dict[str, Any]]:
+        """List canonical ingredients with their ordered aliases."""
+
         ingredient_rows = self.connection.execute(
             """
             SELECT

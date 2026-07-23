@@ -1,3 +1,5 @@
+"""Thin FastAPI adapter for KitchenSync product operations."""
+
 from typing import Annotated, Literal
 from urllib.parse import quote
 

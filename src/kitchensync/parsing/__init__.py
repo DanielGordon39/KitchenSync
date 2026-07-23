@@ -1,3 +1,5 @@
+"""Public acquisition and parsing import surface."""
+
 from .ingredients import parse_recipe_ingredient_line, project_ingredient_line
 from .instagram import InstagramSource, acquire_instagram_source, validate_instagram_url
 from .recipe import parse_recipe

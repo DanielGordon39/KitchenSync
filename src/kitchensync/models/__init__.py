@@ -1,3 +1,5 @@
+"""Public domain-model import surface."""
+
 from .common import Quantity, UnitSlug
 from .cookbook import CookEvent, Cookbook, CookbookEntry, CookbookMetadata
 from .ingredient import Ingredient, IngredientSlug

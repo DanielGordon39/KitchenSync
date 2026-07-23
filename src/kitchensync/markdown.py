@@ -1,3 +1,5 @@
+"""Serialize recipes and ingredients to KitchenSync's human-first Markdown."""
+
 from __future__ import annotations
 
 import re

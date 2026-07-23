@@ -1,3 +1,5 @@
+"""Cookbook relationship state synchronized between Markdown and SQLite."""
+
 from __future__ import annotations
 
 import sqlite3
@@ -8,6 +10,8 @@ from .database import rows
 
 
 class CookbookAPI:
+    """Manage one local Cookbook without duplicating recipe content."""
+
     def __init__(self, connection: sqlite3.Connection, library_root: Path):
         self.connection = connection
         self.library_root = library_root
@@ -20,6 +24,8 @@ class CookbookAPI:
         rating: int | None = None,
         notes: str | None = None,
     ) -> dict[str, Any] | None:
+        """Write durable Cookbook metadata and refresh its index row."""
+
         if rating is not None and not 1 <= rating <= 5:
             raise ValueError("rating must be between 1 and 5")
 
@@ -81,6 +87,8 @@ class CookbookAPI:
         notes: str | None = None,
         last_cooked_on: str | None = None,
     ) -> None:
+        """Update the rebuildable index for an existing Cookbook entry."""
+
         if rating is not None and not 1 <= rating <= 5:
             raise ValueError("rating must be between 1 and 5")
 
@@ -127,6 +135,8 @@ class CookbookAPI:
         self.connection.commit()
 
     def list_entries(self) -> list[dict[str, Any]]:
+        """List Cookbook entries joined to current recipe metadata."""
+
         entry_rows = self.connection.execute(
             """
             SELECT
@@ -152,6 +162,8 @@ class CookbookAPI:
         return rows(entry_rows)
 
     def get_entry(self, recipe_id: str) -> dict[str, Any] | None:
+        """Return Cookbook metadata for one canonical recipe."""
+
         row = self.connection.execute(
             """
             SELECT
